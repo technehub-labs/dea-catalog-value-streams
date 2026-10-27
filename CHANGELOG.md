@@ -47,3 +47,17 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `change-requests/` opened with CR-VS-01 documenting the seed and the
   follow-on pipeline (distinctness sweep CR-VS-02, admission CR-VS-03).
 - No canonical entries; `entities/v1-alpha/` untouched.
+
+### Phase 3b — distinctness sweep (CR-VS-02)
+
+- `catalog-research/distinctness-sweep.yaml` (v0.1): 36 ordered pairs swept
+  under the two-axis test (entry / exit / served party; authority SRC-001).
+  No UNRESOLVED verdicts remain.
+- RES-001: VSC-007 (Lead to Cash) merged into VSC-001 (Order to Cash) —
+  one-axis (entry-only) difference; VSC-001 entry widened to include demand
+  generation as the pre-order stage.
+- RES-002: VSC-008 / VSC-009 retained distinct with an explicit boundary
+  statement (forward-looking commitment vs. backward-looking attestation).
+- Candidate universe bumped to v0.2: 8 VALUE-STREAM candidates remain;
+  admission-ready: VSC-001, VSC-002, VSC-003, VSC-006.
+- No admissions in this CR; `entities/v1-alpha/` untouched.
