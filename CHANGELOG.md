@@ -33,3 +33,17 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - No catalog entries admitted yet; admission follows the catalog-research
   method (candidate universe, distinctness sweep, evidence register,
   admission gate).
+
+### Phase 3 — catalog research foundations (CR-VS-01)
+
+- `catalog-research/` opened: evidence register v0.1 (6 sources across 6
+  source classes: BIZBOK, APQC PCF, OMG BACM, TOGAF, SAFe/Lean guidance,
+  enterprise process-chain literature) and candidate universe v0.1.
+- Candidate universe: 9 VALUE-STREAM candidates (VSC-001..VSC-009 — Order to
+  Cash, Procure to Pay, Issue to Resolve, Concept to Launch, Plan to
+  Deliver, Hire to Retire, Lead to Cash, Plan to Forecast, Record to
+  Report) + 1 DEVELOPMENT-STREAM disambiguation record (VSC-010). None
+  canonical; three candidates at E3/high.
+- `change-requests/` opened with CR-VS-01 documenting the seed and the
+  follow-on pipeline (distinctness sweep CR-VS-02, admission CR-VS-03).
+- No canonical entries; `entities/v1-alpha/` untouched.

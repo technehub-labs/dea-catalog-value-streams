@@ -1,0 +1,175 @@
+universe_version: 0.1.0
+cr: "CR-VS-01 (candidate universe seed)"
+compiled: "2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register
+  v0.1; none canonical)"
+compiled_by: Emmanuel A. Otchere
+status: active
+evidence_register: catalog-research/evidence-register.yaml
+classification_taxonomy:
+- VALUE-STREAM
+- PROCESS
+- CAPABILITY
+- JOURNEY
+- DEVELOPMENT-STREAM
+- UNRESOLVED
+evidence_ratings:
+- E0
+- E1
+- E2
+- E3
+- E4
+- E5
+counts:
+  total: 10
+  VALUE-STREAM: 9
+  DEVELOPMENT-STREAM: 1
+candidates:
+- id: VSC-001
+  name: Order to Cash
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A customer places an order (request for goods or services).
+  exit_criterion_hypothesis: The customer receives the fulfilled order and the enterprise
+    recognizes payment against it.
+  outcome_hypothesis: Fulfilled customer need and recognized revenue.
+  spans_capabilities:
+  - customer-management
+  - operations
+  - financial-stewardship
+  sources:
+  - SRC-002
+  - SRC-006
+  distinctness_notes: "End-to-end chain, not a single process; spans order capture, fulfillment, invoicing, settlement. Distinct from VSC-007 (Lead to Cash) which starts at demand generation."
+- id: VSC-002
+  name: Procure to Pay
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: An internal need for external supply is identified.
+  exit_criterion_hypothesis: The supplier is paid and the need is met.
+  outcome_hypothesis: Supplied need with settled supplier obligation.
+  spans_capabilities:
+  - sourcing-and-procurement
+  - operations
+  - financial-stewardship
+  sources:
+  - SRC-002
+  - SRC-006
+  distinctness_notes: "Counterpart of VSC-001 on the supply side; spans requisition, sourcing, receipt, settlement."
+- id: VSC-003
+  name: Issue to Resolve
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A customer raises an issue or complaint.
+  exit_criterion_hypothesis: The issue is resolved and the customer is informed.
+  outcome_hypothesis: Restored customer relationship and retained trust.
+  spans_capabilities:
+  - customer-management
+  - operations
+  sources:
+  - SRC-006
+  distinctness_notes: "Service-side chain; distinct from VSC-001 (no order) and from journeys (multi-channel experience is out of scope at first order)."
+- id: VSC-004
+  name: Concept to Launch
+  classification: VALUE-STREAM
+  confidence: medium
+  evidence_strength: E2
+  entry_criterion_hypothesis: An offering concept is approved for development.
+  exit_criterion_hypothesis: The offering is launched to its market.
+  outcome_hypothesis: A launched offering delivering value to its intended market.
+  spans_capabilities:
+  - offering-management
+  - marketing
+  - operations
+  sources:
+  - SRC-006
+  distinctness_notes: "Innovation/launch chain; distinct from VSC-010 (development value stream, out of scope) by its market-facing exit."
+- id: VSC-005
+  name: Plan to Deliver
+  classification: VALUE-STREAM
+  confidence: medium
+  evidence_strength: E2
+  entry_criterion_hypothesis: Demand is forecast or an order backlog is planned.
+  exit_criterion_hypothesis: Product/service is delivered per the plan.
+  outcome_hypothesis: Delivered supply against planned demand.
+  spans_capabilities:
+  - operations
+  - operations-management
+  sources:
+  - SRC-002
+  distinctness_notes: "Manufacturing/production chain (APQC plan-produce-deliver); overlaps VSC-001 at fulfillment and must be kept distinct at admission sweep."
+- id: VSC-006
+  name: Hire to Retire
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A workforce need is identified and a requisition raised.
+  exit_criterion_hypothesis: The employment relationship ends and obligations are
+    settled.
+  outcome_hypothesis: A staffed, productive workforce across the employment lifecycle.
+  spans_capabilities:
+  - workforce-management
+  - workforce-planning
+  - financial-stewardship
+  sources:
+  - SRC-006
+  distinctness_notes: "People-side chain; the internal customer (manager/employee) makes the served-party distinct from external-customer chains."
+- id: VSC-007
+  name: Lead to Cash
+  classification: VALUE-STREAM
+  confidence: medium
+  evidence_strength: E2
+  entry_criterion_hypothesis: A prospect enters the market funnel.
+  exit_criterion_hypothesis: The prospect is a paying, fulfilled customer.
+  outcome_hypothesis: A converted, paying customer.
+  spans_capabilities:
+  - marketing
+  - customer-management
+  - financial-stewardship
+  sources:
+  - SRC-006
+  distinctness_notes: "Superset chain (demand-generation through payment); distinctness
+    against VSC-001 (Order to Cash) must be resolved at the sweep: same exit, different
+    entry. Candidate for merge or explicit boundary statement." 
+- id: VSC-008
+  name: Plan to Forecast
+  classification: VALUE-STREAM
+  confidence: medium
+  evidence_strength: E2
+  entry_criterion_hypothesis: A planning cycle opens.
+  exit_criterion_hypothesis: A committed forecast or budget is ratified.
+  outcome_hypothesis: A ratified plan guiding enterprise resource allocation.
+  spans_capabilities:
+  - strategic-planning
+  - financial-stewardship
+  sources:
+  - SRC-006
+  distinctness_notes: "Planning/finance chain; entry and exit are internal governance events, so the served-party is the enterprise itself; flagged for the distinctness sweep (management-chain scope)."
+- id: VSC-009
+  name: Record to Report
+  classification: VALUE-STREAM
+  confidence: medium
+  evidence_strength: E2
+  entry_criterion_hypothesis: An accounting period opens or a transaction is recorded.
+  exit_criterion_hypothesis: Financial results are reported and attested.
+  outcome_hypothesis: Attested financial visibility for stakeholders.
+  spans_capabilities:
+  - financial-stewardship
+  - financial-resource-management
+  sources:
+  - SRC-006
+  distinctness_notes: "Finance chain; overlaps VSC-008 at the reporting boundary; sweep must draw the boundary between planning and reporting."
+- id: VSC-010
+  name: Development value stream (disambiguation record, NOT a candidate)
+  classification: DEVELOPMENT-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: n/a
+  exit_criterion_hypothesis: n/a
+  outcome_hypothesis: n/a
+  spans_capabilities: []
+  sources:
+  - SRC-005
+  distinctness_notes: "Recorded per the disambiguation-evidence pattern: SAFe/Lean development value streams produce solutions that improve operational value streams; they are second-order and out of scope for this first-order catalog. No admission path; exists to block misclassification."
