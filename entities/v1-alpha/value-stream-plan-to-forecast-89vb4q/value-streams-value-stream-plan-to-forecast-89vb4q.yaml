@@ -1,0 +1,36 @@
+id: value-streams:value-stream-plan-to-forecast-89vb4q
+type: ValueStream
+name: Plan to Forecast
+definition: >-
+  The end-to-end stream from opening of a planning cycle through ratification of a committed forecast or budget.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  A ratified plan guiding enterprise resource allocation.
+entry_criterion: >-
+  A planning cycle opens.
+exit_criterion: >-
+  A committed forecast or budget is ratified.
+aggregated_capability_refs:
+  - capabilities:capability-strategic-planning-k3rz7a
+  - capabilities:capability-financial-stewardship-c7xtfk
+evidence:
+  sources:
+    - SRC-002
+    - SRC-003
+    - SRC-006
+  rationale: >-
+    Admitted from candidate VSC-008 under CR-VS-04 (evidence raised E2 -> E3 via
+    register v0.2 extension; distinctness closed per CR-VS-02). Enterprise-internal planning chain; served party is the enterprise itself as governance stakeholder (SRC-003 stakeholder-value observation). Boundary vs. Record to Report: forward-looking commitment vs. backward-looking attestation (CR-VS-02 RES-002).
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-04'
