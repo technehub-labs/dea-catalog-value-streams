@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://technehub-labs.github.io/dea-catalog-value-streams/schemas/entity.schema.json",
+  "title": "Value Stream Catalog Entry",
+  "description": "Schema for entries in technehub-labs/dea-catalog-value-streams. Mirrors the dea-metamodel dea:ValueStream entity schema (proposed CR-MET-014: core template plus outcome, customer_ref, entry_criterion, exit_criterion, aggregated_capability_refs) and carries catalog extensions per the org-wide catalog repository standard (CR-CATALOG-STRUCT-01).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "name",
+    "definition",
+    "version",
+    "outcome",
+    "entry_criterion",
+    "exit_criterion",
+    "evidence",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^value-streams:value-stream-[a-z0-9-]+-[a-z2-9]{6}$",
+      "description": "Content-addressed catalog id (org-wide id system, dea-metaframework/docs/id-system.md section 2.5): prefix value-streams, slug, and a 6-character content-derived hash.",
+      "examples": ["value-streams:value-stream-order-to-cash-a1b2c3"]
+    },
+    "type": {
+      "type": "string",
+      "const": "ValueStream",
+      "description": "Every entry in this catalog is a dea:ValueStream by catalog scope (metamodel layer L3, building block L3-value-delivery)."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "definition": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "End-to-end scope of the stream: the value-creating activities and the capabilities/processes it spans."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Record version (record-facing, not metamodel-facing)."
+    },
+    "metamodel_pin": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Metamodel version this record's shape is pinned to."
+    },
+    "lifecycle_status": {
+      "type": "string",
+      "enum": ["proposed", "planned", "active", "deprecated", "retired"],
+      "description": "Upstream lifecycle vocabulary (dea-metamodel metamodel/vocabularies/lifecycle.yaml)."
+    },
+    "outcome": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "The value proposition delivered to the consumer at the end of the stream."
+    },
+    "customer_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$",
+      "description": "The actor or stakeholder served by the stream. Record-side companion to the dea:served-by inverse of dea:serves (cardinality 0..*)."
+    },
+    "entry_criterion": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "The trigger condition that starts the stream."
+    },
+    "exit_criterion": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "The condition that confirms value has been delivered."
+    },
+    "aggregated_capability_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"
+      },
+      "description": "Capabilities the stream spans. Record-side companion to dea:aggregates (source side, cardinality 0..*). Ids resolve against the dea-catalog-business-capabilities id space."
+    },
+    "external_references": {
+      "type": "array",
+      "description": "Identifiers in external systems. Never a substitute for the OpenDEA id (E004).",
+      "items": {
+        "type": "object",
+        "required": ["system", "identifier"],
+        "properties": {
+          "system": {"type": "string"},
+          "identifier": {"type": "string"}
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sources"],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string"},
+          "description": "References to the evidence register / research artifacts backing admission."
+        },
+        "rationale": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ladder_passage"],
+      "properties": {
+        "ladder_passage": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["stage", "date", "actor"],
+            "properties": {
+              "stage": {
+                "type": "string",
+                "enum": ["candidate", "admitted", "active", "deprecated", "retired"]
+              },
+              "date": {"type": "string", "format": "date"},
+              "actor": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "description": "Typed relationship instances per dea-metamodel CR-002 (typed, directed, versioned, provenance-aware).",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "target_id", "relationship_type"],
+        "properties": {
+          "id": {"type": "string"},
+          "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
+          "target_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
+          "relationship_type": {
+            "type": "string",
+            "enum": [
+              "aggregated-in",
+              "flows-from",
+              "measures",
+              "measured-by",
+              "served-by"
+            ],
+            "description": "ValueStream-relevant relationship types (CR-MET-014 audit): the catalog record sits on the target side of aggregates/serves/flows-to and the source side of measured-by, expressed here through their inverses plus measured-by."
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

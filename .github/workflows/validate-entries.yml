@@ -1,0 +1,86 @@
+name: validate-entries
+
+# Validates catalog entries and the schema fixture against
+# schemas/entity.schema.json (org-wide catalog repository standard,
+# CR-CATALOG-STRUCT-01). Complements the allocation validator
+# (validate-allocation.yml); entries appear only via admission PRs after
+# the catalog-research method gates.
+#
+# Convention: the empty-entities skip guard matches the catalog-wide
+# pattern (dea-catalog-business-capabilities/actors/processes/stakeholders).
+# The fixture step keeps the schema exercised while entities/ is empty.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for catalog entries
+        id: check
+        run: |
+          shopt -s nullglob globstar
+          count=0
+          # Only files at the root of each entity subtree are catalog entries.
+          # State directories (research/, candidates/, retired/) hold research
+          # artifacts, candidate records, and retired copies; they are not
+          # validated against the entry schema.
+          while IFS= read -r f; do
+            count=$((count + 1))
+          done < <(find entities -type f \( -name '*.yaml' -o -name '*.json' \) \
+              -not -path '*/research/*' -not -path '*/candidates/*' -not -path '*/retired/*')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          if [ "$count" -eq 0 ]; then
+            echo "No catalog entries to validate (admission gates not started). Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate catalog entries against the schema
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          pip install jsonschema pyyaml
+          python3 - <<'EOF'
+          import glob, json, sys
+          import jsonschema, yaml
+
+          schema = json.load(open('schemas/entity.schema.json'))
+          jsonschema.Draft7Validator.check_schema(schema)
+          validator = jsonschema.Draft7Validator(schema)
+
+          failures = 0
+          for pattern, what in (
+              ('entities/v1-alpha/*/value-streams-*.yaml', 'catalog entries'),
+              ('entities/v1-alpha/*/value-streams-*.json', 'catalog entries'),
+          ):
+              for f in glob.glob(pattern):
+                  with open(f) as fh:
+                      record = yaml.safe_load(fh)
+                  errs = sorted(validator.iter_errors(record), key=lambda e: list(e.absolute_path))
+                  for e in errs:
+                      print(f"  \u2717 {f}: {list(e.absolute_path)} {e.message}")
+                      failures += 1
+          print(f"{what}: validation {'FAILED' if failures else 'passed'}")
+          sys.exit(1 if failures else 0)
+          EOF
+
+      - name: Validate the schema fixture (schema stays exercised while entities/ is empty)
+        run: |
+          pip install jsonschema pyyaml
+          python3 - <<'EOF'
+          import json, sys
+          import jsonschema, yaml
+
+          schema = json.load(open('schemas/entity.schema.json'))
+          jsonschema.Draft7Validator.check_schema(schema)
+          record = yaml.safe_load(open('schemas/fixtures/example-valid.yaml'))
+          errs = list(jsonschema.Draft7Validator(schema).iter_errors(record))
+          for e in errs:
+              print(f"  \u2717 fixture: {list(e.absolute_path)} {e.message}")
+          sys.exit(1 if errs else 0)
+          EOF
