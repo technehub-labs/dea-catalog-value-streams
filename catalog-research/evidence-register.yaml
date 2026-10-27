@@ -1,0 +1,116 @@
+register_version: 0.1.0
+cr: "CR-VS-01 (candidate universe seed; evidence-register v0.1)"
+compiled: "2026-10-27 (v0.1: register opened with the value-architecture source corpus;
+  SRC-001..SRC-006 recorded; candidate universe v0.1 seeded from the register)"
+compiled_by: Emmanuel A. Otchere
+status: active; candidate universe seeded; no admissions yet
+source_classes:
+- business-architecture
+- enterprise-architecture
+- cross-industry-process
+- standards-body
+- professional-body
+- commercial-process-models
+sources:
+- id: SRC-001
+  name: Business Architecture Guild / BIZBOK Guide (value stream concept)
+  class: business-architecture
+  reference: https://www.businessarchitectureguild.org/page/002 (public resources); BIZBOK v13 (membership-gated)
+  retrieved: 2026-10-27
+  retrieval: indirect (public value-stream guidance; primary BIZBOK text is membership-gated)
+  observations:
+  - observation: 'Value stream defined as: an end-to-end collection of value-creating
+      activities that deliver value to a customer or stakeholder, described independently
+      of the organization units and systems that realize it'
+    supports:
+    - VS identity: activities collected end-to-end; customer value at the exit
+    implication: End-to-end scope and value-outcome anchoring become classification
+      tests for candidates (vs. single processes, which are internal means)
+  - observation: 'Value streams cross multiple capabilities and are triggered by a
+      customer-visible event (a request or need)'
+    supports:
+    - VS entry_criterion field (metamodel CR-MET-014 field set)
+    implication: A candidate without a customer-visible trigger is a process, not a
+      value stream
+  evidence_note: Strong semantic authority for value stream identity; names never
+    to be copied verbatim into canonical entries
+- id: SRC-002
+  name: APQC Process Classification Framework (cross-industry, process-to-value-stream groupings)
+  class: cross-industry-process
+  reference: https://www.apqc.org/process-classification-framework (download-gated)
+  retrieved: 2026-10-27
+  retrieval: indirect (category-level structure via public overview pages)
+  observations:
+  - observation: 'Cross-industry PCF groups operating processes into end-to-end chains
+      such as order-to-cash concepts, procure-to-pay concepts, and plan-produce-deliver
+      concepts'
+    supports:
+    - VSC-001 Order to Cash; VSC-002 Procure to Pay; VSC-005 Plan-Produce-Deliver candidates
+    implication: Cross-industry end-to-end chains corroborate enterprise-generality
+      for the operational candidates
+  evidence_note: Category-level structure only; APQC is process-class, so candidates
+    must be re-anchored on value-outcome rather than process steps
+- id: SRC-003
+  name: OMG Business Architecture Core Metamodel (BACM) — ValueStream element
+  class: standards-body
+  reference: https://www.omg.org/spec/BACM/ (formal specification)
+  retrieved: 2026-10-27
+  retrieval: direct (publicly downloadable formal specification)
+  observations:
+  - observation: 'BACM models a ValueStream as delivering value to a stakeholder,
+      decomposed into ValueStreamStages, each adding value toward the outcome'
+    supports:
+    - VS outcome field; exit_criterion field
+    implication: Stage decomposition is upstream of the stream identity; stages are
+      a later refinement (ValueStage entity deferred per CR-MET-007 section 4)
+  evidence_note: Standards-body anchor for the formal semantics; stage vocabulary
+    deliberately deferred
+- id: SRC-004
+  name: "The Open Group / TOGAF Series Guide: Value Streams and Capabilities"
+  class: enterprise-architecture
+  reference: https://pubs.opengroup.org/togaf/toafa.html (companion guides overview)
+  retrieved: 2026-10-27
+  retrieval: indirect (series guide structure via public overview)
+  observations:
+  - observation: 'TOGAF pairs value streams with capabilities: a value stream describes
+      how value flows end-to-end; capabilities describe what the enterprise must be
+      able to do to support it'
+    supports:
+    - dea:aggregates relationship (VS source, BusinessCapability target; metamodel
+      cardinality 0..*)
+    - VS aggregated_capability_refs record field
+    implication: Candidates must name the capabilities they span at admission time;
+      capability ids resolve against dea-catalog-business-capabilities
+  evidence_note: Corroborates the metamodel's aggregates binding between VS and capabilities
+- id: SRC-005
+  name: Scrum.org / Scaled Agile public guidance on value streams in delivery organizations
+  class: professional-body
+  reference: https://www.scaledagileframework.com/value-streams/ (public glossary)
+  retrieved: 2026-10-27
+  retrieval: direct (public glossary pages)
+  observations:
+  - observation: 'Operational value streams are the series of steps used to create
+      and deliver value to a customer; development value streams produce solutions
+      that improve operational value streams'
+    supports:
+    - "Distinctness boundary: development/delivery improvement streams are out of scope for first-order enterprise value streams (they are second-order)"
+    implication: Candidates stay on the operational side; the development-stream
+      concept is recorded as disambiguation evidence, not a candidate
+  evidence_note: Disambiguation authority for the operational vs. development distinction
+- id: SRC-006
+  name: Hammer & Hurdle-style enterprise process-chain literature (public summaries)
+  class: commercial-process-models
+  reference: public practitioner literature on end-to-end business processes (order-to-cash,
+    procure-to-pay, issue-to-resolve, lead-to-cash)
+  retrieved: 2026-10-27
+  retrieval: indirect (practitioner summaries)
+  observations:
+  - observation: 'Enterprise literature consistently names the same end-to-end chains
+      across industries: concept-to-launch, order-to-cash, procure-to-pay, issue-to-resolve,
+      hire-to-retire, lead-to-cash, plan-to-forecast'
+    supports:
+    - VSC-001..VSC-009 candidate names and enterprise-generality
+    implication: Cross-source name convergence supports candidate confidence but
+      admission still requires per-candidate evidence at E2+
+  evidence_note: Convergence evidence for the candidate universe; not a substitute
+    for per-candidate source citations at admission
