@@ -105,3 +105,16 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`value-streams:value-stream-return-to-credit-qan2dn`), Contract to
   Renewal (`value-streams:value-stream-contract-to-renewal-5x3r4x`),
   Acquire to Retire (`value-streams:value-stream-acquire-to-retire-g5x89g`).
+
+### Catalog index conformance (CR-VS-06)
+
+- `CATALOG.yaml` added (machine-generated; 11 entities indexed) with the
+  catalog identity block in `metamodel-pointer.yaml` per
+  CR-CATALOG-STRUCT-06a.
+- Vendored toolchain from dea-metaframework v2.6.0
+  (`scripts/regenerate_catalog.py`, `scripts/check_catalog_index.py`,
+  `catalog-index-schema/catalog-index-schema.json`) with a documented
+  local extension adding the `value-stream` level token (upstream gap
+  filed as dea-metaframework issue #51).
+- `catalog-conformance` workflow added: freshness gate + index schema
+  validation (fetch-depth 0, head-SHA checkout).
