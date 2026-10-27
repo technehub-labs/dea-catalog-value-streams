@@ -1,36 +1,109 @@
 id: value-streams:value-stream-concept-to-launch-nhvatv
 type: ValueStream
 name: Concept to Launch
-definition: >-
-  The end-to-end stream from approval of an offering concept through development and launch to its market.
-version: 1.0.0
+definition: The end-to-end stream from approval of an offering concept through development and launch
+  to its market.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  A launched offering delivering value to its intended market.
-entry_criterion: >-
-  An offering concept is approved for development.
-exit_criterion: >-
-  The offering is launched to its market.
+outcome: A launched offering delivering value to its intended market.
+entry_criterion: An offering concept is approved for development.
+exit_criterion: The offering is launched to its market.
 aggregated_capability_refs:
-  - capabilities:capability-offering-management-6egkc8
-  - capabilities:capability-marketing-xmc539
-  - capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
 evidence:
   sources:
-    - SRC-002
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-004 under CR-VS-04 (evidence raised E2 -> E3 via
-    register v0.2 extension; distinctness closed per CR-VS-02). Innovation/launch chain; distinct from the development value stream (VSC-010 disambiguation record, out of scope) by its market-facing exit. Distinct from Order to Cash on entry, exit, and served party (market vs. customer).
+  - SRC-002
+  - SRC-006
+  rationale: Admitted from candidate VSC-004 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2
+    extension; distinctness closed per CR-VS-02). Innovation/launch chain; distinct from the development
+    value stream (VSC-010 disambiguation record, out of scope) by its market-facing exit. Distinct from
+    Order to Cash on entry, exit, and served party (market vs. customer).
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-04'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-04
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Approved-concept development
+  - Offering build and validation
+  - Market-readiness preparation
+  - Launch to the intended market
+  excludes:
+  - Pre-concept innovation intake (Idea Management capability, upstream)
+  - Post-launch proposition evolution (Concept to Launch exits at launch)
+  - Order flows (Order to Cash)
+value_stages:
+- name: Approve Concept
+  definition: Confirm the offering concept is approved for development.
+  entry_criterion: An offering concept is proposed.
+  exit_criterion: The concept is approved for development.
+  outcome: A funded development mandate.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pv-operate-cau4gv
+  customer_visible: false
+- name: Develop Offering
+  definition: Build and validate the offering against the approved concept.
+  entry_criterion: A development mandate exists.
+  exit_criterion: The offering is built and validated.
+  outcome: A validated, launchable offering.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Prepare Launch
+  definition: Prepare the market-facing proposition and readiness.
+  entry_criterion: A validated offering exists.
+  exit_criterion: Market readiness is confirmed.
+  outcome: Launch-ready propositions and readiness.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-pv-activate-5686v7
+  customer_visible: false
+- name: Launch
+  definition: Release the offering to its market.
+  entry_criterion: Market readiness is confirmed.
+  exit_criterion: The offering is launched to its market.
+  outcome: A launched offering delivering value.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-pv-activate-5686v7
+  customer_visible: true
+process_refs:
+- processes:process-pv-operate-cau4gv
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-44jsrp
+- processes:process-pv-activate-5686v7
+downstream_refs:
+- slug: value-stream-order-to-cash
+  note: A launched offering becomes sellable and can be ordered.
+metrics:
+- name: Concept-to-launch lead time
+  definition: Elapsed time from concept approval to market launch.
+  applies_to_stage: Launch
+- name: Launch readiness pass rate
+  definition: Share of launch-readiness gates passed at first review.
+  applies_to_stage: Prepare Launch

@@ -5,6 +5,31 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 4 — value stream enrichment (CR-VS-07)
+
+- `schemas/entity.schema.json` extended (additive; CR-MET-014 core
+  unchanged): `value_stages[]` (ordered stage decomposition with per-stage
+  entry/exit criteria, outcome, customer visibility, and referential
+  `capability_refs`/`process_refs`/`actor_refs`), `value_stream_category`,
+  `scope` (includes/excludes boundary), stream-level `process_refs`,
+  slug-based `upstream_refs`/`downstream_refs`, and `metrics[]` (stream-level
+  or stage-scoped).
+- Referential-integrity gate added (`scripts/check_referential_integrity.py`):
+  every `capabilities:` ref resolves in dea-catalog-business-capabilities,
+  every `processes:` ref in dea-catalog-business-processes, cross-stream
+  slugs against this catalog; vendored id snapshots under `tools/id-sets/`
+  keep the gate deterministic offline. Wired into `validate-entries.yml`.
+- All 11 admitted records enriched in place (ids, directories, filenames
+  unchanged per the rename-stability contract; version 1.0.0 -> 1.1.0):
+  each carries its value stages with curated, verified capability and
+  process links; `aggregated_capability_refs` extended to the per-stage
+  union; provenance ladder gains the CR-VS-07 entry. CATALOG.yaml
+  regenerated (versions).
+- Fixture extended to exercise every new schema block.
+- Documentation: comprehensive per-entity READMEs (10 sections each,
+  rendered from the records) and root README enrichment (schema shape,
+  catalogued-streams table, updated structure and status).
+
 ### Phase 0 — scaffold alignment
 
 - README corrected to the current metamodel state: entity `dea:ValueStream`

@@ -11,12 +11,57 @@ definition: >-
 version: 1.0.0
 metamodel_pin: 1.0.0
 lifecycle_status: proposed
+value_stream_category: operational
 outcome: A validated schema.
 customer_ref: actors:actor-fixture
 entry_criterion: A fixture trigger condition.
 exit_criterion: A fixture completion condition.
+scope:
+  includes:
+    - Fixture in-scope concern
+  excludes:
+    - Fixture out-of-scope concern (owned by a fixture neighbour)
+value_stages:
+  - name: Fixture Stage One
+    definition: The first fixture stage.
+    entry_criterion: The fixture trigger fires.
+    exit_criterion: The first fixture increment completes.
+    outcome: A first fixture increment.
+    customer_visible: true
+    capability_refs:
+      - capabilities:capability-customer-management-f3n8wb
+    process_refs:
+      - processes:process-pr-operate-bbe384
+    actor_refs:
+      - actors:actor-fixture
+  - name: Fixture Stage Two
+    definition: The second fixture stage.
+    entry_criterion: The first fixture increment completes.
+    exit_criterion: The fixture completion condition holds.
+    outcome: A validated schema.
+    customer_visible: false
+    capability_refs:
+      - capabilities:capability-financial-stewardship-c7xtfk
+    process_refs:
+      - processes:process-fa-operate-g9zpnq
 aggregated_capability_refs:
-  - capabilities:capability-fixture
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-stewardship-c7xtfk
+process_refs:
+  - processes:process-pr-operate-bbe384
+  - processes:process-fa-operate-g9zpnq
+upstream_refs:
+  - slug: value-stream-fixture-upstream
+    note: Fixture upstream boundary.
+downstream_refs:
+  - slug: value-stream-fixture-downstream
+    note: Fixture downstream boundary.
+metrics:
+  - name: Fixture metric
+    definition: Fixture metric computation.
+  - name: Fixture stage metric
+    definition: Fixture stage metric computation.
+    applies_to_stage: Fixture Stage One
 external_references:
   - system: fixture
     identifier: FX-001
@@ -31,5 +76,5 @@ provenance:
       actor: 'Emmanuel A. Otchere, schema fixture (CR-CATALOG-STRUCT-01 pattern)'
 relationships:
   - source_id: value-streams:value-stream-fixture-example-fxtrx2
-    target_id: capabilities:capability-fixture
+    target_id: capabilities:capability-customer-management-f3n8wb
     relationship_type: aggregated-in

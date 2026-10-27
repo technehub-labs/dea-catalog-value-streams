@@ -69,6 +69,12 @@ jobs:
           sys.exit(1 if failures else 0)
           EOF
 
+      - name: Referential integrity of cross-catalog references (CR-VS-07)
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          pip install pyyaml
+          python3 scripts/check_referential_integrity.py
+
       - name: Validate the schema fixture (schema stays exercised while entities/ is empty)
         run: |
           pip install jsonschema pyyaml

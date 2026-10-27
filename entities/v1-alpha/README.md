@@ -43,7 +43,17 @@ content-addressed rather than directory-addressed.
 
 ## Status
 
-No entries yet. Admission follows the catalog-research method (candidate
+11 admitted value streams (v1.1.0, CR-VS-07 enriched shape): each record
+carries its ordered value stages with per-stage capability and process
+references, an explicit scope boundary, cross-stream links, and metrics.
+Cross-catalog references are referential-integrity-checked
+(`scripts/check_referential_integrity.py`, CR-VS-07); admission of new
+entries continues to follow the catalog-research method (candidate
 universe, distinctness sweep, evidence register, admission gate) per the
 org-wide catalog repository standard (CR-CATALOG-STRUCT-01) and the pattern
 established in `dea-catalog-business-capabilities`.
+
+Each subtree's README.md renders the full record (comprehensive
+documentation per CR-VS-07): identity, definition, value proposition,
+boundary, value stages, capability/process traceability, cross-stream
+links, measurement, evidence, and the provenance ladder.

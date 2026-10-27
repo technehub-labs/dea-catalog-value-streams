@@ -1,36 +1,115 @@
 id: value-streams:value-stream-plan-to-forecast-89vb4q
 type: ValueStream
 name: Plan to Forecast
-definition: >-
-  The end-to-end stream from opening of a planning cycle through ratification of a committed forecast or budget.
-version: 1.0.0
+definition: The end-to-end stream from opening of a planning cycle through ratification of a committed
+  forecast or budget.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  A ratified plan guiding enterprise resource allocation.
-entry_criterion: >-
-  A planning cycle opens.
-exit_criterion: >-
-  A committed forecast or budget is ratified.
+outcome: A ratified plan guiding enterprise resource allocation.
+entry_criterion: A planning cycle opens.
+exit_criterion: A committed forecast or budget is ratified.
 aggregated_capability_refs:
-  - capabilities:capability-strategic-planning-k3rz7a
-  - capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-strategic-planning-k3rz7a
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-enterprise-governance-uas48u
 evidence:
   sources:
-    - SRC-002
-    - SRC-003
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-008 under CR-VS-04 (evidence raised E2 -> E3 via
-    register v0.2 extension; distinctness closed per CR-VS-02). Enterprise-internal planning chain; served party is the enterprise itself as governance stakeholder (SRC-003 stakeholder-value observation). Boundary vs. Record to Report: forward-looking commitment vs. backward-looking attestation (CR-VS-02 RES-002).
+  - SRC-002
+  - SRC-003
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-008 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2
+    extension; distinctness closed per CR-VS-02). Enterprise-internal planning chain; served party is
+    the enterprise itself as governance stakeholder (SRC-003 stakeholder-value observation). Boundary
+    vs. Record to Report: forward-looking commitment vs. backward-looking attestation (CR-VS-02 RES-002).'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-04'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-04
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: governance
+scope:
+  includes:
+  - Planning-cycle opening
+  - Target and plan formation
+  - Commitment negotiation
+  - Forecast or budget ratification
+  excludes:
+  - Backward-looking attestation (Record to Report)
+  - Delivery execution (Plan to Deliver)
+  - Strategic direction setting itself (Strategy Formulation capability, upstream)
+value_stages:
+- name: Open Planning Cycle
+  definition: Open the planning cycle and frame its scope.
+  entry_criterion: A planning cycle opens.
+  exit_criterion: The cycle is framed and resourced.
+  outcome: An open, framed planning cycle.
+  capability_refs:
+  - capabilities:capability-strategic-planning-k3rz7a
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-operate-53y4j4
+  customer_visible: false
+- name: Form Plan
+  definition: Develop objectives, targets, and the draft plan.
+  entry_criterion: The cycle is framed.
+  exit_criterion: A complete draft plan exists.
+  outcome: A complete draft plan.
+  capability_refs:
+  - capabilities:capability-strategic-planning-k3rz7a
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-design-vdwkmh
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: Negotiate Commitment
+  definition: Negotiate resource allocation and commitments.
+  entry_criterion: A draft plan exists.
+  exit_criterion: Commitments are agreed across the enterprise.
+  outcome: Agreed commitments.
+  capability_refs:
+  - capabilities:capability-enterprise-performance-management-5fxren
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-sd-operate-u6xgu5
+  customer_visible: false
+- name: Ratify Forecast
+  definition: Ratify the committed forecast or budget.
+  entry_criterion: Commitments are agreed.
+  exit_criterion: A committed forecast or budget is ratified.
+  outcome: A ratified plan guiding allocation.
+  capability_refs:
+  - capabilities:capability-enterprise-performance-management-5fxren
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  customer_visible: false
+process_refs:
+- processes:process-sd-operate-53y4j4
+- processes:process-sd-design-vdwkmh
+- processes:process-fa-conceive-4uqqvg
+- processes:process-sd-operate-u6xgu5
+- processes:process-sd-build-2pkz5n
+downstream_refs:
+- slug: value-stream-plan-to-deliver
+  note: The ratified plan drives demand and delivery planning.
+- slug: value-stream-record-to-report
+  note: Plan commitments are later attested against in reporting.
+metrics:
+- name: Forecast accuracy
+  definition: Deviation of committed forecast from actuals in the period.
+  applies_to_stage: Ratify Forecast
+- name: Planning cycle length
+  definition: Elapsed time from cycle open to ratification.
+  applies_to_stage: Ratify Forecast

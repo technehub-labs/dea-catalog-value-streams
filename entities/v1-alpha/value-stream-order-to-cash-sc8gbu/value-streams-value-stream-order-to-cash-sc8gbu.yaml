@@ -1,33 +1,120 @@
 id: value-streams:value-stream-order-to-cash-sc8gbu
 type: ValueStream
 name: Order to Cash
-definition: >-
-  The end-to-end stream from demand generation through order capture, fulfillment, invoicing, and payment settlement.
-version: 1.0.0
+definition: The end-to-end stream from demand generation through order capture, fulfillment, invoicing,
+  and payment settlement.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  Customer receives the fulfilled order and the enterprise recognizes payment against it.
-entry_criterion: >-
-  A customer need converts to an order (request for goods or services); demand generation is the pre-order stage (CR-VS-02 RES-001).
-exit_criterion: >-
-  Payment is received and recorded against the order.
+outcome: Customer receives the fulfilled order and the enterprise recognizes payment against it.
+entry_criterion: A customer need converts to an order (request for goods or services); demand generation
+  is the pre-order stage (CR-VS-02 RES-001).
+exit_criterion: Payment is received and recorded against the order.
 aggregated_capability_refs:
-  - capabilities:capability-customer-management-f3n8wb
-  - capabilities:capability-operations-management-pm3w8k
-  - capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-financial-resource-management-cd3c7c
 evidence:
   sources:
-    - SRC-002
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-001 under CR-VS-03 (evidence at E3/high,
-    distinctness closed per CR-VS-02). Absorbs VSC-007 (Lead to Cash) per CR-VS-02 RES-001. Boundary vs. VSC-005 (Plan to Deliver): fulfillment is shared vocabulary; this stream exits at payment recognition (CR-VS-02 boundary statement).
+  - SRC-002
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-001 under CR-VS-03 (evidence at E3/high, distinctness closed
+    per CR-VS-02). Absorbs VSC-007 (Lead to Cash) per CR-VS-02 RES-001. Boundary vs. VSC-005 (Plan to
+    Deliver): fulfillment is shared vocabulary; this stream exits at payment recognition (CR-VS-02 boundary
+    statement).'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-03'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-03
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Demand generation as the pre-order stage (CR-VS-02 RES-001)
+  - Order capture and acceptance
+  - Fulfillment of goods and services
+  - Invoicing and payment settlement
+  excludes:
+  - Post-sale relationship service (Contract to Renewal)
+  - Production planning (Plan to Deliver)
+  - Return flows (Return to Credit)
+value_stages:
+- name: Generate Demand
+  definition: Qualify and nurture the customer need until it converts to an order request.
+  entry_criterion: A customer need is identified as addressable.
+  exit_criterion: A customer need converts to an order request.
+  outcome: A qualified order request in the hands of the enterprise.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  customer_visible: true
+- name: Capture Order
+  definition: Record, validate, and accept the customer order.
+  entry_criterion: An order request exists.
+  exit_criterion: The order is accepted and confirmed to the customer.
+  outcome: An accepted, bookable order.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Fulfill Order
+  definition: Source, assemble, and deliver the goods or services ordered.
+  entry_criterion: An accepted order is booked.
+  exit_criterion: The customer receives the goods or services.
+  outcome: A fulfilled order in the customer's hands.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  - processes:process-eo-operate-zwzmbd
+  - processes:process-eo-operate-zh9m57
+  customer_visible: true
+- name: Invoice and Settle
+  definition: Invoice the fulfilled order and recognize payment against it.
+  entry_criterion: The order is fulfilled.
+  exit_criterion: Payment is received and recorded against the order.
+  outcome: Recognized payment closing the value exchange.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: true
+process_refs:
+- processes:process-pr-build-nygvw7
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-zh9m57
+- processes:process-fa-operate-sdppmp
+- processes:process-fa-operate-g9zpnq
+downstream_refs:
+- slug: value-stream-contract-to-renewal
+  note: An executed order seeds the post-sale relationship.
+- slug: value-stream-return-to-credit
+  note: A post-delivery defect or dissatisfaction triggers a return.
+metrics:
+- name: Order-to-cash cycle time
+  definition: Elapsed time from order acceptance to payment recognition; shorter is better.
+  applies_to_stage: Invoice and Settle
+- name: Perfect order rate
+  definition: Share of orders delivered complete, on time, with accurate documentation.
+  applies_to_stage: Fulfill Order
+- name: Days sales outstanding
+  definition: Average days from invoice to collected payment.
+  applies_to_stage: Invoice and Settle

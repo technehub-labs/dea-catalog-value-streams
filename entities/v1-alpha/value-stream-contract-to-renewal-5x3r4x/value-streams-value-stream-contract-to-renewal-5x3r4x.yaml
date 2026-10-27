@@ -1,33 +1,111 @@
 id: value-streams:value-stream-contract-to-renewal-5x3r4x
 type: ValueStream
 name: Contract to Renewal
-definition: >-
-  The end-to-end post-sale relationship stream from contract execution through service of the relationship to the renewal decision.
-version: 1.0.0
+definition: The end-to-end post-sale relationship stream from contract execution through service of the
+  relationship to the renewal decision.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  A continuous, explicitly settled customer relationship.
-entry_criterion: >-
-  A contract is executed with a customer.
-exit_criterion: >-
-  The renewal decision is settled (renewed, renegotiated, or closed out).
+outcome: A continuous, explicitly settled customer relationship.
+entry_criterion: A contract is executed with a customer.
+exit_criterion: The renewal decision is settled (renewed, renegotiated, or closed out).
 aggregated_capability_refs:
-  - capabilities:capability-customer-management-f3n8wb
-  - capabilities:capability-legal-matter-management-zzbd2u
-  - capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-marketing-xmc539
 evidence:
   sources:
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-012 under CR-VS-05 (third tranche; evidence at E3/high
-    from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05
-    sweep). Subscription-economy relationship chain. Boundary vs. Hire to Retire: employment relationship vs. customer relationship (CR-VS-05 boundary statement). Boundary vs. Return to Credit: relationship forwards vs. transaction backwards.
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-012 under CR-VS-05 (third tranche; evidence at E3/high from
+    the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05 sweep). Subscription-economy
+    relationship chain. Boundary vs. Hire to Retire: employment relationship vs. customer relationship
+    (CR-VS-05 boundary statement). Boundary vs. Return to Credit: relationship forwards vs. transaction
+    backwards.'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-05'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-05
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Contract execution
+  - Relationship service during term
+  - Renewal decision preparation
+  - Renewal settlement (renew, renegotiate, close out)
+  excludes:
+  - Pre-contract sales motions (Order to Cash)
+  - Return/credit settlement (Return to Credit)
+  - Employment relationships (Hire to Retire)
+value_stages:
+- name: Execute Contract
+  definition: Execute the contract with the customer.
+  entry_criterion: A deal is agreed with the customer.
+  exit_criterion: The contract is executed.
+  outcome: An in-force customer contract.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Serve Relationship
+  definition: Serve the contracted relationship through its term.
+  entry_criterion: A contract is in force.
+  exit_criterion: The relationship is served through the term.
+  outcome: A continuously served relationship.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  - processes:process-pr-improve-t6uvan
+  customer_visible: true
+- name: Prepare Renewal
+  definition: Prepare the renewal decision with the customer.
+  entry_criterion: The term approaches its end.
+  exit_criterion: A renewal recommendation exists.
+  outcome: An evidence-based renewal position.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pr-improve-t6uvan
+  customer_visible: true
+- name: Settle Renewal
+  definition: Settle the renewal decision.
+  entry_criterion: A renewal position exists.
+  exit_criterion: The renewal decision is settled (renewed, renegotiated, or closed out).
+  outcome: An explicitly settled relationship.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-stewardship-c7xtfk
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+process_refs:
+- processes:process-ge-build-mctdgc
+- processes:process-pr-operate-bbe384
+- processes:process-pr-improve-t6uvan
+upstream_refs:
+- slug: value-stream-order-to-cash
+  note: An executed order seeds the contracted relationship.
+downstream_refs:
+- slug: value-stream-issue-to-resolve
+  note: Service issues during the term flow to issue resolution.
+metrics:
+- name: Net revenue retention
+  definition: Retained and expanded contract value relative to expiring value.
+  applies_to_stage: Settle Renewal
+- name: On-time renewal rate
+  definition: Share of renewals settled before term expiry.
+  applies_to_stage: Settle Renewal
