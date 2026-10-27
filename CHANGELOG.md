@@ -61,3 +61,18 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Candidate universe bumped to v0.2: 8 VALUE-STREAM candidates remain;
   admission-ready: VSC-001, VSC-002, VSC-003, VSC-006.
 - No admissions in this CR; `entities/v1-alpha/` untouched.
+
+### Phase 3c — first admission gate (CR-VS-03)
+
+- First 4 canonical records admitted under `entities/v1-alpha/`:
+  Order to Cash (`value-streams:value-stream-order-to-cash-sc8gbu`),
+  Procure to Pay (`value-streams:value-stream-procure-to-pay-utma5c`),
+  Issue to Resolve (`value-streams:value-stream-issue-to-resolve-crmbay`),
+  Hire to Retire (`value-streams:value-stream-hire-to-retire-n6szcc`).
+- Content-addressed ids per the org id system (§2.5): `scripts/hash6.py`
+  added, matching the reference implementation; suffix assigned once at
+  canonicalization.
+- Per-entity READMEs (IDM-007); admission map in
+  `catalog-research/admission-register.yaml`.
+- `validate-entries` workflow now validates real entries (empty-skip guard
+  no longer triggers).

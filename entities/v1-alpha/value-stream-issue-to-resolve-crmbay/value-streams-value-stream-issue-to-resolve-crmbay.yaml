@@ -1,0 +1,31 @@
+id: value-streams:value-stream-issue-to-resolve-crmbay
+type: ValueStream
+name: Issue to Resolve
+definition: >-
+  The end-to-end stream from a raised customer issue through diagnosis, corrective action, and confirmed resolution.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  The customer's issue is resolved and trust is restored.
+entry_criterion: >-
+  A customer raises an issue or complaint.
+exit_criterion: >-
+  The issue is resolved and the customer is informed.
+aggregated_capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+evidence:
+  sources:
+    - SRC-006
+  rationale: >-
+    Admitted from candidate VSC-003 under CR-VS-03 (evidence at E3/high,
+    distinctness closed per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and exit, and from journeys (multi-channel experience is out of scope at first order).
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-03'

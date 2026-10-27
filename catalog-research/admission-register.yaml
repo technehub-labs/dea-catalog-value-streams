@@ -1,0 +1,46 @@
+admission_register_version: 0.1.0
+cr: "CR-VS-03 (first admission gate)"
+compiled: "2026-10-27 (v0.1: VSC-001, VSC-002, VSC-003, VSC-006 admitted; 4 canonical
+  records)"
+compiled_by: Emmanuel A. Otchere
+status: active
+method: "Admission gate: evidence >= E2, distinctness closed (CR-VS-02), content-addressed
+  id (id-system 2.5), provenance ladder (candidate -> admitted)"
+admissions:
+- candidate: VSC-001
+  name: Order to Cash
+  id: value-streams:value-stream-order-to-cash-sc8gbu
+  path: entities/v1-alpha/value-stream-order-to-cash-sc8gbu/value-streams-value-stream-order-to-cash-sc8gbu.yaml
+  evidence: E3/high (SRC-002, SRC-006)
+  distinctness: CR-VS-02 DISTINCT; boundary vs. VSC-005 cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-03
+- candidate: VSC-002
+  name: Procure to Pay
+  id: value-streams:value-stream-procure-to-pay-utma5c
+  path: entities/v1-alpha/value-stream-procure-to-pay-utma5c/value-streams-value-stream-procure-to-pay-utma5c.yaml
+  evidence: E3/high (SRC-002, SRC-006)
+  distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-006; cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-03
+- candidate: VSC-003
+  name: Issue to Resolve
+  id: value-streams:value-stream-issue-to-resolve-crmbay
+  path: entities/v1-alpha/value-stream-issue-to-resolve-crmbay/value-streams-value-stream-issue-to-resolve-crmbay.yaml
+  evidence: E3/high (SRC-006)
+  distinctness: CR-VS-02 DISTINCT
+  date: '2026-10-27'
+  cr: CR-VS-03
+- candidate: VSC-006
+  name: Hire to Retire
+  id: value-streams:value-stream-hire-to-retire-n6szcc
+  path: entities/v1-alpha/value-stream-hire-to-retire-n6szcc/value-streams-value-stream-hire-to-retire-n6szcc.yaml
+  evidence: E3/high (SRC-006)
+  distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-002; cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-03
+counts:
+  admitted: 4
+  pending_e2: [VSC-004, VSC-005, VSC-008, VSC-009]
+  merged: [VSC-007]
+  disambiguation: [VSC-010]
