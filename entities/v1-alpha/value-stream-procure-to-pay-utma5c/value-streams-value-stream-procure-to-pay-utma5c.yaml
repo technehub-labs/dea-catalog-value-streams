@@ -1,0 +1,33 @@
+id: value-streams:value-stream-procure-to-pay-utma5c
+type: ValueStream
+name: Procure to Pay
+definition: >-
+  The end-to-end stream from identification of an external supply need through sourcing, ordering, receipt, and supplier payment.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  The internal need is met and the supplier obligation is settled.
+entry_criterion: >-
+  An internal need for external supply is identified and a requisition is raised.
+exit_criterion: >-
+  The supplier is paid and the need is met.
+aggregated_capability_refs:
+  - capabilities:capability-sourcing-and-procurement-esucp4
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-financial-stewardship-c7xtfk
+evidence:
+  sources:
+    - SRC-002
+    - SRC-006
+  rationale: >-
+    Admitted from candidate VSC-002 under CR-VS-03 (evidence at E3/high,
+    distinctness closed per CR-VS-02). Counterpart of Order to Cash on the supply side. Boundary vs. Hire to Retire: settlement is shared vocabulary; the counterparty (supplier vs. employee) is the discriminator (CR-VS-02 boundary statement).
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-03'
