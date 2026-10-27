@@ -1,12 +1,14 @@
-universe_version: 0.1.0
-cr: "CR-VS-01 (candidate universe seed)"
+universe_version: 0.2.0
+cr: "CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged into VSC-001 per RES-001)"
 compiled: "2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register
-  v0.1; none canonical)"
+  v0.1; none canonical); 2026-10-27 (v0.2 per CR-VS-02: VSC-007 merged into VSC-001
+  per RES-001; 8 VALUE-STREAM candidates remain; admission-ready VSC-001/002/003/006)"
 compiled_by: Emmanuel A. Otchere
 status: active
 evidence_register: catalog-research/evidence-register.yaml
 classification_taxonomy:
 - VALUE-STREAM
+- MERGED
 - PROCESS
 - CAPABILITY
 - JOURNEY
@@ -21,7 +23,8 @@ evidence_ratings:
 - E5
 counts:
   total: 10
-  VALUE-STREAM: 9
+  VALUE-STREAM: 8
+  MERGED: 1
   DEVELOPMENT-STREAM: 1
 candidates:
 - id: VSC-001
@@ -29,7 +32,7 @@ candidates:
   classification: VALUE-STREAM
   confidence: high
   evidence_strength: E3
-  entry_criterion_hypothesis: A customer places an order (request for goods or services).
+  entry_criterion_hypothesis: A customer need converts to an order (request for goods or services); demand generation is the pre-order stage (per CR-VS-02 RES-001).
   exit_criterion_hypothesis: The customer receives the fulfilled order and the enterprise
     recognizes payment against it.
   outcome_hypothesis: Fulfilled customer need and recognized revenue.
@@ -40,7 +43,7 @@ candidates:
   sources:
   - SRC-002
   - SRC-006
-  distinctness_notes: "End-to-end chain, not a single process; spans order capture, fulfillment, invoicing, settlement. Distinct from VSC-007 (Lead to Cash) which starts at demand generation."
+  distinctness_notes: "End-to-end chain, not a single process; spans demand generation (pre-order stage), order capture, fulfillment, invoicing, settlement. Absorbs VSC-007 (Lead to Cash) per CR-VS-02 RES-001: same exit, entry-only difference failed the two-axis test."
 - id: VSC-002
   name: Procure to Pay
   classification: VALUE-STREAM
@@ -118,7 +121,7 @@ candidates:
   distinctness_notes: "People-side chain; the internal customer (manager/employee) makes the served-party distinct from external-customer chains."
 - id: VSC-007
   name: Lead to Cash
-  classification: VALUE-STREAM
+  classification: MERGED
   confidence: medium
   evidence_strength: E2
   entry_criterion_hypothesis: A prospect enters the market funnel.
@@ -130,9 +133,7 @@ candidates:
   - financial-stewardship
   sources:
   - SRC-006
-  distinctness_notes: "Superset chain (demand-generation through payment); distinctness
-    against VSC-001 (Order to Cash) must be resolved at the sweep: same exit, different
-    entry. Candidate for merge or explicit boundary statement." 
+  distinctness_notes: "Merged into VSC-001 (Order to Cash) per CR-VS-02 RES-001: same exit (paying, fulfilled customer), entry-only difference failed the two-axis distinctness test. Append-only record; no admission path."
 - id: VSC-008
   name: Plan to Forecast
   classification: VALUE-STREAM
