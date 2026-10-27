@@ -91,3 +91,17 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`value-streams:value-stream-record-to-report-zw9z2r`).
 - The first-order candidate universe is now fully resolved: 8 admitted,
   1 merged (VSC-007), 1 disambiguation record (VSC-010).
+
+### Phase 3e — third tranche (CR-VS-05)
+
+- Register v0.3: SRC-006 extended with the chain-inventory observation
+  (reverse-logistics, subscription-renewal, asset-lifecycle chains).
+- Universe v0.5: VSC-011/012/013/014 seeded; VSC-014 (Fault to Restore)
+  merged into VSC-003 (Issue to Resolve) per RES-003 — recorded as an
+  alternate name on the Issue to Resolve record.
+- Sweep v0.2: 38 new pairs; boundary statements for 011/012, 012/006,
+  013/002, 013/005, 013/006.
+- Third tranche admitted (11 canonical records total): Return to Credit
+  (`value-streams:value-stream-return-to-credit-qan2dn`), Contract to
+  Renewal (`value-streams:value-stream-contract-to-renewal-5x3r4x`),
+  Acquire to Retire (`value-streams:value-stream-acquire-to-retire-g5x89g`).

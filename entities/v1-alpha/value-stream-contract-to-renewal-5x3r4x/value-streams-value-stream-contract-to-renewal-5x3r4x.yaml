@@ -1,0 +1,33 @@
+id: value-streams:value-stream-contract-to-renewal-5x3r4x
+type: ValueStream
+name: Contract to Renewal
+definition: >-
+  The end-to-end post-sale relationship stream from contract execution through service of the relationship to the renewal decision.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  A continuous, explicitly settled customer relationship.
+entry_criterion: >-
+  A contract is executed with a customer.
+exit_criterion: >-
+  The renewal decision is settled (renewed, renegotiated, or closed out).
+aggregated_capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-financial-stewardship-c7xtfk
+evidence:
+  sources:
+    - SRC-006
+  rationale: >-
+    Admitted from candidate VSC-012 under CR-VS-05 (third tranche; evidence at E3/high
+    from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05
+    sweep). Subscription-economy relationship chain. Boundary vs. Hire to Retire: employment relationship vs. customer relationship (CR-VS-05 boundary statement). Boundary vs. Return to Credit: relationship forwards vs. transaction backwards.
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-05'

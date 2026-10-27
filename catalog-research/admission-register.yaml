@@ -1,12 +1,13 @@
-admission_register_version: 0.2.0
-cr: "CR-VS-03 (first admission gate)"
-compiled: "2026-10-27 (v0.1: VSC-001, VSC-002, VSC-003, VSC-006 admitted; 4 canonical
-  records); 2026-10-27 (v0.2 per CR-VS-04: VSC-004/005/008/009 admitted after evidence
-  raised E2 -> E3; 8 canonical records)"
+admission_register_version: 0.3.0
+cr: CR-VS-03 (first admission gate) + CR-VS-05 (third-tranche admissions)
+compiled: '2026-10-27 (v0.1: VSC-001, VSC-002, VSC-003, VSC-006 admitted; 4 canonical records); 2026-10-27
+  (v0.2 per CR-VS-04: VSC-004/005/008/009 admitted after evidence raised E2 -> E3; 8 canonical records);
+  2026-10-27 (v0.3 per CR-VS-05: VSC-011/012/013 admitted (third tranche); VSC-014 merged into VSC-003
+  per RES-003 (alternate name); 11 canonical records)'
 compiled_by: Emmanuel A. Otchere
 status: active
-method: "Admission gate: evidence >= E2, distinctness closed (CR-VS-02), content-addressed
-  id (id-system 2.5), provenance ladder (candidate -> admitted)"
+method: 'Admission gate: evidence >= E2, distinctness closed (CR-VS-02), content-addressed id (id-system
+  2.5), provenance ladder (candidate -> admitted)'
 admissions:
 - candidate: VSC-001
   name: Order to Cash
@@ -72,7 +73,34 @@ admissions:
   distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-008 (RES-002); cited in record rationale
   date: '2026-10-27'
   cr: CR-VS-04
+- candidate: VSC-011
+  name: Return to Credit
+  id: value-streams:value-stream-return-to-credit-qan2dn
+  path: entities/v1-alpha/value-stream-return-to-credit-qan2dn/value-streams-value-stream-return-to-credit-qan2dn.yaml
+  evidence: E3/high (SRC-006)
+  distinctness: 'CR-VS-05 sweep: DISTINCT vs. all; boundary vs. VSC-012 cited'
+  date: '2026-10-27'
+  cr: CR-VS-05
+- candidate: VSC-012
+  name: Contract to Renewal
+  id: value-streams:value-stream-contract-to-renewal-5x3r4x
+  path: entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/value-streams-value-stream-contract-to-renewal-5x3r4x.yaml
+  evidence: E3/high (SRC-006)
+  distinctness: 'CR-VS-05 sweep: DISTINCT vs. all; boundaries vs. VSC-006/011 cited'
+  date: '2026-10-27'
+  cr: CR-VS-05
+- candidate: VSC-013
+  name: Acquire to Retire
+  id: value-streams:value-stream-acquire-to-retire-g5x89g
+  path: entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/value-streams-value-stream-acquire-to-retire-g5x89g.yaml
+  evidence: E3/high (SRC-006)
+  distinctness: 'CR-VS-05 sweep: DISTINCT vs. all; boundaries vs. VSC-002/005/006 cited'
+  date: '2026-10-27'
+  cr: CR-VS-05
 counts:
-  admitted: 8
-  merged: [VSC-007]
-  disambiguation: [VSC-010]
+  admitted: 11
+  merged:
+  - VSC-007
+  - VSC-014
+  disambiguation:
+  - VSC-010

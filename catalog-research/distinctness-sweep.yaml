@@ -1,175 +1,457 @@
-sweep_version: 0.1.0
-cr: "CR-VS-02 (distinctness sweep v0.1; VSC-007 merged into VSC-001; VSC-008/009
-  boundary statement recorded)"
-compiled: "2026-10-27 (v0.1: 36 ordered pairs swept; 2 flagged overlaps from CR-VS-01
-  resolved: MERGE (VSC-007 -> VSC-001) and BOUNDARY (VSC-008/VSC-009 distinct))"
+sweep_version: 0.2.0
+cr: 'CR-VS-02 (distinctness sweep v0.1; VSC-007 merged into VSC-001; VSC-008/009 boundary statement recorded)
+  + CR-VS-05 (third-tranche sweep: VSC-011/012/013 distinct vs. all; VSC-014 merged into VSC-003 per RES-003)'
+compiled: '2026-10-27 (v0.1: 36 ordered pairs swept; 2 flagged overlaps from CR-VS-01 resolved: MERGE
+  (VSC-007 -> VSC-001) and BOUNDARY (VSC-008/VSC-009 distinct)); 2026-10-27 (v0.2 per CR-VS-05: third-tranche
+  sweep - VSC-011/012/013 pairwise distinct with boundary statements; VSC-014 merged into VSC-003 per
+  RES-003)'
 compiled_by: Emmanuel A. Otchere
 status: active; no UNRESOLVED verdicts remain
 universe: catalog-research/candidate-universe.yaml
 evidence_register: catalog-research/evidence-register.yaml
 distinctness_test:
   authority: SRC-001 (BIZBOK identity tests)
-  rule: "Two candidates are distinct iff they differ on at least two of the three
-    first-order axes: entry criterion, exit criterion, served party. One-axis
-    differences are overlap-flagged and require a merge or an explicit boundary
-    statement."
+  rule: 'Two candidates are distinct iff they differ on at least two of the three first-order axes: entry
+    criterion, exit criterion, served party. One-axis differences are overlap-flagged and require a merge
+    or an explicit boundary statement.'
 axes:
 - entry_criterion
 - exit_criterion
 - served_party
 verdicts:
-- pair: [VSC-001, VSC-002]
+- pair:
+  - VSC-001
+  - VSC-002
   verdict: DISTINCT
-  rationale: "Different entry (customer order vs. internal need), exit (customer
-    payment vs. supplier payment), served party (external customer vs. internal
-    need owner)."
-- pair: [VSC-001, VSC-003]
+  rationale: Different entry (customer order vs. internal need), exit (customer payment vs. supplier payment),
+    served party (external customer vs. internal need owner).
+- pair:
+  - VSC-001
+  - VSC-003
   verdict: DISTINCT
-  rationale: "Fulfillment chain vs. service restoration; different entry (order
-    vs. issue) and exit (payment vs. resolution)."
-- pair: [VSC-001, VSC-004]
+  rationale: Fulfillment chain vs. service restoration; different entry (order vs. issue) and exit (payment
+    vs. resolution).
+- pair:
+  - VSC-001
+  - VSC-004
   verdict: DISTINCT
-  rationale: "Operational chain vs. innovation chain; entry, exit, and served party
-    (customer vs. market) all differ."
-- pair: [VSC-001, VSC-005]
+  rationale: Operational chain vs. innovation chain; entry, exit, and served party (customer vs. market)
+    all differ.
+- pair:
+  - VSC-001
+  - VSC-005
   verdict: DISTINCT
-  boundary_statement: "Fulfillment is shared vocabulary; the exit is the discriminator:
-    VSC-005 exits at delivery per plan, VSC-001 exits at payment recognition."
-- pair: [VSC-001, VSC-006]
+  boundary_statement: 'Fulfillment is shared vocabulary; the exit is the discriminator: VSC-005 exits
+    at delivery per plan, VSC-001 exits at payment recognition.'
+- pair:
+  - VSC-001
+  - VSC-006
   verdict: DISTINCT
-  rationale: "External customer chain vs. workforce chain; all three axes differ."
-- pair: [VSC-001, VSC-007]
+  rationale: External customer chain vs. workforce chain; all three axes differ.
+- pair:
+  - VSC-001
+  - VSC-007
   verdict: MERGED
-  resolution: "VSC-007 merges into VSC-001: same exit (paying, fulfilled customer),
-    one-axis difference only (entry: demand generation vs. order placement), which
-    fails the two-axis test. The VSC-001 entry criterion widens to 'a customer need
-    converts to an order', with demand generation recorded as the pre-order stage
-    of the boundary statement."
-- pair: [VSC-001, VSC-008]
+  resolution: 'VSC-007 merges into VSC-001: same exit (paying, fulfilled customer), one-axis difference
+    only (entry: demand generation vs. order placement), which fails the two-axis test. The VSC-001 entry
+    criterion widens to ''a customer need converts to an order'', with demand generation recorded as the
+    pre-order stage of the boundary statement.'
+- pair:
+  - VSC-001
+  - VSC-008
   verdict: DISTINCT
-  rationale: "Customer chain vs. enterprise-internal planning chain; served parties
-    differ."
-- pair: [VSC-001, VSC-009]
+  rationale: Customer chain vs. enterprise-internal planning chain; served parties differ.
+- pair:
+  - VSC-001
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Customer chain vs. finance reporting chain; served parties differ."
-- pair: [VSC-002, VSC-003]
+  rationale: Customer chain vs. finance reporting chain; served parties differ.
+- pair:
+  - VSC-002
+  - VSC-003
   verdict: DISTINCT
-  rationale: "Supply chain vs. service chain; all three axes differ."
-- pair: [VSC-002, VSC-004]
+  rationale: Supply chain vs. service chain; all three axes differ.
+- pair:
+  - VSC-002
+  - VSC-004
   verdict: DISTINCT
-  rationale: "Entry, exit, and served party all differ."
-- pair: [VSC-002, VSC-005]
+  rationale: Entry, exit, and served party all differ.
+- pair:
+  - VSC-002
+  - VSC-005
   verdict: DISTINCT
-  rationale: "Supply-side vs. production-side; entries differ (requisition vs. demand
-    plan)."
-- pair: [VSC-002, VSC-006]
+  rationale: Supply-side vs. production-side; entries differ (requisition vs. demand plan).
+- pair:
+  - VSC-002
+  - VSC-006
   verdict: DISTINCT
-  boundary_statement: "Both end in settlement (supplier vs. employee obligations);
-    entries and served parties differ. Settlement is shared vocabulary; the counterparty
-    is the discriminator."
-- pair: [VSC-002, VSC-007]
+  boundary_statement: Both end in settlement (supplier vs. employee obligations); entries and served parties
+    differ. Settlement is shared vocabulary; the counterparty is the discriminator.
+- pair:
+  - VSC-002
+  - VSC-007
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001; recorded for completeness."
-- pair: [VSC-002, VSC-008]
+  rationale: VSC-007 merged into VSC-001; recorded for completeness.
+- pair:
+  - VSC-002
+  - VSC-008
   verdict: DISTINCT
-  rationale: "Supply chain vs. planning chain."
-- pair: [VSC-002, VSC-009]
+  rationale: Supply chain vs. planning chain.
+- pair:
+  - VSC-002
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Supply chain vs. reporting chain."
-- pair: [VSC-003, VSC-004]
+  rationale: Supply chain vs. reporting chain.
+- pair:
+  - VSC-003
+  - VSC-004
   verdict: DISTINCT
-  rationale: "All three axes differ."
-- pair: [VSC-003, VSC-005]
+  rationale: All three axes differ.
+- pair:
+  - VSC-003
+  - VSC-005
   verdict: DISTINCT
-  rationale: "Service restoration vs. planned delivery."
-- pair: [VSC-003, VSC-006]
+  rationale: Service restoration vs. planned delivery.
+- pair:
+  - VSC-003
+  - VSC-006
   verdict: DISTINCT
-  rationale: "External customer issue vs. workforce lifecycle."
-- pair: [VSC-003, VSC-007]
+  rationale: External customer issue vs. workforce lifecycle.
+- pair:
+  - VSC-003
+  - VSC-007
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-003, VSC-008]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-003
+  - VSC-008
   verdict: DISTINCT
-  rationale: "Customer chain vs. planning chain."
-- pair: [VSC-003, VSC-009]
+  rationale: Customer chain vs. planning chain.
+- pair:
+  - VSC-003
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Customer chain vs. reporting chain."
-- pair: [VSC-004, VSC-005]
+  rationale: Customer chain vs. reporting chain.
+- pair:
+  - VSC-004
+  - VSC-005
   verdict: DISTINCT
-  rationale: "Innovation chain vs. production chain."
-- pair: [VSC-004, VSC-006]
+  rationale: Innovation chain vs. production chain.
+- pair:
+  - VSC-004
+  - VSC-006
   verdict: DISTINCT
-  rationale: "All three axes differ."
-- pair: [VSC-004, VSC-007]
+  rationale: All three axes differ.
+- pair:
+  - VSC-004
+  - VSC-007
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-004, VSC-008]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-004
+  - VSC-008
   verdict: DISTINCT
-  rationale: "Market-facing vs. enterprise-internal."
-- pair: [VSC-004, VSC-009]
+  rationale: Market-facing vs. enterprise-internal.
+- pair:
+  - VSC-004
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Market-facing vs. stakeholder reporting."
-- pair: [VSC-005, VSC-006]
+  rationale: Market-facing vs. stakeholder reporting.
+- pair:
+  - VSC-005
+  - VSC-006
   verdict: DISTINCT
-  rationale: "Production vs. workforce."
-- pair: [VSC-005, VSC-007]
+  rationale: Production vs. workforce.
+- pair:
+  - VSC-005
+  - VSC-007
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-005, VSC-008]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-005
+  - VSC-008
   verdict: DISTINCT
-  boundary_statement: "Planning vocabulary shared (plan/forecast); VSC-005 exits at
-    delivery, VSC-008 at a ratified forecast. The exit condition is the discriminator."
-- pair: [VSC-005, VSC-009]
+  boundary_statement: Planning vocabulary shared (plan/forecast); VSC-005 exits at delivery, VSC-008 at
+    a ratified forecast. The exit condition is the discriminator.
+- pair:
+  - VSC-005
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Delivery vs. reporting."
-- pair: [VSC-006, VSC-007]
+  rationale: Delivery vs. reporting.
+- pair:
+  - VSC-006
+  - VSC-007
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-006, VSC-008]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-006
+  - VSC-008
   verdict: DISTINCT
-  rationale: "Workforce vs. planning; served parties differ."
-- pair: [VSC-006, VSC-009]
+  rationale: Workforce vs. planning; served parties differ.
+- pair:
+  - VSC-006
+  - VSC-009
   verdict: DISTINCT
-  rationale: "Workforce vs. reporting."
-- pair: [VSC-007, VSC-008]
+  rationale: Workforce vs. reporting.
+- pair:
+  - VSC-007
+  - VSC-008
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-007, VSC-009]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-007
+  - VSC-009
   verdict: VACUOUS
-  rationale: "VSC-007 merged into VSC-001."
-- pair: [VSC-008, VSC-009]
+  rationale: VSC-007 merged into VSC-001.
+- pair:
+  - VSC-008
+  - VSC-009
   verdict: DISTINCT
-  boundary_statement: "Both finance-side and enterprise-internal; entries differ
-    (planning cycle opens vs. transaction recorded) and exits differ (ratified forecast
-    vs. attested report). Two axes differ so distinctness is retained. Shared finance
-    vocabulary requires the boundary: planning produces the forward-looking commitment;
-    recording/reporting produces the backward-looking attestation."
+  boundary_statement: 'Both finance-side and enterprise-internal; entries differ (planning cycle opens
+    vs. transaction recorded) and exits differ (ratified forecast vs. attested report). Two axes differ
+    so distinctness is retained. Shared finance vocabulary requires the boundary: planning produces the
+    forward-looking commitment; recording/reporting produces the backward-looking attestation.'
+- pair:
+  - VSC-001
+  - VSC-011
+  verdict: DISTINCT
+  rationale: 'Mirrored chain: goods/value flow back; entry (return initiated vs. order placed) and exit
+    (return settled vs. payment received) are mirrored, not shared.'
+- pair:
+  - VSC-002
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Reverse logistics vs. forward supply; all three axes differ.
+- pair:
+  - VSC-003
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Physical/economic settlement of a return vs. service restoration; entries differ (return
+    vs. issue) and exits differ (settlement vs. resolution).
+- pair:
+  - VSC-004
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Post-sale economic chain vs. innovation chain; all axes differ.
+- pair:
+  - VSC-005
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Reverse logistics vs. planned production; all axes differ.
+- pair:
+  - VSC-006
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Customer return vs. workforce lifecycle; all axes differ.
+- pair:
+  - VSC-008
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Customer-settled return vs. internal planning; served parties differ.
+- pair:
+  - VSC-009
+  - VSC-011
+  verdict: DISTINCT
+  rationale: Return settlement is a customer event chain; Record to Report attests periods; entries, exits,
+    and served parties differ.
+- pair:
+  - VSC-011
+  - VSC-012
+  verdict: DISTINCT
+  boundary_statement: 'Both customer-continuity chains: Return to Credit settles a single transaction
+    backwards; Contract to Renewal settles the relationship forwards. The settled object (transaction
+    vs. relationship) is the discriminator.'
+- pair:
+  - VSC-011
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Customer return chain vs. internal asset lifecycle; served parties differ (customer vs. asset
+    custodian).
+- pair:
+  - VSC-011
+  - VSC-014
+  verdict: VACUOUS
+  rationale: VSC-014 merged into VSC-003 (RES-003).
+- pair:
+  - VSC-001
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Post-sale relationship continuity vs. order fulfillment; entry (contract execution vs. order)
+    and exit (renewal settlement vs. payment) differ.
+- pair:
+  - VSC-002
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Customer relationship chain vs. supply chain; all axes differ.
+- pair:
+  - VSC-003
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Relationship continuity vs. issue restoration; all axes differ.
+- pair:
+  - VSC-004
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Market-facing launch vs. post-sale continuity; all axes differ.
+- pair:
+  - VSC-005
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Relationship chain vs. production chain; all axes differ.
+- pair:
+  - VSC-006
+  - VSC-012
+  verdict: DISTINCT
+  boundary_statement: 'Both people/relationship-side continuity chains: Hire to Retire carries the employment
+    relationship, Contract to Renewal the customer relationship. The relationship type is the discriminator.'
+- pair:
+  - VSC-008
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Customer relationship vs. internal planning; served parties differ.
+- pair:
+  - VSC-009
+  - VSC-012
+  verdict: DISTINCT
+  rationale: Customer relationship vs. attestation to stakeholders; all axes differ.
+- pair:
+  - VSC-012
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Customer relationship chain vs. asset lifecycle; all axes differ.
+- pair:
+  - VSC-012
+  - VSC-014
+  verdict: VACUOUS
+  rationale: VSC-014 merged into VSC-003 (RES-003).
+- pair:
+  - VSC-001
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Internal asset lifecycle vs. customer fulfillment chain; served parties differ.
+- pair:
+  - VSC-002
+  - VSC-013
+  verdict: DISTINCT
+  boundary_statement: 'Acquisition stage overlaps Procure to Pay vocabulary: Procure to Pay settles a
+    supplier obligation, Acquire to Retire carries the asset through its whole life to disposal. The exit
+    (supplier paid vs. asset disposed) is the discriminator.'
+- pair:
+  - VSC-003
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Asset lifecycle vs. service restoration; all axes differ.
+- pair:
+  - VSC-004
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Asset acquisition vs. offering launch; all axes differ.
+- pair:
+  - VSC-005
+  - VSC-013
+  verdict: DISTINCT
+  boundary_statement: Assets are used in production but the streams differ on exit (asset disposed vs.
+    product delivered) and served party (asset custodian vs. demand plan); the lifecycle object is the
+    discriminator.
+- pair:
+  - VSC-006
+  - VSC-013
+  verdict: DISTINCT
+  boundary_statement: 'Both internal lifecycle chains with settlement ends: Hire to Retire carries people,
+    Acquire to Retire carries assets. The lifecycle object is the discriminator.'
+- pair:
+  - VSC-008
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Asset lifecycle vs. planning cycle; all axes differ.
+- pair:
+  - VSC-009
+  - VSC-013
+  verdict: DISTINCT
+  rationale: Asset lifecycle vs. financial attestation; all axes differ.
+- pair:
+  - VSC-013
+  - VSC-014
+  verdict: VACUOUS
+  rationale: VSC-014 merged into VSC-003 (RES-003).
+- pair:
+  - VSC-001
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Service restoration vs. fulfillment; all axes differ.
+- pair:
+  - VSC-002
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Service restoration vs. supply; all axes differ.
+- pair:
+  - VSC-003
+  - VSC-014
+  verdict: MERGED
+  resolution: 'VSC-014 merges into VSC-003 (RES-003): Fault to Restore is a naming variant of Issue to
+    Resolve - same entry (fault/issue reported), same exit (restored/resolved and informed), same served
+    party (customer). Zero-axis difference; the two-axis test is not even reached.'
+- pair:
+  - VSC-004
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Service restoration vs. launch; all axes differ.
+- pair:
+  - VSC-005
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Service restoration vs. production; all axes differ.
+- pair:
+  - VSC-006
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Service restoration vs. workforce; all axes differ.
+- pair:
+  - VSC-008
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Customer restoration vs. internal planning; served parties differ.
+- pair:
+  - VSC-009
+  - VSC-014
+  verdict: DISTINCT
+  rationale: Customer restoration vs. attestation; served parties differ.
 resolutions:
 - id: RES-001
   kind: MERGE
   source: VSC-007
   target: VSC-001
-  rationale: "One-axis difference (entry only) fails the two-axis distinctness test."
-  effect: "VSC-001 entry criterion widens to include demand generation as the pre-order
-    stage; VSC-007 classification becomes MERGED (append-only; no deletion)."
+  rationale: One-axis difference (entry only) fails the two-axis distinctness test.
+  effect: VSC-001 entry criterion widens to include demand generation as the pre-order stage; VSC-007
+    classification becomes MERGED (append-only; no deletion).
 - id: RES-002
   kind: BOUNDARY
-  pair: [VSC-008, VSC-009]
-  statement: "Forward-looking commitment (planning) vs. backward-looking attestation
-    (recording/reporting); distinct retained with the boundary cited at admission."
+  pair:
+  - VSC-008
+  - VSC-009
+  statement: Forward-looking commitment (planning) vs. backward-looking attestation (recording/reporting);
+    distinct retained with the boundary cited at admission.
+- id: RES-003
+  kind: MERGE
+  source: VSC-014
+  target: VSC-003
+  rationale: 'Naming variant of Issue to Resolve: zero-axis difference under the two-axis test.'
+  effect: VSC-014 classification becomes MERGED (append-only). Fault to Restore is recorded as an alternate
+    name on the Issue to Resolve record (alternate-name note in the admission rationale; CR-VS-05).
 counts:
-  pairs_swept: 36
-  distinct: 28
-  distinct_with_boundary: 4
-  merged: 1
-  vacuous: 7
+  pairs_swept: 74
+  distinct: 62
+  distinct_with_boundary: 9
+  merged: 2
+  vacuous: 10
   unresolved: 0
 universe_effect:
-  value_stream_candidates: 8
-  merged: 1
+  value_stream_candidates: 11
+  merged:
+  - VSC-007
+  - VSC-014
   disambiguation_records: 1
   admission_ready:
-  - VSC-001
-  - VSC-002
-  - VSC-003
-  - VSC-006
+  - VSC-011
+  - VSC-012
+  - VSC-013

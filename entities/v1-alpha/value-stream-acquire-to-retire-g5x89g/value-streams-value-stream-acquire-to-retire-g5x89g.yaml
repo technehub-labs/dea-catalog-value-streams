@@ -1,0 +1,33 @@
+id: value-streams:value-stream-acquire-to-retire-g5x89g
+type: ValueStream
+name: Acquire to Retire
+definition: >-
+  The end-to-end asset-lifecycle stream from identification of an internal asset need through acquisition, use, and disposal.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  Assets productively used across their lifecycle and cleanly retired.
+entry_criterion: >-
+  An asset need is identified for the enterprise's own use.
+exit_criterion: >-
+  The asset is disposed and its lifecycle obligations are closed.
+aggregated_capability_refs:
+  - capabilities:capability-asset-management-judtwr
+  - capabilities:capability-sourcing-and-procurement-esucp4
+  - capabilities:capability-operations-management-pm3w8k
+evidence:
+  sources:
+    - SRC-006
+  rationale: >-
+    Admitted from candidate VSC-013 under CR-VS-05 (third tranche; evidence at E3/high
+    from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05
+    sweep). Asset-lifecycle chain; served party is the internal asset custodian. Boundary vs. Procure to Pay: supplier settlement vs. asset disposal (CR-VS-05 boundary statement). Boundary vs. Hire to Retire: assets vs. people as the lifecycle object.
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-05'
