@@ -45,15 +45,22 @@ dea-catalog-value-streams/
 ├── README.md
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
+├── schemas/
+│   ├── entity.schema.json   ← entry schema (mirrors metamodel dea:ValueStream, CR-MET-014)
+│   └── fixtures/
+│       └── example-valid.yaml
+├── entities/
+│   └── v1-alpha/            ← catalog entries go here (admitted via admission PRs)
+│       └── README.md
 └── .github/
     └── workflows/
-        └── validate-allocation.yml   ← validates pointer against OpenDEAM allocation
+        ├── validate-allocation.yml   ← validates pointer against OpenDEAM allocation
+        └── validate-entries.yml      ← validates entries + fixture against the entry schema
 ```
 
-The catalog-entry layout (`entities/v1-alpha/`, `schemas/`, conformance
-gates) will be introduced in the catalog-development phases, following the
-org-wide catalog repository standard (CR-CATALOG-STRUCT-01) and the
-entity-storage-layout spec (`dea-metaframework/docs/entity-storage-layout.md`).
+Entries follow the org-wide catalog repository standard (CR-CATALOG-STRUCT-01)
+and the entity-storage-layout spec
+(`dea-metaframework/docs/entity-storage-layout.md`).
 
 ## Contributing
 

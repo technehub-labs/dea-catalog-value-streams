@@ -1,0 +1,35 @@
+# Fixture: schema self-exercise. NOT a catalog entry.
+# Lives outside entities/ so it can never be mistaken for canonical content.
+# CI validates this file against schemas/entity.schema.json so the schema
+# is never untested while entities/ awaits admission PRs.
+id: value-streams:value-stream-fixture-example-fxtrx2
+type: ValueStream
+name: Fixture Value Stream (not canonical)
+definition: >-
+  A synthetic value stream existing only to exercise every required block of
+  the catalog schema. Carries no catalog semantics.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: proposed
+outcome: A validated schema.
+customer_ref: actors:actor-fixture
+entry_criterion: A fixture trigger condition.
+exit_criterion: A fixture completion condition.
+aggregated_capability_refs:
+  - capabilities:capability-fixture
+external_references:
+  - system: fixture
+    identifier: FX-001
+evidence:
+  sources:
+    - FIXTURE
+  rationale: Schema exercise only.
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, schema fixture (CR-CATALOG-STRUCT-01 pattern)'
+relationships:
+  - source_id: value-streams:value-stream-fixture-example-fxtrx2
+    target_id: capabilities:capability-fixture
+    relationship_type: aggregated-in
