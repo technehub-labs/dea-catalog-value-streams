@@ -2,6 +2,19 @@
 # Auto-generated from OpenDEAM v0.2.1 (dea-architecture-framework, ADR-0002).
 # Do not edit manually — allocation changes go through the root model
 # (structural: ADR + minor bump; additive: PR + patch bump).
+id: dea:catalog-value-streams
+name: Value Stream
+abbreviation: VS
+version: "1.0.0"
+status: active
+metamodel_version: "1.0.0"
+owner: TechNeHub Labs
+
+# Catalog identity above is the top-level block the catalog repository
+# standard (CR-CATALOG-STRUCT-01) regenerator reads (CR-CATALOG-STRUCT-06a).
+# The metamodel: block below retains its auto-generated semantics (ADR-0002);
+# allocation changes still go through the root model.
+
 metamodel:
   version: v0.2.1
   entity_id: dea:entity-value-stream

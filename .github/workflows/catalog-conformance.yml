@@ -1,0 +1,42 @@
+name: catalog-conformance
+
+# Catalog repository standard conformance (CR-CATALOG-STRUCT-01):
+# regenerator freshness gate + index schema validation on every PR.
+# Vendored scripts are preferred over the dea-metaframework fetch
+# (per the business-capabilities catalog's CR-CATALOG-STRUCT-03a pattern).
+# Vendoring note: the vendored regenerator/gate/schema carry a documented
+# local extension (dea-metaframework issue #51) adding the `value-stream`
+# level token; re-vendoring from upstream requires re-applying it (or
+# upstreaming issue #51 first).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  catalog-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history + branch tip (not the synthetic merge commit):
+          # the regenerator's git-log-based `last_modified` field collapses
+          # to the merge date for every entity under a shallow synthetic
+          # checkout, breaking CATALOG.yaml freshness checks.
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Set canonical git origin URL (regenerator reads it)
+        run: |
+          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+
+      - name: CATALOG.yaml must match regenerator output
+        run: python3 scripts/regenerate_catalog.py --check --schema catalog-index-schema/catalog-index-schema.json
+
+      - name: Validate CATALOG.yaml against the index schema
+        run: python3 scripts/check_catalog_index.py --schema catalog-index-schema/catalog-index-schema.json
