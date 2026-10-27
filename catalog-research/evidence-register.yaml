@@ -1,7 +1,11 @@
-register_version: 0.1.0
-cr: "CR-VS-01 (candidate universe seed; evidence-register v0.1)"
+register_version: 0.2.0
+cr: "CR-VS-01 (candidate universe seed; evidence-register v0.1) + CR-VS-04 (second-tranche
+  evidence: SRC-002 APQC category observations extended; SRC-003 stakeholder-value observation added)"
 compiled: "2026-10-27 (v0.1: register opened with the value-architecture source corpus;
-  SRC-001..SRC-006 recorded; candidate universe v0.1 seeded from the register)"
+  SRC-001..SRC-006 recorded; candidate universe v0.1 seeded from the register);
+  2026-10-27 (v0.2 per CR-VS-04: SRC-002 extended with product-development, planning,
+  and reporting category observations; SRC-003 extended with the stakeholder-value
+  observation; VSC-004/005/008/009 evidence strengthened to three-source convergence)"
 compiled_by: Emmanuel A. Otchere
 status: active; candidate universe seeded; no admissions yet
 source_classes:
@@ -48,6 +52,14 @@ sources:
     - VSC-001 Order to Cash; VSC-002 Procure to Pay; VSC-005 Plan-Produce-Deliver candidates
     implication: Cross-industry end-to-end chains corroborate enterprise-generality
       for the operational candidates
+  - observation: 'APQC PCF carries end-to-end category structure beyond the operational
+      chains: product/service development categories (concept-through-launch), financial
+      planning and analysis categories (planning-through-forecast), and financial reporting
+      categories (record-through-report)'
+    supports:
+    - VSC-004 Concept to Launch; VSC-005 Plan to Deliver; VSC-008 Plan to Forecast; VSC-009 Record to Report
+    implication: Cross-industry category structure corroborates enterprise-generality
+      for the second-tranche candidates (CR-VS-04 evidence work)
   evidence_note: Category-level structure only; APQC is process-class, so candidates
     must be re-anchored on value-outcome rather than process steps
 - id: SRC-003
@@ -63,6 +75,14 @@ sources:
     - VS outcome field; exit_criterion field
     implication: Stage decomposition is upstream of the stream identity; stages are
       a later refinement (ValueStage entity deferred per CR-MET-007 section 4)
+  - observation: 'BACM anchors value delivery to stakeholders generally, not only
+      external customers; a value stream may deliver value to an internal stakeholder
+      such as enterprise governance'
+    supports:
+    - VSC-008 Plan to Forecast; VSC-009 Record to Report (served party is the enterprise
+      itself as governance stakeholder)
+    implication: The stakeholder-value framing resolves the internal-chain scope question
+      for the finance-side candidates (CR-VS-04)
   evidence_note: Standards-body anchor for the formal semantics; stage vocabulary
     deliberately deferred
 - id: SRC-004

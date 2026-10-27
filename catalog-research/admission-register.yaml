@@ -1,7 +1,8 @@
-admission_register_version: 0.1.0
+admission_register_version: 0.2.0
 cr: "CR-VS-03 (first admission gate)"
 compiled: "2026-10-27 (v0.1: VSC-001, VSC-002, VSC-003, VSC-006 admitted; 4 canonical
-  records)"
+  records); 2026-10-27 (v0.2 per CR-VS-04: VSC-004/005/008/009 admitted after evidence
+  raised E2 -> E3; 8 canonical records)"
 compiled_by: Emmanuel A. Otchere
 status: active
 method: "Admission gate: evidence >= E2, distinctness closed (CR-VS-02), content-addressed
@@ -39,8 +40,39 @@ admissions:
   distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-002; cited in record rationale
   date: '2026-10-27'
   cr: CR-VS-03
+- candidate: VSC-004
+  name: Concept to Launch
+  id: value-streams:value-stream-concept-to-launch-nhvatv
+  path: entities/v1-alpha/value-stream-concept-to-launch-nhvatv/value-streams-value-stream-concept-to-launch-nhvatv.yaml
+  evidence: E3/high (SRC-002, SRC-006; raised from E2 per CR-VS-04)
+  distinctness: CR-VS-02 DISTINCT; market-facing exit vs. VSC-010 disambiguation
+  date: '2026-10-27'
+  cr: CR-VS-04
+- candidate: VSC-005
+  name: Plan to Deliver
+  id: value-streams:value-stream-plan-to-deliver-smmwpx
+  path: entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/value-streams-value-stream-plan-to-deliver-smmwpx.yaml
+  evidence: E3/high (SRC-002; raised from E2 per CR-VS-04)
+  distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-001 and VSC-008; cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-04
+- candidate: VSC-008
+  name: Plan to Forecast
+  id: value-streams:value-stream-plan-to-forecast-89vb4q
+  path: entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/value-streams-value-stream-plan-to-forecast-89vb4q.yaml
+  evidence: E3/high (SRC-002, SRC-003, SRC-006; raised from E2 per CR-VS-04)
+  distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-009 (RES-002); cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-04
+- candidate: VSC-009
+  name: Record to Report
+  id: value-streams:value-stream-record-to-report-zw9z2r
+  path: entities/v1-alpha/value-stream-record-to-report-zw9z2r/value-streams-value-stream-record-to-report-zw9z2r.yaml
+  evidence: E3/high (SRC-002, SRC-003, SRC-006; raised from E2 per CR-VS-04)
+  distinctness: CR-VS-02 DISTINCT-with-boundary vs. VSC-008 (RES-002); cited in record rationale
+  date: '2026-10-27'
+  cr: CR-VS-04
 counts:
-  admitted: 4
-  pending_e2: [VSC-004, VSC-005, VSC-008, VSC-009]
+  admitted: 8
   merged: [VSC-007]
   disambiguation: [VSC-010]

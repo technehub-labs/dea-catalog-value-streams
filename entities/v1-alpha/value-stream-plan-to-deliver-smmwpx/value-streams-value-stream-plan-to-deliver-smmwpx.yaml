@@ -1,0 +1,34 @@
+id: value-streams:value-stream-plan-to-deliver-smmwpx
+type: ValueStream
+name: Plan to Deliver
+definition: >-
+  The end-to-end stream from demand planning through production and delivery of products or services.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+outcome: >-
+  Delivered supply against planned demand.
+entry_criterion: >-
+  Demand is forecast or an order backlog is planned.
+exit_criterion: >-
+  Product or service is delivered per the plan.
+aggregated_capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-strategic-planning-k3rz7a
+evidence:
+  sources:
+    - SRC-002
+  rationale: >-
+    Admitted from candidate VSC-005 under CR-VS-04 (evidence raised E2 -> E3 via
+    register v0.2 extension; distinctness closed per CR-VS-02). Production chain (APQC plan-produce-deliver structure, SRC-002). Boundary vs. Order to Cash: fulfillment is shared vocabulary; this stream exits at delivery per plan, Order to Cash at payment recognition (CR-VS-02 boundary statement). Boundary vs. Plan to Forecast: the exit condition is the discriminator (delivery vs. ratified forecast).
+provenance:
+  ladder_passage:
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+    - stage: candidate
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)'
+    - stage: admitted
+      date: '2026-10-27'
+      actor: 'Emmanuel A. Otchere, admission CR-VS-04'

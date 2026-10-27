@@ -1,10 +1,14 @@
-universe_version: 0.2.0
-cr: "CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged into VSC-001 per RES-001)"
+universe_version: 0.3.0
+cr: "CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged
+  into VSC-001 per RES-001) + CR-VS-04 (second-tranche evidence: VSC-004/005/008/009
+  raised E2 -> E3 via register v0.2 extension)"
 compiled: "2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register
   v0.1; none canonical); 2026-10-27 (v0.2 per CR-VS-02: VSC-007 merged into VSC-001
   per RES-001; 8 VALUE-STREAM candidates remain; admission-ready VSC-001/002/003/006);
   2026-10-27 (v0.2.1 per CR-VS-03: VSC-001/002/003/006 admitted — first canonical records;
-  admission map in catalog-research/admission-register.yaml)"
+  admission map in catalog-research/admission-register.yaml);
+  2026-10-27 (v0.3 per CR-VS-04: second-tranche evidence work; VSC-004/005/008/009
+  raised E2 -> E3; register v0.2 extension applied)"
 compiled_by: Emmanuel A. Otchere
 status: active
 evidence_register: catalog-research/evidence-register.yaml
@@ -79,8 +83,8 @@ candidates:
 - id: VSC-004
   name: Concept to Launch
   classification: VALUE-STREAM
-  confidence: medium
-  evidence_strength: E2
+  confidence: high
+  evidence_strength: E3
   entry_criterion_hypothesis: An offering concept is approved for development.
   exit_criterion_hypothesis: The offering is launched to its market.
   outcome_hypothesis: A launched offering delivering value to its intended market.
@@ -89,13 +93,14 @@ candidates:
   - marketing
   - operations
   sources:
+  - SRC-002
   - SRC-006
   distinctness_notes: "Innovation/launch chain; distinct from VSC-010 (development value stream, out of scope) by its market-facing exit."
 - id: VSC-005
   name: Plan to Deliver
   classification: VALUE-STREAM
-  confidence: medium
-  evidence_strength: E2
+  confidence: high
+  evidence_strength: E3
   entry_criterion_hypothesis: Demand is forecast or an order backlog is planned.
   exit_criterion_hypothesis: Product/service is delivered per the plan.
   outcome_hypothesis: Delivered supply against planned demand.
@@ -139,8 +144,8 @@ candidates:
 - id: VSC-008
   name: Plan to Forecast
   classification: VALUE-STREAM
-  confidence: medium
-  evidence_strength: E2
+  confidence: high
+  evidence_strength: E3
   entry_criterion_hypothesis: A planning cycle opens.
   exit_criterion_hypothesis: A committed forecast or budget is ratified.
   outcome_hypothesis: A ratified plan guiding enterprise resource allocation.
@@ -148,13 +153,15 @@ candidates:
   - strategic-planning
   - financial-stewardship
   sources:
+  - SRC-002
+  - SRC-003
   - SRC-006
   distinctness_notes: "Planning/finance chain; entry and exit are internal governance events, so the served-party is the enterprise itself; flagged for the distinctness sweep (management-chain scope)."
 - id: VSC-009
   name: Record to Report
   classification: VALUE-STREAM
-  confidence: medium
-  evidence_strength: E2
+  confidence: high
+  evidence_strength: E3
   entry_criterion_hypothesis: An accounting period opens or a transaction is recorded.
   exit_criterion_hypothesis: Financial results are reported and attested.
   outcome_hypothesis: Attested financial visibility for stakeholders.
@@ -162,6 +169,8 @@ candidates:
   - financial-stewardship
   - financial-resource-management
   sources:
+  - SRC-002
+  - SRC-003
   - SRC-006
   distinctness_notes: "Finance chain; overlaps VSC-008 at the reporting boundary; sweep must draw the boundary between planning and reporting."
 - id: VSC-010

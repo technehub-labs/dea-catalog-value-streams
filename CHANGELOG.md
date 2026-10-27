@@ -76,3 +76,18 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `catalog-research/admission-register.yaml`.
 - `validate-entries` workflow now validates real entries (empty-skip guard
   no longer triggers).
+
+### Phase 3d — second-tranche evidence and admissions (CR-VS-04)
+
+- Evidence register v0.2: SRC-002 (APQC PCF) extended with
+  product-development, planning, and reporting category observations;
+  SRC-003 (OMG BACM) extended with the stakeholder-value observation
+  (internal governance stakeholders).
+- Candidate universe v0.3: VSC-004/005/008/009 raised E2 -> E3.
+- Second tranche admitted (8 canonical records total): Concept to Launch
+  (`value-streams:value-stream-concept-to-launch-nhvatv`), Plan to Deliver
+  (`value-streams:value-stream-plan-to-deliver-smmwpx`), Plan to Forecast
+  (`value-streams:value-stream-plan-to-forecast-89vb4q`), Record to Report
+  (`value-streams:value-stream-record-to-report-zw9z2r`).
+- The first-order candidate universe is now fully resolved: 8 admitted,
+  1 merged (VSC-007), 1 disambiguation record (VSC-010).
