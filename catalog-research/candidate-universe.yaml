@@ -1,14 +1,16 @@
-universe_version: 0.3.0
-cr: "CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged
-  into VSC-001 per RES-001) + CR-VS-04 (second-tranche evidence: VSC-004/005/008/009
-  raised E2 -> E3 via register v0.2 extension)"
-compiled: "2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register
-  v0.1; none canonical); 2026-10-27 (v0.2 per CR-VS-02: VSC-007 merged into VSC-001
-  per RES-001; 8 VALUE-STREAM candidates remain; admission-ready VSC-001/002/003/006);
-  2026-10-27 (v0.2.1 per CR-VS-03: VSC-001/002/003/006 admitted — first canonical records;
-  admission map in catalog-research/admission-register.yaml);
-  2026-10-27 (v0.3 per CR-VS-04: second-tranche evidence work; VSC-004/005/008/009
-  raised E2 -> E3; register v0.2 extension applied)"
+universe_version: 0.5.0
+cr: 'CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged into VSC-001 per
+  RES-001) + CR-VS-04 (second-tranche evidence: VSC-004/005/008/009 raised E2 -> E3 via register v0.2
+  extension) + CR-VS-05 (third-tranche seed: VSC-011/012/013/014 from the SRC-006 chain-inventory observation)'
+compiled: '2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register v0.1; none
+  canonical); 2026-10-27 (v0.2 per CR-VS-02: VSC-007 merged into VSC-001 per RES-001; 8 VALUE-STREAM candidates
+  remain; admission-ready VSC-001/002/003/006); 2026-10-27 (v0.2.1 per CR-VS-03: VSC-001/002/003/006 admitted
+  — first canonical records; admission map in catalog-research/admission-register.yaml); 2026-10-27 (v0.3
+  per CR-VS-04: second-tranche evidence work; VSC-004/005/008/009 raised E2 -> E3; register v0.2 extension
+  applied)); 2026-10-27 (v0.4 per CR-VS-05: third tranche - VSC-011 Return to Credit, VSC-012 Contract
+  to Renewal, VSC-013 Acquire to Retire, VSC-014 Fault to Restore seeded at E3/high)"; 2026-10-27 (v0.5
+  per CR-VS-05: VSC-014 merged into VSC-003 per RES-003; 11 VALUE-STREAM candidates remain; admission-ready
+  VSC-011/012/013)'
 compiled_by: Emmanuel A. Otchere
 status: active
 evidence_register: catalog-research/evidence-register.yaml
@@ -28,9 +30,9 @@ evidence_ratings:
 - E4
 - E5
 counts:
-  total: 10
-  VALUE-STREAM: 8
-  MERGED: 1
+  total: 14
+  VALUE-STREAM: 11
+  MERGED: 2
   DEVELOPMENT-STREAM: 1
 candidates:
 - id: VSC-001
@@ -38,9 +40,10 @@ candidates:
   classification: VALUE-STREAM
   confidence: high
   evidence_strength: E3
-  entry_criterion_hypothesis: A customer need converts to an order (request for goods or services); demand generation is the pre-order stage (per CR-VS-02 RES-001).
-  exit_criterion_hypothesis: The customer receives the fulfilled order and the enterprise
-    recognizes payment against it.
+  entry_criterion_hypothesis: A customer need converts to an order (request for goods or services); demand
+    generation is the pre-order stage (per CR-VS-02 RES-001).
+  exit_criterion_hypothesis: The customer receives the fulfilled order and the enterprise recognizes payment
+    against it.
   outcome_hypothesis: Fulfilled customer need and recognized revenue.
   spans_capabilities:
   - customer-management
@@ -49,7 +52,9 @@ candidates:
   sources:
   - SRC-002
   - SRC-006
-  distinctness_notes: "End-to-end chain, not a single process; spans demand generation (pre-order stage), order capture, fulfillment, invoicing, settlement. Absorbs VSC-007 (Lead to Cash) per CR-VS-02 RES-001: same exit, entry-only difference failed the two-axis test."
+  distinctness_notes: 'End-to-end chain, not a single process; spans demand generation (pre-order stage),
+    order capture, fulfillment, invoicing, settlement. Absorbs VSC-007 (Lead to Cash) per CR-VS-02 RES-001:
+    same exit, entry-only difference failed the two-axis test.'
 - id: VSC-002
   name: Procure to Pay
   classification: VALUE-STREAM
@@ -65,7 +70,8 @@ candidates:
   sources:
   - SRC-002
   - SRC-006
-  distinctness_notes: "Counterpart of VSC-001 on the supply side; spans requisition, sourcing, receipt, settlement."
+  distinctness_notes: Counterpart of VSC-001 on the supply side; spans requisition, sourcing, receipt,
+    settlement.
 - id: VSC-003
   name: Issue to Resolve
   classification: VALUE-STREAM
@@ -79,7 +85,8 @@ candidates:
   - operations
   sources:
   - SRC-006
-  distinctness_notes: "Service-side chain; distinct from VSC-001 (no order) and from journeys (multi-channel experience is out of scope at first order)."
+  distinctness_notes: Service-side chain; distinct from VSC-001 (no order) and from journeys (multi-channel
+    experience is out of scope at first order).
 - id: VSC-004
   name: Concept to Launch
   classification: VALUE-STREAM
@@ -95,7 +102,8 @@ candidates:
   sources:
   - SRC-002
   - SRC-006
-  distinctness_notes: "Innovation/launch chain; distinct from VSC-010 (development value stream, out of scope) by its market-facing exit."
+  distinctness_notes: Innovation/launch chain; distinct from VSC-010 (development value stream, out of
+    scope) by its market-facing exit.
 - id: VSC-005
   name: Plan to Deliver
   classification: VALUE-STREAM
@@ -109,15 +117,15 @@ candidates:
   - operations-management
   sources:
   - SRC-002
-  distinctness_notes: "Manufacturing/production chain (APQC plan-produce-deliver); overlaps VSC-001 at fulfillment and must be kept distinct at admission sweep."
+  distinctness_notes: Manufacturing/production chain (APQC plan-produce-deliver); overlaps VSC-001 at
+    fulfillment and must be kept distinct at admission sweep.
 - id: VSC-006
   name: Hire to Retire
   classification: VALUE-STREAM
   confidence: high
   evidence_strength: E3
   entry_criterion_hypothesis: A workforce need is identified and a requisition raised.
-  exit_criterion_hypothesis: The employment relationship ends and obligations are
-    settled.
+  exit_criterion_hypothesis: The employment relationship ends and obligations are settled.
   outcome_hypothesis: A staffed, productive workforce across the employment lifecycle.
   spans_capabilities:
   - workforce-management
@@ -125,7 +133,8 @@ candidates:
   - financial-stewardship
   sources:
   - SRC-006
-  distinctness_notes: "People-side chain; the internal customer (manager/employee) makes the served-party distinct from external-customer chains."
+  distinctness_notes: People-side chain; the internal customer (manager/employee) makes the served-party
+    distinct from external-customer chains.
 - id: VSC-007
   name: Lead to Cash
   classification: MERGED
@@ -140,7 +149,9 @@ candidates:
   - financial-stewardship
   sources:
   - SRC-006
-  distinctness_notes: "Merged into VSC-001 (Order to Cash) per CR-VS-02 RES-001: same exit (paying, fulfilled customer), entry-only difference failed the two-axis distinctness test. Append-only record; no admission path."
+  distinctness_notes: 'Merged into VSC-001 (Order to Cash) per CR-VS-02 RES-001: same exit (paying, fulfilled
+    customer), entry-only difference failed the two-axis distinctness test. Append-only record; no admission
+    path.'
 - id: VSC-008
   name: Plan to Forecast
   classification: VALUE-STREAM
@@ -156,7 +167,8 @@ candidates:
   - SRC-002
   - SRC-003
   - SRC-006
-  distinctness_notes: "Planning/finance chain; entry and exit are internal governance events, so the served-party is the enterprise itself; flagged for the distinctness sweep (management-chain scope)."
+  distinctness_notes: Planning/finance chain; entry and exit are internal governance events, so the served-party
+    is the enterprise itself; flagged for the distinctness sweep (management-chain scope).
 - id: VSC-009
   name: Record to Report
   classification: VALUE-STREAM
@@ -172,7 +184,8 @@ candidates:
   - SRC-002
   - SRC-003
   - SRC-006
-  distinctness_notes: "Finance chain; overlaps VSC-008 at the reporting boundary; sweep must draw the boundary between planning and reporting."
+  distinctness_notes: Finance chain; overlaps VSC-008 at the reporting boundary; sweep must draw the boundary
+    between planning and reporting.
 - id: VSC-010
   name: Development value stream (disambiguation record, NOT a candidate)
   classification: DEVELOPMENT-STREAM
@@ -184,4 +197,70 @@ candidates:
   spans_capabilities: []
   sources:
   - SRC-005
-  distinctness_notes: "Recorded per the disambiguation-evidence pattern: SAFe/Lean development value streams produce solutions that improve operational value streams; they are second-order and out of scope for this first-order catalog. No admission path; exists to block misclassification."
+  distinctness_notes: 'Recorded per the disambiguation-evidence pattern: SAFe/Lean development value streams
+    produce solutions that improve operational value streams; they are second-order and out of scope for
+    this first-order catalog. No admission path; exists to block misclassification.'
+- id: VSC-011
+  name: Return to Credit
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A customer initiates a return of goods or services.
+  exit_criterion_hypothesis: The return is settled (refund, credit, or replacement confirmed to the customer).
+  outcome_hypothesis: A fairly settled return with the customer relationship preserved.
+  spans_capabilities:
+  - customer-management
+  - operations
+  - financial-stewardship
+  sources:
+  - SRC-006
+  distinctness_notes: 'Reverse-logistics chain (SRC-006). Mirrors Order to Cash: same goods/value flowing
+    back; entry and exit are mirrored, not shared.'
+- id: VSC-012
+  name: Contract to Renewal
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A contract is executed with a customer.
+  exit_criterion_hypothesis: The renewal decision is settled (renewed, renegotiated, or closed out).
+  outcome_hypothesis: A continuous, explicitly settled customer relationship.
+  spans_capabilities:
+  - customer-management
+  - legal-matter-management
+  - financial-stewardship
+  sources:
+  - SRC-006
+  distinctness_notes: Subscription-economy relationship chain (SRC-006). Post-sale continuity; entry (contract
+    execution) and exit (renewal settlement) differ from every admitted stream.
+- id: VSC-013
+  name: Acquire to Retire
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: An asset need is identified for the enterprise's own use.
+  exit_criterion_hypothesis: The asset is disposed and its lifecycle obligations are closed.
+  outcome_hypothesis: Assets productively used across their lifecycle and cleanly retired.
+  spans_capabilities:
+  - asset-management
+  - sourcing-and-procurement
+  - operations
+  sources:
+  - SRC-006
+  distinctness_notes: Asset-lifecycle chain (SRC-006). Internal served party (asset custodian). Acquisition
+    stage overlaps Procure to Pay vocabulary; the exit (disposal) and served party are the discriminators.
+- id: VSC-014
+  name: Fault to Restore
+  classification: MERGED
+  confidence: high
+  evidence_strength: E3
+  entry_criterion_hypothesis: A fault is reported.
+  exit_criterion_hypothesis: Service is restored and the customer is informed.
+  outcome_hypothesis: Restored service and retained trust.
+  spans_capabilities:
+  - customer-management
+  - operations
+  sources:
+  - SRC-006
+  distinctness_notes: 'Merged into VSC-003 (Issue to Resolve) per CR-VS-05 RES-003: naming variant; zero-axis
+    difference under the two-axis test. Append-only record; Fault to Restore is recorded as an alternate
+    name on the Issue to Resolve record.'

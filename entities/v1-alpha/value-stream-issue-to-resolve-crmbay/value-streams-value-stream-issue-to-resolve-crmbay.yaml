@@ -20,7 +20,7 @@ evidence:
     - SRC-006
   rationale: >-
     Admitted from candidate VSC-003 under CR-VS-03 (evidence at E3/high,
-    distinctness closed per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and exit, and from journeys (multi-channel experience is out of scope at first order).
+    distinctness closed per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and exit, and from journeys (multi-channel experience is out of scope at first order). Alternate name: Fault to Restore (VSC-014, merged per CR-VS-05 RES-003).
 provenance:
   ladder_passage:
     - stage: candidate
