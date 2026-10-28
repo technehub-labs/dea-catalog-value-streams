@@ -1,4 +1,4 @@
-# Value Stream Catalog
+# OpenDEA Value Stream Catalog
 
 > An end-to-end collection of value-creating activities that deliver value to a consumer.
 
