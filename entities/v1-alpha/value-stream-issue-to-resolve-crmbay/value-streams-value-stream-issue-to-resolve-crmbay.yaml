@@ -1,31 +1,106 @@
 id: value-streams:value-stream-issue-to-resolve-crmbay
 type: ValueStream
 name: Issue to Resolve
-definition: >-
-  The end-to-end stream from a raised customer issue through diagnosis, corrective action, and confirmed resolution.
-version: 1.0.0
+definition: The end-to-end stream from a raised customer issue through diagnosis, corrective action, and
+  confirmed resolution.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  The customer's issue is resolved and trust is restored.
-entry_criterion: >-
-  A customer raises an issue or complaint.
-exit_criterion: >-
-  The issue is resolved and the customer is informed.
+outcome: The customer's issue is resolved and trust is restored.
+entry_criterion: A customer raises an issue or complaint.
+exit_criterion: The issue is resolved and the customer is informed.
 aggregated_capability_refs:
-  - capabilities:capability-customer-management-f3n8wb
-  - capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
 evidence:
   sources:
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-003 under CR-VS-03 (evidence at E3/high,
-    distinctness closed per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and exit, and from journeys (multi-channel experience is out of scope at first order). Alternate name: Fault to Restore (VSC-014, merged per CR-VS-05 RES-003).
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-003 under CR-VS-03 (evidence at E3/high, distinctness closed
+    per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and
+    exit, and from journeys (multi-channel experience is out of scope at first order). Alternate name:
+    Fault to Restore (VSC-014, merged per CR-VS-05 RES-003).'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-03'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-03
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Issue intake and triage
+  - Diagnosis and root-cause analysis
+  - Corrective action execution
+  - Resolution confirmation and closure
+  excludes:
+  - Order flows (Order to Cash)
+  - Contractual relationship management (Contract to Renewal)
+  - Multi-channel journey design (out of scope at first order)
+value_stages:
+- name: Intake Issue
+  definition: Capture and classify the customer issue or complaint.
+  entry_criterion: A customer raises an issue or complaint.
+  exit_criterion: The issue is logged and classified.
+  outcome: A visible, owned issue record.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Diagnose
+  definition: Investigate the issue and identify root cause.
+  entry_criterion: An owned issue record exists.
+  exit_criterion: Root cause is identified and corrective path chosen.
+  outcome: An understood cause and corrective plan.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+- name: Correct
+  definition: Execute the corrective action.
+  entry_criterion: A corrective plan exists.
+  exit_criterion: The corrective action is executed.
+  outcome: A restored customer situation.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Confirm Resolution
+  definition: Confirm resolution with the customer and close the record.
+  entry_criterion: The corrective action is executed.
+  exit_criterion: The issue is resolved and the customer is informed.
+  outcome: Restored trust and a closed issue.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-2jnz85
+upstream_refs:
+- slug: value-stream-order-to-cash
+  note: Issues typically arise after fulfillment of an order.
+- slug: value-stream-contract-to-renewal
+  note: Service issues surface during the contracted relationship.
+downstream_refs:
+- slug: value-stream-return-to-credit
+  note: Unresolved dissatisfaction can convert to a return.
+metrics:
+- name: Mean time to resolve
+  definition: Average elapsed time from issue intake to confirmed resolution.
+  applies_to_stage: Confirm Resolution
+- name: First-contact resolution rate
+  definition: Share of issues resolved without handoff or repeat contact.
+  applies_to_stage: Diagnose

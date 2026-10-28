@@ -1,34 +1,112 @@
 id: value-streams:value-stream-plan-to-deliver-smmwpx
 type: ValueStream
 name: Plan to Deliver
-definition: >-
-  The end-to-end stream from demand planning through production and delivery of products or services.
-version: 1.0.0
+definition: The end-to-end stream from demand planning through production and delivery of products or
+  services.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  Delivered supply against planned demand.
-entry_criterion: >-
-  Demand is forecast or an order backlog is planned.
-exit_criterion: >-
-  Product or service is delivered per the plan.
+outcome: Delivered supply against planned demand.
+entry_criterion: Demand is forecast or an order backlog is planned.
+exit_criterion: Product or service is delivered per the plan.
 aggregated_capability_refs:
-  - capabilities:capability-operations-management-pm3w8k
-  - capabilities:capability-strategic-planning-k3rz7a
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-strategic-planning-k3rz7a
 evidence:
   sources:
-    - SRC-002
-  rationale: >-
-    Admitted from candidate VSC-005 under CR-VS-04 (evidence raised E2 -> E3 via
-    register v0.2 extension; distinctness closed per CR-VS-02). Production chain (APQC plan-produce-deliver structure, SRC-002). Boundary vs. Order to Cash: fulfillment is shared vocabulary; this stream exits at delivery per plan, Order to Cash at payment recognition (CR-VS-02 boundary statement). Boundary vs. Plan to Forecast: the exit condition is the discriminator (delivery vs. ratified forecast).
+  - SRC-002
+  rationale: 'Admitted from candidate VSC-005 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2
+    extension; distinctness closed per CR-VS-02). Production chain (APQC plan-produce-deliver structure,
+    SRC-002). Boundary vs. Order to Cash: fulfillment is shared vocabulary; this stream exits at delivery
+    per plan, Order to Cash at payment recognition (CR-VS-02 boundary statement). Boundary vs. Plan to
+    Forecast: the exit condition is the discriminator (delivery vs. ratified forecast).'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-04'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: 'Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3)'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-04
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Demand planning and backlog planning
+  - Production scheduling
+  - Production execution
+  - Delivery per plan
+  excludes:
+  - Payment recognition (Order to Cash exits at payment)
+  - Forecast ratification (Plan to Forecast exits at a ratified forecast)
+  - Supplier settlement (Procure to Pay)
+value_stages:
+- name: Plan Demand
+  definition: Forecast demand or plan the order backlog.
+  entry_criterion: Demand is forecast or an order backlog exists.
+  exit_criterion: A committed delivery plan exists.
+  outcome: A committed delivery plan.
+  capability_refs:
+  - capabilities:capability-strategic-planning-k3rz7a
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  - processes:process-fa-build-92v24c
+  customer_visible: false
+- name: Schedule Production
+  definition: Translate the plan into a production schedule.
+  entry_criterion: A committed delivery plan exists.
+  exit_criterion: A production schedule is released.
+  outcome: A released production schedule.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Produce
+  definition: Execute production against the schedule.
+  entry_criterion: A released schedule exists.
+  exit_criterion: Products or services are produced per plan.
+  outcome: Produced supply.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Deliver
+  definition: Deliver the product or service per the plan.
+  entry_criterion: Produced supply exists.
+  exit_criterion: Product or service is delivered per the plan.
+  outcome: Delivered supply against planned demand.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: true
+process_refs:
+- processes:process-sd-build-2pkz5n
+- processes:process-fa-build-92v24c
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-zwzmbd
+upstream_refs:
+- slug: value-stream-plan-to-forecast
+  note: A ratified forecast or plan is the input to demand planning.
+downstream_refs:
+- slug: value-stream-order-to-cash
+  note: Delivered supply fulfills orders downstream.
+metrics:
+- name: Plan adherence
+  definition: Share of deliveries made per plan (volume and date).
+  applies_to_stage: Deliver
+- name: Production schedule attainment
+  definition: Share of scheduled production completed in period.
+  applies_to_stage: Produce

@@ -1,33 +1,110 @@
 id: value-streams:value-stream-return-to-credit-qan2dn
 type: ValueStream
 name: Return to Credit
-definition: >-
-  The end-to-end stream from initiation of a customer return through reverse logistics and settlement by refund, credit, or replacement.
-version: 1.0.0
+definition: The end-to-end stream from initiation of a customer return through reverse logistics and settlement
+  by refund, credit, or replacement.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  A fairly settled return with the customer relationship preserved.
-entry_criterion: >-
-  A customer initiates a return of goods or services.
-exit_criterion: >-
-  The return is settled (refund, credit, or replacement confirmed to the customer).
+outcome: A fairly settled return with the customer relationship preserved.
+entry_criterion: A customer initiates a return of goods or services.
+exit_criterion: The return is settled (refund, credit, or replacement confirmed to the customer).
 aggregated_capability_refs:
-  - capabilities:capability-customer-management-f3n8wb
-  - capabilities:capability-operations-management-pm3w8k
-  - capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-financial-stewardship-c7xtfk
 evidence:
   sources:
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-011 under CR-VS-05 (third tranche; evidence at E3/high
-    from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05
-    sweep). Mirrors Order to Cash: goods/value flow back; entry and exit are mirrored, not shared (CR-VS-05 sweep). Boundary vs. Contract to Renewal: settles a single transaction backwards vs. the relationship forwards (CR-VS-05 boundary statement).
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-011 under CR-VS-05 (third tranche; evidence at E3/high from
+    the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05 sweep). Mirrors Order
+    to Cash: goods/value flow back; entry and exit are mirrored, not shared (CR-VS-05 sweep). Boundary
+    vs. Contract to Renewal: settles a single transaction backwards vs. the relationship forwards (CR-VS-05
+    boundary statement).'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-05'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-05
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: operational
+scope:
+  includes:
+  - Return initiation and authorization
+  - Reverse logistics receipt
+  - Inspection and disposition
+  - Settlement (refund, credit, replacement)
+  excludes:
+  - Forward order flows (Order to Cash)
+  - Relationship-level renewal decisions (Contract to Renewal)
+  - Warranty strategy design (Offering Management capability)
+value_stages:
+- name: Initiate Return
+  definition: Authorize the customer's return initiation.
+  entry_criterion: A customer initiates a return of goods or services.
+  exit_criterion: The return is authorized.
+  outcome: An authorized return.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Receive Reverse Logistics
+  definition: Receive the returned goods through reverse logistics.
+  entry_criterion: A return is authorized.
+  exit_criterion: The goods are received back.
+  outcome: Received returned goods.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: true
+- name: Inspect and Dispose
+  definition: Inspect the return and determine disposition.
+  entry_criterion: The goods are received back.
+  exit_criterion: A disposition decision is made.
+  outcome: A settled disposition.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Settle Credit
+  definition: Settle by refund, credit, or replacement.
+  entry_criterion: A disposition decision exists.
+  exit_criterion: The return is settled (refund, credit, or replacement confirmed to the customer).
+  outcome: A fairly settled return with the relationship preserved.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: true
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-sdppmp
+- processes:process-fa-operate-g9zpnq
+upstream_refs:
+- slug: value-stream-order-to-cash
+  note: Returns mirror fulfilled orders; goods and value flow back.
+downstream_refs:
+- slug: value-stream-record-to-report
+  note: Credits and refunds are recorded as transactions.
+metrics:
+- name: Return cycle time
+  definition: Elapsed time from return initiation to settlement confirmation.
+  applies_to_stage: Settle Credit
+- name: Return rate
+  definition: Returns as a share of fulfilled orders in period.
+  applies_to_stage: Initiate Return

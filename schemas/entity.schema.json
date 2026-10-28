@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://technehub-labs.github.io/dea-catalog-value-streams/schemas/entity.schema.json",
   "title": "Value Stream Catalog Entry",
-  "description": "Schema for entries in technehub-labs/dea-catalog-value-streams. Mirrors the dea-metamodel dea:ValueStream entity schema (proposed CR-MET-014: core template plus outcome, customer_ref, entry_criterion, exit_criterion, aggregated_capability_refs) and carries catalog extensions per the org-wide catalog repository standard (CR-CATALOG-STRUCT-01).",
+  "description": "Schema for entries in technehub-labs/dea-catalog-value-streams. Mirrors the dea-metamodel dea:ValueStream entity schema (proposed CR-MET-014: core template plus outcome, customer_ref, entry_criterion, exit_criterion, aggregated_capability_refs) and carries catalog extensions per the org-wide catalog repository standard (CR-CATALOG-STRUCT-01). Extended under CR-VS-07 with value stages (each linked to business capabilities and business processes), stream categorisation, explicit scope, cross-stream links, and measurement hooks; cross-catalog refs (capabilities:, processes:) are referential-integrity-checked against the sibling catalog repos.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,6 +14,7 @@
     "outcome",
     "entry_criterion",
     "exit_criterion",
+    "value_stages",
     "evidence",
     "provenance"
   ],
@@ -54,6 +55,11 @@
       "enum": ["proposed", "planned", "active", "deprecated", "retired"],
       "description": "Upstream lifecycle vocabulary (dea-metamodel metamodel/vocabularies/lifecycle.yaml)."
     },
+    "value_stream_category": {
+      "type": "string",
+      "enum": ["operational", "support", "governance", "development"],
+      "description": "Classification of the stream along the BIZBOK-style operational / support / governance / development axis (SRC-001). Operational streams deliver value to external parties; support streams serve internal parties; governance streams discharge oversight; development streams build future operational capability."
+    },
     "outcome": {
       "type": "string",
       "maxLength": 2000,
@@ -62,7 +68,7 @@
     "customer_ref": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$",
-      "description": "The actor or stakeholder served by the stream. Record-side companion to the dea:served-by inverse of dea:serves (cardinality 0..*)."
+      "description": "The actor or stakeholder served by the stream. Record-side companion to the dea:served-by inverse of dea:serves (cardinality 0..*). Ids resolve against the dea-catalog-actors id space (referential-integrity-checked when populated with an actors: id)."
     },
     "entry_criterion": {
       "type": "string",
@@ -74,13 +80,115 @@
       "maxLength": 2000,
       "description": "The condition that confirms value has been delivered."
     },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["includes"],
+      "properties": {
+        "includes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1, "maxLength": 500},
+          "description": "In-scope activities and concerns of the stream."
+        },
+        "excludes": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1, "maxLength": 500},
+          "description": "Explicitly out-of-scope concerns, each naming the neighbour concept that owns them (boundary discipline per the CR-VS-02/CR-VS-05 sweeps)."
+        }
+      },
+      "description": "Explicit inclusion/exclusion boundary of the stream, complementing the free-text definition."
+    },
+    "value_stages": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Ordered sequence of value stages composing the stream. Array order is flow order: stage i+1 follows stage i; the first stage implements entry_criterion and the last implements exit_criterion. Each stage is linked referentially to the business capabilities that enable it and the business processes that realize it.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "definition", "entry_criterion", "exit_criterion", "outcome", "capability_refs"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1, "maxLength": 200},
+          "definition": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "What happens in this stage and why it creates value."},
+          "entry_criterion": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "Condition that must hold for the stage to start (stage gate)."},
+          "exit_criterion": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "Condition that confirms the stage is complete."},
+          "outcome": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "The increment of value the stage delivers to the served party."},
+          "customer_visible": {"type": "boolean", "description": "Whether the stage is visible to the served party (true) or internal (false). Defaults to the stream-level served party when omitted."},
+          "capability_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "pattern": "^capabilities:capability-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"},
+            "description": "Business capabilities enabling the stage. Ids resolve against the dea-catalog-business-capabilities id space (referential-integrity-checked)."
+          },
+          "process_refs": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^processes:(process|pc|group|activity|task)-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"},
+            "description": "Business processes realizing the stage. Ids resolve against the dea-catalog-business-processes id space (referential-integrity-checked)."
+          },
+          "actor_refs": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
+            "description": "Actors participating in the stage (dea:flows-to partner role). Referential-integrity-checked against dea-catalog-actors when populated with an actors: id."
+          }
+        }
+      }
+    },
     "aggregated_capability_refs": {
       "type": "array",
       "items": {
         "type": "string",
         "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"
       },
-      "description": "Capabilities the stream spans. Record-side companion to dea:aggregates (source side, cardinality 0..*). Ids resolve against the dea-catalog-business-capabilities id space."
+      "description": "Capabilities the stream spans (the union of the per-stage capability_refs). Record-side companion to dea:aggregates (source side, cardinality 0..*). Ids resolve against the dea-catalog-business-capabilities id space."
+    },
+    "process_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^processes:(process|pc|group|activity|task)-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"
+      },
+      "description": "Business processes realizing the stream as a whole (the union of the per-stage process_refs). Ids resolve against the dea-catalog-business-processes id space (referential-integrity-checked)."
+    },
+    "upstream_refs": {
+      "type": "array",
+      "description": "Streams whose exit feeds this stream's entry. Entries reference sibling streams by slug (id minus namespace prefix and content hash) so that hash changes in the sibling record do not break referential integrity.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug"],
+        "properties": {
+          "slug": {"type": "string", "pattern": "^value-stream-[a-z0-9-]+$"},
+          "note": {"type": "string", "maxLength": 500, "description": "What crosses the boundary between the streams."}
+        }
+      }
+    },
+    "downstream_refs": {
+      "type": "array",
+      "description": "Streams whose entry is fed by this stream's exit. Slug-based, as upstream_refs.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug"],
+        "properties": {
+          "slug": {"type": "string", "pattern": "^value-stream-[a-z0-9-]+$"},
+          "note": {"type": "string", "maxLength": 500, "description": "What crosses the boundary between the streams."}
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "description": "Performance metrics attached to the stream or its stages. Record-side companion to dea:measured-by; metric ids resolve against the dea-catalog-metrics id space when the metric is catalogued there (referential-integrity-checked).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "definition"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1, "maxLength": 200},
+          "definition": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "How the metric is computed and what good looks like."},
+          "applies_to_stage": {"type": "string", "maxLength": 200, "description": "Name of the value stage the metric measures; omit for stream-level metrics. Must match a value_stages[].name when present."},
+          "metric_ref": {"type": "string", "pattern": "^metrics:[a-z0-9-]+(-[abcdefghjkmnpqrstuvwxyz23456789]{6})?$", "description": "Catalogued PerformanceMetric id (dea-catalog-metrics) when one exists."}
+        }
+      }
     },
     "external_references": {
       "type": "array",

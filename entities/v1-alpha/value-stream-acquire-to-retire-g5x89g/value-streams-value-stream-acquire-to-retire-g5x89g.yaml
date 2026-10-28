@@ -1,33 +1,113 @@
 id: value-streams:value-stream-acquire-to-retire-g5x89g
 type: ValueStream
 name: Acquire to Retire
-definition: >-
-  The end-to-end asset-lifecycle stream from identification of an internal asset need through acquisition, use, and disposal.
-version: 1.0.0
+definition: The end-to-end asset-lifecycle stream from identification of an internal asset need through
+  acquisition, use, and disposal.
+version: 1.1.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
-outcome: >-
-  Assets productively used across their lifecycle and cleanly retired.
-entry_criterion: >-
-  An asset need is identified for the enterprise's own use.
-exit_criterion: >-
-  The asset is disposed and its lifecycle obligations are closed.
+outcome: Assets productively used across their lifecycle and cleanly retired.
+entry_criterion: An asset need is identified for the enterprise's own use.
+exit_criterion: The asset is disposed and its lifecycle obligations are closed.
 aggregated_capability_refs:
-  - capabilities:capability-asset-management-judtwr
-  - capabilities:capability-sourcing-and-procurement-esucp4
-  - capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-asset-management-judtwr
+- capabilities:capability-sourcing-and-procurement-esucp4
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-financial-stewardship-c7xtfk
 evidence:
   sources:
-    - SRC-006
-  rationale: >-
-    Admitted from candidate VSC-013 under CR-VS-05 (third tranche; evidence at E3/high
-    from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05
-    sweep). Asset-lifecycle chain; served party is the internal asset custodian. Boundary vs. Procure to Pay: supplier settlement vs. asset disposal (CR-VS-05 boundary statement). Boundary vs. Hire to Retire: assets vs. people as the lifecycle object.
+  - SRC-006
+  rationale: 'Admitted from candidate VSC-013 under CR-VS-05 (third tranche; evidence at E3/high from
+    the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05 sweep). Asset-lifecycle
+    chain; served party is the internal asset custodian. Boundary vs. Procure to Pay: supplier settlement
+    vs. asset disposal (CR-VS-05 boundary statement). Boundary vs. Hire to Retire: assets vs. people as
+    the lifecycle object.'
 provenance:
   ladder_passage:
-    - stage: candidate
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)'
-    - stage: admitted
-      date: '2026-10-27'
-      actor: 'Emmanuel A. Otchere, admission CR-VS-05'
+  - stage: candidate
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3)
+  - stage: admitted
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, admission CR-VS-05
+  - stage: active
+    date: '2026-10-27'
+    actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+value_stream_category: support
+scope:
+  includes:
+  - Internal asset need identification
+  - Asset acquisition
+  - Asset operation and maintenance
+  - Disposal and obligation closure
+  excludes:
+  - Supplier settlement (Procure to Pay)
+  - People lifecycle (Hire to Retire)
+  - Production execution as such (Plan to Deliver)
+value_stages:
+- name: Identify Asset Need
+  definition: Identify the internal asset need.
+  entry_criterion: An asset need is identified for the enterprise's own use.
+  exit_criterion: The need is approved for acquisition.
+  outcome: An approved asset acquisition case.
+  capability_refs:
+  - capabilities:capability-asset-management-judtwr
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: Acquire Asset
+  definition: Acquire the asset.
+  entry_criterion: An acquisition case is approved.
+  exit_criterion: The asset is received and capitalized.
+  outcome: A capitalized asset in service.
+  capability_refs:
+  - capabilities:capability-asset-management-judtwr
+  - capabilities:capability-sourcing-and-procurement-esucp4
+  process_refs:
+  - processes:process-eo-operate-vzcxx7
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: false
+- name: Operate and Maintain
+  definition: Operate and maintain the asset productively.
+  entry_criterion: The asset is in service.
+  exit_criterion: The asset is productively used across its lifecycle.
+  outcome: Productive asset use.
+  capability_refs:
+  - capabilities:capability-asset-management-judtwr
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Retire Asset
+  definition: Dispose the asset and close lifecycle obligations.
+  entry_criterion: The asset reaches end of useful life.
+  exit_criterion: The asset is disposed and its lifecycle obligations are closed.
+  outcome: Cleanly retired assets.
+  capability_refs:
+  - capabilities:capability-asset-management-judtwr
+  - capabilities:capability-financial-stewardship-c7xtfk
+  process_refs:
+  - processes:process-eo-retire-rpg6d4
+  customer_visible: false
+process_refs:
+- processes:process-fa-conceive-4uqqvg
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-j9cjzz
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-retire-rpg6d4
+upstream_refs:
+- slug: value-stream-procure-to-pay
+  note: Procured assets enter the asset lifecycle at receipt.
+downstream_refs:
+- slug: value-stream-record-to-report
+  note: Asset depreciation and disposal are recorded as transactions.
+metrics:
+- name: Asset utilization
+  definition: Productive use as a share of available asset capacity.
+  applies_to_stage: Operate and Maintain
+- name: Time to retire
+  definition: Elapsed time from retirement decision to obligation closure.
+  applies_to_stage: Retire Asset
