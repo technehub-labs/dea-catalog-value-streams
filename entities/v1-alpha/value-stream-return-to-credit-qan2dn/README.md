@@ -1,6 +1,6 @@
 # Return to Credit
 
-Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2dn`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2dn`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2d
 | Canonical ID | `value-streams:value-stream-return-to-credit-qan2dn` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-return-to-credit-qan2dn.yaml`](./value-streams-value-stream-return-to-credit-qan2dn.yaml) — authoritative |
 
@@ -126,7 +126,7 @@ Settle by refund, credit, or replacement.
 ## 8. Measurement
 
 - **Return cycle time** (stage: Settle Credit) — Elapsed time from return initiation to settlement confirmation.
-- **Return rate** (stage: Initiate Return) — Returns as a share of fulfilled orders in period.
+- **Return rate** (stage: Initiate Return) — Returns as a share of fulfilled orders in period. → [`dea:metric-return-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -141,6 +141,7 @@ Settle by refund, credit, or replacement.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-05 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

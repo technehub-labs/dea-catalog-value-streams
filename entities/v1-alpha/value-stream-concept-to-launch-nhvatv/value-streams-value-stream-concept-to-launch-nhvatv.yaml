@@ -3,7 +3,7 @@ type: ValueStream
 name: Concept to Launch
 definition: The end-to-end stream from approval of an offering concept through development and launch
   to its market.
-version: 1.1.0
+version: 1.2.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: A launched offering delivering value to its intended market.
@@ -35,6 +35,9 @@ provenance:
   - stage: active
     date: '2026-10-27'
     actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
 value_stream_category: operational
 scope:
   includes:

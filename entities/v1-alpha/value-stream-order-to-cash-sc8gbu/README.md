@@ -1,6 +1,6 @@
 # Order to Cash
 
-Admitted Value Stream record (`value-streams:value-stream-order-to-cash-sc8gbu`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-order-to-cash-sc8gbu`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-order-to-cash-sc8gbu`,
 | Canonical ID | `value-streams:value-stream-order-to-cash-sc8gbu` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-order-to-cash-sc8gbu.yaml`](./value-streams-value-stream-order-to-cash-sc8gbu.yaml) — authoritative |
 
@@ -129,8 +129,8 @@ Invoice the fulfilled order and recognize payment against it.
 ## 8. Measurement
 
 - **Order-to-cash cycle time** (stage: Invoice and Settle) — Elapsed time from order acceptance to payment recognition; shorter is better.
-- **Perfect order rate** (stage: Fulfill Order) — Share of orders delivered complete, on time, with accurate documentation.
-- **Days sales outstanding** (stage: Invoice and Settle) — Average days from invoice to collected payment.
+- **Perfect order rate** (stage: Fulfill Order) — Share of orders delivered complete, on time, with accurate documentation. → [`dea:metric-perfect-order-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
+- **Days sales outstanding** (stage: Invoice and Settle) — Average days from invoice to collected payment. → [`dea:metric-days-sales-outstanding`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -145,6 +145,7 @@ Invoice the fulfilled order and recognize payment against it.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-03 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

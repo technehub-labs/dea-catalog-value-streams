@@ -50,7 +50,24 @@ SIBLINGS = {
 ID_SET_SNAPSHOTS = {
     "capabilities": REPO / "tools" / "id-sets" / "business-capabilities-ids.txt",
     "processes": REPO / "tools" / "id-sets" / "business-processes-ids.txt",
+    "metrics": REPO / "tools" / "id-sets" / "metrics-ids.txt",
 }
+
+
+def namespace_of(ref: str) -> str:
+    """Namespace key for a reference. Normalizes the sibling catalogs'
+    legacy `dea:<level>-*` id form onto the level's namespace key so both
+    the org-wide form (`metrics:<slug>`) and the legacy form
+    (`dea:metric-<slug>`) resolve against the same id universe (CR-VS-08
+    \u00a72.2).
+    """
+    ns, _, rest = ref.partition(":")
+    if ns == "dea":
+        first = rest.split("-", 1)[0]
+        if first in ("metric",):
+            return "metrics"
+        return ns
+    return ns
 
 NS_OF_INTEREST = ("capabilities", "processes", "metrics", "actors")
 
@@ -110,11 +127,18 @@ def load_id_set(namespace: str, errors: list[str]) -> set[str] | None:
             return ids
     snapshot = ID_SET_SNAPSHOTS.get(namespace)
     if snapshot is not None and snapshot.is_file():
-        return {
-            line.strip().lstrip("id: ")
-            for line in snapshot.read_text(encoding="utf-8").splitlines()
-            if line.strip() and not line.startswith("#")
-        }
+        ids: set[str] = set()
+        for line in snapshot.read_text(encoding="utf-8").splitlines():
+            entry = line.strip()
+            if not entry or entry.startswith("#"):
+                continue
+            # Tolerate an optional `id: ` prefix without mangling ids whose
+            # first character appears in the prefix set (lstrip would strip
+            # the leading `d` of `dea:metric-*` refs; CR-VS-08 §2.2).
+            if entry.startswith("id: "):
+                entry = entry[len("id: "):]
+            ids.add(entry)
+        return ids
     return None
 
 
@@ -190,7 +214,7 @@ def main() -> int:
             continue
         records[f] = data
         for _, ref in refs_in(data):
-            ns = ref.split(":", 1)[0]
+            ns = namespace_of(ref)
             if ns in used:
                 used[ns].add(ref)
 
@@ -224,7 +248,7 @@ def main() -> int:
 
     for f, data in records.items():
         for loc, ref in refs_in(data):
-            ns = ref.split(":", 1)[0]
+            ns = namespace_of(ref)
             if ns in universes and universes[ns] is not None and ref not in universes[ns]:
                 print(f"  \u2717 {f}: unresolved {ns} reference at {loc}: {ref}")
                 failures += 1

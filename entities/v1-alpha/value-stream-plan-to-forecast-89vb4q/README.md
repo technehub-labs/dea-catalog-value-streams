@@ -1,6 +1,6 @@
 # Plan to Forecast
 
-Admitted Value Stream record (`value-streams:value-stream-plan-to-forecast-89vb4q`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-plan-to-forecast-89vb4q`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-plan-to-forecast-89vb4
 | Canonical ID | `value-streams:value-stream-plan-to-forecast-89vb4q` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | governance |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-plan-to-forecast-89vb4q.yaml`](./value-streams-value-stream-plan-to-forecast-89vb4q.yaml) — authoritative |
 
@@ -125,7 +125,7 @@ Ratify the committed forecast or budget.
 
 ## 8. Measurement
 
-- **Forecast accuracy** (stage: Ratify Forecast) — Deviation of committed forecast from actuals in the period.
+- **Forecast accuracy** (stage: Ratify Forecast) — Deviation of committed forecast from actuals in the period. → [`dea:metric-cash-forecast-accuracy`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Planning cycle length** (stage: Ratify Forecast) — Elapsed time from cycle open to ratification.
 
 ## 9. Evidence and admission
@@ -142,6 +142,7 @@ Ratify the committed forecast or budget.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-04 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

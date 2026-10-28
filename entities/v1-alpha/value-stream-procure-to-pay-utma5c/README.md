@@ -1,6 +1,6 @@
 # Procure to Pay
 
-Admitted Value Stream record (`value-streams:value-stream-procure-to-pay-utma5c`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-procure-to-pay-utma5c`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-procure-to-pay-utma5c`
 | Canonical ID | `value-streams:value-stream-procure-to-pay-utma5c` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-procure-to-pay-utma5c.yaml`](./value-streams-value-stream-procure-to-pay-utma5c.yaml) — authoritative |
 
@@ -123,8 +123,8 @@ Match, approve, and pay the supplier invoice.
 
 ## 8. Measurement
 
-- **Procure-to-pay cycle time** (stage: Settle Supplier) — Elapsed time from requisition approval to supplier payment.
-- **Invoice match rate** (stage: Settle Supplier) — Share of supplier invoices matched to PO and receipt without exception.
+- **Procure-to-pay cycle time** (stage: Settle Supplier) — Elapsed time from requisition approval to supplier payment. → [`dea:metric-invoice-processing-cycle-time`](https://github.com/technehub-labs/dea-catalog-metrics)
+- **First-time match rate** (stage: Settle Supplier) — Share of supplier invoices matched to PO and receipt without exception. → [`dea:metric-first-time-match-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -139,6 +139,7 @@ Match, approve, and pay the supplier invoice.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-03 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

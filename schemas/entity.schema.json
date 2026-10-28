@@ -186,7 +186,7 @@
           "name": {"type": "string", "minLength": 1, "maxLength": 200},
           "definition": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "How the metric is computed and what good looks like."},
           "applies_to_stage": {"type": "string", "maxLength": 200, "description": "Name of the value stage the metric measures; omit for stream-level metrics. Must match a value_stages[].name when present."},
-          "metric_ref": {"type": "string", "pattern": "^metrics:[a-z0-9-]+(-[abcdefghjkmnpqrstuvwxyz23456789]{6})?$", "description": "Catalogued PerformanceMetric id (dea-catalog-metrics) when one exists."}
+          "metric_ref": {"type": "string", "pattern": "^(metrics:[a-z0-9-]+(-[abcdefghjkmnpqrstuvwxyz23456789]{6})?|dea:metric-[a-z0-9-]+)$", "description": "Catalogued PerformanceMetric id (dea-catalog-metrics) when one exists. Admits the org-wide metrics: namespace form and the sibling catalog's legacy dea:metric-* id form (CR-VS-08 \u00a72.1); legacy refs are rewritten if the metrics catalog migrates to the org-wide id system."}
         }
       }
     },

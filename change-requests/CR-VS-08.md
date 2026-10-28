@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | Proposed (this document) |
+| Status | Executed (this document) |
 | Target repository | `technehub-labs/dea-catalog-value-streams` |
 | Author | Emmanuel A. Otchere |
 | Date | 2026-10-28 |
@@ -105,7 +105,34 @@ resolution), concept-to-launch lead time, procure-to-pay end-to-end cycle
 time, production schedule attainment, planning-cycle length,
 return-cycle-time, and time-to-retire (asset disposition).
 
-## 5. Verification plan
+## 5. Verification (execution record)
+
+- Schema validation: all 11 records + fixture pass with populated
+  `metric_ref` values (pattern relaxed per §2.1). Executed: 12/12 pass.
+- `scripts/check_referential_integrity.py`: pass with the metrics namespace
+  active — both snapshot (offline) and live-clone resolution. Executed:
+  14 populated refs, 0 unresolved against the vendored snapshot and the
+  live `dea-catalog-metrics` clone.
+- Every `metric_ref` in §2.3 resolving to an existing
+  `dea-catalog-metrics` record. Executed: scripted check against the
+  sibling clone — none missing.
+- CATALOG.yaml regenerated (record versions bumped 1.1.0 → 1.2.0);
+  `catalog-conformance` green. Executed: `--check` OK, index OK (11 entities).
+
+Execution notes:
+- 14 links populated (the §2.3 map's 15th row — Order to Cash
+  end-to-end cycle time — stays unlinked; the catalogued
+  `dea:metric-invoice-processing-cycle-time` covers only the invoice leg).
+- Both alignment renames applied (Invoice match rate → First-time
+  match rate; Voluntary attrition rate → Voluntary turnover rate);
+  Asset utilization → Asset utilization rate aligned to the
+  catalogued metric name.
+- Gate fix included: the snapshot loader used `lstrip("id: ")`, which
+  mangled `dea:metric-*` entries (stripping the leading `d`); replaced
+  with an exact-prefix strip. Also fixes a latent bug for any future id
+  starting with `i`, `d`, `:`, or space in the org-wide snapshots.
+
+## 6. Original verification plan
 
 - Schema validation: all 11 records + fixture pass with populated
   `metric_ref` values (pattern relaxed per §2.1).

@@ -3,7 +3,7 @@ type: ValueStream
 name: Return to Credit
 definition: The end-to-end stream from initiation of a customer return through reverse logistics and settlement
   by refund, credit, or replacement.
-version: 1.1.0
+version: 1.2.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: A fairly settled return with the customer relationship preserved.
@@ -32,6 +32,9 @@ provenance:
   - stage: active
     date: '2026-10-27'
     actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
 value_stream_category: operational
 scope:
   includes:
@@ -108,3 +111,4 @@ metrics:
 - name: Return rate
   definition: Returns as a share of fulfilled orders in period.
   applies_to_stage: Initiate Return
+  metric_ref: dea:metric-return-rate

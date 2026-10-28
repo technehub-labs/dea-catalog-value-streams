@@ -1,6 +1,6 @@
 # Record to Report
 
-Admitted Value Stream record (`value-streams:value-stream-record-to-report-zw9z2r`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-record-to-report-zw9z2r`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-record-to-report-zw9z2
 | Canonical ID | `value-streams:value-stream-record-to-report-zw9z2r` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | governance |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-record-to-report-zw9z2r.yaml`](./value-streams-value-stream-record-to-report-zw9z2r.yaml) — authoritative |
 
@@ -125,8 +125,8 @@ Publish results to stakeholders.
 
 ## 8. Measurement
 
-- **Close cycle time** (stage: Close Period) — Elapsed days from period end to attested close.
-- **Restatement rate** (stage: Report) — Count of restatements per reporting year; zero is the target.
+- **Close cycle time** (stage: Close Period) — Elapsed days from period end to attested close. → [`dea:metric-financial-close-cycle-time`](https://github.com/technehub-labs/dea-catalog-metrics)
+- **Restatement rate** (stage: Report) — Count of restatements per reporting year; zero is the target. → [`dea:metric-financial-restatement-count`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -142,6 +142,7 @@ Publish results to stakeholders.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-04 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

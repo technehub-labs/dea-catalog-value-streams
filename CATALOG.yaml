@@ -27,7 +27,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-concept-to-launch-nhvatv
@@ -38,7 +38,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-contract-to-renewal-5x3r4x
@@ -49,7 +49,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-hire-to-retire-n6szcc
@@ -60,7 +60,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-issue-to-resolve-crmbay
@@ -71,7 +71,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-order-to-cash-sc8gbu
@@ -82,7 +82,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-deliver-smmwpx
@@ -93,7 +93,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-forecast-89vb4q
@@ -104,7 +104,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-procure-to-pay-utma5c
@@ -115,7 +115,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-record-to-report-zw9z2r
@@ -126,7 +126,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-return-to-credit-qan2dn
@@ -137,7 +137,7 @@ catalog:
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.1.0
+    version: 1.2.0
   id: dea:catalog-value-streams
   metamodel_version: 1.0.0
   name: Value Stream

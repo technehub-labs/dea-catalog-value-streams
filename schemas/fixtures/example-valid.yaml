@@ -62,6 +62,7 @@ metrics:
   - name: Fixture stage metric
     definition: Fixture stage metric computation.
     applies_to_stage: Fixture Stage One
+    metric_ref: dea:metric-perfect-order-rate
 external_references:
   - system: fixture
     identifier: FX-001

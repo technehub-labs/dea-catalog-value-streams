@@ -5,6 +5,29 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 5 — metric backfill executed (CR-VS-08)
+
+- `metrics[].metric_ref` populated in all 11 records per the verified
+  backfill map: 14 links to `dea-catalog-metrics` (legacy `dea:metric-*`
+  id form), e.g. `dea:metric-perfect-order-rate`,
+  `dea:metric-days-sales-outstanding`, `dea:metric-time-to-hire`,
+  `dea:metric-financial-close-cycle-time`, `dea:metric-net-revenue-retention`.
+- Alignment renames: Invoice match rate -> First-time match rate;
+  Voluntary attrition rate -> Voluntary turnover rate; Asset utilization
+  -> Asset utilization rate (matching the catalogued metric names).
+- Schema: `metric_ref` pattern admits both the org-wide `metrics:` form
+  and the sibling's legacy `dea:metric-*` form.
+- Referential-integrity gate: metrics namespace activated
+  (`namespace_of` normalization maps `dea:metric-*` onto the metrics id
+  universe); vendored scoped snapshot `tools/id-sets/metrics-ids.txt`
+  (14 ids, fail-closed per CR-VS-10's scope policy); snapshot-loader bug
+  fixed (`lstrip("id: ")` mangled `dea:...` entries).
+- Records bumped 1.1.0 -> 1.2.0 with a CR-VS-08 provenance entry
+  (ids/dirs/filenames unchanged); per-entity READMEs re-rendered with
+  metric links; fixture extended with a legacy-form `metric_ref`.
+  CATALOG.yaml regenerated.
+
+
 ### Follow-up CRs drafted (CR-VS-08..10)
 
 - **CR-VS-08** (metric backfill): populate `metrics[].metric_ref` where

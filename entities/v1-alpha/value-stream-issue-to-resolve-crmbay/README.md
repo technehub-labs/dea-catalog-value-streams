@@ -1,6 +1,6 @@
 # Issue to Resolve
 
-Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmbay`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmbay`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmba
 | Canonical ID | `value-streams:value-stream-issue-to-resolve-crmbay` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-issue-to-resolve-crmbay.yaml`](./value-streams-value-stream-issue-to-resolve-crmbay.yaml) — authoritative |
 
@@ -124,7 +124,7 @@ Confirm resolution with the customer and close the record.
 ## 8. Measurement
 
 - **Mean time to resolve** (stage: Confirm Resolution) — Average elapsed time from issue intake to confirmed resolution.
-- **First-contact resolution rate** (stage: Diagnose) — Share of issues resolved without handoff or repeat contact.
+- **First-contact resolution rate** (stage: Diagnose) — Share of issues resolved without handoff or repeat contact. → [`dea:metric-first-contact-resolution`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -139,6 +139,7 @@ Confirm resolution with the customer and close the record.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-03 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 
