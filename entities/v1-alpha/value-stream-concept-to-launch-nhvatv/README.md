@@ -1,6 +1,6 @@
 # Concept to Launch
 
-Admitted Value Stream record (`value-streams:value-stream-concept-to-launch-nhvatv`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-concept-to-launch-nhvatv`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-concept-to-launch-nhva
 | Canonical ID | `value-streams:value-stream-concept-to-launch-nhvatv` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-concept-to-launch-nhvatv.yaml`](./value-streams-value-stream-concept-to-launch-nhvatv.yaml) — authoritative |
 
@@ -138,6 +138,7 @@ Release the offering to its market.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-04 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

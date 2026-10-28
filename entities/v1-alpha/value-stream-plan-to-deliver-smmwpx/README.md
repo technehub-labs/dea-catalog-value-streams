@@ -1,6 +1,6 @@
 # Plan to Deliver
 
-Admitted Value Stream record (`value-streams:value-stream-plan-to-deliver-smmwpx`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-plan-to-deliver-smmwpx`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-plan-to-deliver-smmwpx
 | Canonical ID | `value-streams:value-stream-plan-to-deliver-smmwpx` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-plan-to-deliver-smmwpx.yaml`](./value-streams-value-stream-plan-to-deliver-smmwpx.yaml) — authoritative |
 
@@ -124,7 +124,7 @@ Deliver the product or service per the plan.
 
 ## 8. Measurement
 
-- **Plan adherence** (stage: Deliver) — Share of deliveries made per plan (volume and date).
+- **Plan adherence** (stage: Deliver) — Share of deliveries made per plan (volume and date). → [`dea:metric-on-time-delivery-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Production schedule attainment** (stage: Produce) — Share of scheduled production completed in period.
 
 ## 9. Evidence and admission
@@ -141,6 +141,7 @@ Deliver the product or service per the plan.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, evidence raised E2 -> E3 (CR-VS-04, register v0.2) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-04 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

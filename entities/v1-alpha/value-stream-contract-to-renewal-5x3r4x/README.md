@@ -1,6 +1,6 @@
 # Contract to Renewal
 
-Admitted Value Stream record (`value-streams:value-stream-contract-to-renewal-5x3r4x`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-contract-to-renewal-5x3r4x`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-contract-to-renewal-5x
 | Canonical ID | `value-streams:value-stream-contract-to-renewal-5x3r4x` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-contract-to-renewal-5x3r4x.yaml`](./value-streams-value-stream-contract-to-renewal-5x3r4x.yaml) — authoritative |
 
@@ -124,7 +124,7 @@ Settle the renewal decision.
 
 ## 8. Measurement
 
-- **Net revenue retention** (stage: Settle Renewal) — Retained and expanded contract value relative to expiring value.
+- **Net revenue retention** (stage: Settle Renewal) — Retained and expanded contract value relative to expiring value. → [`dea:metric-net-revenue-retention`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **On-time renewal rate** (stage: Settle Renewal) — Share of renewals settled before term expiry.
 
 ## 9. Evidence and admission
@@ -140,6 +140,7 @@ Settle the renewal decision.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.4 (CR-VS-05, register v0.3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-05 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 

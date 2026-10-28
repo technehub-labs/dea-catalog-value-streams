@@ -1,0 +1,19 @@
+# Vendored id snapshot: dea-catalog-metrics (entities/v1-alpha).
+# Scoped subset per CR-VS-08 section 2.2: covers every metric this catalog references
+# (~15 ids) rather than the full ~3.9k-record catalog; the gate fails closed,
+# so under-scoping surfaces as a CI failure, never a silent pass.
+# Last refreshed: 2026-10-28
+dea:metric-perfect-order-rate
+dea:metric-days-sales-outstanding
+dea:metric-first-time-match-rate
+dea:metric-invoice-processing-cycle-time
+dea:metric-first-contact-resolution
+dea:metric-on-time-delivery-rate
+dea:metric-time-to-hire
+dea:metric-voluntary-turnover-rate
+dea:metric-cash-forecast-accuracy
+dea:metric-financial-close-cycle-time
+dea:metric-financial-restatement-count
+dea:metric-net-revenue-retention
+dea:metric-return-rate
+dea:metric-asset-utilization-rate

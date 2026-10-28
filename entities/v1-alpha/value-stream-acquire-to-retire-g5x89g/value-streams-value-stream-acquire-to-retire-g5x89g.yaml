@@ -3,7 +3,7 @@ type: ValueStream
 name: Acquire to Retire
 definition: The end-to-end asset-lifecycle stream from identification of an internal asset need through
   acquisition, use, and disposal.
-version: 1.1.0
+version: 1.2.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: Assets productively used across their lifecycle and cleanly retired.
@@ -34,6 +34,9 @@ provenance:
   - stage: active
     date: '2026-10-27'
     actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
 value_stream_category: support
 scope:
   includes:
@@ -105,9 +108,10 @@ downstream_refs:
 - slug: value-stream-record-to-report
   note: Asset depreciation and disposal are recorded as transactions.
 metrics:
-- name: Asset utilization
+- name: Asset utilization rate
   definition: Productive use as a share of available asset capacity.
   applies_to_stage: Operate and Maintain
+  metric_ref: dea:metric-asset-utilization-rate
 - name: Time to retire
   definition: Elapsed time from retirement decision to obligation closure.
   applies_to_stage: Retire Asset

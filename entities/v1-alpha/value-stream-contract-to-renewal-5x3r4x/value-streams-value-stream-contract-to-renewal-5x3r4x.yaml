@@ -3,7 +3,7 @@ type: ValueStream
 name: Contract to Renewal
 definition: The end-to-end post-sale relationship stream from contract execution through service of the
   relationship to the renewal decision.
-version: 1.1.0
+version: 1.2.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: A continuous, explicitly settled customer relationship.
@@ -34,6 +34,9 @@ provenance:
   - stage: active
     date: '2026-10-27'
     actor: Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
 value_stream_category: operational
 scope:
   includes:
@@ -106,6 +109,7 @@ metrics:
 - name: Net revenue retention
   definition: Retained and expanded contract value relative to expiring value.
   applies_to_stage: Settle Renewal
+  metric_ref: dea:metric-net-revenue-retention
 - name: On-time renewal rate
   definition: Share of renewals settled before term expiry.
   applies_to_stage: Settle Renewal

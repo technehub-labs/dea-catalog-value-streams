@@ -1,6 +1,6 @@
 # Hire to Retire
 
-Admitted Value Stream record (`value-streams:value-stream-hire-to-retire-n6szcc`, v1.1.0, active).
+Admitted Value Stream record (`value-streams:value-stream-hire-to-retire-n6szcc`, v1.2.0, active).
 
 ## 1. Identity
 
@@ -9,7 +9,7 @@ Admitted Value Stream record (`value-streams:value-stream-hire-to-retire-n6szcc`
 | Canonical ID | `value-streams:value-stream-hire-to-retire-n6szcc` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | support |
-| Version / status | 1.1.0 · active |
+| Version / status | 1.2.0 · active |
 | Metamodel pin | 1.0.0 |
 | Record | [`value-streams-value-stream-hire-to-retire-n6szcc.yaml`](./value-streams-value-stream-hire-to-retire-n6szcc.yaml) — authoritative |
 
@@ -122,8 +122,8 @@ End the employment relationship and settle obligations.
 
 ## 8. Measurement
 
-- **Time to hire** (stage: Hire) — Elapsed days from requisition approval to hire acceptance.
-- **Voluntary attrition rate** (stage: Separate) — Share of workforce separating voluntarily in period.
+- **Time to hire** (stage: Hire) — Elapsed days from requisition approval to hire acceptance. → [`dea:metric-time-to-hire`](https://github.com/technehub-labs/dea-catalog-metrics)
+- **Voluntary turnover rate** (stage: Separate) — Share of workforce separating voluntarily in period. → [`dea:metric-voluntary-turnover-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
 
 ## 9. Evidence and admission
 
@@ -138,6 +138,7 @@ End the employment relationship and settle obligations.
 | candidate | 2026-10-27 | Emmanuel A. Otchere, candidate universe v0.1 (CR-VS-01, PR #3) |
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-03 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
 
 ---
 
