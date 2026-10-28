@@ -142,7 +142,7 @@ catalog:
   metamodel_version: 1.0.0
   name: Value Stream
   owner: TechNeHub Labs
-  repository: https://github.com/technehub-labs/dea-catalog-value-streams
+  repository: https://github.com/technehub-labs/dea-catalog-value-streams.git
   research_registers:
   - entity_id: value-streams:value-stream-acquire-to-retire-g5x89g
     files: []
