@@ -5,6 +5,28 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Follow-up CRs drafted (CR-VS-08..10)
+
+- **CR-VS-08** (metric backfill): populate `metrics[].metric_ref` where
+  `dea-catalog-metrics` carries the measure — verified backfill map (15
+  links, e.g. `dea:metric-perfect-order-rate`, `dea:metric-time-to-hire`);
+  relax the `metric_ref` pattern to admit the sibling's legacy
+  `dea:metric-*` id form; activate the metrics namespace in the
+  referential-integrity gate with a scoped id snapshot. Catalogued-metric
+  gaps (generic MTTR, concept-to-launch lead time, P2P cycle time, ...)
+  recorded as a follow-on register for the metrics catalog's pipeline.
+- **CR-VS-09** (served-party backfill): `customer_ref` + per-stage
+  `actor_refs` population in all 11 records — dependency-gated on
+  `dea-catalog-actors` (currently empty) admitting the generic party
+  records; required-actor mapping table recorded in the CR.
+- **CR-VS-10** (id-set snapshot convention): the vendored
+  `tools/id-sets/` convention documented as normative local practice
+  (format, scope policy, refresh rule, fail-closed staleness semantics);
+  upstream ask to `dea-metaframework` for a standard cross-catalog
+  snapshot convention + refresh helper, alongside issue #51.
+- CR index updated (CR-VS-07 → Merged; CR-VS-08..10 added). No schema,
+  record, workflow, or index changes in this tranche.
+
 ### Phase 4a — conformance hardening (follow-ons to PR #10)
 
 - `scripts/regenerate_catalog.py`: `detect_repository_url` now normalizes
