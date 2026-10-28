@@ -5,6 +5,19 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 4a — conformance hardening (follow-ons to PR #10)
+
+- `scripts/regenerate_catalog.py`: `detect_repository_url` now normalizes
+  the origin URL to the canonical form (no trailing `.git`), so the
+  emitted `repository:` line is identical whether the checkout's origin
+  was configured with or without the suffix (CI sets the `.git` form;
+  local clones vary). `--check` no longer depends on how the checkout
+  was made. `CATALOG.yaml` regenerated to the canonical form.
+- `classifications/` and `contributions/` created with `.gitkeep`
+  placeholders (matching the `dea-catalog-business-capabilities` layout),
+  clearing the standing `cross_cutting.*` structural-sanity warnings from
+  `check_catalog_index.py`.
+
 ### Phase 4 — value stream enrichment (CR-VS-07)
 
 - `schemas/entity.schema.json` extended (additive; CR-MET-014 core

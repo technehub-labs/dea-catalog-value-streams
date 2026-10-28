@@ -115,13 +115,20 @@ def read_pointer(catalog_root: Path) -> dict[str, Any]:
 
 
 def detect_repository_url(catalog_root: Path) -> str:
-    """Read git origin URL; sanitize embedded credentials; return empty string on failure.
+    """Read git origin URL; sanitize and normalize it; return empty string on failure.
 
     git's remote URL may include embedded credentials when the user has
     authenticated via `git config credential.helper` or similar (e.g.
     `https://x-access-token:<TOKEN>@github.com/...`). Strip any
     userinfo before returning; the credential portion must never appear
     in CATALOG.yaml.
+
+    The URL is also normalized (canonical form: no trailing `.git`), so
+    the emitted `repository:` line is identical whether the checkout's
+    origin was configured with or without the `.git` suffix (CI sets
+    `https://github.com/<owner>/<repo>.git`; local clones vary). Without
+    this, `--check` (exact string comparison) fails depending on how
+    the checkout was made.
     """
     try:
         result = subprocess.run(
@@ -135,7 +142,19 @@ def detect_repository_url(catalog_root: Path) -> str:
         return ""
     if result.returncode != 0:
         return ""
-    return _strip_url_credentials(result.stdout.strip())
+    return _normalize_repository_url(_strip_url_credentials(result.stdout.strip()))
+
+
+def _normalize_repository_url(url: str) -> str:
+    """Canonicalize a repository URL for CATALOG.yaml.
+
+    Strips a trailing `.git` suffix. Idempotent: a URL without the
+    suffix passes through unchanged. Applies only to the path tail, so
+    userinfo/scheme handling stays with `_strip_url_credentials`.
+    """
+    if url.endswith(".git"):
+        return url[: -len(".git")]
+    return url
 
 
 def _strip_url_credentials(url: str) -> str:
