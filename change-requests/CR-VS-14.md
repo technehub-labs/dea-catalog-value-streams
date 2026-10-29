@@ -74,3 +74,17 @@ fully generated in a follow-up.
   records' `ecf.primary` (29/29 match).
 - Both gates wired into `validate-entries.yml` with the same skip guard
   as the existing steps; workflow header documents the CR-VS-14 contract.
+
+### 2.5 Extension: entities README + register status sync
+
+The entities/v1-alpha README's Status section still reported "11 admitted
+value streams (v1.1.0)" — hand-maintained and stale through three
+population tranches. Now:
+
+- the Status section carries a `<!-- stats:begin/end -->` anchor block
+  with the derived numbers (admitted total, generic/industry split,
+  industries, stages, canonical-state and no-pending claims);
+- `check_readme_stats.py` validates every number in the block against
+  the records (drift-tested: a fake split fails the gate);
+- the evidence register's status line (also stale: "no admissions yet")
+  is corrected and its admission count is gated the same way.

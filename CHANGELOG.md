@@ -5,6 +5,19 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### CR-VS-14 extension — entities README + register status sync
+
+- entities/v1-alpha README Status section was hand-maintained and stale
+  ("11 admitted, v1.1.0") through three population tranches; rewritten
+  with a stats:begin/end anchor block and enforced by
+  check_readme_stats.py (admitted total, split, industries, stages,
+  canonical/no-pending claims — drift-tested).
+- Evidence register status line corrected (was "no admissions yet");
+  its admission count is now gated against the records too.
+- Any future tranche that forgets a README/register status update now
+  fails validate-entries.
+
+
 ### Phase 9 — documentation-sync CI gates (CR-VS-14)
 
 - Per-entity docs freshness gate: `generate_entity_docs.py --check`

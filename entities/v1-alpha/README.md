@@ -62,10 +62,17 @@ overwrites.
 
 ## Status
 
-11 admitted value streams (v1.1.0, CR-VS-07 enriched shape): each record
-carries its ordered value stages with per-stage capability and process
-references, an explicit scope boundary, cross-stream links, and metrics.
-Cross-catalog references are referential-integrity-checked
+<!-- stats:begin (generated anchors — scripts/check_readme_stats.py enforces these; do not hand-edit the numbers) -->
+**111 admitted value streams** — 11 cross-industry (generic) + 100
+industry-specific across 14 industries — all `lifecycle_status: active`
+and indexed `state: canonical` in [`CATALOG.yaml`](../../CATALOG.yaml);
+none pending, deprecated, or retired. 396 value stages in total.
+<!-- stats:end -->
+
+Each record carries its ordered value stages with per-stage capability and
+process references, applicability (industry/organization-type), an explicit
+scope boundary, cross-stream links, and metrics. Cross-catalog references
+are referential-integrity-checked
 (`scripts/check_referential_integrity.py`, CR-VS-07); admission of new
 entries continues to follow the catalog-research method (candidate
 universe, distinctness sweep, evidence register, admission gate) per the

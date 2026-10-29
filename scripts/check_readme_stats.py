@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Root-README statistics gate (CR-VS-14).
 
-Validates that every derived number in the landing README matches the
-records: stream counts (badges, glance table, intro), the per-industry
-table, and the ECF overlay matrix (via the vendored
-tools/id-sets/capability-ecf-coordinates.txt map). CI runs this on every
-PR (validate-entries.yml) so the README can never drift from the catalog
-silently.
+Validates that every derived number in the landing README and the
+entities/v1-alpha README matches the records: stream counts (badges,
+glance table, intro), the per-industry table, the ECF overlay matrix
+(via the vendored tools/id-sets/capability-ecf-coordinates.txt map), and
+the entities README's stats anchor block (admitted counts, split,
+stages, state). CI runs this on every PR (validate-entries.yml) so no
+README can drift from the catalog silently.
 
 Exit codes: 0 pass; 1 mismatch found.
 """
@@ -100,10 +101,31 @@ def main() -> int:
             got_n = 0 if raw in ("·", "—", "-", "") else int(raw)
             expect(f"ECF cell {d}/{s}", got_n == want, f"want {want}, readme has {got_n}")
 
+    # entities/v1-alpha README stats anchor block
+    ereadme = (REPO / "entities" / "v1-alpha" / "README.md").read_text(encoding="utf-8")
+    m = re.search(r"<!-- stats:begin.*?-->\n(.*?)<!-- stats:end -->", ereadme, re.S)
+    expect("entities README stats block", bool(m), "anchor block missing")
+    if m:
+        block = m.group(1)
+        expect("entities README admitted total", f"**{total} admitted value streams**" in block)
+        expect("entities README split",
+               f"{generic} cross-industry (generic) + {industry}" in block)
+        expect("entities README industries", f"across {len(inds) - 1} industries" in block)
+        expect("entities README stages", f"{stage_count} value stages" in block)
+        expect("entities README state claim", "state: canonical" in block)
+        expect("entities README pending claim", "none pending, deprecated, or retired" in block)
+
+    # evidence-register status line (catalog-research)
+    reg = (REPO / "catalog-research" / "evidence-register.yaml").read_text(encoding="utf-8")
+    m = re.search(r"^status: .*?(\d+) admissions recorded", reg, re.M)
+    expect("evidence register status", bool(m) and int(m.group(1)) == total,
+           f"want {total} admissions recorded, register has {m.group(1) if m else 'stale status'}")
+
     if failures:
-        print(f"readme-stats: FAILED ({failures} mismatch(es)); update README.md derived numbers")
+        print(f"readme-stats: FAILED ({failures} mismatch(es)); update README.md / entities README derived numbers")
         return 1
-    print(f"readme-stats: OK ({total} streams, {stage_count} stages, {len(inds)} industries, ECF matrix current)")
+    print(f"readme-stats: OK ({total} streams, {stage_count} stages, {len(inds)} industries, "
+          f"ECF matrix + entities README current)")
     return 0
 
 
