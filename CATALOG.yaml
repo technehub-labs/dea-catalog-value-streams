@@ -20,7 +20,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-acquire-to-retire-g5x89g
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/value-streams-value-stream-acquire-to-retire-g5x89g.yaml
     research_count: 0
@@ -262,7 +262,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-concept-to-launch-nhvatv
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-concept-to-launch-nhvatv/value-streams-value-stream-concept-to-launch-nhvatv.yaml
     research_count: 0
@@ -273,7 +273,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-contract-to-renewal-5x3r4x
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/value-streams-value-stream-contract-to-renewal-5x3r4x.yaml
     research_count: 0
@@ -548,7 +548,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-hire-to-retire-n6szcc
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-hire-to-retire-n6szcc/value-streams-value-stream-hire-to-retire-n6szcc.yaml
     research_count: 0
@@ -625,7 +625,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-issue-to-resolve-crmbay
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-issue-to-resolve-crmbay/value-streams-value-stream-issue-to-resolve-crmbay.yaml
     research_count: 0
@@ -790,7 +790,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-order-to-cash-sc8gbu
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-order-to-cash-sc8gbu/value-streams-value-stream-order-to-cash-sc8gbu.yaml
     research_count: 0
@@ -834,7 +834,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-deliver-smmwpx
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/value-streams-value-stream-plan-to-deliver-smmwpx.yaml
     research_count: 0
@@ -845,7 +845,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-forecast-89vb4q
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/value-streams-value-stream-plan-to-forecast-89vb4q.yaml
     research_count: 0
@@ -889,7 +889,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-procure-to-pay-utma5c
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-procure-to-pay-utma5c/value-streams-value-stream-procure-to-pay-utma5c.yaml
     research_count: 0
@@ -944,7 +944,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-record-to-report-zw9z2r
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-record-to-report-zw9z2r/value-streams-value-stream-record-to-report-zw9z2r.yaml
     research_count: 0
@@ -1021,7 +1021,7 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-return-to-credit-qan2dn
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-return-to-credit-qan2dn/value-streams-value-stream-return-to-credit-qan2dn.yaml
     research_count: 0
