@@ -49,15 +49,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Identify Backlog"]
-  S2["2. Engage Customer"]
-  S3["3. Assess and Update"]
-  S4["4. Escalate or Exit"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Identify Backlog<br/>The backlog item is prioritized"]
+  S2["2. Engage Customer<br/>Required information is collected"]
+  S3["3. Assess and Update<br/>The status is updated"]
+  S4["4. Escalate or Exit<br/>The relationship is escalated or exited"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

@@ -49,13 +49,21 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Set Up Experiment"]
-  S2["2. Run"]
-  S3["3. Analyze and Decide"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Set Up Experiment<br/>The experiment is live"]
+  S2["2. Run<br/>The run is complete"]
+  S3["3. Analyze and Decide<br/>The decision is recorded and actioned"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
-  TRIGGER(("⏺ Entry")) --> S1
-  S3 --> EXIT1((("✔ Exit"))
+  S3 --> EXIT1
+  S3 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

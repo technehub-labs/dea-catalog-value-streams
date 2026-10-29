@@ -53,15 +53,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Initiate Return"]
-  S2["2. Receive Reverse Logistics"]
-  S3["3. Inspect and Dispose"]
-  S4["4. Settle Credit"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Initiate Return<br/>The return is authorized"]
+  S2["2. Receive Reverse Logistics<br/>The goods are received back"]
+  S3["3. Inspect and Dispose<br/>A disposition decision is made"]
+  S4["4. Settle Credit<br/>The return is settledrefund, credit, or replacement confi..."]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

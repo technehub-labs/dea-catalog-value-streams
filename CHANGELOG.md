@@ -5,6 +5,26 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### CR-VS-14 extension — mermaid stage-flow fixes and enhancements
+
+- Bug: the exit terminal emitted `(((...)))` — three opening parens, two
+  closing, and an unsupported triple-paren shape; GitHub mermaid errored
+  on every stage-flow diagram. Replaced with the valid stadium shape
+  `(["..."])` for both terminals (entry + exit).
+- Enhancements to every stage-flow diagram (all 111 READMEs regenerated):
+  1. color styling via classDef (green entry, dark terminals, light
+     stage nodes)
+  2. a dashed continuous-engagement loop from the last stage back to the
+     first (re-entry; labeled, distinct from the exit path)
+  3. <br/> line breaks: stage name plus a clipped exit-criterion caption
+  4. proper terminal shape (stadium) for entry and exit
+- Parentheses in stage names/captions normalized out (they collide with
+  mermaid shape delimiters even inside quoted labels — caught by linting
+  all 111 diagrams; e.g. 'Settle Renewal (renewed, ...)' captions).
+- Structural lint over all 111 diagrams passes: balanced delimiters,
+  comma-separated class statements, no raw parens in labels.
+
+
 ### CR-VS-14 extension — entities README + register status sync
 
 - entities/v1-alpha README Status section was hand-maintained and stale

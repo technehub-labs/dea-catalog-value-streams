@@ -52,15 +52,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Activate Site"]
-  S2["2. Identify and Screen"]
-  S3["3. Consent"]
-  S4["4. Enroll"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Activate Site<br/>The site is activated and ready"]
+  S2["2. Identify and Screen<br/>Eligible candidates are identified"]
+  S3["3. Consent<br/>Consent is documented"]
+  S4["4. Enroll<br/>The enrollment target is met"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

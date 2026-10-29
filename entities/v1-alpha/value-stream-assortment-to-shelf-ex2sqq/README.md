@@ -55,15 +55,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Plan Assortment"]
-  S2["2. Buy"]
-  S3["3. Allocate and Replenish"]
-  S4["4. Maintain In-Stock"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Plan Assortment<br/>The assortment plan is approved"]
+  S2["2. Buy<br/>Buys are placed"]
+  S3["3. Allocate and Replenish<br/>Stores are allocated and replenished"]
+  S4["4. Maintain In-Stock<br/>The assortment is in stock at plan"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

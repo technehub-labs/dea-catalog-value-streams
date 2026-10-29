@@ -51,15 +51,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Approve Concept"]
-  S2["2. Develop Offering"]
-  S3["3. Prepare Launch"]
-  S4["4. Launch"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Approve Concept<br/>The concept is approved for development"]
+  S2["2. Develop Offering<br/>The offering is built and validated"]
+  S3["3. Prepare Launch<br/>Market readiness is confirmed"]
+  S4["4. Launch<br/>The offering is launched to its market"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

@@ -48,15 +48,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Prepare Bid"]
-  S2["2. Submit"]
-  S3["3. Evaluate and Clarify"]
-  S4["4. Award"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Prepare Bid<br/>The bid is ready"]
+  S2["2. Submit<br/>The bid is submitted"]
+  S3["3. Evaluate and Clarify<br/>Clarifications are closed"]
+  S4["4. Award<br/>The contract is awarded and executed"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

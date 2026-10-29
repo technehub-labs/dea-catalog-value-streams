@@ -51,17 +51,25 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Recruit and Screen Donor"]
-  S2["2. Collect"]
-  S3["3. Test and Process"]
-  S4["4. Store and Issue"]
-  S5["5. Transfuse"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Recruit and Screen Donor<br/>The donor is screened and eligible"]
+  S2["2. Collect<br/>The donation is collected"]
+  S3["3. Test and Process<br/>Components are tested, processed, and released"]
+  S4["4. Store and Issue<br/>Components are issued to the clinical order"]
+  S5["5. Transfuse<br/>The transfusion is completed and documented"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
   S4 --> S5
-  TRIGGER(("⏺ Entry")) --> S1
-  S5 --> EXIT1((("✔ Exit"))
+  S5 --> EXIT1
+  S5 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4,S5 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

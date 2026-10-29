@@ -106,17 +106,55 @@ def front_matter(rec: dict) -> str:
 
 
 def mermaid_stages(rec: dict) -> str:
-    lines = ["flowchart LR"]
+    """Render the stream's stage flow as a mermaid flowchart.
+
+    Terminals use the stadium shape `(["..."])` (valid double-delimiter
+    shape; the previous build emitted `(((...)))`, an unbalanced,
+    unsupported triple-paren form that errored on GitHub). Stages carry a
+    clipped exit-criterion caption via `<br/>`. A dashed engagement loop
+    from the last stage back to the first expresses continuous
+    engagement (re-entry, not the exit path). classDef styling colors
+    entry green, exit/stadium dark, stages light.
+    """
     stages = rec.get("value_stages", [])
+    if not stages:
+        return 'flowchart LR\n  EMPTY["no stages recorded"]'
+    L = ["flowchart LR"]
+    L.append('  TRIGGER(["\u23fa Entry"])')
+    L.append('  EXIT1(["\u2714 Exit"])')
     for i, s in enumerate(stages, 1):
         safe = s["name"].replace('"', "'")
-        lines.append(f'  S{i}["{i}. {safe}"]')
+        for ch in "()[]{}":
+            safe = safe.replace(ch, "")
+        L.append(f'  S{i}["{i}. {safe}<br/>{_stage_caption(s)}"]')
+    L.append("  TRIGGER --> S1")
     for i in range(1, len(stages)):
-        lines.append(f"  S{i} --> S{i + 1}")
+        L.append(f"  S{i} --> S{i + 1}")
+    L.append(f"  S{len(stages)} --> EXIT1")
     if len(stages) >= 2:
-        lines.append(f"  TRIGGER((\"⏺ Entry\")) --> S1")
-        lines.append(f"  S{len(stages)} --> EXIT1(((\"✔ Exit\"))")
-    return "\n".join(lines)
+        L.append(f"  S{len(stages)} -. re-engage .-> S1")
+    L.append("  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;")
+    L.append("  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;")
+    L.append("  class TRIGGER,EXIT1 terminal;")
+    L.append("  class " + ",".join(f"S{i}" for i in range(1, len(stages) + 1)) + " stage;")
+    L.append("  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;")
+    return "\n".join(L)
+
+
+def _stage_caption(s: dict) -> str:
+    """Short caption under a stage node: its exit criterion, clipped.
+
+    Parentheses and other delimiter characters are normalized out: they
+    collide with mermaid's node-shape delimiters even inside quoted
+    labels, and every stage caption must render identically on GitHub.
+    """
+    cap = (s.get("exit_criterion") or "").strip().rstrip(".")
+    for ch in "()[]{}":
+        cap = cap.replace(ch + " ", "").replace(" " + ch, "")
+        cap = cap.replace(ch, "")
+    if len(cap) > 60:
+        cap = cap[:57] + "..."
+    return cap.replace('"', "'")
 
 
 def render_stage_table(rec: dict) -> list[str]:

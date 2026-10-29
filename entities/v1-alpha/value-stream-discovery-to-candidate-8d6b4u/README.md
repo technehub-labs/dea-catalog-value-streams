@@ -51,13 +51,21 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Validate Target"]
-  S2["2. Screen"]
-  S3["3. Nominate Candidate"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Validate Target<br/>The target is validated"]
+  S2["2. Screen<br/>Screening is complete"]
+  S3["3. Nominate Candidate<br/>The candidate is nominated"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
-  TRIGGER(("⏺ Entry")) --> S1
-  S3 --> EXIT1((("✔ Exit"))
+  S3 --> EXIT1
+  S3 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

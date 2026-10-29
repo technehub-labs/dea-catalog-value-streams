@@ -52,15 +52,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Schedule Inspection"]
-  S2["2. Inspect On Site"]
-  S3["3. Assess"]
-  S4["4. Issue Certificate"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Schedule Inspection<br/>The inspection is scheduled"]
+  S2["2. Inspect On Site<br/>The inspection is complete"]
+  S3["3. Assess<br/>The assessment is complete"]
+  S4["4. Issue Certificate<br/>The certificate is issued"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages
