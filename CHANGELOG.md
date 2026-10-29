@@ -5,6 +5,21 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Upstream dependency filings (CR-VS-08 §4, CR-VS-09, CR-VS-10)
+
+- dea-metaframework#53 filed: standardize cross-catalog id-set snapshots
+  (vendored offline fallback for referential-integrity gates) alongside
+  issue #51 — CR-VS-10 executed.
+- dea-catalog-actors#9 filed: requests the six generic party records
+  (customer, supplier, employee, custodian, market-segment,
+  governance-stakeholder) CR-VS-09 is gated on; backfill executes when
+  that admission lands.
+- dea-catalog-metrics#13 filed: CR-VS-08 §4's seven catalogued-metric
+  gaps as candidate-seed input for that catalog's research pipeline.
+- CR documents and index updated with the issue links; no schema,
+  record, workflow, or index changes in this tranche.
+
+
 ### Phase 5 — metric backfill executed (CR-VS-08)
 
 - `metrics[].metric_ref` populated in all 11 records per the verified

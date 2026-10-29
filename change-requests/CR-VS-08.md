@@ -99,6 +99,8 @@ admission process, out of scope here.
 
 ## 4. Follow-on register (out of this CR's scope, tracked here)
 
+Filed as candidate-seed input to the metrics catalog: [dea-catalog-metrics#13](https://github.com/technehub-labs/dea-catalog-metrics/issues/13).
+
 Catalogued-metric gaps discovered by the backfill map, for the metrics
 catalog's own candidate pipeline: generic mean-time-to-resolve (issue
 resolution), concept-to-launch lead time, procure-to-pay end-to-end cycle
