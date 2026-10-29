@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-usage-to-bill-tyf4zn.yaml
+id: value-streams:value-stream-usage-to-bill-tyf4zn
+name: Usage to Bill
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- telecommunications
+specificity: industry-specific
+entry_criterion: Usage events are recorded on an activated service.
+exit_criterion: The customer bill for the period is produced and accepted.
+outcome: An accurate, explained bill for consumed services.
+stages:
+- Mediate Usage
+- Rate Usage
+- Produce Bill
+- Resolve Inquiries
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384
+metrics:
+- Billing accuracy rate
+upstream:
+- value-stream-order-to-activation
+downstream: []
+evidence_sources:
+- SRC-010
+---
+
 # Usage to Bill
 
-Admitted Value Stream record (`value-streams:value-stream-usage-to-bill-tyf4zn`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-usage-to-bill-tyf4zn` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | telecommunications · industry-specific |
-| Record | [`value-streams-value-stream-usage-to-bill-tyf4zn.yaml`](./value-streams-value-stream-usage-to-bill-tyf4zn.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-usage-to-bill-tyf4zn` · **operational** · telecommunications · industry-specific
 
 > The telecom revenue stream from usage mediation through rating to an accurate customer bill.
 
-## 3. Value proposition and served party
-
 **Outcome:** An accurate, explained bill for consumed services.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-usage-to-bill-tyf4zn.yaml`](./value-streams-value-stream-usage-to-bill-tyf4zn.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** Usage events are recorded on an activated service.
+## Stage flow
 
-**Exit criterion:** The customer bill for the period is produced and accepted.
+```mermaid
+flowchart LR
+  S1["1. Mediate Usage"]
+  S2["2. Rate Usage"]
+  S3["3. Produce Bill"]
+  S4["4. Resolve Inquiries"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Usage mediation and collection
-- Rating and discounting
-- Bill production
-- Bill inquiry resolution
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Mediate Usage** | Usage events occur. | Usage records are mediated. | 2 | 1 | no |
+| 2 | **Rate Usage** | Usage is mediated. | Usage is rated. | 2 | 1 | no |
+| 3 | **Produce Bill** | Usage is rated. | The bill is issued. | 2 | 1 | yes |
+| 4 | **Resolve Inquiries** | The bill is issued. | Inquiries are resolved. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Service activation (Order to Activation)
-- Collections
-
-## 5. Value stages
-
-Usage to Bill decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Mediate Usage
+### 1. Mediate Usage
 
 Collect and mediate usage events.
 
@@ -54,10 +79,10 @@ Collect and mediate usage events.
 | Exit criterion | Usage records are mediated. |
 | Outcome | Mediated usage. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-technology-management-maus5n` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-technology-management-maus5n` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 2: Rate Usage
+### 2. Rate Usage
 
 Rate the mediated usage per the price plan.
 
@@ -67,10 +92,10 @@ Rate the mediated usage per the price plan.
 | Exit criterion | Usage is rated. |
 | Outcome | Rated usage. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 3: Produce Bill
+### 3. Produce Bill
 
 Produce and issue the customer bill.
 
@@ -80,10 +105,10 @@ Produce and issue the customer bill.
 | Exit criterion | The bill is issued. |
 | Outcome | An issued bill. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-### Stage 4: Resolve Inquiries
+### 4. Resolve Inquiries
 
 Resolve bill inquiries and disputes.
 
@@ -96,40 +121,62 @@ Resolve bill inquiries and disputes.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** Usage events are recorded on an activated service.
+
+**Exit:** The customer bill for the period is produced and accepted.
+
+**In scope**
+
+- Usage mediation and collection
+- Rating and discounting
+- Bill production
+- Bill inquiry resolution
+
+**Out of scope** (owned by the named neighbour)
+
+- Service activation (Order to Activation)
+- Collections
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-customer-management-f3n8wb`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-sdppmp`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-order-to-activation` — Activated services generate usage.
+- [order to activation](../value-stream-order-to-activation-uxqth5/README.md) — Activated services generate usage.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Billing accuracy rate** (stream-level) — Billed amount variance from rated usage.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-010 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-010 | industry-reference-model | Telecommunications industry reference models (eTOM category-level structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-038) from the CR-VS-11 industry evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +185,4 @@ Resolve bill inquiries and disputes.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml
+id: value-streams:value-stream-deposit-to-maturity-gsbm8e
+name: Deposit to Maturity
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- financial-services
+specificity: industry-specific
+entry_criterion: A customer opens a term deposit.
+exit_criterion: The deposit matures and is redeemed or renewed.
+outcome: A term deposit held to maturity and redeemed or renewed.
+stages:
+- Open Deposit
+- Accrue and Report
+- Handle Maturity
+- Redeem or Renew
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+processes:
+- processes:process-fa-operate-sdppmp
+- processes:process-fa-operate-ycba3k
+- processes:process-pr-improve-t6uvan
+- processes:process-pr-operate-bbe384
+metrics:
+- Deposit renewal rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-008
+---
+
 # Deposit to Maturity
 
-Admitted Value Stream record (`value-streams:value-stream-deposit-to-maturity-gsbm8e`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-deposit-to-maturity-gsbm8e` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | financial-services · industry-specific |
-| Record | [`value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml`](./value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-deposit-to-maturity-gsbm8e` · **operational** · financial-services · industry-specific
 
 > The end-to-end term-deposit stream from deposit opening through interest accrual to maturity and redemption or renewal.
 
-## 3. Value proposition and served party
-
 **Outcome:** A term deposit held to maturity and redeemed or renewed.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml`](./value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer opens a term deposit.
+## Stage flow
 
-**Exit criterion:** The deposit matures and is redeemed or renewed.
+```mermaid
+flowchart LR
+  S1["1. Open Deposit"]
+  S2["2. Accrue and Report"]
+  S3["3. Handle Maturity"]
+  S4["4. Redeem or Renew"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Deposit opening
-- Interest accrual and statements
-- Maturity handling
-- Redemption or renewal
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Open Deposit** | A customer opens a term deposit. | The deposit is opened and funded. | 2 | 1 | yes |
+| 2 | **Accrue and Report** | The deposit is funded. | Interest accrues and statements issue on schedule. | 2 | 1 | yes |
+| 3 | **Handle Maturity** | The deposit approaches maturity. | Maturity instructions are agreed. | 1 | 1 | yes |
+| 4 | **Redeem or Renew** | Instructions are agreed. | The deposit is redeemed or renewed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Onboarding (Onboard to Activate)
-- Trading-book operations
-
-## 5. Value stages
-
-Deposit to Maturity decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Open Deposit
+### 1. Open Deposit
 
 Open and fund the term deposit.
 
@@ -54,10 +79,10 @@ Open and fund the term deposit.
 | Exit criterion | The deposit is opened and funded. |
 | Outcome | A funded term deposit. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Accrue and Report
+### 2. Accrue and Report
 
 Accrue interest and issue statements.
 
@@ -67,10 +92,10 @@ Accrue interest and issue statements.
 | Exit criterion | Interest accrues and statements issue on schedule. |
 | Outcome | An informed deposit holder. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-ycba3k` |
 
-### Stage 3: Handle Maturity
+### 3. Handle Maturity
 
 Prepare maturity instructions with the customer.
 
@@ -83,7 +108,7 @@ Prepare maturity instructions with the customer.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-improve-t6uvan` |
 
-### Stage 4: Redeem or Renew
+### 4. Redeem or Renew
 
 Redeem or renew the deposit.
 
@@ -93,42 +118,64 @@ Redeem or renew the deposit.
 | Exit criterion | The deposit is redeemed or renewed. |
 | Outcome | A settled maturity. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer opens a term deposit.
+
+**Exit:** The deposit matures and is redeemed or renewed.
+
+**In scope**
+
+- Deposit opening
+- Interest accrual and statements
+- Maturity handling
+- Redemption or renewal
+
+**Out of scope** (owned by the named neighbour)
+
+- Onboarding (Onboard to Activate)
+- Trading-book operations
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-financial-stewardship-c7xtfk`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-fa-operate-ycba3k`
 - `processes:process-pr-improve-t6uvan`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Deposit renewal rate** (stream-level) — Share of maturing deposits renewed.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-008 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-008 | industry-reference-model | Banking industry reference models (lending and payments chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-024) from the CR-VS-11 industry evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -137,4 +184,4 @@ Redeem or renew the deposit.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

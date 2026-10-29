@@ -1,49 +1,70 @@
+---
+documentation_generated_from: value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml
+id: value-streams:value-stream-equipment-calibration-to-certified-qp33gf
+name: Equipment Calibration to Certified
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+industries:
+- manufacturing
+specificity: industry-specific
+entry_criterion: A calibration due date is reached.
+exit_criterion: The equipment is certified for use.
+outcome: Calibration-certified equipment available for use.
+stages:
+- Calibrate
+- Certify
+- Release to Use
+capabilities:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-j9cjzz
+- processes:process-eo-operate-zwzmbd
+metrics:
+- Calibration on-time rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-016
+---
+
 # Equipment Calibration to Certified
 
-Admitted Value Stream record (`value-streams:value-stream-equipment-calibration-to-certified-qp33gf`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-equipment-calibration-to-certified-qp33gf` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | support |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | manufacturing · industry-specific |
-| Record | [`value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml`](./value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-equipment-calibration-to-certified-qp33gf` · **support** · manufacturing · industry-specific
 
 > The metrology stream from calibration due through calibration execution to certified status.
 
-## 3. Value proposition and served party
-
 **Outcome:** Calibration-certified equipment available for use.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml`](./value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A calibration due date is reached.
+## Stage flow
 
-**Exit criterion:** The equipment is certified for use.
+```mermaid
+flowchart LR
+  S1["1. Calibrate"]
+  S2["2. Certify"]
+  S3["3. Release to Use"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Calibration execution
-- Certification
-- Release to use
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Calibrate** | Calibration falls due. | Calibration is complete. | 2 | 1 | no |
+| 2 | **Certify** | Calibration is complete. | The equipment is certified. | 2 | 1 | no |
+| 3 | **Release to Use** | The equipment is certified. | The equipment is in use. | 1 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Maintenance
-- Equipment procurement
-
-## 5. Value stages
-
-Equipment Calibration to Certified decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Calibrate
+### 1. Calibrate
 
 Execute the calibration.
 
@@ -53,10 +74,10 @@ Execute the calibration.
 | Exit criterion | Calibration is complete. |
 | Outcome | Calibration results. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-j9cjzz` |
 
-### Stage 2: Certify
+### 2. Certify
 
 Certify against the standard.
 
@@ -66,10 +87,10 @@ Certify against the standard.
 | Exit criterion | The equipment is certified. |
 | Outcome | A certified instrument. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-regulation-management-gya4d8` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-regulation-management-gya4d8` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Release to Use
+### 3. Release to Use
 
 Release the equipment for use.
 
@@ -82,38 +103,59 @@ Release the equipment for use.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-zwzmbd` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A calibration due date is reached.
+
+**Exit:** The equipment is certified for use.
+
+**In scope**
+
+- Calibration execution
+- Certification
+- Release to use
+
+**Out of scope** (owned by the named neighbour)
+
+- Maintenance
+- Equipment procurement
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-regulation-management-gya4d8`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-j9cjzz`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-operate-zwzmbd`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Calibration on-time rate** (stream-level) — Share of calibrations completed before due date.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-055) from the CR-VS-11 industry evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -122,4 +164,4 @@ Release the equipment for use.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

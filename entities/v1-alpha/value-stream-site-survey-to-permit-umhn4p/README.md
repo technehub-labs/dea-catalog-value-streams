@@ -1,49 +1,71 @@
+---
+documentation_generated_from: value-streams-value-stream-site-survey-to-permit-umhn4p.yaml
+id: value-streams:value-stream-site-survey-to-permit-umhn4p
+name: Site Survey to Permit
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- construction-real-estate
+specificity: industry-specific
+entry_criterion: A development need is identified.
+exit_criterion: The permit is issued.
+outcome: An issued development permit.
+stages:
+- Survey Site
+- Submit Design
+- Obtain Permit
+capabilities:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-fa-operate-8vqvkk
+- processes:process-pv-design-8v4k89
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Permit approval cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-017
+---
+
 # Site Survey to Permit
 
-Admitted Value Stream record (`value-streams:value-stream-site-survey-to-permit-umhn4p`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-site-survey-to-permit-umhn4p` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | construction-real-estate · industry-specific |
-| Record | [`value-streams-value-stream-site-survey-to-permit-umhn4p.yaml`](./value-streams-value-stream-site-survey-to-permit-umhn4p.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-site-survey-to-permit-umhn4p` · **governance** · construction-real-estate · industry-specific
 
 > The development stream from site survey through design submission to issued planning/building permit.
 
-## 3. Value proposition and served party
-
 **Outcome:** An issued development permit.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-site-survey-to-permit-umhn4p.yaml`](./value-streams-value-stream-site-survey-to-permit-umhn4p.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A development need is identified.
+## Stage flow
 
-**Exit criterion:** The permit is issued.
+```mermaid
+flowchart LR
+  S1["1. Survey Site"]
+  S2["2. Submit Design"]
+  S3["3. Obtain Permit"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Site survey and feasibility
-- Design submission
-- Permit review and issuance
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Survey Site** | A need is identified. | Feasibility is confirmed. | 2 | 1 | no |
+| 2 | **Submit Design** | Feasibility is confirmed. | The design is submitted. | 2 | 1 | no |
+| 3 | **Obtain Permit** | The design is submitted. | The permit is issued. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Construction (Build to Handover)
-- Regulatory inspections (Inspection to Certificate)
-
-## 5. Value stages
-
-Site Survey to Permit decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Survey Site
+### 1. Survey Site
 
 Survey the site and assess feasibility.
 
@@ -53,10 +75,10 @@ Survey the site and assess feasibility.
 | Exit criterion | Feasibility is confirmed. |
 | Outcome | A feasible site. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-technology-management-maus5n` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-technology-management-maus5n` |
 | Realizing processes | `processes:process-sd-operate-ucxpz4` |
 
-### Stage 2: Submit Design
+### 2. Submit Design
 
 Submit the design for permitting.
 
@@ -66,10 +88,10 @@ Submit the design for permitting.
 | Exit criterion | The design is submitted. |
 | Outcome | A submitted design. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-regulation-management-gya4d8` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-regulation-management-gya4d8` |
 | Realizing processes | `processes:process-pv-design-8v4k89` |
 
-### Stage 3: Obtain Permit
+### 3. Obtain Permit
 
 Respond to review and obtain the permit.
 
@@ -79,12 +101,29 @@ Respond to review and obtain the permit.
 | Exit criterion | The permit is issued. |
 | Outcome | An issued permit. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-regulation-management-gya4d8`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-regulation-management-gya4d8` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-fa-operate-8vqvkk` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A development need is identified.
+
+**Exit:** The permit is issued.
+
+**In scope**
+
+- Site survey and feasibility
+- Design submission
+- Permit review and issuance
+
+**Out of scope** (owned by the named neighbour)
+
+- Construction (Build to Handover)
+- Regulatory inspections (Inspection to Certificate)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-technology-management-maus5n`
@@ -92,29 +131,33 @@ Respond to review and obtain the permit.
 - `capabilities:capability-regulation-management-gya4d8`
 - `capabilities:capability-legal-matter-management-zzbd2u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-sd-operate-ucxpz4`
 - `processes:process-pv-design-8v4k89`
 - `processes:process-fa-operate-8vqvkk`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Permit approval cycle time** (stream-level) — Elapsed days from submission to issued permit.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-017 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-017 | industry-reference-model | Construction and real-estate chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-097) from the CR-VS-11 industry evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -123,4 +166,4 @@ Respond to review and obtain the permit.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,73 @@
+---
+documentation_generated_from: value-streams-value-stream-book-to-stay-hcrx2e.yaml
+id: value-streams:value-stream-book-to-stay-hcrx2e
+name: Book to Stay
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- hospitality-travel
+specificity: industry-specific
+entry_criterion: A reservation is made.
+exit_criterion: The guest checks out with a settled folio.
+outcome: A completed stay with settled folio.
+stages:
+- Reserve
+- Prepare Arrival
+- Serve Stay
+- Check Out and Settle
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384
+metrics:
+- Occupancy rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Book to Stay
 
-Admitted Value Stream record (`value-streams:value-stream-book-to-stay-hcrx2e`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-book-to-stay-hcrx2e` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | hospitality-travel · industry-specific |
-| Record | [`value-streams-value-stream-book-to-stay-hcrx2e.yaml`](./value-streams-value-stream-book-to-stay-hcrx2e.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-book-to-stay-hcrx2e` · **operational** · hospitality-travel · industry-specific
 
 > The lodging stream from reservation through pre-arrival to completed stay and checkout.
 
-## 3. Value proposition and served party
-
 **Outcome:** A completed stay with settled folio.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-book-to-stay-hcrx2e.yaml`](./value-streams-value-stream-book-to-stay-hcrx2e.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A reservation is made.
+## Stage flow
 
-**Exit criterion:** The guest checks out with a settled folio.
+```mermaid
+flowchart LR
+  S1["1. Reserve"]
+  S2["2. Prepare Arrival"]
+  S3["3. Serve Stay"]
+  S4["4. Check Out and Settle"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Reservation
-- Pre-arrival preparation
-- Stay service
-- Checkout and settlement
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Reserve** | A reservation is made. | The booking is confirmed. | 1 | 1 | yes |
+| 2 | **Prepare Arrival** | A booking is confirmed. | The room is ready. | 1 | 1 | no |
+| 3 | **Serve Stay** | The guest arrives. | The stay is served. | 2 | 1 | yes |
+| 4 | **Check Out and Settle** | The stay ends. | The folio is settled. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Events (Event Book to Execute)
-- Loyalty programs
-
-## 5. Value stages
-
-Book to Stay decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Reserve
+### 1. Reserve
 
 Take and confirm the reservation.
 
@@ -57,7 +80,7 @@ Take and confirm the reservation.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Prepare Arrival
+### 2. Prepare Arrival
 
 Prepare for the arrival.
 
@@ -70,7 +93,7 @@ Prepare for the arrival.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Serve Stay
+### 3. Serve Stay
 
 Serve the guest through the stay.
 
@@ -80,10 +103,10 @@ Serve the guest through the stay.
 | Exit criterion | The stay is served. |
 | Outcome | A served stay. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 4: Check Out and Settle
+### 4. Check Out and Settle
 
 Check out and settle the folio.
 
@@ -96,37 +119,59 @@ Check out and settle the folio.
 | Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A reservation is made.
+
+**Exit:** The guest checks out with a settled folio.
+
+**In scope**
+
+- Reservation
+- Pre-arrival preparation
+- Stay service
+- Checkout and settlement
+
+**Out of scope** (owned by the named neighbour)
+
+- Events (Event Book to Execute)
+- Loyalty programs
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Occupancy rate** (stream-level) — Occupied room-nights as a share of available.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-087) from the CR-VS-11 industry evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -135,4 +180,4 @@ Check out and settle the folio.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

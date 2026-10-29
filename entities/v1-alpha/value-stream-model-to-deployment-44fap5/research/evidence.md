@@ -1,0 +1,19 @@
+# Evidence notes — Model to Deployment
+
+Record: [`value-streams:value-stream-model-to-deployment-44fap5`](../value-streams-value-stream-model-to-deployment-44fap5.yaml) · Expanded from [`catalog-research/evidence-register.yaml`](../../../../catalog-research/evidence-register.yaml). Generated file (CR-VS-13); do not edit by hand.
+
+**Admission rationale (from the record):** Admitted under CR-VS-12 (population tranche; candidate VSC-109) from the CR-VS-11 industry evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
+
+## SRC-019 — Technology / SaaS product chains (public structure)
+
+- **Class:** industry-reference-model
+- **Reference:** SAFe / DORA public material; technology product practice; category-level structure
+- **Retrieved:** 2026-10-28 (indirect (public material; category-level structure))
+
+**Observation:** Technology carries commit-to-deploy (DORA), incident-to-restoration, usage-to-renewal (SaaS), and model-development-to-deployment (AI/ML) chains
+
+*Supports:*
+
+- CR-VS-12 technology candidates
+
+> **Evidence note:** Category-level structure only

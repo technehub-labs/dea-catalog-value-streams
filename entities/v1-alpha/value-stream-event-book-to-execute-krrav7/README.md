@@ -1,50 +1,78 @@
+---
+documentation_generated_from: value-streams-value-stream-event-book-to-execute-krrav7.yaml
+id: value-streams:value-stream-event-book-to-execute-krrav7
+name: Event Book to Execute
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- hospitality-travel
+specificity: industry-specific
+entry_criterion: An event is booked.
+exit_criterion: The event is executed and the account settled.
+outcome: An executed event with settled account.
+stages:
+- Book Event
+- Plan Event
+- Execute Event
+- Settle and Break Down
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-management-9e8d8s
+processes:
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-retire-rpg6d4
+- processes:process-fa-operate-sdppmp
+- processes:process-ge-build-mctdgc
+metrics:
+- Event execution satisfaction
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Event Book to Execute
 
-Admitted Value Stream record (`value-streams:value-stream-event-book-to-execute-krrav7`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-event-book-to-execute-krrav7` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | hospitality-travel · industry-specific |
-| Record | [`value-streams-value-stream-event-book-to-execute-krrav7.yaml`](./value-streams-value-stream-event-book-to-execute-krrav7.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-event-book-to-execute-krrav7` · **operational** · hospitality-travel · industry-specific
 
 > The events stream from event booking through planning to executed event and breakdown.
 
-## 3. Value proposition and served party
-
 **Outcome:** An executed event with settled account.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-event-book-to-execute-krrav7.yaml`](./value-streams-value-stream-event-book-to-execute-krrav7.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An event is booked.
+## Stage flow
 
-**Exit criterion:** The event is executed and the account settled.
+```mermaid
+flowchart LR
+  S1["1. Book Event"]
+  S2["2. Plan Event"]
+  S3["3. Execute Event"]
+  S4["4. Settle and Break Down"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Booking and contracting
-- Event planning
-- Execution
-- Settlement and breakdown
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Book Event** | An event is booked. | The event is contracted. | 2 | 1 | yes |
+| 2 | **Plan Event** | The event is contracted. | The event plan is approved. | 2 | 1 | no |
+| 3 | **Execute Event** | The event date arrives. | The event is executed. | 2 | 1 | yes |
+| 4 | **Settle and Break Down** | The event completes. | The account is settled. | 2 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Lodging (Book to Stay)
-- Catering supply chain
-
-## 5. Value stages
-
-Event Book to Execute decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Book Event
+### 1. Book Event
 
 Book and contract the event.
 
@@ -54,10 +82,10 @@ Book and contract the event.
 | Exit criterion | The event is contracted. |
 | Outcome | A contracted event. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 2: Plan Event
+### 2. Plan Event
 
 Plan the event delivery.
 
@@ -67,10 +95,10 @@ Plan the event delivery.
 | Exit criterion | The event plan is approved. |
 | Outcome | An approved plan. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-eo-design-6j5mxp` |
 
-### Stage 3: Execute Event
+### 3. Execute Event
 
 Execute the event.
 
@@ -80,10 +108,10 @@ Execute the event.
 | Exit criterion | The event is executed. |
 | Outcome | An executed event. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-management-9e8d8s` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-management-9e8d8s` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 4: Settle and Break Down
+### 4. Settle and Break Down
 
 Settle the account and break down.
 
@@ -93,12 +121,30 @@ Settle the account and break down.
 | Exit criterion | The account is settled. |
 | Outcome | A settled event. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-fa-operate-sdppmp`, `processes:process-eo-retire-rpg6d4` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-fa-operate-sdppmp` · `processes:process-eo-retire-rpg6d4` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An event is booked.
+
+**Exit:** The event is executed and the account settled.
+
+**In scope**
+
+- Booking and contracting
+- Event planning
+- Execution
+- Settlement and breakdown
+
+**Out of scope** (owned by the named neighbour)
+
+- Lodging (Book to Stay)
+- Catering supply chain
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-legal-matter-management-zzbd2u`
@@ -107,7 +153,7 @@ Settle the account and break down.
 - `capabilities:capability-workforce-management-9e8d8s`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-build-mctdgc`
 - `processes:process-eo-design-6j5mxp`
@@ -115,23 +161,27 @@ Settle the account and break down.
 - `processes:process-fa-operate-sdppmp`
 - `processes:process-eo-retire-rpg6d4`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Event execution satisfaction** (stream-level) — Post-event satisfaction score.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-088) from the CR-VS-11 industry evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -140,4 +190,4 @@ Settle the account and break down.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

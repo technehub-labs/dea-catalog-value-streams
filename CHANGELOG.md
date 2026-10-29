@@ -5,6 +5,25 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 8 — per-stream folder enrichment (CR-VS-13)
+
+- All 111 value stream folders now carry three artifacts: the
+  authoritative record, a front-mattered visual README (YAML metadata,
+  mermaid stage-flow diagram, compact stage table + per-stage detail,
+  clickable cross-stream links, evidence table, provenance ladder), and
+  a `research/` subtree (folder contract + per-entity evidence notes
+  expanded from the register).
+- `scripts/generate_entity_docs.py`: permanent, deterministic generator
+  (--only / --dry-run); replaces throwaway scripts; READMEs are
+  reproducible artifacts.
+- Vendored regenerator state bug fixed: infer_state probed
+  `{entity_id}.yaml` but ids contain ':' (never a filename), so canonical
+  records were indexed as `state: candidate` since CR-VS-06 — and would
+  have degraded to `research` once research/ subtrees landed. CATALOG.yaml
+  now reports 111 `state: canonical` (research_count: 2 each).
+- All relative links across the 333 markdown files scripted-verified.
+
+
 ### Phase 7 — README visual refresh (post-CR-VS-12)
 
 - Restructured the landing README: visual-first layout, project-management

@@ -1,49 +1,71 @@
+---
+documentation_generated_from: value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml
+id: value-streams:value-stream-lease-sign-to-renewal-9mr2yp
+name: Lease Sign to Renewal
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- construction-real-estate
+specificity: industry-specific
+entry_criterion: A lease is executed.
+exit_criterion: The renewal or exit is settled.
+outcome: A settled renewal or exit at lease end.
+stages:
+- Execute Lease
+- Serve Occupancy
+- Renew or Exit
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp
+- processes:process-ge-build-mctdgc
+- processes:process-pr-improve-t6uvan
+metrics:
+- Lease renewal rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-017
+---
+
 # Lease Sign to Renewal
 
-Admitted Value Stream record (`value-streams:value-stream-lease-sign-to-renewal-9mr2yp`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-lease-sign-to-renewal-9mr2yp` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | construction-real-estate · industry-specific |
-| Record | [`value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml`](./value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-lease-sign-to-renewal-9mr2yp` · **operational** · construction-real-estate · industry-specific
 
 > The property stream from lease execution through occupancy service to lease renewal or exit.
 
-## 3. Value proposition and served party
-
 **Outcome:** A settled renewal or exit at lease end.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml`](./value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A lease is executed.
+## Stage flow
 
-**Exit criterion:** The renewal or exit is settled.
+```mermaid
+flowchart LR
+  S1["1. Execute Lease"]
+  S2["2. Serve Occupancy"]
+  S3["3. Renew or Exit"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Lease execution and onboarding
-- Occupancy service and rent collection
-- Renewal decision and settlement
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Execute Lease** | A lease is executed. | The tenant is onboarded. | 2 | 1 | yes |
+| 2 | **Serve Occupancy** | The tenancy starts. | The tenancy is served and rent collected. | 2 | 2 | yes |
+| 3 | **Renew or Exit** | The lease approaches end. | The renewal or exit is settled. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Sales transactions (List to Close)
-- Facilities management
-
-## 5. Value stages
-
-Lease Sign to Renewal decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Execute Lease
+### 1. Execute Lease
 
 Execute the lease and onboard the tenant.
 
@@ -53,10 +75,10 @@ Execute the lease and onboard the tenant.
 | Exit criterion | The tenant is onboarded. |
 | Outcome | An onboarded tenant. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 2: Serve Occupancy
+### 2. Serve Occupancy
 
 Serve the tenancy and collect rent.
 
@@ -66,10 +88,10 @@ Serve the tenancy and collect rent.
 | Exit criterion | The tenancy is served and rent collected. |
 | Outcome | A served tenancy. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-financial-resource-management-cd3c7c` |
-| Realizing processes | `processes:process-eo-operate-2jnz85`, `processes:process-fa-operate-sdppmp` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-financial-resource-management-cd3c7c` |
+| Realizing processes | `processes:process-eo-operate-2jnz85` · `processes:process-fa-operate-sdppmp` |
 
-### Stage 3: Renew or Exit
+### 3. Renew or Exit
 
 Settle the renewal or exit.
 
@@ -79,42 +101,63 @@ Settle the renewal or exit.
 | Exit criterion | The renewal or exit is settled. |
 | Outcome | A settled lease end. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-improve-t6uvan` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A lease is executed.
+
+**Exit:** The renewal or exit is settled.
+
+**In scope**
+
+- Lease execution and onboarding
+- Occupancy service and rent collection
+- Renewal decision and settlement
+
+**Out of scope** (owned by the named neighbour)
+
+- Sales transactions (List to Close)
+- Facilities management
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-legal-matter-management-zzbd2u`
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-build-mctdgc`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-fa-operate-sdppmp`
 - `processes:process-pr-improve-t6uvan`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Lease renewal rate** (stream-level) — Share of expiring leases renewed.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-017 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-017 | industry-reference-model | Construction and real-estate chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-095) from the CR-VS-11 industry evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -123,4 +166,4 @@ Settle the renewal or exit.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

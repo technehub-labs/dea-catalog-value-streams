@@ -1,49 +1,70 @@
+---
+documentation_generated_from: value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml
+id: value-streams:value-stream-loyalty-enroll-to-reward-txebyw
+name: Loyalty Enroll to Reward
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- retail-commerce
+specificity: industry-specific
+entry_criterion: A customer enrolls in the loyalty program.
+exit_criterion: The member redeems a reward.
+outcome: An engaged loyalty member redeeming rewards.
+stages:
+- Enroll Member
+- Accrue Earn
+- Redeem Reward
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-marketing-xmc539
+processes:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-build-nygvw7
+metrics:
+- Member active rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-013
+---
+
 # Loyalty Enroll to Reward
 
-Admitted Value Stream record (`value-streams:value-stream-loyalty-enroll-to-reward-txebyw`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-loyalty-enroll-to-reward-txebyw` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | retail-commerce · industry-specific |
-| Record | [`value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml`](./value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-loyalty-enroll-to-reward-txebyw` · **operational** · retail-commerce · industry-specific
 
 > The loyalty stream from enrollment through earn accrual to redeemed reward.
 
-## 3. Value proposition and served party
-
 **Outcome:** An engaged loyalty member redeeming rewards.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml`](./value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer enrolls in the loyalty program.
+## Stage flow
 
-**Exit criterion:** The member redeems a reward.
+```mermaid
+flowchart LR
+  S1["1. Enroll Member"]
+  S2["2. Accrue Earn"]
+  S3["3. Redeem Reward"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Enrollment
-- Earn accrual
-- Reward redemption
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Enroll Member** | A customer enrolls. | The member is active. | 2 | 1 | yes |
+| 2 | **Accrue Earn** | The member is active. | Earn accrues to the account. | 2 | 1 | no |
+| 3 | **Redeem Reward** | Earn accrues. | The reward is redeemed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Marketing campaigns (Promotion Plan to Execution)
-- Payments
-
-## 5. Value stages
-
-Loyalty Enroll to Reward decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Enroll Member
+### 1. Enroll Member
 
 Enroll the customer in the program.
 
@@ -53,10 +74,10 @@ Enroll the customer in the program.
 | Exit criterion | The member is active. |
 | Outcome | An active member. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-marketing-xmc539` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-marketing-xmc539` |
 | Realizing processes | `processes:process-pr-build-nygvw7` |
 
-### Stage 2: Accrue Earn
+### 2. Accrue Earn
 
 Accrue earn on qualifying activity.
 
@@ -66,10 +87,10 @@ Accrue earn on qualifying activity.
 | Exit criterion | Earn accrues to the account. |
 | Outcome | Accrued earn. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 3: Redeem Reward
+### 3. Redeem Reward
 
 Redeem the accrued earn for rewards.
 
@@ -79,41 +100,62 @@ Redeem the accrued earn for rewards.
 | Exit criterion | The reward is redeemed. |
 | Outcome | A redeemed reward. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer enrolls in the loyalty program.
+
+**Exit:** The member redeems a reward.
+
+**In scope**
+
+- Enrollment
+- Earn accrual
+- Reward redemption
+
+**Out of scope** (owned by the named neighbour)
+
+- Marketing campaigns (Promotion Plan to Execution)
+- Payments
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-build-nygvw7`
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Member active rate** (stream-level) — Share of members with qualifying activity per period.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-013 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-013 | industry-reference-model | Retail / consumer-commerce chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-062) from the CR-VS-11 industry evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -122,4 +164,4 @@ Redeem the accrued earn for rewards.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

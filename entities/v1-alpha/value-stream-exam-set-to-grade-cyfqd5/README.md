@@ -1,49 +1,69 @@
+---
+documentation_generated_from: value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml
+id: value-streams:value-stream-exam-set-to-grade-cyfqd5
+name: Exam Set to Grade
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+industries:
+- education
+specificity: industry-specific
+entry_criterion: An assessment cycle is scheduled.
+exit_criterion: Grades are released.
+outcome: Released, moderated grades for the assessment.
+stages:
+- Set Assessment
+- Administer
+- Mark and Release
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-ycba3k
+metrics:
+- Grade release turnaround
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Exam Set to Grade
 
-Admitted Value Stream record (`value-streams:value-stream-exam-set-to-grade-cyfqd5`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-exam-set-to-grade-cyfqd5` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | support |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | education · industry-specific |
-| Record | [`value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml`](./value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-exam-set-to-grade-cyfqd5` · **support** · education · industry-specific
 
 > The assessment stream from exam setting through administration to released grades.
 
-## 3. Value proposition and served party
-
 **Outcome:** Released, moderated grades for the assessment.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml`](./value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An assessment cycle is scheduled.
+## Stage flow
 
-**Exit criterion:** Grades are released.
+```mermaid
+flowchart LR
+  S1["1. Set Assessment"]
+  S2["2. Administer"]
+  S3["3. Mark and Release"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Assessment setting and moderation
-- Administration
-- Marking and grade release
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Set Assessment** | A cycle is scheduled. | The assessment is set. | 2 | 1 | no |
+| 2 | **Administer** | The assessment is set. | The assessment is administered. | 1 | 1 | yes |
+| 3 | **Mark and Release** | The assessment is administered. | Grades are released. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Course delivery (Course Design to Delivery)
-- Certification (Inspect to Certificate pattern)
-
-## 5. Value stages
-
-Exam Set to Grade decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Set Assessment
+### 1. Set Assessment
 
 Set and moderate the assessment.
 
@@ -53,10 +73,10 @@ Set and moderate the assessment.
 | Exit criterion | The assessment is set. |
 | Outcome | A set assessment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 2: Administer
+### 2. Administer
 
 Administer the assessment.
 
@@ -69,7 +89,7 @@ Administer the assessment.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Mark and Release
+### 3. Mark and Release
 
 Mark and release the grades.
 
@@ -79,40 +99,61 @@ Mark and release the grades.
 | Exit criterion | Grades are released. |
 | Outcome | Released grades. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-fa-operate-ycba3k` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An assessment cycle is scheduled.
+
+**Exit:** Grades are released.
+
+**In scope**
+
+- Assessment setting and moderation
+- Administration
+- Marking and grade release
+
+**Out of scope** (owned by the named neighbour)
+
+- Course delivery (Course Design to Delivery)
+- Certification (Inspect to Certificate pattern)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-enterprise-governance-uas48u`
 - `capabilities:capability-operations-management-pm3w8k`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-fa-operate-ycba3k`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Grade release turnaround** (stream-level) — Elapsed time from administration to released grades.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-086) from the CR-VS-11 industry evidence register extension. Industry-specific chain (education); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -121,4 +162,4 @@ Mark and release the grades.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,51 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-issue-to-resolve-crmbay.yaml
+id: value-streams:value-stream-issue-to-resolve-crmbay
+name: Issue to Resolve
+type: ValueStream
+version: 1.3.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- cross-industry
+specificity: generic
+entry_criterion: A customer raises an issue or complaint.
+exit_criterion: The issue is resolved and the customer is informed.
+outcome: The customer's issue is resolved and trust is restored.
+stages:
+- Intake Issue
+- Diagnose
+- Correct
+- Confirm Resolution
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-pr-operate-bbe384
+metrics:
+- Mean time to resolve
+- First-contact resolution rate
+upstream:
+- value-stream-order-to-cash
+- value-stream-contract-to-renewal
+downstream:
+- value-stream-return-to-credit
+evidence_sources:
+- SRC-006
+---
+
 # Issue to Resolve
 
-Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmbay`, v1.3.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-issue-to-resolve-crmbay` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.3.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | cross-industry · generic |
-| Record | [`value-streams-value-stream-issue-to-resolve-crmbay.yaml`](./value-streams-value-stream-issue-to-resolve-crmbay.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-issue-to-resolve-crmbay` · **operational** · cross-industry · generic
 
 > The end-to-end stream from a raised customer issue through diagnosis, corrective action, and confirmed resolution.
 
-## 3. Value proposition and served party
-
 **Outcome:** The customer's issue is resolved and trust is restored.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-issue-to-resolve-crmbay.yaml`](./value-streams-value-stream-issue-to-resolve-crmbay.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer raises an issue or complaint.
+## Stage flow
 
-**Exit criterion:** The issue is resolved and the customer is informed.
+```mermaid
+flowchart LR
+  S1["1. Intake Issue"]
+  S2["2. Diagnose"]
+  S3["3. Correct"]
+  S4["4. Confirm Resolution"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Issue intake and triage
-- Diagnosis and root-cause analysis
-- Corrective action execution
-- Resolution confirmation and closure
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Intake Issue** | A customer raises an issue or complaint. | The issue is logged and classified. | 2 | 1 | yes |
+| 2 | **Diagnose** | An owned issue record exists. | Root cause is identified and corrective path chosen. | 2 | 1 | yes |
+| 3 | **Correct** | A corrective plan exists. | The corrective action is executed. | 1 | 1 | yes |
+| 4 | **Confirm Resolution** | The corrective action is executed. | The issue is resolved and the customer is informed. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Order flows (Order to Cash)
-- Contractual relationship management (Contract to Renewal)
-- Multi-channel journey design (out of scope at first order)
-
-## 5. Value stages
-
-Issue to Resolve decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Intake Issue
+### 1. Intake Issue
 
 Capture and classify the customer issue or complaint.
 
@@ -55,10 +81,10 @@ Capture and classify the customer issue or complaint.
 | Exit criterion | The issue is logged and classified. |
 | Outcome | A visible, owned issue record. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Diagnose
+### 2. Diagnose
 
 Investigate the issue and identify root cause.
 
@@ -68,10 +94,10 @@ Investigate the issue and identify root cause.
 | Exit criterion | Root cause is identified and corrective path chosen. |
 | Outcome | An understood cause and corrective plan. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Correct
+### 3. Correct
 
 Execute the corrective action.
 
@@ -84,7 +110,7 @@ Execute the corrective action.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 4: Confirm Resolution
+### 4. Confirm Resolution
 
 Confirm resolution with the customer and close the record.
 
@@ -97,43 +123,66 @@ Confirm resolution with the customer and close the record.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer raises an issue or complaint.
+
+**Exit:** The issue is resolved and the customer is informed.
+
+**In scope**
+
+- Issue intake and triage
+- Diagnosis and root-cause analysis
+- Corrective action execution
+- Resolution confirmation and closure
+
+**Out of scope** (owned by the named neighbour)
+
+- Order flows (Order to Cash)
+- Contractual relationship management (Contract to Renewal)
+- Multi-channel journey design (out of scope at first order)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-order-to-cash` — Issues typically arise after fulfillment of an order.
-- `value-streams:value-value-stream-contract-to-renewal` — Service issues surface during the contracted relationship.
+- [order to cash](../value-stream-order-to-cash-sc8gbu/README.md) — Issues typically arise after fulfillment of an order.
+- [contract to renewal](../value-stream-contract-to-renewal-5x3r4x/README.md) — Service issues surface during the contracted relationship.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-return-to-credit` — Unresolved dissatisfaction can convert to a return.
+- [return to credit](../value-stream-return-to-credit-qan2dn/README.md) — Unresolved dissatisfaction can convert to a return.
 
-## 8. Measurement
+## Measurement
 
 - **Mean time to resolve** (stage: Confirm Resolution) — Average elapsed time from issue intake to confirmed resolution.
 - **First-contact resolution rate** (stage: Diagnose) — Share of issues resolved without handoff or repeat contact. → [`dea:metric-first-contact-resolution`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-006 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-006 | commercial-process-models | Hammer & Hurdle-style enterprise process-chain literature (public summaries) |
 
 **Rationale:** Admitted from candidate VSC-003 under CR-VS-03 (evidence at E3/high, distinctness closed per CR-VS-02). Service-side chain: no order is involved; distinct from Order to Cash on entry and exit, and from journeys (multi-channel experience is out of scope at first order). Alternate name: Fault to Restore (VSC-014, merged per CR-VS-05 RES-003).
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -145,4 +194,4 @@ Confirm resolution with the customer and close the record.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

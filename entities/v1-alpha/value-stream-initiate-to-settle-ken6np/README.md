@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-initiate-to-settle-ken6np.yaml
+id: value-streams:value-stream-initiate-to-settle-ken6np
+name: Initiate to Settle
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- financial-services
+specificity: industry-specific
+entry_criterion: A payment is initiated.
+exit_criterion: The payment is settled and reconciled.
+outcome: A settled, reconciled payment between parties.
+stages:
+- Initiate Payment
+- Clear
+- Settle
+- Reconcile
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-4xn4d6
+- processes:process-fa-operate-g9zpnq
+- processes:process-pr-operate-bbe384
+metrics:
+- Payment settlement cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-008
+---
+
 # Initiate to Settle
 
-Admitted Value Stream record (`value-streams:value-stream-initiate-to-settle-ken6np`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-initiate-to-settle-ken6np` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | financial-services · industry-specific |
-| Record | [`value-streams-value-stream-initiate-to-settle-ken6np.yaml`](./value-streams-value-stream-initiate-to-settle-ken6np.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-initiate-to-settle-ken6np` · **operational** · financial-services · industry-specific
 
 > The end-to-end payments stream from payment initiation through clearing and settlement to reconciled completion.
 
-## 3. Value proposition and served party
-
 **Outcome:** A settled, reconciled payment between parties.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-initiate-to-settle-ken6np.yaml`](./value-streams-value-stream-initiate-to-settle-ken6np.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A payment is initiated.
+## Stage flow
 
-**Exit criterion:** The payment is settled and reconciled.
+```mermaid
+flowchart LR
+  S1["1. Initiate Payment"]
+  S2["2. Clear"]
+  S3["3. Settle"]
+  S4["4. Reconcile"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Payment initiation and validation
-- Clearing
-- Settlement
-- Reconciliation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Initiate Payment** | A payment is initiated. | The instruction is validated. | 2 | 1 | yes |
+| 2 | **Clear** | The instruction is validated. | The payment is cleared. | 2 | 1 | no |
+| 3 | **Settle** | The payment is cleared. | Settlement completes. | 2 | 1 | no |
+| 4 | **Reconcile** | Settlement completes. | The payment is reconciled. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Trade capture
-- Card network disputes
-
-## 5. Value stages
-
-Initiate to Settle decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Initiate Payment
+### 1. Initiate Payment
 
 Receive and validate the payment instruction.
 
@@ -54,10 +80,10 @@ Receive and validate the payment instruction.
 | Exit criterion | The instruction is validated. |
 | Outcome | A validated payment instruction. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Clear
+### 2. Clear
 
 Route the payment through clearing.
 
@@ -67,10 +93,10 @@ Route the payment through clearing.
 | Exit criterion | The payment is cleared. |
 | Outcome | A cleared payment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-technology-management-maus5n` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-technology-management-maus5n` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Settle
+### 3. Settle
 
 Settle the payment between accounts.
 
@@ -80,10 +106,10 @@ Settle the payment between accounts.
 | Exit criterion | Settlement completes. |
 | Outcome | A settled payment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 4: Reconcile
+### 4. Reconcile
 
 Reconcile settlement against instructions.
 
@@ -93,12 +119,30 @@ Reconcile settlement against instructions.
 | Exit criterion | The payment is reconciled. |
 | Outcome | A reconciled payment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-4xn4d6` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A payment is initiated.
+
+**Exit:** The payment is settled and reconciled.
+
+**In scope**
+
+- Payment initiation and validation
+- Clearing
+- Settlement
+- Reconciliation
+
+**Out of scope** (owned by the named neighbour)
+
+- Trade capture
+- Card network disputes
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
@@ -106,30 +150,34 @@ Reconcile settlement against instructions.
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-financial-stewardship-c7xtfk`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-4xn4d6`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Payment settlement cycle time** (stream-level) — Elapsed time from initiation to reconciled settlement.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-008 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-008 | industry-reference-model | Banking industry reference models (lending and payments chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-023) from the CR-VS-11 industry evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Reconcile settlement against instructions.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

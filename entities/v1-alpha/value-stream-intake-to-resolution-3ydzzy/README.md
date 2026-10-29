@@ -1,49 +1,70 @@
+---
+documentation_generated_from: value-streams-value-stream-intake-to-resolution-3ydzzy.yaml
+id: value-streams:value-stream-intake-to-resolution-3ydzzy
+name: Intake to Resolution
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- public-sector
+specificity: industry-specific
+entry_criterion: A case is reported or referred.
+exit_criterion: The case is resolved and the outcome recorded.
+outcome: A resolved case with recorded, communicated outcome.
+stages:
+- Register Case
+- Investigate
+- Resolve
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-ge-operate-zwaes5
+- processes:process-pr-operate-bbe384
+metrics:
+- Case resolution cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-014
+---
+
 # Intake to Resolution
 
-Admitted Value Stream record (`value-streams:value-stream-intake-to-resolution-3ydzzy`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-intake-to-resolution-3ydzzy` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | public-sector · industry-specific |
-| Record | [`value-streams-value-stream-intake-to-resolution-3ydzzy.yaml`](./value-streams-value-stream-intake-to-resolution-3ydzzy.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-intake-to-resolution-3ydzzy` · **operational** · public-sector · industry-specific
 
 > The case-handling stream from case intake through investigation to resolved case with recorded outcome.
 
-## 3. Value proposition and served party
-
 **Outcome:** A resolved case with recorded, communicated outcome.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-intake-to-resolution-3ydzzy.yaml`](./value-streams-value-stream-intake-to-resolution-3ydzzy.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A case is reported or referred.
+## Stage flow
 
-**Exit criterion:** The case is resolved and the outcome recorded.
+```mermaid
+flowchart LR
+  S1["1. Register Case"]
+  S2["2. Investigate"]
+  S3["3. Resolve"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Case registration and triage
-- Investigation
-- Resolution and outcome recording
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Register Case** | A case is reported. | The case is registered and triaged. | 2 | 1 | yes |
+| 2 | **Investigate** | The case is triaged. | The investigation is complete. | 2 | 1 | no |
+| 3 | **Resolve** | The investigation is complete. | The case is resolved with recorded outcome. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Applications (Apply to Decide)
-- Enforcement referrals
-
-## 5. Value stages
-
-Intake to Resolution decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Register Case
+### 1. Register Case
 
 Register and triage the case.
 
@@ -53,10 +74,10 @@ Register and triage the case.
 | Exit criterion | The case is registered and triaged. |
 | Outcome | A triaged case. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Investigate
+### 2. Investigate
 
 Investigate the case.
 
@@ -66,10 +87,10 @@ Investigate the case.
 | Exit criterion | The investigation is complete. |
 | Outcome | A completed investigation. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 3: Resolve
+### 3. Resolve
 
 Resolve the case and record the outcome.
 
@@ -79,12 +100,29 @@ Resolve the case and record the outcome.
 | Exit criterion | The case is resolved with recorded outcome. |
 | Outcome | A resolved case. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A case is reported or referred.
+
+**Exit:** The case is resolved and the outcome recorded.
+
+**In scope**
+
+- Case registration and triage
+- Investigation
+- Resolution and outcome recording
+
+**Out of scope** (owned by the named neighbour)
+
+- Applications (Apply to Decide)
+- Enforcement referrals
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
@@ -92,28 +130,32 @@ Resolve the case and record the outcome.
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-ge-operate-zwaes5`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Case resolution cycle time** (stream-level) — Elapsed time from intake to resolution.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-014 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-014 | industry-reference-model | Public-sector service chains (permits, grants, benefits; public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-074) from the CR-VS-11 industry evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -122,4 +164,4 @@ Resolve the case and record the outcome.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

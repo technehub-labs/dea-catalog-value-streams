@@ -1,49 +1,73 @@
+---
+documentation_generated_from: value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml
+id: value-streams:value-stream-sustainability-data-to-disclosure-4mmwks
+name: Sustainability Data to Disclosure
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- manufacturing
+- utilities-energy
+specificity: industry-specific
+entry_criterion: A reporting cycle opens.
+exit_criterion: The disclosure is published with assurance.
+outcome: An assured sustainability disclosure.
+stages:
+- Capture Data
+- Assure
+- Disclose
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-ycba3k
+- processes:process-ge-operate-zwaes5
+metrics:
+- Disclosure data completeness
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-016
+- SRC-011
+---
+
 # Sustainability Data to Disclosure
 
-Admitted Value Stream record (`value-streams:value-stream-sustainability-data-to-disclosure-4mmwks`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-sustainability-data-to-disclosure-4mmwks` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | manufacturing, utilities-energy · industry-specific |
-| Record | [`value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml`](./value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-sustainability-data-to-disclosure-4mmwks` · **governance** · manufacturing, utilities-energy · industry-specific
 
 > The ESG stream from sustainability data capture through assurance to disclosure.
 
-## 3. Value proposition and served party
-
 **Outcome:** An assured sustainability disclosure.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml`](./value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A reporting cycle opens.
+## Stage flow
 
-**Exit criterion:** The disclosure is published with assurance.
+```mermaid
+flowchart LR
+  S1["1. Capture Data"]
+  S2["2. Assure"]
+  S3["3. Disclose"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Data capture and aggregation
-- Assurance
-- Disclosure
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Capture Data** | A cycle opens. | The dataset is complete. | 2 | 1 | no |
+| 2 | **Assure** | The dataset is complete. | Assurance is complete. | 2 | 1 | no |
+| 3 | **Disclose** | Assurance is complete. | The disclosure is published. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Financial reporting (Record to Report)
-- Regulatory filings
-
-## 5. Value stages
-
-Sustainability Data to Disclosure decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Capture Data
+### 1. Capture Data
 
 Capture and aggregate sustainability data.
 
@@ -53,10 +77,10 @@ Capture and aggregate sustainability data.
 | Exit criterion | The dataset is complete. |
 | Outcome | A complete dataset. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-insight-management-ms4n9d` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-insight-management-ms4n9d` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 2: Assure
+### 2. Assure
 
 Assure the data and disclosures.
 
@@ -66,10 +90,10 @@ Assure the data and disclosures.
 | Exit criterion | Assurance is complete. |
 | Outcome | Assured data. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 3: Disclose
+### 3. Disclose
 
 Publish the disclosure.
 
@@ -79,12 +103,29 @@ Publish the disclosure.
 | Exit criterion | The disclosure is published. |
 | Outcome | A published disclosure. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-fa-operate-ycba3k` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A reporting cycle opens.
+
+**Exit:** The disclosure is published with assurance.
+
+**In scope**
+
+- Data capture and aggregation
+- Assurance
+- Disclosure
+
+**Out of scope** (owned by the named neighbour)
+
+- Financial reporting (Record to Report)
+- Regulatory filings
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-insight-management-ms4n9d`
@@ -92,29 +133,34 @@ Publish the disclosure.
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-financial-stewardship-c7xtfk`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-ge-operate-zwaes5`
 - `processes:process-fa-operate-ycba3k`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Disclosure data completeness** (stream-level) — Share of required data points with assured values.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016, SRC-011 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
+| SRC-011 | industry-reference-model | Utilities industry reference models (metering and retail-energy chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-057) from the CR-VS-11 industry evidence register extension. Industry-specific chain (manufacturing, utilities-energy); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -123,4 +169,4 @@ Publish the disclosure.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

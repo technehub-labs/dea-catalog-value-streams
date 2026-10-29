@@ -1,50 +1,80 @@
+---
+documentation_generated_from: value-streams-value-stream-build-to-handover-9fyyzn.yaml
+id: value-streams:value-stream-build-to-handover-9fyyzn
+name: Build to Handover
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- construction-real-estate
+specificity: industry-specific
+entry_criterion: The project commences on site.
+exit_criterion: The project is handed over to the client.
+outcome: A handed-over, commissioned project.
+stages:
+- Execute Works
+- Control Progress
+- Commission and Test
+- Hand Over
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-workforce-management-9e8d8s
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-xud3hs
+- processes:process-ge-build-mctdgc
+- processes:process-ge-operate-zwaes5
+metrics:
+- Handover on-time rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-017
+---
+
 # Build to Handover
 
-Admitted Value Stream record (`value-streams:value-stream-build-to-handover-9fyyzn`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-build-to-handover-9fyyzn` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | construction-real-estate · industry-specific |
-| Record | [`value-streams-value-stream-build-to-handover-9fyyzn.yaml`](./value-streams-value-stream-build-to-handover-9fyyzn.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-build-to-handover-9fyyzn` · **operational** · construction-real-estate · industry-specific
 
 > The project-delivery stream from construction start through works and commissioning to client handover.
 
-## 3. Value proposition and served party
-
 **Outcome:** A handed-over, commissioned project.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-build-to-handover-9fyyzn.yaml`](./value-streams-value-stream-build-to-handover-9fyyzn.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** The project commences on site.
+## Stage flow
 
-**Exit criterion:** The project is handed over to the client.
+```mermaid
+flowchart LR
+  S1["1. Execute Works"]
+  S2["2. Control Progress"]
+  S3["3. Commission and Test"]
+  S4["4. Hand Over"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Works execution
-- Progress control
-- Commissioning and testing
-- Handover
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Execute Works** | The project commences. | The works are complete. | 2 | 2 | yes |
+| 2 | **Control Progress** | Works are underway. | Progress is controlled. | 2 | 1 | no |
+| 3 | **Commission and Test** | The works are complete. | Commissioning passes. | 2 | 1 | no |
+| 4 | **Hand Over** | Commissioning passes. | The client accepts handover. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Pre-contract design
-- Defects liability management
-
-## 5. Value stages
-
-Build to Handover decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Execute Works
+### 1. Execute Works
 
 Execute the construction works.
 
@@ -54,10 +84,10 @@ Execute the construction works.
 | Exit criterion | The works are complete. |
 | Outcome | Completed works. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-management-9e8d8s` |
-| Realizing processes | `processes:process-eo-operate-xud3hs`, `processes:process-eo-operate-2jnz85` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-management-9e8d8s` |
+| Realizing processes | `processes:process-eo-operate-xud3hs` · `processes:process-eo-operate-2jnz85` |
 
-### Stage 2: Control Progress
+### 2. Control Progress
 
 Control progress, quality, and safety.
 
@@ -67,10 +97,10 @@ Control progress, quality, and safety.
 | Exit criterion | Progress is controlled. |
 | Outcome | Controlled progress. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren`, `capabilities:capability-security-management-wmzc7c` |
+| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren` · `capabilities:capability-security-management-wmzc7c` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 3: Commission and Test
+### 3. Commission and Test
 
 Commission and test the asset.
 
@@ -80,10 +110,10 @@ Commission and test the asset.
 | Exit criterion | Commissioning passes. |
 | Outcome | A commissioned asset. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 4: Hand Over
+### 4. Hand Over
 
 Hand over to the client.
 
@@ -93,12 +123,30 @@ Hand over to the client.
 | Exit criterion | The client accepts handover. |
 | Outcome | A handed-over project. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** The project commences on site.
+
+**Exit:** The project is handed over to the client.
+
+**In scope**
+
+- Works execution
+- Progress control
+- Commissioning and testing
+- Handover
+
+**Out of scope** (owned by the named neighbour)
+
+- Pre-contract design
+- Defects liability management
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-workforce-management-9e8d8s`
@@ -109,7 +157,7 @@ Hand over to the client.
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-legal-matter-management-zzbd2u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-xud3hs`
 - `processes:process-eo-operate-2jnz85`
@@ -117,23 +165,27 @@ Hand over to the client.
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-ge-build-mctdgc`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Handover on-time rate** (stream-level) — Share of projects handed over on schedule.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-017 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-017 | industry-reference-model | Construction and real-estate chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-093) from the CR-VS-11 industry evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -142,4 +194,4 @@ Hand over to the client.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

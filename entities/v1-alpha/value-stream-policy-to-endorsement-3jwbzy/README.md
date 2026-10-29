@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml
+id: value-streams:value-stream-policy-to-endorsement-3jwbzy
+name: Policy to Endorsement
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- insurance
+specificity: industry-specific
+entry_criterion: An endorsement request is received.
+exit_criterion: The endorsement is issued and billed.
+outcome: An accurately issued endorsement on the in-force policy.
+stages:
+- Intake Request
+- Assess and Price
+- Issue Endorsement
+- Adjust Billing
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-fa-operate-sdppmp
+- processes:process-ge-build-mctdgc
+- processes:process-ge-operate-tpenm6
+- processes:process-pr-operate-bbe384
+metrics:
+- Endorsement issuance turnaround
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-009
+---
+
 # Policy to Endorsement
 
-Admitted Value Stream record (`value-streams:value-stream-policy-to-endorsement-3jwbzy`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-policy-to-endorsement-3jwbzy` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | insurance · industry-specific |
-| Record | [`value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml`](./value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-policy-to-endorsement-3jwbzy` · **operational** · insurance · industry-specific
 
 > The policy-administration stream from an endorsement request through assessment to an issued policy change.
 
-## 3. Value proposition and served party
-
 **Outcome:** An accurately issued endorsement on the in-force policy.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml`](./value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An endorsement request is received.
+## Stage flow
 
-**Exit criterion:** The endorsement is issued and billed.
+```mermaid
+flowchart LR
+  S1["1. Intake Request"]
+  S2["2. Assess and Price"]
+  S3["3. Issue Endorsement"]
+  S4["4. Adjust Billing"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Endorsement intake
-- Assessment and pricing
-- Issuance
-- Billing adjustment
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Intake Request** | A request is received. | The request is complete. | 1 | 1 | yes |
+| 2 | **Assess and Price** | The request is complete. | The change is assessed and priced. | 2 | 1 | no |
+| 3 | **Issue Endorsement** | The change is priced. | The endorsement is issued. | 2 | 1 | yes |
+| 4 | **Adjust Billing** | The endorsement is issued. | Billing reflects the change. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Renewal (Contract to Renewal)
-- New business (Quote to Bind)
-
-## 5. Value stages
-
-Policy to Endorsement decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Intake Request
+### 1. Intake Request
 
 Receive and clarify the endorsement request.
 
@@ -57,7 +83,7 @@ Receive and clarify the endorsement request.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Assess and Price
+### 2. Assess and Price
 
 Assess the change and price the premium impact.
 
@@ -67,10 +93,10 @@ Assess the change and price the premium impact.
 | Exit criterion | The change is assessed and priced. |
 | Outcome | A priced change. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 3: Issue Endorsement
+### 3. Issue Endorsement
 
 Issue the endorsement to the policy.
 
@@ -80,10 +106,10 @@ Issue the endorsement to the policy.
 | Exit criterion | The endorsement is issued. |
 | Outcome | An issued endorsement. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 4: Adjust Billing
+### 4. Adjust Billing
 
 Adjust billing for the change.
 
@@ -96,9 +122,27 @@ Adjust billing for the change.
 | Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An endorsement request is received.
+
+**Exit:** The endorsement is issued and billed.
+
+**In scope**
+
+- Endorsement intake
+- Assessment and pricing
+- Issuance
+- Billing adjustment
+
+**Out of scope** (owned by the named neighbour)
+
+- Renewal (Contract to Renewal)
+- New business (Quote to Bind)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-risk-management-h9uxdw`
@@ -106,30 +150,34 @@ Adjust billing for the change.
 - `capabilities:capability-legal-matter-management-zzbd2u`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-ge-build-mctdgc`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Endorsement issuance turnaround** (stream-level) — Elapsed time from request to issued endorsement.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-009 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-009 | industry-reference-model | Insurance industry reference models (policy and claims lifecycles, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-031) from the CR-VS-11 industry evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Adjust billing for the change.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

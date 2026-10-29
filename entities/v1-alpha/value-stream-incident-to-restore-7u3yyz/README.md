@@ -1,50 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-incident-to-restore-7u3yyz.yaml
+id: value-streams:value-stream-incident-to-restore-7u3yyz
+name: Incident to Restore
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- technology
+specificity: industry-specific
+entry_criterion: An incident is detected or reported.
+exit_criterion: Service is restored and the review is complete.
+outcome: Restored service with a completed post-incident review.
+stages:
+- Detect and Triage
+- Respond and Mitigate
+- Restore
+- Post-Incident Review
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-technology-enablement-y6nkws
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-j9cjzz
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-operate-zwaes5
+metrics:
+- Mean time to restore service
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-019
+---
+
 # Incident to Restore
 
-Admitted Value Stream record (`value-streams:value-stream-incident-to-restore-7u3yyz`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-incident-to-restore-7u3yyz` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | technology · industry-specific |
-| Record | [`value-streams-value-stream-incident-to-restore-7u3yyz.yaml`](./value-streams-value-stream-incident-to-restore-7u3yyz.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-incident-to-restore-7u3yyz` · **operational** · technology · industry-specific
 
 > The reliability stream from incident detection through response to restored service with post-incident review.
 
-## 3. Value proposition and served party
-
 **Outcome:** Restored service with a completed post-incident review.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-incident-to-restore-7u3yyz.yaml`](./value-streams-value-stream-incident-to-restore-7u3yyz.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An incident is detected or reported.
+## Stage flow
 
-**Exit criterion:** Service is restored and the review is complete.
+```mermaid
+flowchart LR
+  S1["1. Detect and Triage"]
+  S2["2. Respond and Mitigate"]
+  S3["3. Restore"]
+  S4["4. Post-Incident Review"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Detection and triage
-- Response and mitigation
-- Restoration
-- Post-incident review
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Detect and Triage** | An incident occurs. | The incident is triaged. | 2 | 1 | yes |
+| 2 | **Respond and Mitigate** | The incident is triaged. | Impact is mitigated. | 2 | 1 | yes |
+| 3 | **Restore** | Impact is mitigated. | The service is restored. | 1 | 1 | yes |
+| 4 | **Post-Incident Review** | The service is restored. | The review is complete with actions. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Change deployment (Commit to Deploy)
-- Problem management
-
-## 5. Value stages
-
-Incident to Restore decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Detect and Triage
+### 1. Detect and Triage
 
 Detect and triage the incident.
 
@@ -54,10 +81,10 @@ Detect and triage the incident.
 | Exit criterion | The incident is triaged. |
 | Outcome | A triaged incident. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-security-management-wmzc7c` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-security-management-wmzc7c` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 2: Respond and Mitigate
+### 2. Respond and Mitigate
 
 Respond and mitigate impact.
 
@@ -67,10 +94,10 @@ Respond and mitigate impact.
 | Exit criterion | Impact is mitigated. |
 | Outcome | Mitigated impact. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-technology-enablement-y6nkws` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-technology-enablement-y6nkws` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Restore
+### 3. Restore
 
 Restore the service.
 
@@ -83,7 +110,7 @@ Restore the service.
 | Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` |
 | Realizing processes | `processes:process-eo-operate-j9cjzz` |
 
-### Stage 4: Post-Incident Review
+### 4. Post-Incident Review
 
 Complete the post-incident review.
 
@@ -93,12 +120,30 @@ Complete the post-incident review.
 | Exit criterion | The review is complete with actions. |
 | Outcome | A completed review. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An incident is detected or reported.
+
+**Exit:** Service is restored and the review is complete.
+
+**In scope**
+
+- Detection and triage
+- Response and mitigation
+- Restoration
+- Post-incident review
+
+**Out of scope** (owned by the named neighbour)
+
+- Change deployment (Commit to Deploy)
+- Problem management
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-security-management-wmzc7c`
@@ -107,30 +152,34 @@ Complete the post-incident review.
 - `capabilities:capability-enterprise-performance-management-5fxren`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-j9cjzz`
 - `processes:process-ge-operate-zwaes5`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Mean time to restore service** (stage: Restore) — Mean elapsed time from detection to restoration. → [`dea:metric-mean-time-to-restore-service`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-019 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-019 | industry-reference-model | Technology / SaaS product chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-106) from the CR-VS-11 industry evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -139,4 +188,4 @@ Complete the post-incident review.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml
+id: value-streams:value-stream-customer-remediation-to-current-krrxzb
+name: Customer Remediation to Current
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- financial-services
+specificity: industry-specific
+entry_criterion: A due-diligence review falls due or is flagged.
+exit_criterion: The customer file is current or the relationship is exited.
+outcome: All due-diligence records current or the relationship exited.
+stages:
+- Identify Backlog
+- Engage Customer
+- Assess and Update
+- Escalate or Exit
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-operate-zwaes5
+- processes:process-pr-operate-bbe384
+metrics:
+- KYC remediation backlog ratio
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-012
+---
+
 # Customer Remediation to Current
 
-Admitted Value Stream record (`value-streams:value-stream-customer-remediation-to-current-krrxzb`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-customer-remediation-to-current-krrxzb` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | financial-services · industry-specific |
-| Record | [`value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml`](./value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-customer-remediation-to-current-krrxzb` · **governance** · financial-services · industry-specific
 
 > The due-diligence remediation stream from an identified KYC/due-diligence backlog item through customer engagement to a current compliance status.
 
-## 3. Value proposition and served party
-
 **Outcome:** All due-diligence records current or the relationship exited.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml`](./value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A due-diligence review falls due or is flagged.
+## Stage flow
 
-**Exit criterion:** The customer file is current or the relationship is exited.
+```mermaid
+flowchart LR
+  S1["1. Identify Backlog"]
+  S2["2. Engage Customer"]
+  S3["3. Assess and Update"]
+  S4["4. Escalate or Exit"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Backlog identification
-- Customer engagement and document collection
-- Assessment and status update
-- Escalation or exit where unresolved
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Identify Backlog** | A review falls due. | The backlog item is prioritized. | 2 | 1 | no |
+| 2 | **Engage Customer** | The item is prioritized. | Required information is collected. | 1 | 1 | yes |
+| 3 | **Assess and Update** | Information is collected. | The status is updated. | 2 | 1 | no |
+| 4 | **Escalate or Exit** | Assessment fails. | The relationship is escalated or exited. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- New-customer onboarding (Onboard to Activate)
-- Financial-crime alert handling (Alert to Report)
-
-## 5. Value stages
-
-Customer Remediation to Current decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Identify Backlog
+### 1. Identify Backlog
 
 Identify and prioritize due-diligence backlog.
 
@@ -54,10 +79,10 @@ Identify and prioritize due-diligence backlog.
 | Exit criterion | The backlog item is prioritized. |
 | Outcome | A prioritized backlog item. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 2: Engage Customer
+### 2. Engage Customer
 
 Engage the customer for updated information and documents.
 
@@ -70,7 +95,7 @@ Engage the customer for updated information and documents.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 3: Assess and Update
+### 3. Assess and Update
 
 Assess the file and update the compliance status.
 
@@ -80,10 +105,10 @@ Assess the file and update the compliance status.
 | Exit criterion | The status is updated. |
 | Outcome | A current compliance status. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-regulation-management-gya4d8` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-regulation-management-gya4d8` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 4: Escalate or Exit
+### 4. Escalate or Exit
 
 Escalate or exit the unresolved relationship.
 
@@ -93,12 +118,30 @@ Escalate or exit the unresolved relationship.
 | Exit criterion | The relationship is escalated or exited. |
 | Outcome | A dispositioned relationship. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A due-diligence review falls due or is flagged.
+
+**Exit:** The customer file is current or the relationship is exited.
+
+**In scope**
+
+- Backlog identification
+- Customer engagement and document collection
+- Assessment and status update
+- Escalation or exit where unresolved
+
+**Out of scope** (owned by the named neighbour)
+
+- New-customer onboarding (Onboard to Activate)
+- Financial-crime alert handling (Alert to Report)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-information-management-6vjgdh`
@@ -106,29 +149,33 @@ Escalate or exit the unresolved relationship.
 - `capabilities:capability-regulation-management-gya4d8`
 - `capabilities:capability-legal-matter-management-zzbd2u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-pr-operate-bbe384`
 - `processes:process-ge-operate-zwaes5`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **KYC remediation backlog ratio** (stream-level) — Backlogged files as a share of the portfolio.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-012 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-012 | industry-reference-model | Financial-crime and regulatory operations chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-028) from the CR-VS-11 industry evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -137,4 +184,4 @@ Escalate or exit the unresolved relationship.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,49 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-feature-request-to-release-2fyemr.yaml
+id: value-streams:value-stream-feature-request-to-release-2fyemr
+name: Feature Request to Release
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- technology
+specificity: industry-specific
+entry_criterion: A feature request is received.
+exit_criterion: The feature is released.
+outcome: A released feature adopted by users.
+stages:
+- Intake and Prioritize
+- Specify and Build
+- Release and Drive Adoption
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-idea-management-86dckf
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-xud3hs
+- processes:process-pr-build-nygvw7
+- processes:process-pv-design-8v4k89
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Feature adoption time
+upstream:
+- value-stream-commit-to-deploy
+downstream: []
+evidence_sources:
+- SRC-019
+---
+
 # Feature Request to Release
 
-Admitted Value Stream record (`value-streams:value-stream-feature-request-to-release-2fyemr`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-feature-request-to-release-2fyemr` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | technology · industry-specific |
-| Record | [`value-streams-value-stream-feature-request-to-release-2fyemr.yaml`](./value-streams-value-stream-feature-request-to-release-2fyemr.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-feature-request-to-release-2fyemr` · **operational** · technology · industry-specific
 
 > The product stream from feature request through prioritization and build to released feature.
 
-## 3. Value proposition and served party
-
 **Outcome:** A released feature adopted by users.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-feature-request-to-release-2fyemr.yaml`](./value-streams-value-stream-feature-request-to-release-2fyemr.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A feature request is received.
+## Stage flow
 
-**Exit criterion:** The feature is released.
+```mermaid
+flowchart LR
+  S1["1. Intake and Prioritize"]
+  S2["2. Specify and Build"]
+  S3["3. Release and Drive Adoption"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Intake and prioritization
-- Specification and build
-- Release and adoption
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Intake and Prioritize** | A request is received. | The request is prioritized. | 2 | 1 | yes |
+| 2 | **Specify and Build** | The request is prioritized. | The feature is built. | 2 | 2 | no |
+| 3 | **Release and Drive Adoption** | The feature is built. | The feature is released and adopted. | 2 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Roadmap planning (Plan to Forecast pattern)
-- Delivery pipeline (Commit to Deploy)
-
-## 5. Value stages
-
-Feature Request to Release decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Intake and Prioritize
+### 1. Intake and Prioritize
 
 Intake and prioritize the request.
 
@@ -53,10 +79,10 @@ Intake and prioritize the request.
 | Exit criterion | The request is prioritized. |
 | Outcome | A prioritized request. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-idea-management-86dckf` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-idea-management-86dckf` |
 | Realizing processes | `processes:process-sd-operate-ucxpz4` |
 
-### Stage 2: Specify and Build
+### 2. Specify and Build
 
 Specify the feature and build it.
 
@@ -66,10 +92,10 @@ Specify the feature and build it.
 | Exit criterion | The feature is built. |
 | Outcome | A built feature. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-technology-enablement-y6nkws` |
-| Realizing processes | `processes:process-pv-design-8v4k89`, `processes:process-eo-build-j9z3q4` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-technology-enablement-y6nkws` |
+| Realizing processes | `processes:process-pv-design-8v4k89` · `processes:process-eo-build-j9z3q4` |
 
-### Stage 3: Release and Drive Adoption
+### 3. Release and Drive Adoption
 
 Release the feature and drive adoption.
 
@@ -79,12 +105,29 @@ Release the feature and drive adoption.
 | Exit criterion | The feature is released and adopted. |
 | Outcome | An adopted feature. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-pr-build-nygvw7`, `processes:process-eo-operate-xud3hs` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-pr-build-nygvw7` · `processes:process-eo-operate-xud3hs` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A feature request is received.
+
+**Exit:** The feature is released.
+
+**In scope**
+
+- Intake and prioritization
+- Specification and build
+- Release and adoption
+
+**Out of scope** (owned by the named neighbour)
+
+- Roadmap planning (Plan to Forecast pattern)
+- Delivery pipeline (Commit to Deploy)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-idea-management-86dckf`
@@ -93,7 +136,7 @@ Release the feature and drive adoption.
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-operations-management-pm3w8k`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-sd-operate-ucxpz4`
 - `processes:process-pv-design-8v4k89`
@@ -101,25 +144,29 @@ Release the feature and drive adoption.
 - `processes:process-pr-build-nygvw7`
 - `processes:process-eo-operate-xud3hs`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-commit-to-deploy` — Built features deploy through the pipeline.
+- [commit to deploy](../value-stream-commit-to-deploy-65cr4z/README.md) — Built features deploy through the pipeline.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Feature adoption time** (stream-level) — Elapsed time from release to target adoption.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-019 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-019 | industry-reference-model | Technology / SaaS product chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-107) from the CR-VS-11 industry evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -128,4 +175,4 @@ Release the feature and drive adoption.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

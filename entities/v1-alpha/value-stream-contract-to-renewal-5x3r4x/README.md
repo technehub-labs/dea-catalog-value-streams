@@ -1,51 +1,78 @@
+---
+documentation_generated_from: value-streams-value-stream-contract-to-renewal-5x3r4x.yaml
+id: value-streams:value-stream-contract-to-renewal-5x3r4x
+name: Contract to Renewal
+type: ValueStream
+version: 1.3.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- cross-industry
+specificity: generic
+entry_criterion: A contract is executed with a customer.
+exit_criterion: The renewal decision is settled (renewed, renegotiated, or closed out).
+outcome: A continuous, explicitly settled customer relationship.
+stages:
+- Execute Contract
+- Serve Relationship
+- Prepare Renewal
+- Settle Renewal
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-ge-build-mctdgc
+- processes:process-pr-improve-t6uvan
+- processes:process-pr-operate-bbe384
+metrics:
+- Net revenue retention
+- On-time renewal rate
+upstream:
+- value-stream-order-to-cash
+downstream:
+- value-stream-issue-to-resolve
+evidence_sources:
+- SRC-006
+---
+
 # Contract to Renewal
 
-Admitted Value Stream record (`value-streams:value-stream-contract-to-renewal-5x3r4x`, v1.3.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-contract-to-renewal-5x3r4x` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.3.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | cross-industry · generic |
-| Record | [`value-streams-value-stream-contract-to-renewal-5x3r4x.yaml`](./value-streams-value-stream-contract-to-renewal-5x3r4x.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-contract-to-renewal-5x3r4x` · **operational** · cross-industry · generic
 
 > The end-to-end post-sale relationship stream from contract execution through service of the relationship to the renewal decision.
 
-## 3. Value proposition and served party
-
 **Outcome:** A continuous, explicitly settled customer relationship.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-contract-to-renewal-5x3r4x.yaml`](./value-streams-value-stream-contract-to-renewal-5x3r4x.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A contract is executed with a customer.
+## Stage flow
 
-**Exit criterion:** The renewal decision is settled (renewed, renegotiated, or closed out).
+```mermaid
+flowchart LR
+  S1["1. Execute Contract"]
+  S2["2. Serve Relationship"]
+  S3["3. Prepare Renewal"]
+  S4["4. Settle Renewal"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Contract execution
-- Relationship service during term
-- Renewal decision preparation
-- Renewal settlement (renew, renegotiate, close out)
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Execute Contract** | A deal is agreed with the customer. | The contract is executed. | 2 | 1 | yes |
+| 2 | **Serve Relationship** | A contract is in force. | The relationship is served through the term. | 2 | 2 | yes |
+| 3 | **Prepare Renewal** | The term approaches its end. | A renewal recommendation exists. | 2 | 1 | yes |
+| 4 | **Settle Renewal** | A renewal position exists. | The renewal decision is settled (renewed, renegotiated, or closed out). | 3 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Pre-contract sales motions (Order to Cash)
-- Return/credit settlement (Return to Credit)
-- Employment relationships (Hire to Retire)
-
-## 5. Value stages
-
-Contract to Renewal decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Execute Contract
+### 1. Execute Contract
 
 Execute the contract with the customer.
 
@@ -55,10 +82,10 @@ Execute the contract with the customer.
 | Exit criterion | The contract is executed. |
 | Outcome | An in-force customer contract. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 2: Serve Relationship
+### 2. Serve Relationship
 
 Serve the contracted relationship through its term.
 
@@ -68,10 +95,10 @@ Serve the contracted relationship through its term.
 | Exit criterion | The relationship is served through the term. |
 | Outcome | A continuously served relationship. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-pr-operate-bbe384`, `processes:process-pr-improve-t6uvan` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-pr-operate-bbe384` · `processes:process-pr-improve-t6uvan` |
 
-### Stage 3: Prepare Renewal
+### 3. Prepare Renewal
 
 Prepare the renewal decision with the customer.
 
@@ -81,10 +108,10 @@ Prepare the renewal decision with the customer.
 | Exit criterion | A renewal recommendation exists. |
 | Outcome | An evidence-based renewal position. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-marketing-xmc539` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-marketing-xmc539` |
 | Realizing processes | `processes:process-pr-improve-t6uvan` |
 
-### Stage 4: Settle Renewal
+### 4. Settle Renewal
 
 Settle the renewal decision.
 
@@ -94,12 +121,31 @@ Settle the renewal decision.
 | Exit criterion | The renewal decision is settled (renewed, renegotiated, or closed out). |
 | Outcome | An explicitly settled relationship. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-financial-stewardship-c7xtfk` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-financial-stewardship-c7xtfk` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A contract is executed with a customer.
+
+**Exit:** The renewal decision is settled (renewed, renegotiated, or closed out).
+
+**In scope**
+
+- Contract execution
+- Relationship service during term
+- Renewal decision preparation
+- Renewal settlement (renew, renegotiate, close out)
+
+**Out of scope** (owned by the named neighbour)
+
+- Pre-contract sales motions (Order to Cash)
+- Return/credit settlement (Return to Credit)
+- Employment relationships (Hire to Retire)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-legal-matter-management-zzbd2u`
@@ -107,34 +153,38 @@ Settle the renewal decision.
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-marketing-xmc539`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-build-mctdgc`
 - `processes:process-pr-operate-bbe384`
 - `processes:process-pr-improve-t6uvan`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-order-to-cash` — An executed order seeds the contracted relationship.
+- [order to cash](../value-stream-order-to-cash-sc8gbu/README.md) — An executed order seeds the contracted relationship.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-issue-to-resolve` — Service issues during the term flow to issue resolution.
+- [issue to resolve](../value-stream-issue-to-resolve-crmbay/README.md) — Service issues during the term flow to issue resolution.
 
-## 8. Measurement
+## Measurement
 
 - **Net revenue retention** (stage: Settle Renewal) — Retained and expanded contract value relative to expiring value. → [`dea:metric-net-revenue-retention`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **On-time renewal rate** (stage: Settle Renewal) — Share of renewals settled before term expiry.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-006 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-006 | commercial-process-models | Hammer & Hurdle-style enterprise process-chain literature (public summaries) |
 
 **Rationale:** Admitted from candidate VSC-012 under CR-VS-05 (third tranche; evidence at E3/high from the SRC-006 chain-inventory observation, distinctness closed per the CR-VS-05 sweep). Subscription-economy relationship chain. Boundary vs. Hire to Retire: employment relationship vs. customer relationship (CR-VS-05 boundary statement). Boundary vs. Return to Credit: relationship forwards vs. transaction backwards.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -146,4 +196,4 @@ Settle the renewal decision.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

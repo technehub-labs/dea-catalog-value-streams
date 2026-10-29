@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-data-source-to-product-kdkmmj.yaml
+id: value-streams:value-stream-data-source-to-product-kdkmmj
+name: Data Source to Product
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- technology
+specificity: industry-specific
+entry_criterion: A source or use case is approved.
+exit_criterion: The data product is live and consumed.
+outcome: A consumed, SLA-backed data product.
+stages:
+- Onboard Source
+- Build Pipeline
+- Publish Product
+- Support Consumption
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-xud3hs
+- processes:process-pv-operate-cau4gv
+metrics:
+- Data product freshness SLA
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-019
+---
+
 # Data Source to Product
 
-Admitted Value Stream record (`value-streams:value-stream-data-source-to-product-kdkmmj`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-data-source-to-product-kdkmmj` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | technology · industry-specific |
-| Record | [`value-streams-value-stream-data-source-to-product-kdkmmj.yaml`](./value-streams-value-stream-data-source-to-product-kdkmmj.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-data-source-to-product-kdkmmj` · **operational** · technology · industry-specific
 
 > The data-product stream from source onboarding through pipeline build to a consumed, SLA-backed data product.
 
-## 3. Value proposition and served party
-
 **Outcome:** A consumed, SLA-backed data product.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-data-source-to-product-kdkmmj.yaml`](./value-streams-value-stream-data-source-to-product-kdkmmj.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A source or use case is approved.
+## Stage flow
 
-**Exit criterion:** The data product is live and consumed.
+```mermaid
+flowchart LR
+  S1["1. Onboard Source"]
+  S2["2. Build Pipeline"]
+  S3["3. Publish Product"]
+  S4["4. Support Consumption"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Source onboarding
-- Pipeline build
-- Product publication
-- Consumption support
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Onboard Source** | A source is approved. | The source is onboarded. | 2 | 1 | no |
+| 2 | **Build Pipeline** | The source is onboarded. | The pipeline is built. | 1 | 1 | no |
+| 3 | **Publish Product** | The pipeline is built. | The product is published. | 2 | 1 | no |
+| 4 | **Support Consumption** | The product is published. | The product is consumed. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Model development (Model to Deployment)
-- Enterprise reporting (Record to Report)
-
-## 5. Value stages
-
-Data Source to Product decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Onboard Source
+### 1. Onboard Source
 
 Onboard the data source.
 
@@ -54,10 +80,10 @@ Onboard the data source.
 | Exit criterion | The source is onboarded. |
 | Outcome | An onboarded source. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-technology-enablement-y6nkws` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-technology-enablement-y6nkws` |
 | Realizing processes | `processes:process-eo-build-j9z3q4` |
 
-### Stage 2: Build Pipeline
+### 2. Build Pipeline
 
 Build the data pipeline.
 
@@ -70,7 +96,7 @@ Build the data pipeline.
 | Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` |
 | Realizing processes | `processes:process-eo-operate-xud3hs` |
 
-### Stage 3: Publish Product
+### 3. Publish Product
 
 Publish the data product with SLA.
 
@@ -80,10 +106,10 @@ Publish the data product with SLA.
 | Exit criterion | The product is published. |
 | Outcome | A published product. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-pv-operate-cau4gv` |
 
-### Stage 4: Support Consumption
+### 4. Support Consumption
 
 Support consumer onboarding and usage.
 
@@ -93,12 +119,30 @@ Support consumer onboarding and usage.
 | Exit criterion | The product is consumed. |
 | Outcome | A consumed product. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A source or use case is approved.
+
+**Exit:** The data product is live and consumed.
+
+**In scope**
+
+- Source onboarding
+- Pipeline build
+- Product publication
+- Consumption support
+
+**Out of scope** (owned by the named neighbour)
+
+- Model development (Model to Deployment)
+- Enterprise reporting (Record to Report)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-technology-enablement-y6nkws`
@@ -106,30 +150,34 @@ Support consumer onboarding and usage.
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-build-j9z3q4`
 - `processes:process-eo-operate-xud3hs`
 - `processes:process-pv-operate-cau4gv`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Data product freshness SLA** (stream-level) — Share of refreshes meeting the freshness SLA.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-019 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-019 | industry-reference-model | Technology / SaaS product chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-110) from the CR-VS-11 industry evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Support consumer onboarding and usage.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

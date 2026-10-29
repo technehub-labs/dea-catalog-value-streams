@@ -1,49 +1,72 @@
+---
+documentation_generated_from: value-streams-value-stream-store-opening-to-trading-58wbw8.yaml
+id: value-streams:value-stream-store-opening-to-trading-58wbw8
+name: Store Opening to Trading
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+industries:
+- retail-commerce
+specificity: industry-specific
+entry_criterion: A site is selected and approved.
+exit_criterion: The store trades on day one at standard.
+outcome: A trading store at full operating standard.
+stages:
+- Fit Out
+- Staff and Train
+- Open and Stabilize
+capabilities:
+- capabilities:capability-asset-management-judtwr
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-management-9e8d8s
+- capabilities:capability-workforce-planning-b43rhm
+processes:
+- processes:process-ao-operate-87q5mk
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-zwzmbd
+metrics:
+- Opening-to-standard time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-013
+---
+
 # Store Opening to Trading
 
-Admitted Value Stream record (`value-streams:value-stream-store-opening-to-trading-58wbw8`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-store-opening-to-trading-58wbw8` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | support |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | retail-commerce · industry-specific |
-| Record | [`value-streams-value-stream-store-opening-to-trading-58wbw8.yaml`](./value-streams-value-stream-store-opening-to-trading-58wbw8.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-store-opening-to-trading-58wbw8` · **support** · retail-commerce · industry-specific
 
 > The store-lifecycle stream from site decision through fit-out and staffing to first-day trading.
 
-## 3. Value proposition and served party
-
 **Outcome:** A trading store at full operating standard.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-store-opening-to-trading-58wbw8.yaml`](./value-streams-value-stream-store-opening-to-trading-58wbw8.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A site is selected and approved.
+## Stage flow
 
-**Exit criterion:** The store trades on day one at standard.
+```mermaid
+flowchart LR
+  S1["1. Fit Out"]
+  S2["2. Staff and Train"]
+  S3["3. Open and Stabilize"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Fit-out and merchandising
-- Staffing and training
-- Opening and stabilization
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Fit Out** | A site is approved. | The store is fitted out. | 2 | 2 | no |
+| 2 | **Staff and Train** | The store is fitted out. | The team is ready. | 2 | 1 | no |
+| 3 | **Open and Stabilize** | The team is ready. | The store trades at standard. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Assortment planning
-- Real-estate transactions
-
-## 5. Value stages
-
-Store Opening to Trading decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Fit Out
+### 1. Fit Out
 
 Fit out the site and merchandise it.
 
@@ -53,10 +76,10 @@ Fit out the site and merchandise it.
 | Exit criterion | The store is fitted out. |
 | Outcome | A fitted store. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-asset-management-judtwr` |
-| Realizing processes | `processes:process-eo-build-j9z3q4`, `processes:process-eo-operate-zwzmbd` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-asset-management-judtwr` |
+| Realizing processes | `processes:process-eo-build-j9z3q4` · `processes:process-eo-operate-zwzmbd` |
 
-### Stage 2: Staff and Train
+### 2. Staff and Train
 
 Staff and train the store team.
 
@@ -66,10 +89,10 @@ Staff and train the store team.
 | Exit criterion | The team is ready. |
 | Outcome | A ready team. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-workforce-management-9e8d8s`, `capabilities:capability-workforce-planning-b43rhm` |
+| Enabling capabilities | `capabilities:capability-workforce-management-9e8d8s` · `capabilities:capability-workforce-planning-b43rhm` |
 | Realizing processes | `processes:process-ao-operate-87q5mk` |
 
-### Stage 3: Open and Stabilize
+### 3. Open and Stabilize
 
 Open for trading and stabilize to standard.
 
@@ -79,12 +102,29 @@ Open for trading and stabilize to standard.
 | Exit criterion | The store trades at standard. |
 | Outcome | A trading store. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A site is selected and approved.
+
+**Exit:** The store trades on day one at standard.
+
+**In scope**
+
+- Fit-out and merchandising
+- Staffing and training
+- Opening and stabilization
+
+**Out of scope** (owned by the named neighbour)
+
+- Assortment planning
+- Real-estate transactions
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-asset-management-judtwr`
@@ -92,30 +132,34 @@ Open for trading and stabilize to standard.
 - `capabilities:capability-workforce-planning-b43rhm`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-build-j9z3q4`
 - `processes:process-eo-operate-zwzmbd`
 - `processes:process-ao-operate-87q5mk`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Opening-to-standard time** (stream-level) — Elapsed weeks from opening to full operating standard.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-013 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-013 | industry-reference-model | Retail / consumer-commerce chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-065) from the CR-VS-11 industry evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -124,4 +168,4 @@ Open for trading and stabilize to standard.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*
