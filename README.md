@@ -170,7 +170,7 @@ mindmap
 
 Every block is schema-enforced ([`schemas/entity.schema.json`](./schemas/entity.schema.json)) and referentially gated ([`scripts/check_referential_integrity.py`](./scripts/check_referential_integrity.py)): `capabilities:` refs resolve in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities), `processes:` refs in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes), `metric_ref`s in [metrics](https://github.com/technehub-labs/dea-catalog-metrics), and cross-stream slugs against this catalog — with a vendored offline snapshot under [`tools/id-sets/`](./tools/id-sets/).
 
-## Catalogued value streams
+## Ongoing Catalogued value streams
 
 111 admitted streams across 15 applicability classes (the [`applicability`](./classifications/industry-vocabulary.yaml) dimension):
 
