@@ -50,15 +50,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Admit and Assess"]
-  S2["2. Deliver Care"]
-  S3["3. Plan Discharge"]
-  S4["4. Discharge"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Admit and Assess<br/>The care plan is approved"]
+  S2["2. Deliver Care<br/>Planned care is delivered and documented"]
+  S3["3. Plan Discharge<br/>The discharge plan is agreed"]
+  S4["4. Discharge<br/>The patient is discharged with documented transition of care"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

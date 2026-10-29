@@ -49,13 +49,21 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Fit Out"]
-  S2["2. Staff and Train"]
-  S3["3. Open and Stabilize"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Fit Out<br/>The store is fitted out"]
+  S2["2. Staff and Train<br/>The team is ready"]
+  S3["3. Open and Stabilize<br/>The store trades at standard"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
-  TRIGGER(("⏺ Entry")) --> S1
-  S3 --> EXIT1((("✔ Exit"))
+  S3 --> EXIT1
+  S3 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

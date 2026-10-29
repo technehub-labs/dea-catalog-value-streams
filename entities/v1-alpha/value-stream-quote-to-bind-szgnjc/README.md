@@ -52,15 +52,23 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Intake Submission"]
-  S2["2. Assess Risk"]
-  S3["3. Quote"]
-  S4["4. Bind"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Intake Submission<br/>The submission is complete"]
+  S2["2. Assess Risk<br/>The risk assessment is complete"]
+  S3["3. Quote<br/>Terms are agreed"]
+  S4["4. Bind<br/>The policy is bound"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
   S3 --> S4
-  TRIGGER(("⏺ Entry")) --> S1
-  S4 --> EXIT1((("✔ Exit"))
+  S4 --> EXIT1
+  S4 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3,S4 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages

@@ -51,13 +51,21 @@ evidence_sources:
 
 ```mermaid
 flowchart LR
-  S1["1. Plan Capacity"]
-  S2["2. Build and Integrate"]
-  S3["3. Accept and Cut Over"]
+  TRIGGER(["⏺ Entry"])
+  EXIT1(["✔ Exit"])
+  S1["1. Plan Capacity<br/>The build is planned"]
+  S2["2. Build and Integrate<br/>The build is complete and integrated"]
+  S3["3. Accept and Cut Over<br/>The capacity is service-ready"]
+  TRIGGER --> S1
   S1 --> S2
   S2 --> S3
-  TRIGGER(("⏺ Entry")) --> S1
-  S3 --> EXIT1((("✔ Exit"))
+  S3 --> EXIT1
+  S3 -. re-engage .-> S1
+  classDef terminal fill:#2C3E50,color:#fff,stroke:#1a252f,stroke-width:1px;
+  classDef stage fill:#EAF2F8,color:#1a252f,stroke:#2C3E50,stroke-width:1px;
+  class TRIGGER,EXIT1 terminal;
+  class S1,S2,S3 stage;
+  style TRIGGER fill:#27AE60,color:#fff,stroke:#1e8449,stroke-width:1px;
 ```
 
 ## Value stages
