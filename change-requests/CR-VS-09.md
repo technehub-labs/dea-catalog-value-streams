@@ -6,7 +6,7 @@
 | Target repository | `technehub-labs/dea-catalog-value-streams` |
 | Author | Emmanuel A. Otchere |
 | Date | 2026-10-28 |
-| Depends on | CR-VS-07 (merged, PR #9) — `customer_ref` and `actor_refs` slots exist; **and** `dea-catalog-actors` admitting the generic party records listed in §3 |
+| Depends on | CR-VS-07 (merged, PR #9) — `customer_ref` and `actor_refs` slots exist; **and** `dea-catalog-actors` admitting the generic party records listed in §3 — requested in [dea-catalog-actors#9](https://github.com/technehub-labs/dea-catalog-actors/issues/9) |
 | Method | Catalog repository standard (CR-CATALOG-STRUCT-01); reference-resolution contract (CR-VS-03 §4/§7; CR-VS-07 §2) |
 
 ## 1. Background and problem statement

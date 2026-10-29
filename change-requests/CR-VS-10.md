@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | Proposed (this document) |
+| Status | Executed (upstream issue filed: [dea-metaframework#53](https://github.com/technehub-labs/dea-metaframework/issues/53)) |
 | Target repository | `technehub-labs/dea-catalog-value-streams` (this CR documents the local convention); the ask lands in `dea-metaframework` |
 | Author | Emmanuel A. Otchere |
 | Date | 2026-10-28 |
@@ -78,7 +78,17 @@ without behavioral change.
   their records are still referenced) — that is a metaframework-level
   design question raised in the issue, not decided here.
 
-## 4. Verification plan
+## 4. Execution record
+
+- Upstream issue filed: [dea-metaframework#53](https://github.com/technehub-labs/dea-metaframework/issues/53)
+  ("Standardize cross-catalog id-set snapshots (vendored offline fallback
+  for referential-integrity gates) — CR-VS-10, alongside #51"), carrying
+  the format, scope policy, refresh rule, staleness semantics, and the
+  `lstrip` implementation note from §2.2.
+- Local normative documentation (§2.1) is this document; no further
+  in-repo action until the metaframework ratifies the convention.
+
+## 5. Verification plan
 
 - Documentation-only in this repo: README/CHANGELOG pointers updated; no
   CI surface changes.

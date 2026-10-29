@@ -5,33 +5,19 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Phase 6 — applicability dimension + industry population (CR-VS-11/12)
+### Upstream dependency filings (CR-VS-08 §4, CR-VS-09, CR-VS-10)
 
-- CR-VS-11 (foundations): `applicability` block added to the entry schema
-  (industries / organization_types / specificity, enum-backed by the
-  controlled vocabulary in `classifications/industry-vocabulary.yaml` —
-  15 industries, 5 organization types); evidence register v0.4 (new
-  `industry-reference-model` source class + 13 industry sources
-  SRC-007..SRC-019); distinctness method scoped by applicability class
-  (same-name chains in non-overlapping industries are distinct by
-  construction); all 11 existing records backfilled (v1.3.0,
-  cross-industry/generic).
-- CR-VS-12 (population): 100 industry-specific value streams admitted
-  across 14 industries (catalog: 11 -> 111 records; 396 value stages),
-  each with the full CR-VS-07 shape — scope, applicability, 3-5 stages
-  with per-stage criteria and resolving capability/process refs, verified
-  metric_ref links (21 new industry metrics, e.g.
-  `dea:metric-average-length-of-stay`, `dea:metric-loan-origination-cycle-time`,
-  `dea:metric-customs-clearance-cycle-time`), cross-stream links, evidence
-  citations to the industry sources, provenance ladder.
-- Referential integrity: scoped metrics id snapshot extended to all 35
-  referenced ids (fail-closed per the CR-VS-10 scope policy); one process-id
-  transcription error caught and fixed by the gate.
-- Research artifacts: candidate universe v0.6 (VSC-015..114 seeded and
-  admitted), admission register v0.6 (111 admissions).
-- Documentation: per-entity READMEs regenerated (111, now with the
-  applicability row); root README catalog-at-a-glance and catalogued-streams
-  sections updated with the industry summary; CR index updated.
+- dea-metaframework#53 filed: standardize cross-catalog id-set snapshots
+  (vendored offline fallback for referential-integrity gates) alongside
+  issue #51 — CR-VS-10 executed.
+- dea-catalog-actors#9 filed: requests the six generic party records
+  (customer, supplier, employee, custodian, market-segment,
+  governance-stakeholder) CR-VS-09 is gated on; backfill executes when
+  that admission lands.
+- dea-catalog-metrics#13 filed: CR-VS-08 §4's seven catalogued-metric
+  gaps as candidate-seed input for that catalog's research pipeline.
+- CR documents and index updated with the issue links; no schema,
+  record, workflow, or index changes in this tranche.
 
 
 ### Phase 5 — metric backfill executed (CR-VS-08)
