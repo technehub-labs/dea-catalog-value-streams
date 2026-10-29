@@ -5,6 +5,23 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 7 — README visual refresh (post-CR-VS-12)
+
+- Restructured the landing README: visual-first layout, project-management
+  detail compressed to a short Governance section pointing at the CR
+  ledger and CHANGELOG.
+- New mermaid cross-stream flow map: the 11-stream enterprise-generic
+  backbone with 18 industry bridges and per-industry chain fragments,
+  rendered from the records' upstream/downstream links.
+- New ECF overlay matrix: the 111 streams projected onto the 7x7
+  Enterprise Concept Framework via their stage capabilities' primary
+  coordinates (computed from the sibling capabilities catalog; 14 of 49
+  cells populated, concentration annotated).
+- New mermaid mindmap of the record anatomy; new badges (stream count,
+  industries); method section now carries an admission-pipeline flow
+  diagram.
+
+
 ### Upstream dependency filings (CR-VS-08 §4, CR-VS-09, CR-VS-10)
 
 - dea-metaframework#53 filed: standardize cross-catalog id-set snapshots

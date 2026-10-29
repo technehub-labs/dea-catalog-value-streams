@@ -1,4 +1,4 @@
-# OpenDEA Value Stream Catalog
+# Value Stream Catalog
 
 > An end-to-end collection of value-creating activities that deliver value to a consumer.
 
@@ -6,68 +6,173 @@
 
 [![View in Metamodel Explorer](https://img.shields.io/badge/Metamodel%20Explorer-View%20Entity-2C3E50?style=shield)](https://technehub-labs.github.io/metamodel/?entity=VS)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
+[![Streams](https://img.shields.io/badge/Streams-111-blue)](./CATALOG.yaml)
+[![Industries](https://img.shields.io/badge/Industries-15-green)](./classifications/industry-vocabulary.yaml)
 
-This repository is the **canonical catalog of Value Stream (`VS`) records** in
-the TechNeHub Labs Digital Enterprise Architecture (DEA) ecosystem. It holds
-the authoritative, machine-readable definition of each value stream the
-enterprise runs — its boundary, its ordered value stages, the capabilities
-that enable it, the business processes that realize it, the streams it
-connects to, and the measures that tell you it is working.
+This is the canonical catalog of **Value Stream (`VS`) records** for the TechNeHub Labs DEA ecosystem: 111 admitted streams — 11 enterprise-generic and 100 industry-specific — each defined as an ordered chain of value stages with entry/exit criteria, linked under referential integrity to the business capabilities that enable them, the business processes that realize them, the metrics that measure them, and the streams they connect to.
 
-## Catalog at a glance
+## The catalog on one page
 
-| Aspect | Value |
+| | |
 |---|---|
-| Entity | `dea:ValueStream` (alias `VS`, layer L3, building block `L3-value-delivery`) |
-| Admitted streams | 111 (v1-alpha): 11 cross-industry (v1.3.0) + 100 industry-specific (v1.0.0) |
-| Categories | 67 operational · 25 governance · 15 support · 4 development |
-| Value stages | 396 (each with entry/exit criteria and outcome) |
-| Cross-catalog links | capabilities → [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities) · processes → [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes) (referential-integrity-checked) |
-| Entry schema | [`schemas/entity.schema.json`](./schemas/entity.schema.json) — CR-MET-014 core + CR-VS-07/11 extensions (incl. `applicability`) |
-| Catalog index | [`CATALOG.yaml`](./CATALOG.yaml) — machine-generated (CR-CATALOG-STRUCT-06a) |
-| CI gates | pointer allocation · entry schema + referential integrity · catalog index conformance |
+| **Streams** | 111 (11 cross-industry · 100 industry-specific across 14 industries) |
+| **Value stages** | 396, each with entry/exit criteria and outcome |
+| **Categories** | 67 operational · 25 governance · 15 support · 4 development |
+| **Cross-catalog links** | capabilities · processes · metrics — every reference resolves, gated in CI |
+| **Shape** | [`schemas/entity.schema.json`](./schemas/entity.schema.json) · [`CATALOG.yaml`](./CATALOG.yaml) (generated index) |
 
-The canonical entity definition and its relationships live in the
-[DEA Metamodel](https://github.com/technehub-labs/dea-metamodel)
-(`metamodel/dea-metamodel.yaml`). This repository carries the catalog
-pointer ([`metamodel-pointer.yaml`](./metamodel-pointer.yaml), auto-generated
-from OpenDEAM — do not edit manually) and the admitted catalog entries.
+## Cross-stream flow map
 
-## What a Value Stream record captures
+Every stream declares its upstream and downstream neighbours (slug-based, so links survive sibling id churn). The 11 enterprise-generic streams form the backbone; industry-specific chains attach to it at the points where they generalize it, and run as industry-internal chains otherwise.
 
-Each entry is a YAML record under `entities/v1-alpha/`, validated against the
-entry schema. Beyond the CR-MET-014 core (definition, outcome, entry/exit
-criteria, `aggregated_capability_refs`), the CR-VS-07 shape captures:
+```mermaid
+flowchart LR
+  subgraph BACKBONE["Enterprise-generic backbone (cross-industry)"]
+    direction LR
+    PTF["Plan to Forecast"] --> PTD["Plan to Deliver"]
+    PTD --> O2C["Order to Cash"]
+    CTL["Contract to Renewal"]
+    O2C --> RTC["Return to Credit"]
+    O2C --> RTR["Record to Report"]
+    P2P["Procure to Pay"] --> ATR["Acquire to Retire"]
+    CTL --> I2R["Issue to Resolve"]
+    C2L["Concept to Launch"] --> O2C
+    H2R["Hire to Retire"]
+  end
+  subgraph HC["Healthcare"]
+    PAA["Patient Access to Admission"] --> A2D["Admission to Discharge"] --> D2B["Discharge to Bill"]
+    R2T["Referral to Treatment"] --> D2B
+  end
+  subgraph FIN["Financial services"]
+    A2B["Application to Book"] --> I2S["Initiate to Settle"]
+    ONB["Onboard to Activate"]
+  end
+  subgraph INS["Insurance"]
+    Q2B["Quote to Bind"] --> L2C["Loss to Claim Settlement"]
+    Q2B --> P2E["Policy to Endorsement"]
+  end
+  subgraph TEL["Telecom"]
+    O2A["Order to Activation"] --> U2B["Usage to Bill"]
+    T2R["Trouble to Restore"]
+    CH2S["Churn Risk to Save"]
+  end
+  subgraph MFG["Manufacturing"]
+    E2O["Engineer to Order"]
+    M2S["Make to Stock Release"]
+    P2PR["Prototype to Production Release"] --> M2S
+  end
+  subgraph LOG["Logistics"]
+    FM2D["Fleet Maintain to Dispatch"]
+  end
+  subgraph RET["Retail"]
+    A2S["Assortment to Shelf"]
+    C2F["Checkout to Fulfillment"]
+    PL2L["Private Label Design to Launch"] --> A2S
+  end
+  subgraph TEC["Technology"]
+    C2D["Commit to Deploy"] --> INC["Incident to Restore"]
+    F2R["Feature Request to Release"]
+    D2C["Discovery to Candidate"]
+    U2R["Usage to Renewal"]
+    DEV["Developer Onboard to First Commit"]
+    X2D["Experiment to Decision"] --> F2R
+  end
+  subgraph UTI["Utilities"]
+    M2B["Meter to Bill"]
+    A2C["Apply to Connect"] --> M2B
+    NB2S["Network Build to Service"] --> O2A
+    GM2R["Grid Maintenance to Release"]
+  end
+  subgraph PUB["Public sector"]
+    A2D2["Apply to Decide"]
+    E2R["Emergency Alert to Response"]
+  end
+  subgraph LSP["Life sciences"]
+    CTR["Clinical Trial Recruitment"] --> T2RO["Trial to Readout"]
+    S2R["Sample to Result"]
+  end
 
-| Block | Purpose |
-|---|---|
-| `value_stream_category` | operational / support / governance / development classification |
-| `scope.includes` / `scope.excludes` | explicit in/out-of-scope boundary, each exclusion naming the owning neighbour concept |
-| `value_stages[]` | ordered stage decomposition; each stage carries its own entry/exit criteria, outcome, `customer_visible` flag, and referential links to enabling **capabilities** and realizing **processes** |
-| `process_refs` | business processes realizing the stream, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes) |
-| `upstream_refs` / `downstream_refs` | slug-based cross-stream flow links (stable across sibling hash changes) |
-| `metrics[]` | stream-level and per-stage measures (`dea:measured-by` record-side companion) |
-| `evidence` / `provenance` | evidence-register sources and rationale; ladder passage (candidate → admitted → active) |
+  %% industry bridges onto the backbone
+  PTF --> A2S
+  O2C --> C2F
+  C2L --> C2D
+  C2L --> D2C
+  C2L --> PL2L
+  C2L --> P2PR
+  PTD --> E2O
+  PTD --> M2S
+  O2C --> O2A
+  ATR --> NB2S
+  ATR --> FM2D
+  ATR --> GM2R
+  H2R --> DEV
+  CTL --> U2R
+  CTL --> Q2B
+  CTL --> CH2S
+  RTR --> D2B
+  RTC --> C2F
+  O2C --> CH2S
+```
 
-### Referential integrity (CR-VS-07)
+*Full graph (all 46 cross-linked streams, including industry-internal chains for every industry) is derivable from each record's `upstream_refs` / `downstream_refs`; a per-industry rendering appears in each stream's directory README.*
 
-Every cross-catalog reference must resolve:
+## Value streams on the ECF matrix
 
-- `capabilities:` refs → [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)
-- `processes:` refs → [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)
-- `actors:` / `metrics:` refs → their catalogs, when used
-- cross-stream slugs → an admitted stream in this catalog
+Each stream's stage capabilities carry ECF coordinates (7 Domains × 7 Stages, per the
+[metaframework](https://github.com/technehub-labs/dea-metaframework)) in the capabilities catalog. Projecting every stream's aggregated capabilities onto their primary ECF cells shows where the 111 streams concentrate — the overlay is derived from record data, not asserted:
 
-The gate is [`scripts/check_referential_integrity.py`](./scripts/check_referential_integrity.py),
-run by the `validate-entries` workflow. Resolution order: local sibling
-clone → sibling `CATALOG.yaml` index → vendored snapshot under
-[`tools/id-sets/`](./tools/id-sets/) (committed with refresh date, so the
-gate is deterministic offline). Unresolved references fail CI.
+| Domain \ Stage | conceive | design | build | activate | operate | improve | retire |
+|---|---|---:|---:|---:|---:|---:|---:|
+| **strategy-direction** | 3 | · | 16 | · | 20 | · | · |
+| **party-relationship** | 20 | · | · | · | **64** | · | · |
+| **product-value** | 15 | · | · | · | · | · | · |
+| **finance-accounting** | 21 | · | · | · | 31 | · | · |
+| **agency-organization** | · | 7 | 10 | · | · | · | · |
+| **enablement-operations** | · | · | · | · | **104** | · | · |
+| **governance-existence** | **67** | 9 | · | 14 | · | · | · |
+
+*Each cell counts the streams whose stage capabilities have their primary ECF coordinate in that cell. Concentration in `enablement-operations/operate` and `party-relationship/operate` is expected: value streams are where enterprise work becomes externally visible value. The `governance-existence/conceive` cluster reflects the 25 governance streams (regulatory, quality, financial-crime, safety).*
+
+## What a record captures
+
+```mermaid
+mindmap
+  root((ValueStream record))
+    Identity
+      content-addressed id
+      value_stream_category
+      applicability
+        industries
+        organization_types
+        specificity
+    Boundary
+      entry_criterion
+      exit_criterion
+      scope.includes / excludes
+    Value stages
+      name · definition
+      entry/exit criteria
+      outcome
+      customer_visible
+    Traceability
+      capability_refs
+      process_refs
+      actor_refs
+      upstream / downstream streams
+    Measurement
+      metrics
+        stage-scoped or stream-level
+        metric_ref
+    Assurance
+      evidence sources
+      provenance ladder
+```
+
+Every block is schema-enforced ([`schemas/entity.schema.json`](./schemas/entity.schema.json)) and referentially gated ([`scripts/check_referential_integrity.py`](./scripts/check_referential_integrity.py)): `capabilities:` refs resolve in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities), `processes:` refs in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes), `metric_ref`s in [metrics](https://github.com/technehub-labs/dea-catalog-metrics), and cross-stream slugs against this catalog — with a vendored offline snapshot under [`tools/id-sets/`](./tools/id-sets/).
 
 ## Catalogued value streams
 
-111 admitted streams across 15 applicability classes (the
-[`applicability`](./classifications/industry-vocabulary.yaml) dimension, CR-VS-11):
+111 admitted streams across 15 applicability classes (the [`applicability`](./classifications/industry-vocabulary.yaml) dimension):
 
 | Industry | Streams | Examples |
 |---|---|---|
@@ -87,81 +192,22 @@ gate is deterministic offline). Unresolved references fail CI.
 | construction-real-estate | 7 | Tender to Award, Build to Handover, List to Close |
 | life-sciences | 8 | Trial to Readout, Batch to Release, Adverse Event to Signal |
 
-Cross-industry streams (the original 11):
-
-| Value stream | Category | Outcome | Stages | Record |
-|---|---|---|---|---|
-| [Order to Cash](./entities/v1-alpha/value-stream-order-to-cash-sc8gbu/README.md) | operational | Customer receives the fulfilled order and the enterprise recognizes payment against it. | Generate Demand → Capture Order → Fulfill Order → Invoice and Settle | [`value-stream-order-to-cash-sc8gbu`](./entities/v1-alpha/value-stream-order-to-cash-sc8gbu/) |
-| [Procure to Pay](./entities/v1-alpha/value-stream-procure-to-pay-utma5c/README.md) | operational | The internal need is met and the supplier obligation is settled. | Requisition Need → Source Supplier → Order and Receive → Settle Supplier | [`value-stream-procure-to-pay-utma5c`](./entities/v1-alpha/value-stream-procure-to-pay-utma5c/) |
-| [Issue to Resolve](./entities/v1-alpha/value-stream-issue-to-resolve-crmbay/README.md) | operational | The customer's issue is resolved and trust is restored. | Intake Issue → Diagnose → Correct → Confirm Resolution | [`value-stream-issue-to-resolve-crmbay`](./entities/v1-alpha/value-stream-issue-to-resolve-crmbay/) |
-| [Concept to Launch](./entities/v1-alpha/value-stream-concept-to-launch-nhvatv/README.md) | operational | A launched offering delivering value to its intended market. | Approve Concept → Develop Offering → Prepare Launch → Launch | [`value-stream-concept-to-launch-nhvatv`](./entities/v1-alpha/value-stream-concept-to-launch-nhvatv/) |
-| [Plan to Deliver](./entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/README.md) | operational | Delivered supply against planned demand. | Plan Demand → Schedule Production → Produce → Deliver | [`value-stream-plan-to-deliver-smmwpx`](./entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/) |
-| [Return to Credit](./entities/v1-alpha/value-stream-return-to-credit-qan2dn/README.md) | operational | A fairly settled return with the customer relationship preserved. | Initiate Return → Receive Reverse Logistics → Inspect and Dispose → Settle Credit | [`value-stream-return-to-credit-qan2dn`](./entities/v1-alpha/value-stream-return-to-credit-qan2dn/) |
-| [Contract to Renewal](./entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/README.md) | operational | A continuous, explicitly settled customer relationship. | Execute Contract → Serve Relationship → Prepare Renewal → Settle Renewal | [`value-stream-contract-to-renewal-5x3r4x`](./entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/) |
-| [Hire to Retire](./entities/v1-alpha/value-stream-hire-to-retire-n6szcc/README.md) | support | A staffed, productive workforce with settled employment obligations. | Requisition Workforce → Hire → Develop and Administer → Separate | [`value-stream-hire-to-retire-n6szcc`](./entities/v1-alpha/value-stream-hire-to-retire-n6szcc/) |
-| [Acquire to Retire](./entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/README.md) | support | Assets productively used across their lifecycle and cleanly retired. | Identify Asset Need → Acquire Asset → Operate and Maintain → Retire Asset | [`value-stream-acquire-to-retire-g5x89g`](./entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/) |
-| [Plan to Forecast](./entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/README.md) | governance | A ratified plan guiding enterprise resource allocation. | Open Planning Cycle → Form Plan → Negotiate Commitment → Ratify Forecast | [`value-stream-plan-to-forecast-89vb4q`](./entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/) |
-| [Record to Report](./entities/v1-alpha/value-stream-record-to-report-zw9z2r/README.md) | governance | Attested financial visibility for stakeholders. | Record Transactions → Close Period → Report → Disclose | [`value-stream-record-to-report-zw9z2r`](./entities/v1-alpha/value-stream-record-to-report-zw9z2r/) |
-
-Each value stream's directory README renders the full record — identity,
-definition, value proposition and served party, boundary (entry/exit
-criteria plus explicit in/out-of-scope), the ordered value stages with
-per-stage criteria, capability and process traceability, cross-stream
-links, metrics, evidence, and the provenance ladder.
-
-### Cross-stream flow map
-
-The `upstream_refs`/`downstream_refs` links form the enterprise flow map
-recorded in the catalog:
-
-```
-Plan to Forecast ─→ Plan to Deliver ─→ Order to Cash ─┬→ Contract to Renewal ─→ Issue to Resolve
-                       │                               ├→ Return to Credit ─→ Record to Report
-Concept to Launch ─→ Order to Cash                     └→ Record to Report
-Procure to Pay ─→ Acquire to Retire ─→ Record to Report
-Order to Cash / Procure to Pay ─→ Record to Report (transaction recording)
-```
+Each stream's directory under `entities/v1-alpha/value-stream-<slug>-<hash6>/` holds the authoritative record and a comprehensive README rendering every aspect of it.
 
 ## Method: how streams enter and evolve
 
-Admission follows the org-wide catalog research pattern
-(CR-CATALOG-STRUCT-01; established in `dea-catalog-business-capabilities`
-under CR-DEA-BC-02). All research artifacts live in
-[`catalog-research/`](./catalog-research/):
+```mermaid
+flowchart TD
+  EV["Evidence register<br/>(19 sources, E0..E5)"] --> CU["Candidate universe<br/>(114 candidates)"]
+  CU --> DS{"Distinctness sweep<br/>(applicability-scoped)"}
+  DS -->|"merged or disambiguated"| CU
+  DS -->|"distinct, evidence ≥ E2"| AG["Admission gate"]
+  AG --> REC["Canonical record<br/>(content-addressed id)"]
+  REC --> GATE["Referential-integrity gate<br/>(capabilities · processes · metrics · slugs)"]
+  GATE --> CI["validate-entries · catalog-conformance"]
+```
 
-1. **Evidence register** (`evidence-register.yaml`) — public sources
-   (BIZBOK, APQC PCF, OMG BACM, TOGAF, SAFe/Lean guidance, enterprise
-   process-chain literature), each with observations and the candidates
-   they support. Evidence ratings E0..E5.
-2. **Candidate universe** (`candidate-universe.yaml`) — candidate value
-   streams enumerated from the register; none canonical by default.
-3. **Distinctness sweep** (`distinctness-sweep.yaml`) — pairwise
-   distinctness against adjacent concepts (processes, capabilities,
-   journeys) under the entry/exit/served-party test; merges and boundary
-   statements recorded as resolutions.
-4. **Admission gate** — a candidate becomes a canonical entry only through
-   an admission change request citing the evidence register and closing
-   the per-candidate checklist (evidence ≥ E2, distinctness closed,
-   content-addressed id, provenance ladder).
-
-Every modification of substance is governed by a numbered change request
-in [`change-requests/`](./change-requests/) — from the candidate seed
-(CR-VS-01) through the admissions (CR-VS-03/04/05), the schema enrichment
-(CR-VS-07), and the conformance hardening (PR #10/#11 follow-ons). See the
-[CR index](./change-requests/README.md) for the full ledger and
-[CHANGELOG.md](./CHANGELOG.md) for the delivery history.
-
-## CI gates (what a PR must pass)
-
-| Workflow | What it checks |
-|---|---|
-| `validate-allocation` | [`metamodel-pointer.yaml`](./metamodel-pointer.yaml) against the OpenDEAM allocation (dea-architecture-framework) |
-| `validate-entries` | every record (and the fixture) against [`schemas/entity.schema.json`](./schemas/entity.schema.json); cross-catalog referential integrity |
-| `catalog-conformance` | [`CATALOG.yaml`](./CATALOG.yaml) matches regenerator output (freshness) and validates against the index schema |
-
-Local equivalents: `scripts/check_referential_integrity.py`,
-`scripts/regenerate_catalog.py --check --schema catalog-index-schema/catalog-index-schema.json`,
-`scripts/check_catalog_index.py --schema catalog-index-schema/catalog-index-schema.json`.
+Admission follows the org-wide catalog research pattern; the applicability dimension (CR-VS-11) scopes the pairwise distinctness test, which is what makes a 111-record catalog methodologically tractable.
 
 ## Repository structure
 
@@ -169,46 +215,23 @@ Local equivalents: `scripts/check_referential_integrity.py`,
 dea-catalog-value-streams/
 ├── metamodel-pointer.yaml   ← entity mapping (auto-generated from OpenDEAM; do not edit)
 ├── CATALOG.yaml             ← machine-generated catalog index (do not edit; regenerate)
-├── README.md                ← this landing document
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-├── LICENSE · NOTICE         ← Apache License 2.0
-├── schemas/
-│   ├── entity.schema.json   ← entry schema (CR-MET-014 core + CR-VS-07 extensions)
-│   └── fixtures/
-│       └── example-valid.yaml   ← schema self-exercise fixture (not a catalog entry)
-├── entities/
-│   └── v1-alpha/            ← admitted records (one subtree per value stream)
-│       ├── value-stream-<slug>-<hash6>/
-│       │   ├── value-streams-value-stream-<slug>-<hash6>.yaml  ← authoritative record
-│       │   └── README.md                                     ← comprehensive per-stream documentation
-│       └── README.md
-├── catalog-research/        ← evidence register, candidate universe, distinctness sweep,
-│                             admission register (catalog-wide research method)
-├── change-requests/        ← CR-VS-* governance documents
-├── schemas/fixtures/        ← (see schemas/ above)
-├── classifications/ · contributions/   ← cross-cutting queues (CR-CATALOG-STRUCT-01)
-├── scripts/
-│   ├── regenerate_catalog.py          ← CATALOG.yaml regenerator (CR-CATALOG-STRUCT-06a)
-│   ├── check_catalog_index.py         ← index schema + structural sanity gate
-│   ├── check_referential_integrity.py ← cross-catalog reference gate (CR-VS-07)
-│   └── hash6.py                       ← org id-system §2.5 suffix algorithm
-├── tools/
-│   └── id-sets/             ← vendored sibling-catalog id snapshots (offline ref gate)
-└── .github/workflows/
-    ├── validate-allocation.yml   ← pointer vs. OpenDEAM allocation
-    ├── validate-entries.yml      ← entry schema + referential-integrity gate
-    └── catalog-conformance.yml   ← CATALOG.yaml freshness + index schema gate
+├── schemas/entity.schema.json   ← entry schema + fixtures
+├── entities/v1-alpha/       ← 111 records: value-stream-<slug>-<hash6>/{record.yaml, README.md}
+├── catalog-research/        ← evidence register, candidate universe, admission register
+├── change-requests/         ← CR-VS-* governance ledger
+├── classifications/         ← industry-vocabulary.yaml (the applicability vocabulary)
+├── scripts/                 ← regenerator, index gate, referential-integrity gate, hash6
+├── tools/id-sets/           ← vendored sibling-catalog id snapshots (offline gate)
+└── .github/workflows/       ← allocation · entries+integrity · conformance
 ```
 
-Entries follow the org-wide catalog repository standard (CR-CATALOG-STRUCT-01)
-and the entity-storage-layout spec
-(`dea-metaframework/docs/entity-storage-layout.md`). Record ids are
-content-addressed at canonicalization
-(`value-streams:value-stream-<slug>-<hash6>`; hash per
-[`scripts/hash6.py`](./scripts/hash6.py)) and stable thereafter
-(rename-stability contract, PR #5) — substantive enrichment happens in
-place under a change request.
+## CI gates (what a PR must pass)
+
+| Workflow | What it checks |
+|---|---|
+| `validate-allocation` | [`metamodel-pointer.yaml`](./metamodel-pointer.yaml) against the OpenDEAM allocation |
+| `validate-entries` | every record (and the fixture) against [`schemas/entity.schema.json`](./schemas/entity.schema.json); cross-catalog referential integrity |
+| `catalog-conformance` | [`CATALOG.yaml`](./CATALOG.yaml) matches regenerator output (freshness) and validates against the index schema |
 
 ## Ecosystem
 
@@ -218,15 +241,13 @@ place under a change request.
 | Root model / OpenDEAM (allocation source) | [dea-architecture-framework](https://github.com/technehub-labs/dea-architecture-framework) |
 | Business capabilities (stage enablement) | [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities) |
 | Business processes (stage realization) | [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes) |
-| Org-wide catalog standards | `dea-metaframework` (CR-CATALOG-STRUCT-01, id-system, entity-storage-layout) |
+| Metrics (stream measures) | [dea-catalog-metrics](https://github.com/technehub-labs/dea-catalog-metrics) |
+| Org-wide catalog standards | [dea-metaframework](https://github.com/technehub-labs/dea-metaframework) |
 | Metamodel Explorer | [technehub-labs.github.io/metamodel/?entity=VS](https://technehub-labs.github.io/metamodel/?entity=VS) |
 
-## Contributing
+## Governance
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) — authorship rule, pointer
-discipline, branch/PR flow — and the research method above for how new
-streams are admitted. Substantive record changes go through a numbered
-change request (latest: [`change-requests/CR-VS-07.md`](./change-requests/CR-VS-07.md)).
+Every substantive change lands under a numbered change request — the full ledger lives in [`change-requests/`](./change-requests/README.md) (CR-VS-01..12) with delivery history in [CHANGELOG.md](./CHANGELOG.md). Record ids are content-addressed at canonicalization and stable thereafter; enrichment happens in place under a CR. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the authorship rule, pointer discipline, and branch/PR flow.
 
 ## License
 
