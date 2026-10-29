@@ -1,0 +1,98 @@
+id: value-streams:value-stream-sample-to-result-4wf8jc
+type: ValueStream
+name: Sample to Result
+definition: The diagnostics stream from sample accessioning through testing to a released, communicated
+  result.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - life-sciences
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A released result communicated to the ordering clinician.
+entry_criterion: A sample is received.
+exit_criterion: The result is released and communicated.
+scope:
+  includes:
+  - Accessioning
+  - Testing
+  - Result review and release
+  excludes:
+  - Patient treatment (Referral to Treatment)
+  - Clinical trials lab work
+value_stages:
+- name: Accession Sample
+  definition: Accession and register the sample.
+  entry_criterion: A sample is received.
+  exit_criterion: The sample is accessioned.
+  outcome: An accessioned sample.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+- name: Test
+  definition: Perform the diagnostic testing.
+  entry_criterion: The sample is accessioned.
+  exit_criterion: Testing is complete.
+  outcome: Test results.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Review and Release
+  definition: Review and release the result.
+  entry_criterion: Testing is complete.
+  exit_criterion: The result is released and communicated.
+  outcome: A communicated result.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-customer-management-f3n8wb
+upstream_refs:
+- slug: value-stream-referral-to-treatment
+  note: Released results inform treatment.
+metrics:
+- name: Sample-to-result turnaround
+  definition: Elapsed time from accessioning to released result.
+evidence:
+  sources:
+  - SRC-018
+  - SRC-007
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-104) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences, healthcare); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-xud3hs
+- processes:process-ge-operate-zwaes5
+- processes:process-pr-operate-bbe384

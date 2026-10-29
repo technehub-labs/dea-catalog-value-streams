@@ -1,0 +1,90 @@
+id: value-streams:value-stream-marketplace-seller-to-first-sale-avn64e
+type: ValueStream
+name: Marketplace Seller to First Sale
+definition: The marketplace stream from seller application through verification and listing to first completed
+  sale.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A transacting marketplace seller.
+entry_criterion: A seller applies to the marketplace.
+exit_criterion: The seller's first sale completes.
+scope:
+  includes:
+  - Seller verification
+  - Listing setup
+  - First transaction
+  excludes:
+  - Own-inventory retail (Checkout to Fulfillment)
+  - Payment processing
+value_stages:
+- name: Verify Seller
+  definition: Verify the seller's identity and qualifications.
+  entry_criterion: A seller applies.
+  exit_criterion: The seller is verified.
+  outcome: A verified seller.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-partner-management-cp3vdb
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: true
+- name: Set Up Listings
+  definition: Set up catalog listings.
+  entry_criterion: The seller is verified.
+  exit_criterion: Listings are live.
+  outcome: Live listings.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-pv-operate-cau4gv
+  customer_visible: true
+- name: Complete First Sale
+  definition: Support the seller to a completed first sale.
+  entry_criterion: Listings are live.
+  exit_criterion: The first sale completes.
+  outcome: A transacting seller.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-customer-management-f3n8wb
+metrics:
+- name: Seller activation rate
+  definition: Share of approved sellers reaching first sale.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-064) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-operate-tpenm6
+- processes:process-pv-operate-cau4gv
+- processes:process-pr-operate-bbe384

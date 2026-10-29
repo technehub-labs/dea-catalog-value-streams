@@ -3,7 +3,7 @@ type: ValueStream
 name: Issue to Resolve
 definition: The end-to-end stream from a raised customer issue through diagnosis, corrective action, and
   confirmed resolution.
-version: 1.2.0
+version: 1.3.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: The customer's issue is resolved and trust is restored.
@@ -34,6 +34,9 @@ provenance:
   - stage: active
     date: '2026-10-28'
     actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-11 applicability backfill (cross-industry, generic)
 value_stream_category: operational
 scope:
   includes:
@@ -108,3 +111,10 @@ metrics:
   definition: Share of issues resolved without handoff or repeat contact.
   applies_to_stage: Diagnose
   metric_ref: dea:metric-first-contact-resolution
+applicability:
+  industries:
+  - cross-industry
+  organization_types:
+  - for-profit-enterprise
+  - internal-enterprise
+  specificity: generic

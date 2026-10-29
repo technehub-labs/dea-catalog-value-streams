@@ -1,0 +1,97 @@
+id: value-streams:value-stream-policy-draft-to-enactment-nhqx6e
+type: ValueStream
+name: Policy Draft to Enactment
+definition: The policy stream from drafting through consultation to enacted and published policy.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - public-sector
+  organization_types:
+  - public-agency
+  specificity: industry-specific
+outcome: An enacted, published policy instrument.
+entry_criterion: A policy need is mandated.
+exit_criterion: The policy is enacted and published.
+scope:
+  includes:
+  - Drafting
+  - Consultation
+  - Enactment
+  - Publication
+  excludes:
+  - Legislative process
+  - Regulatory impact analysis
+value_stages:
+- name: Draft
+  definition: Draft the policy instrument.
+  entry_criterion: A mandate exists.
+  exit_criterion: The draft is complete.
+  outcome: A policy draft.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-ge-build-3p38us
+  customer_visible: false
+- name: Consult
+  definition: Run the consultation.
+  entry_criterion: The draft is complete.
+  exit_criterion: The consultation is complete.
+  outcome: Consultation outcomes.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: true
+- name: Enact
+  definition: Enact the policy.
+  entry_criterion: The consultation is complete.
+  exit_criterion: The policy is enacted.
+  outcome: An enacted policy.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: false
+- name: Publish
+  definition: Publish the enacted policy.
+  entry_criterion: The policy is enacted.
+  exit_criterion: The policy is published.
+  outcome: A published policy.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-ge-build-3p38us
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Consultation participation
+  definition: Responses received per consultation.
+evidence:
+  sources:
+  - SRC-014
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-078) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-build-3p38us
+- processes:process-sd-operate-ucxpz4
+- processes:process-ge-build-mctdgc

@@ -1,0 +1,111 @@
+id: value-streams:value-stream-admission-to-discharge-xeuu5u
+type: ValueStream
+name: Admission to Discharge
+definition: The end-to-end care delivery stream from admission through care provision to discharge with
+  a documented transition.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A patient completes a care episode and is discharged with documented transition of care.
+entry_criterion: A patient is admitted for a care episode.
+exit_criterion: The patient is discharged with documented transition of care.
+scope:
+  includes:
+  - Care planning and delivery during the episode
+  - Clinical documentation
+  - Discharge planning and execution
+  excludes:
+  - Patient access and scheduling (Patient Access to Admission)
+  - Final billing (Discharge to Bill)
+value_stages:
+- name: Admit and Assess
+  definition: Complete admission assessment and care plan.
+  entry_criterion: The patient is admitted.
+  exit_criterion: The care plan is approved.
+  outcome: An approved care plan.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-workforce-management-9e8d8s
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Deliver Care
+  definition: Deliver care per the plan across the episode.
+  entry_criterion: A care plan is approved.
+  exit_criterion: Planned care is delivered and documented.
+  outcome: Delivered, documented care.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+- name: Plan Discharge
+  definition: Prepare the discharge and transition plan.
+  entry_criterion: The episode nears completion.
+  exit_criterion: The discharge plan is agreed.
+  outcome: An agreed discharge plan.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Discharge
+  definition: Execute discharge with documented transition.
+  entry_criterion: A discharge plan is agreed.
+  exit_criterion: The patient is discharged with documented transition of care.
+  outcome: A completed episode with safe transition.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-management-9e8d8s
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+upstream_refs:
+- slug: value-stream-patient-access-to-admission
+  note: The access stream ends at admission.
+downstream_refs:
+- slug: value-stream-discharge-to-bill
+  note: Discharge starts the revenue-cycle back end.
+metrics:
+- name: Average length of stay
+  definition: Mean inpatient days per episode.
+  metric_ref: dea:metric-average-length-of-stay
+  applies_to_stage: Discharge
+- name: Readmission rate within 30 days
+  definition: Share of discharges readmitted within 30 days.
+  metric_ref: dea:metric-readmission-rate-within-30-days
+  applies_to_stage: Discharge
+evidence:
+  sources:
+  - SRC-007
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-016) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp

@@ -1,0 +1,88 @@
+id: value-streams:value-stream-outage-claim-to-credit-x479f6
+type: ValueStream
+name: Outage Claim to Credit
+definition: The regulatory compensation stream from a customer's outage-compensation claim through validation
+  to issued credit.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Regulation-compliant compensation credits issued for qualifying outages.
+entry_criterion: A customer claims outage compensation.
+exit_criterion: The qualifying credit is issued to the bill.
+scope:
+  includes:
+  - Claim validation against outage records
+  - Credit calculation
+  - Issuance to the bill
+  excludes:
+  - Supply restoration (Outage to Restore)
+  - General billing inquiries (Meter to Bill)
+value_stages:
+- name: Validate Claim
+  definition: Validate the claim against outage records.
+  entry_criterion: A claim is received.
+  exit_criterion: The claim is validated.
+  outcome: A validated claim.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Calculate Credit
+  definition: Calculate the compensation credit.
+  entry_criterion: The claim is validated.
+  exit_criterion: The credit is calculated.
+  outcome: A calculated credit.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Issue Credit
+  definition: Issue the credit to the customer's bill.
+  entry_criterion: The credit is calculated.
+  exit_criterion: The credit is issued.
+  outcome: An issued credit.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-regulation-management-gya4d8
+metrics:
+- name: Compensation claim cycle time
+  definition: Elapsed days from claim to issued credit.
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-046) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp

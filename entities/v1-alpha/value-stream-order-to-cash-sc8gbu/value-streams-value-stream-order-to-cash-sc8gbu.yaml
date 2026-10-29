@@ -3,7 +3,7 @@ type: ValueStream
 name: Order to Cash
 definition: The end-to-end stream from demand generation through order capture, fulfillment, invoicing,
   and payment settlement.
-version: 1.2.0
+version: 1.3.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: Customer receives the fulfilled order and the enterprise recognizes payment against it.
@@ -39,6 +39,9 @@ provenance:
   - stage: active
     date: '2026-10-28'
     actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-11 applicability backfill (cross-industry, generic)
 value_stream_category: operational
 scope:
   includes:
@@ -123,3 +126,10 @@ metrics:
   definition: Average days from invoice to collected payment.
   applies_to_stage: Invoice and Settle
   metric_ref: dea:metric-days-sales-outstanding
+applicability:
+  industries:
+  - cross-industry
+  organization_types:
+  - for-profit-enterprise
+  - internal-enterprise
+  specificity: generic

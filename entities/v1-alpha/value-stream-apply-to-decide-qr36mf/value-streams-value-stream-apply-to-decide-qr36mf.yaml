@@ -1,0 +1,101 @@
+id: value-streams:value-stream-apply-to-decide-qr36mf
+type: ValueStream
+name: Apply to Decide
+definition: The public-administration stream from application receipt through completeness and eligibility
+  assessment to a communicated, reasoned decision.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - public-sector
+  organization_types:
+  - public-agency
+  specificity: industry-specific
+outcome: A lawful, reasoned, communicated decision within the service standard.
+entry_criterion: An application (permit, grant, benefit, license) is received.
+exit_criterion: The decision is communicated with reasons.
+scope:
+  includes:
+  - Application registration and completeness
+  - Eligibility and merits assessment
+  - Decision and communication
+  - Appeal handling
+  excludes:
+  - Records disclosure (Request to Disclose)
+  - Enforcement actions
+value_stages:
+- name: Register Application
+  definition: Register the application and check completeness.
+  entry_criterion: An application is received.
+  exit_criterion: The application is complete.
+  outcome: A complete application.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Assess
+  definition: Assess eligibility and merits.
+  entry_criterion: The application is complete.
+  exit_criterion: The assessment is complete.
+  outcome: A completed assessment.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-insight-management-ms4n9d
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Decide and Communicate
+  definition: Decide and communicate with reasons.
+  entry_criterion: The assessment is complete.
+  exit_criterion: The decision is communicated.
+  outcome: A communicated decision.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Handle Appeal
+  definition: Handle any appeal.
+  entry_criterion: An appeal is lodged.
+  exit_criterion: The appeal is resolved.
+  outcome: A resolved appeal.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-legal-matter-management-zzbd2u
+metrics:
+- name: Decision cycle time vs service standard
+  definition: Elapsed time from receipt to communicated decision against the standard.
+evidence:
+  sources:
+  - SRC-014
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-073) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-ge-operate-zwaes5
+- processes:process-ge-build-mctdgc

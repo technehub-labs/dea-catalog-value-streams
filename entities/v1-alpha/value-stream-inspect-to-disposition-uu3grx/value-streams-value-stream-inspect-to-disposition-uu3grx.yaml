@@ -1,0 +1,99 @@
+id: value-streams:value-stream-inspect-to-disposition-uu3grx
+type: ValueStream
+name: Inspect to Disposition
+definition: The quality stream from inspection trigger through evaluation to disposition of the material.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - manufacturing
+  - logistics-transportation
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A documented disposition for every inspected lot.
+entry_criterion: An inspection is triggered (incoming, in-process, or final).
+exit_criterion: The lot is dispositioned.
+scope:
+  includes:
+  - Sampling and inspection
+  - Evaluation against specification
+  - Disposition decision
+  - Documentation
+  excludes:
+  - Supplier quality (Procure to Pay receipt leg)
+  - Warranty claims
+value_stages:
+- name: Inspect
+  definition: Sample and inspect the lot.
+  entry_criterion: An inspection is triggered.
+  exit_criterion: The inspection is complete.
+  outcome: Inspection results.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Evaluate
+  definition: Evaluate results against specification.
+  entry_criterion: The inspection is complete.
+  exit_criterion: The evaluation is complete.
+  outcome: An evaluation.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Disposition
+  definition: Decide the lot disposition.
+  entry_criterion: The evaluation is complete.
+  exit_criterion: The disposition is decided.
+  outcome: A disposition.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Document
+  definition: Document and communicate the disposition.
+  entry_criterion: The disposition is decided.
+  exit_criterion: Documentation is complete.
+  outcome: Documented disposition.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-4xn4d6
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Lot rejection rate
+  definition: Share of inspected lots rejected.
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-052) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing, logistics-transportation); distinct
+    from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve
+    against the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-44jsrp
+- processes:process-ge-operate-zwaes5
+- processes:process-fa-operate-4xn4d6

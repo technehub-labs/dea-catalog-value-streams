@@ -1,0 +1,90 @@
+id: value-streams:value-stream-store-opening-to-trading-58wbw8
+type: ValueStream
+name: Store Opening to Trading
+definition: The store-lifecycle stream from site decision through fit-out and staffing to first-day trading.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A trading store at full operating standard.
+entry_criterion: A site is selected and approved.
+exit_criterion: The store trades on day one at standard.
+scope:
+  includes:
+  - Fit-out and merchandising
+  - Staffing and training
+  - Opening and stabilization
+  excludes:
+  - Assortment planning
+  - Real-estate transactions
+value_stages:
+- name: Fit Out
+  definition: Fit out the site and merchandise it.
+  entry_criterion: A site is approved.
+  exit_criterion: The store is fitted out.
+  outcome: A fitted store.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-asset-management-judtwr
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+- name: Staff and Train
+  definition: Staff and train the store team.
+  entry_criterion: The store is fitted out.
+  exit_criterion: The team is ready.
+  outcome: A ready team.
+  capability_refs:
+  - capabilities:capability-workforce-management-9e8d8s
+  - capabilities:capability-workforce-planning-b43rhm
+  process_refs:
+  - processes:process-ao-operate-87q5mk
+  customer_visible: false
+- name: Open and Stabilize
+  definition: Open for trading and stabilize to standard.
+  entry_criterion: The team is ready.
+  exit_criterion: The store trades at standard.
+  outcome: A trading store.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-asset-management-judtwr
+- capabilities:capability-workforce-management-9e8d8s
+- capabilities:capability-workforce-planning-b43rhm
+- capabilities:capability-enterprise-performance-management-5fxren
+metrics:
+- name: Opening-to-standard time
+  definition: Elapsed weeks from opening to full operating standard.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-065) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-zwzmbd
+- processes:process-ao-operate-87q5mk
+- processes:process-eo-operate-2jnz85

@@ -1,0 +1,87 @@
+id: value-streams:value-stream-regulatory-dossier-to-approval-mgbk2u
+type: ValueStream
+name: Regulatory Dossier to Approval
+definition: The regulatory stream from dossier compilation through submission to marketing approval.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - life-sciences
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A received marketing approval for the dossier.
+entry_criterion: A dossier compilation cycle opens.
+exit_criterion: The approval is received.
+scope:
+  includes:
+  - Dossier compilation
+  - Submission
+  - Review response and approval
+  excludes:
+  - Clinical readout (Trial to Readout)
+  - Lifecycle license maintenance
+value_stages:
+- name: Compile Dossier
+  definition: Compile the regulatory dossier.
+  entry_criterion: A cycle opens.
+  exit_criterion: The dossier is complete.
+  outcome: A complete dossier.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-fa-operate-ycba3k
+  customer_visible: false
+- name: Submit
+  definition: Submit the dossier.
+  entry_criterion: The dossier is complete.
+  exit_criterion: The submission is accepted.
+  outcome: An accepted submission.
+  capability_refs:
+  - capabilities:capability-regulation-management-gya4d8
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-fa-operate-8vqvkk
+  customer_visible: false
+- name: Respond and Gain Approval
+  definition: Respond to review questions and gain approval.
+  entry_criterion: Review questions arrive.
+  exit_criterion: The approval is received.
+  outcome: A received approval.
+  capability_refs:
+  - capabilities:capability-regulation-management-gya4d8
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Submission-to-approval time
+  definition: Elapsed months from submission to approval.
+evidence:
+  sources:
+  - SRC-018
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-102) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-ycba3k
+- processes:process-fa-operate-8vqvkk
+- processes:process-ge-operate-zwaes5

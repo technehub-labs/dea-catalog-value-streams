@@ -1,0 +1,86 @@
+id: value-streams:value-stream-batch-to-release-mzc7cf
+type: ValueStream
+name: Batch to Release
+definition: The GMP stream from batch start through manufacturing and quality control to released batch.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - life-sciences
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A quality-released batch available for distribution.
+entry_criterion: A production batch is scheduled.
+exit_criterion: The batch is released by quality.
+scope:
+  includes:
+  - Batch manufacturing
+  - Quality control testing
+  - Batch record review and release
+  excludes:
+  - Supply planning (Plan to Deliver)
+  - Distribution (Ship to Consignee)
+value_stages:
+- name: Manufacture Batch
+  definition: Manufacture the batch.
+  entry_criterion: A batch is scheduled.
+  exit_criterion: The batch is manufactured.
+  outcome: A manufactured batch.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Test Quality Control
+  definition: Run quality-control testing.
+  entry_criterion: The batch is manufactured.
+  exit_criterion: Testing is complete.
+  outcome: QC results.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Review and Release
+  definition: Review the batch record and release.
+  entry_criterion: Testing is complete.
+  exit_criterion: The batch is released.
+  outcome: A released batch.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Batch release cycle time
+  definition: Elapsed time from manufacture to release.
+evidence:
+  sources:
+  - SRC-018
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-099) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-44jsrp
+- processes:process-ge-operate-zwaes5

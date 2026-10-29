@@ -1,0 +1,103 @@
+id: value-streams:value-stream-safety-incident-to-closure-6v5uxt
+type: ValueStream
+name: Safety Incident to Closure
+definition: The safety stream from incident report through investigation to corrective-action closure.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - utilities-energy
+  - manufacturing
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Incidents investigated with corrective actions closed out.
+entry_criterion: A safety incident is reported.
+exit_criterion: The investigation and corrective actions are closed.
+scope:
+  includes:
+  - Incident reporting
+  - Investigation
+  - Corrective action
+  - Closure verification
+  excludes:
+  - Regulatory reporting (Record to Report)
+  - Insurance claims interface
+value_stages:
+- name: Report Incident
+  definition: Report and register the safety incident.
+  entry_criterion: An incident occurs.
+  exit_criterion: The incident is registered.
+  outcome: A registered incident.
+  capability_refs:
+  - capabilities:capability-security-management-wmzc7c
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: true
+- name: Investigate
+  definition: Investigate causes.
+  entry_criterion: The incident is registered.
+  exit_criterion: Causes are determined.
+  outcome: Determined causes.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Correct
+  definition: Implement corrective actions.
+  entry_criterion: Causes are determined.
+  exit_criterion: Corrective actions are implemented.
+  outcome: Implemented actions.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-eo-improve-g3ngp3
+  customer_visible: false
+- name: Verify Closure
+  definition: Verify effectiveness and close.
+  entry_criterion: Actions are implemented.
+  exit_criterion: Closure is verified.
+  outcome: A closed incident.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+metrics:
+- name: Recordable incident rate
+  definition: Recordable incidents per hours worked.
+evidence:
+  sources:
+  - SRC-011
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-049) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy, manufacturing); distinct from
+    cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against
+    the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-operate-zwaes5
+- processes:process-eo-improve-g3ngp3

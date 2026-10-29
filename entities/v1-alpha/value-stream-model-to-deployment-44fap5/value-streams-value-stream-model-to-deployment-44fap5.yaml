@@ -1,0 +1,101 @@
+id: value-streams:value-stream-model-to-deployment-44fap5
+type: ValueStream
+name: Model to Deployment
+definition: The AI/ML stream from model development through validation and approval to deployed, monitored
+  model.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A deployed, monitored model serving predictions.
+entry_criterion: A model development need is approved.
+exit_criterion: The model is deployed and monitored.
+scope:
+  includes:
+  - Development and training
+  - Validation and approval
+  - Deployment
+  - Monitoring
+  excludes:
+  - Software delivery (Commit to Deploy)
+  - Data governance
+value_stages:
+- name: Develop Model
+  definition: Develop and train the model.
+  entry_criterion: A need is approved.
+  exit_criterion: The model is trained.
+  outcome: A trained model.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-insight-management-ms4n9d
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  customer_visible: false
+- name: Validate and Approve
+  definition: Validate the model and approve for use.
+  entry_criterion: The model is trained.
+  exit_criterion: The model is approved.
+  outcome: An approved model.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Deploy
+  definition: Deploy the model to serving.
+  entry_criterion: The model is approved.
+  exit_criterion: The model is serving.
+  outcome: A serving model.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Monitor
+  definition: Monitor model performance and drift.
+  entry_criterion: The model serves.
+  exit_criterion: The model is monitored with drift response.
+  outcome: A monitored model.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+metrics:
+- name: Model deployment cycle time
+  definition: Elapsed time from approval to serving.
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-109) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-build-j9z3q4
+- processes:process-ge-operate-zwaes5
+- processes:process-eo-operate-xud3hs
+- processes:process-sd-operate-ucxpz4

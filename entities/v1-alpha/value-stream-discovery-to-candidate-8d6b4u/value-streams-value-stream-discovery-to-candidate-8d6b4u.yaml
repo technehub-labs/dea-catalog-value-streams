@@ -1,0 +1,95 @@
+id: value-streams:value-stream-discovery-to-candidate-8d6b4u
+type: ValueStream
+name: Discovery to Candidate
+definition: The research stream from target identification through screening to a nominated development
+  candidate.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: development
+applicability:
+  industries:
+  - life-sciences
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A nominated development candidate.
+entry_criterion: A target is identified.
+exit_criterion: A candidate is nominated for development.
+scope:
+  includes:
+  - Target identification and validation
+  - Screening
+  - Candidate nomination
+  excludes:
+  - Clinical development (Trial to Readout)
+  - Research platform governance
+value_stages:
+- name: Validate Target
+  definition: Validate the identified target.
+  entry_criterion: A target is identified.
+  exit_criterion: The target is validated.
+  outcome: A validated target.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-idea-management-86dckf
+  process_refs:
+  - processes:process-pv-conceive-kps544
+  customer_visible: false
+- name: Screen
+  definition: Screen for active candidates.
+  entry_criterion: The target is validated.
+  exit_criterion: Screening is complete.
+  outcome: Screened candidates.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Nominate Candidate
+  definition: Nominate the development candidate.
+  entry_criterion: Screening is complete.
+  exit_criterion: The candidate is nominated.
+  outcome: A nominated candidate.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-pv-design-8v4k89
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-idea-management-86dckf
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-enterprise-governance-uas48u
+upstream_refs:
+- slug: value-stream-concept-to-launch
+  note: The life-sciences specialization of development intake.
+metrics:
+- name: Discovery project attrition
+  definition: Share of targets reaching candidate nomination.
+evidence:
+  sources:
+  - SRC-018
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-101) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pv-conceive-kps544
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-pv-design-8v4k89

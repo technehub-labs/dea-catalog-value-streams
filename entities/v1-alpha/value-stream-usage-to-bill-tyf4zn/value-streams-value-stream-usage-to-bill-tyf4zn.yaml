@@ -1,0 +1,101 @@
+id: value-streams:value-stream-usage-to-bill-tyf4zn
+type: ValueStream
+name: Usage to Bill
+definition: The telecom revenue stream from usage mediation through rating to an accurate customer bill.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - telecommunications
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An accurate, explained bill for consumed services.
+entry_criterion: Usage events are recorded on an activated service.
+exit_criterion: The customer bill for the period is produced and accepted.
+scope:
+  includes:
+  - Usage mediation and collection
+  - Rating and discounting
+  - Bill production
+  - Bill inquiry resolution
+  excludes:
+  - Service activation (Order to Activation)
+  - Collections
+value_stages:
+- name: Mediate Usage
+  definition: Collect and mediate usage events.
+  entry_criterion: Usage events occur.
+  exit_criterion: Usage records are mediated.
+  outcome: Mediated usage.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Rate Usage
+  definition: Rate the mediated usage per the price plan.
+  entry_criterion: Usage is mediated.
+  exit_criterion: Usage is rated.
+  outcome: Rated usage.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Produce Bill
+  definition: Produce and issue the customer bill.
+  entry_criterion: Usage is rated.
+  exit_criterion: The bill is issued.
+  outcome: An issued bill.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+- name: Resolve Inquiries
+  definition: Resolve bill inquiries and disputes.
+  entry_criterion: The bill is issued.
+  exit_criterion: Inquiries are resolved.
+  outcome: An accepted bill.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-customer-management-f3n8wb
+upstream_refs:
+- slug: value-stream-order-to-activation
+  note: Activated services generate usage.
+metrics:
+- name: Billing accuracy rate
+  definition: Billed amount variance from rated usage.
+evidence:
+  sources:
+  - SRC-010
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-038) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384

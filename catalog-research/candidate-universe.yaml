@@ -1,7 +1,7 @@
-universe_version: 0.5.0
-cr: 'CR-VS-01 (candidate universe seed) + CR-VS-02 (distinctness sweep: VSC-007 merged into VSC-001 per
-  RES-001) + CR-VS-04 (second-tranche evidence: VSC-004/005/008/009 raised E2 -> E3 via register v0.2
-  extension) + CR-VS-05 (third-tranche seed: VSC-011/012/013/014 from the SRC-006 chain-inventory observation)'
+universe_version: 0.6.0
+cr: 'CR-VS-01..CR-VS-05 (cross-industry tranches) + CR-VS-12 (industry population tranche: VSC-015..VSC-114
+  seeded from the register v0.4 industry sources SRC-007..SRC-019 and admitted under the applicability-scoped
+  distinctness method, CR-VS-11)'
 compiled: '2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evidence-register v0.1; none
   canonical); 2026-10-27 (v0.2 per CR-VS-02: VSC-007 merged into VSC-001 per RES-001; 8 VALUE-STREAM candidates
   remain; admission-ready VSC-001/002/003/006); 2026-10-27 (v0.2.1 per CR-VS-03: VSC-001/002/003/006 admitted
@@ -10,7 +10,8 @@ compiled: '2026-10-27 (v0.1: universe opened; VSC-001..VSC-009 seeded from evide
   applied)); 2026-10-27 (v0.4 per CR-VS-05: third tranche - VSC-011 Return to Credit, VSC-012 Contract
   to Renewal, VSC-013 Acquire to Retire, VSC-014 Fault to Restore seeded at E3/high)"; 2026-10-27 (v0.5
   per CR-VS-05: VSC-014 merged into VSC-003 per RES-003; 11 VALUE-STREAM candidates remain; admission-ready
-  VSC-011/012/013)'
+  VSC-011/012/013); 2026-10-28 (v0.6 per CR-VS-12: 100 industry-specific candidates VSC-015..VSC-114 seeded
+  at E2+ from the industry reference-model sources and admitted; universe total 111 VALUE-STREAM candidates)'
 compiled_by: Emmanuel A. Otchere
 status: active
 evidence_register: catalog-research/evidence-register.yaml
@@ -30,8 +31,8 @@ evidence_ratings:
 - E4
 - E5
 counts:
-  total: 14
-  VALUE-STREAM: 11
+  total: 114
+  VALUE-STREAM: 111
   MERGED: 2
   DEVELOPMENT-STREAM: 1
 candidates:
@@ -264,3 +265,1520 @@ candidates:
   distinctness_notes: 'Merged into VSC-003 (Issue to Resolve) per CR-VS-05 RES-003: naming variant; zero-axis
     difference under the two-axis test. Append-only record; Fault to Restore is recorded as an alternate
     name on the Issue to Resolve record.'
+- id: VSC-033
+  name: Actuarial Data to Price
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A pricing review cycle opens.
+  exit_criterion_hypothesis: Rates are filed or adopted.
+  outcome_hypothesis: Filed or adopted, defensible rates.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-016
+  name: Admission to Discharge
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A patient is admitted for a care episode.
+  exit_criterion_hypothesis: The patient is discharged with documented transition of care.
+  outcome_hypothesis: A patient completes a care episode and is discharged with documented transition
+    of care.
+  industries:
+  - healthcare
+  sources:
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-081
+  name: Admit to Graduate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An admission offer is accepted.
+  exit_criterion_hypothesis: The student graduates with a conferred award.
+  outcome_hypothesis: A graduated student with conferred award.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-100
+  name: Adverse Event to Signal
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An adverse event is reported.
+  exit_criterion_hypothesis: The case is processed and the signal decision recorded.
+  outcome_hypothesis: A documented signal assessment and reporting decision for every validated case.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-025
+  name: Alert to Report
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A monitoring alert is generated.
+  exit_criterion_hypothesis: The reporting decision is made and filed where required.
+  outcome_hypothesis: A completed, defensible reporting decision on every financial-crime alert.
+  industries:
+  - financial-services
+  sources:
+  - SRC-012
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-085
+  name: Alumni Engage to Give
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An alumnus is engaged.
+  exit_criterion_hypothesis: The contribution is received and acknowledged.
+  outcome_hypothesis: A received, acknowledged alumni contribution.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-084
+  name: Applicant Outreach to Enrollment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An outreach campaign is launched.
+  exit_criterion_hypothesis: The intake enrollment target is met.
+  outcome_hypothesis: An enrolled student cohort for the intake.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-021
+  name: Application to Book
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A loan application is submitted.
+  exit_criterion_hypothesis: The loan is booked and available to the customer.
+  outcome_hypothesis: An approved loan booked and available to the customer.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-044
+  name: Apply to Connect
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A connection application is received.
+  exit_criterion_hypothesis: The connection is energized.
+  outcome_hypothesis: An energized connection for the applicant.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-073
+  name: Apply to Decide
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An application (permit, grant, benefit, license) is received.
+  exit_criterion_hypothesis: The decision is communicated with reasons.
+  outcome_hypothesis: A lawful, reasoned, communicated decision within the service standard.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-058
+  name: Assortment to Shelf
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An assortment planning cycle opens.
+  exit_criterion_hypothesis: The assortment is in stock at planned levels.
+  outcome_hypothesis: Planned assortment in stock and on shelf.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-099
+  name: Batch to Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A production batch is scheduled.
+  exit_criterion_hypothesis: The batch is released by quality.
+  outcome_hypothesis: A quality-released batch available for distribution.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-020
+  name: Blood Donation to Transfusion
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A donor presents or is recruited.
+  exit_criterion_hypothesis: The transfusion is completed and documented.
+  outcome_hypothesis: Safe blood components transfused to the patient who needs them.
+  industries:
+  - healthcare
+  sources:
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-087
+  name: Book to Stay
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A reservation is made.
+  exit_criterion_hypothesis: The guest checks out with a settled folio.
+  outcome_hypothesis: A completed stay with settled folio.
+  industries:
+  - hospitality-travel
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-093
+  name: Build to Handover
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: The project commences on site.
+  exit_criterion_hypothesis: The project is handed over to the client.
+  outcome_hypothesis: A handed-over, commissioned project.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-026
+  name: Card Issue to Activate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A card application is approved.
+  exit_criterion_hypothesis: The card is received and activated by the cardholder.
+  outcome_hypothesis: An activated card in the cardholder's hands.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-059
+  name: Checkout to Fulfillment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer completes checkout.
+  exit_criterion_hypothesis: The order is delivered with proof.
+  outcome_hypothesis: A delivered order with proof of delivery.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-040
+  name: Churn Risk to Save
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A churn-risk score crosses threshold.
+  exit_criterion_hypothesis: The customer is retained or churns with the decision recorded.
+  outcome_hypothesis: At-risk customers retained or consciously churned.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-019
+  name: Clinical Trial Recruitment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A trial protocol is approved and the site is activated.
+  exit_criterion_hypothesis: The site reaches its enrollment target.
+  outcome_hypothesis: A fully enrolled clinical trial cohort at the site.
+  industries:
+  - life-sciences
+  - healthcare
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-070
+  name: Cold Chain to Verified
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A temperature-controlled load is sealed.
+  exit_criterion_hypothesis: Cold-chain integrity is verified at delivery.
+  outcome_hypothesis: Delivered goods with verified cold-chain integrity.
+  industries:
+  - logistics-transportation
+  - retail-commerce
+  sources:
+  - SRC-016
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-105
+  name: Commit to Deploy
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A change is committed.
+  exit_criterion_hypothesis: The change is deployed to production.
+  outcome_hypothesis: A deployed change in production serving users.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-082
+  name: Course Design to Delivery
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A course design cycle opens.
+  exit_criterion_hypothesis: The course is delivered and evaluated.
+  outcome_hypothesis: A delivered, evaluated course offering.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-028
+  name: Customer Remediation to Current
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A due-diligence review falls due or is flagged.
+  exit_criterion_hypothesis: The customer file is current or the relationship is exited.
+  outcome_hypothesis: All due-diligence records current or the relationship exited.
+  industries:
+  - financial-services
+  sources:
+  - SRC-012
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-067
+  name: Customs Clearance to Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A shipment requires customs clearance.
+  exit_criterion_hypothesis: The cargo is released and duties settled.
+  outcome_hypothesis: Customs-released cargo with duties settled.
+  industries:
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-071
+  name: Dangerous Goods Accept to Deliver
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A dangerous-goods booking is made.
+  exit_criterion_hypothesis: The consignment is delivered compliantly.
+  outcome_hypothesis: A compliantly delivered dangerous-goods consignment.
+  industries:
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-110
+  name: Data Source to Product
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A source or use case is approved.
+  exit_criterion_hypothesis: The data product is live and consumed.
+  outcome_hypothesis: A consumed, SLA-backed data product.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-096
+  name: Defect Report to Rectification
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A defect is reported in the liability period.
+  exit_criterion_hypothesis: The rectification is accepted.
+  outcome_hypothesis: A rectified, accepted defect within the liability period.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-024
+  name: Deposit to Maturity
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer opens a term deposit.
+  exit_criterion_hypothesis: The deposit matures and is redeemed or renewed.
+  outcome_hypothesis: A term deposit held to maturity and redeemed or renewed.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-113
+  name: Developer Onboard to First Commit
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A developer joins.
+  exit_criterion_hypothesis: The first contribution is merged.
+  outcome_hypothesis: A productive new developer with a merged first contribution.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-017
+  name: Discharge to Bill
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A patient is discharged.
+  exit_criterion_hypothesis: The final bill is produced, adjudicated, and collected.
+  outcome_hypothesis: A clean, collected final bill for the care episode.
+  industries:
+  - healthcare
+  sources:
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-101
+  name: Discovery to Candidate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A target is identified.
+  exit_criterion_hypothesis: A candidate is nominated for development.
+  outcome_hypothesis: A nominated development candidate.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-089
+  name: Disruption to Reaccommodation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A journey disruption occurs.
+  exit_criterion_hypothesis: The traveler completes the journey.
+  outcome_hypothesis: A reaccommodated traveler completing the journey.
+  industries:
+  - hospitality-travel
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-103
+  name: Drug Safety Label to Update
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: New safety evidence accumulates.
+  exit_criterion_hypothesis: The approved label is updated.
+  outcome_hypothesis: An updated, approved product label reflecting current safety evidence.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-079
+  name: Emergency Alert to Response
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An emergency alert is received.
+  exit_criterion_hypothesis: The response is complete and reviewed.
+  outcome_hypothesis: A responded emergency with completed after-action review.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-050
+  name: Engineer to Order
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer order with engineering specification is received.
+  exit_criterion_hypothesis: The engineered product is delivered and accepted.
+  outcome_hypothesis: A delivered product engineered to the customer's specification.
+  industries:
+  - manufacturing
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-055
+  name: Equipment Calibration to Certified
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A calibration due date is reached.
+  exit_criterion_hypothesis: The equipment is certified for use.
+  outcome_hypothesis: Calibration-certified equipment available for use.
+  industries:
+  - manufacturing
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-088
+  name: Event Book to Execute
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An event is booked.
+  exit_criterion_hypothesis: The event is executed and the account settled.
+  outcome_hypothesis: An executed event with settled account.
+  industries:
+  - hospitality-travel
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-086
+  name: Exam Set to Grade
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An assessment cycle is scheduled.
+  exit_criterion_hypothesis: Grades are released.
+  outcome_hypothesis: Released, moderated grades for the assessment.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-114
+  name: Experiment to Decision
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A hypothesis is approved.
+  exit_criterion_hypothesis: The decision is recorded and actioned.
+  outcome_hypothesis: A recorded, evidence-based decision for every experiment.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-107
+  name: Feature Request to Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A feature request is received.
+  exit_criterion_hypothesis: The feature is released.
+  outcome_hypothesis: A released feature adopted by users.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-042
+  name: Field Install to Verify
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An install work order is issued.
+  exit_criterion_hypothesis: The installation is verified complete.
+  outcome_hypothesis: A verified completed field installation.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-069
+  name: Fleet Maintain to Dispatch
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A vehicle completes maintenance.
+  exit_criterion_hypothesis: The vehicle is dispatched on a revenue movement.
+  outcome_hypothesis: A roadworthy, dispatchable vehicle.
+  industries:
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-076
+  name: Grant Award to Closeout
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A grant is awarded.
+  exit_criterion_hypothesis: The grant is closed out with settled funds.
+  outcome_hypothesis: A closed-out grant with settled funds and reported outcomes.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-047
+  name: Grid Maintenance to Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A maintenance window is planned.
+  exit_criterion_hypothesis: The equipment is released back to service.
+  outcome_hypothesis: Maintained equipment released safely back to service.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-091
+  name: Guest Feedback to Standard
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: Guest feedback is captured.
+  exit_criterion_hypothesis: The standard improvement is implemented and verified.
+  outcome_hypothesis: An improved, verified service standard.
+  industries:
+  - hospitality-travel
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-090
+  name: Housekeeping Turn to Ready
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A guest checks out.
+  exit_criterion_hypothesis: The room is ready to sell.
+  outcome_hypothesis: A ready-to-sell room at standard.
+  industries:
+  - hospitality-travel
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-106
+  name: Incident to Restore
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An incident is detected or reported.
+  exit_criterion_hypothesis: Service is restored and the review is complete.
+  outcome_hypothesis: Restored service with a completed post-incident review.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-023
+  name: Initiate to Settle
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A payment is initiated.
+  exit_criterion_hypothesis: The payment is settled and reconciled.
+  outcome_hypothesis: A settled, reconciled payment between parties.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-052
+  name: Inspect to Disposition
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An inspection is triggered (incoming, in-process, or final).
+  exit_criterion_hypothesis: The lot is dispositioned.
+  outcome_hypothesis: A documented disposition for every inspected lot.
+  industries:
+  - manufacturing
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-077
+  name: Inspection to Certificate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An inspection falls due or is requested.
+  exit_criterion_hypothesis: The certificate or notice is issued.
+  outcome_hypothesis: An issued inspection certificate or notice.
+  industries:
+  - public-sector
+  - construction-real-estate
+  sources:
+  - SRC-014
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-074
+  name: Intake to Resolution
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A case is reported or referred.
+  exit_criterion_hypothesis: The case is resolved and the outcome recorded.
+  outcome_hypothesis: A resolved case with recorded, communicated outcome.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-072
+  name: Last-Mile Route to Proof
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A day's route is planned.
+  exit_criterion_hypothesis: All stops are served with proof captured.
+  outcome_hypothesis: All stops served with captured proof.
+  industries:
+  - logistics-transportation
+  - retail-commerce
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-095
+  name: Lease Sign to Renewal
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A lease is executed.
+  exit_criterion_hypothesis: The renewal or exit is settled.
+  outcome_hypothesis: A settled renewal or exit at lease end.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-094
+  name: List to Close
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A listing agreement is signed.
+  exit_criterion_hypothesis: The sale closes with settled proceeds.
+  outcome_hypothesis: A closed property sale with settled proceeds.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-030
+  name: Loss to Claim Settlement
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A loss is notified.
+  exit_criterion_hypothesis: The claim is settled and paid.
+  outcome_hypothesis: A fairly adjusted, settled, and paid claim.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-062
+  name: Loyalty Enroll to Reward
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer enrolls in the loyalty program.
+  exit_criterion_hypothesis: The member redeems a reward.
+  outcome_hypothesis: An engaged loyalty member redeeming rewards.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-051
+  name: Make to Stock Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A replenishment signal is raised.
+  exit_criterion_hypothesis: Finished stock is received and available.
+  outcome_hypothesis: Finished stock available to promise.
+  industries:
+  - manufacturing
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-064
+  name: Marketplace Seller to First Sale
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A seller applies to the marketplace.
+  exit_criterion_hypothesis: The seller's first sale completes.
+  outcome_hypothesis: A transacting marketplace seller.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-027
+  name: Merchant Acquire to Transact
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A merchant applies for acceptance.
+  exit_criterion_hypothesis: The merchant's first transaction is settled.
+  outcome_hypothesis: An acquiring relationship live with the merchant's first settled transaction.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-043
+  name: Meter to Bill
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: Consumption occurs at a metered point.
+  exit_criterion_hypothesis: The period bill is produced and accepted.
+  outcome_hypothesis: An accurate, explained bill for consumed energy.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-109
+  name: Model to Deployment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A model development need is approved.
+  exit_criterion_hypothesis: The model is deployed and monitored.
+  outcome_hypothesis: A deployed, monitored model serving predictions.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-039
+  name: Network Build to Service
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A capacity need is identified.
+  exit_criterion_hypothesis: The new capacity is in production and service-ready.
+  outcome_hypothesis: Service-ready network capacity in production.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-041
+  name: Number Port to Activate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer requests to port a number.
+  exit_criterion_hypothesis: The number is ported and activated.
+  outcome_hypothesis: A ported number active on the recipient network.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-022
+  name: Onboard to Activate
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An account application is received.
+  exit_criterion_hypothesis: The account is activated after identity verification and due diligence.
+  outcome_hypothesis: A KYC-cleared, activated account for the customer.
+  industries:
+  - financial-services
+  sources:
+  - SRC-008
+  - SRC-012
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-036
+  name: Order to Activation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer order for service is accepted.
+  exit_criterion_hypothesis: The service is activated and confirmed to the customer.
+  outcome_hypothesis: An activated service for the customer.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-046
+  name: Outage Claim to Credit
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer claims outage compensation.
+  exit_criterion_hypothesis: The qualifying credit is issued to the bill.
+  outcome_hypothesis: Regulation-compliant compensation credits issued for qualifying outages.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-045
+  name: Outage to Restore
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An outage is detected or reported.
+  exit_criterion_hypothesis: Supply is restored and customers are informed.
+  outcome_hypothesis: Restored supply with informed customers.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-015
+  name: Patient Access to Admission
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A referral is received or a patient requests care.
+  exit_criterion_hypothesis: The patient is admitted or scheduled with registration and coverage verified.
+  outcome_hypothesis: A patient is registered, verified, and admitted or scheduled for a care episode.
+  industries:
+  - healthcare
+  sources:
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-078
+  name: Policy Draft to Enactment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A policy need is mandated.
+  exit_criterion_hypothesis: The policy is enacted and published.
+  outcome_hypothesis: An enacted, published policy instrument.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-031
+  name: Policy to Endorsement
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An endorsement request is received.
+  exit_criterion_hypothesis: The endorsement is issued and billed.
+  outcome_hypothesis: An accurately issued endorsement on the in-force policy.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-063
+  name: Private Label Design to Launch
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A private-label product brief is approved.
+  exit_criterion_hypothesis: The product is launched and on shelf.
+  outcome_hypothesis: A launched private-label product on shelf.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-061
+  name: Promotion Plan to Execution
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A promotion is designed and approved.
+  exit_criterion_hypothesis: The promotion is executed and its lift measured.
+  outcome_hypothesis: An executed promotion with measured performance.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-054
+  name: Prototype to Production Release
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A prototype is approved.
+  exit_criterion_hypothesis: Production is released with a validated process.
+  outcome_hypothesis: A production-released product with validated process.
+  industries:
+  - manufacturing
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-029
+  name: Quote to Bind
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A quote request or submission is received.
+  exit_criterion_hypothesis: The policy is bound and documented.
+  outcome_hypothesis: A bound policy for the accepted risk.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-056
+  name: Recall to Remediation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A recall decision is made.
+  exit_criterion_hypothesis: The recall is closed with remediation complete.
+  outcome_hypothesis: All affected units remediated with the recall closed.
+  industries:
+  - manufacturing
+  - retail-commerce
+  sources:
+  - SRC-016
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-018
+  name: Referral to Treatment
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A specialist referral is made.
+  exit_criterion_hypothesis: The referred treatment is completed.
+  outcome_hypothesis: A referred patient receives and completes specialist treatment.
+  industries:
+  - healthcare
+  sources:
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-102
+  name: Regulatory Dossier to Approval
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A dossier compilation cycle opens.
+  exit_criterion_hypothesis: The approval is received.
+  outcome_hypothesis: A received marketing approval for the dossier.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-034
+  name: Reinsurance Placement to Recovery
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A reinsurance need is identified.
+  exit_criterion_hypothesis: Recoveries are collected for ceded losses.
+  outcome_hypothesis: Ceded risk with recoveries collected.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-032
+  name: Renewal Risk to Decision
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A policy approaches renewal.
+  exit_criterion_hypothesis: The renewal decision is made and communicated.
+  outcome_hypothesis: A data-driven renewal decision communicated before expiry.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-075
+  name: Request to Disclose
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A records/information request is received.
+  exit_criterion_hypothesis: The disclosure is made within deadline.
+  outcome_hypothesis: A lawful disclosure to the requester within the statutory deadline.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-083
+  name: Research Grant to Publication
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A research grant is awarded.
+  exit_criterion_hypothesis: The findings are published and disseminated.
+  outcome_hypothesis: Published, disseminated research findings.
+  industries:
+  - education
+  sources:
+  - SRC-015
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-049
+  name: Safety Incident to Closure
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A safety incident is reported.
+  exit_criterion_hypothesis: The investigation and corrective actions are closed.
+  outcome_hypothesis: Incidents investigated with corrective actions closed out.
+  industries:
+  - utilities-energy
+  - manufacturing
+  sources:
+  - SRC-011
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-104
+  name: Sample to Result
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A sample is received.
+  exit_criterion_hypothesis: The result is released and communicated.
+  outcome_hypothesis: A released result communicated to the ordering clinician.
+  industries:
+  - life-sciences
+  - healthcare
+  sources:
+  - SRC-018
+  - SRC-007
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-111
+  name: Security Alert to Remediation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A security alert fires.
+  exit_criterion_hypothesis: The threat is remediated and the finding closed.
+  outcome_hypothesis: A remediated threat with closed finding.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-066
+  name: Ship to Consignee
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A shipper books the freight.
+  exit_criterion_hypothesis: The consignee confirms receipt.
+  outcome_hypothesis: Freight delivered with confirmed consignee receipt.
+  industries:
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-097
+  name: Site Survey to Permit
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A development need is identified.
+  exit_criterion_hypothesis: The permit is issued.
+  outcome_hypothesis: An issued development permit.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-048
+  name: Solar Enrollment to Generation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A customer applies for generation enrollment.
+  exit_criterion_hypothesis: The site generates and exports to the grid.
+  outcome_hypothesis: An enrolled customer site generating and exporting energy.
+  industries:
+  - utilities-energy
+  sources:
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-065
+  name: Store Opening to Trading
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A site is selected and approved.
+  exit_criterion_hypothesis: The store trades on day one at standard.
+  outcome_hypothesis: A trading store at full operating standard.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-053
+  name: Supplier Quality to Approval
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A supplier quality audit is scheduled.
+  exit_criterion_hypothesis: The supplier is approved with actions closed.
+  outcome_hypothesis: Approved suppliers with closed corrective actions.
+  industries:
+  - manufacturing
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-060
+  name: Supplier Reconciliation
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: Supplier invoices and delivery records exist for the period.
+  exit_criterion_hypothesis: All supplier accounts are reconciled and settled.
+  outcome_hypothesis: Reconciled supplier settlements for the trading period.
+  industries:
+  - retail-commerce
+  sources:
+  - SRC-013
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-035
+  name: Surrender to Payout
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A policyholder requests surrender.
+  exit_criterion_hypothesis: The surrender value is paid and the contract closed.
+  outcome_hypothesis: A correctly computed surrender paid and the contract closed.
+  industries:
+  - insurance
+  sources:
+  - SRC-009
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-057
+  name: Sustainability Data to Disclosure
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A reporting cycle opens.
+  exit_criterion_hypothesis: The disclosure is published with assurance.
+  outcome_hypothesis: An assured sustainability disclosure.
+  industries:
+  - manufacturing
+  - utilities-energy
+  sources:
+  - SRC-016
+  - SRC-011
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-092
+  name: Tender to Award
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A tender is invited.
+  exit_criterion_hypothesis: The contract is awarded.
+  outcome_hypothesis: An awarded construction contract.
+  industries:
+  - construction-real-estate
+  sources:
+  - SRC-017
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-098
+  name: Trial to Readout
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: An approved trial starts enrollment.
+  exit_criterion_hypothesis: The database locks and the readout completes.
+  outcome_hypothesis: A locked trial database and analyzed readout.
+  industries:
+  - life-sciences
+  sources:
+  - SRC-018
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-037
+  name: Trouble to Restore
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A fault is reported or detected.
+  exit_criterion_hypothesis: Service is restored and confirmed.
+  outcome_hypothesis: Restored service confirmed to the customer.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-038
+  name: Usage to Bill
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: Usage events are recorded on an activated service.
+  exit_criterion_hypothesis: The customer bill for the period is produced and accepted.
+  outcome_hypothesis: An accurate, explained bill for consumed services.
+  industries:
+  - telecommunications
+  sources:
+  - SRC-010
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-108
+  name: Usage to Renewal
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A subscription period begins.
+  exit_criterion_hypothesis: The renewal is settled (renewed, expanded, or churned).
+  outcome_hypothesis: A data-driven renewal decision settled with the customer.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-080
+  name: Vital Record to Archive
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A vital event is registered.
+  exit_criterion_hypothesis: The record is archived and retrievable.
+  outcome_hypothesis: An archived, retrievable vital record with certified copies available.
+  industries:
+  - public-sector
+  sources:
+  - SRC-014
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-112
+  name: Vulnerability to Patch
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A vulnerability is disclosed or detected.
+  exit_criterion_hypothesis: The vulnerability is patched and verified.
+  outcome_hypothesis: Patched, verified systems within policy windows.
+  industries:
+  - technology
+  sources:
+  - SRC-019
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.
+- id: VSC-068
+  name: Warehouse Inbound to Bin
+  classification: VALUE-STREAM
+  confidence: high
+  evidence_strength: E2
+  entry_criterion_hypothesis: A carrier arrives with inbound freight.
+  exit_criterion_hypothesis: Stock is confirmed in its bin locations.
+  outcome_hypothesis: Bin-confirmed, system-visible received stock.
+  industries:
+  - logistics-transportation
+  sources:
+  - SRC-016
+  distinctness_notes: Industry-specific chain under the CR-VS-11 applicability dimension; distinct from
+    cross-industry and other-industry chains by applicability scoping; same-industry neighbours passed
+    the two-axis test.

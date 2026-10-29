@@ -1,6 +1,6 @@
 # Return to Credit
 
-Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2dn`, v1.2.0, active).
+Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2dn`, v1.3.0, active).
 
 ## 1. Identity
 
@@ -9,8 +9,9 @@ Admitted Value Stream record (`value-streams:value-stream-return-to-credit-qan2d
 | Canonical ID | `value-streams:value-stream-return-to-credit-qan2dn` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.2.0 · active |
+| Version / status | 1.3.0 · active |
 | Metamodel pin | 1.0.0 |
+| Applicability | cross-industry · generic |
 | Record | [`value-streams-value-stream-return-to-credit-qan2dn.yaml`](./value-streams-value-stream-return-to-credit-qan2dn.yaml) — authoritative |
 
 ## 2. Definition
@@ -142,6 +143,7 @@ Settle by refund, credit, or replacement.
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-05 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
 | active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-11 applicability backfill (cross-industry, generic) |
 
 ---
 

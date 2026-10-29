@@ -1,0 +1,95 @@
+id: value-streams:value-stream-book-to-stay-hcrx2e
+type: ValueStream
+name: Book to Stay
+definition: The lodging stream from reservation through pre-arrival to completed stay and checkout.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - hospitality-travel
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A completed stay with settled folio.
+entry_criterion: A reservation is made.
+exit_criterion: The guest checks out with a settled folio.
+scope:
+  includes:
+  - Reservation
+  - Pre-arrival preparation
+  - Stay service
+  - Checkout and settlement
+  excludes:
+  - Events (Event Book to Execute)
+  - Loyalty programs
+value_stages:
+- name: Reserve
+  definition: Take and confirm the reservation.
+  entry_criterion: A reservation is made.
+  exit_criterion: The booking is confirmed.
+  outcome: A confirmed booking.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Prepare Arrival
+  definition: Prepare for the arrival.
+  entry_criterion: A booking is confirmed.
+  exit_criterion: The room is ready.
+  outcome: A ready room.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+- name: Serve Stay
+  definition: Serve the guest through the stay.
+  entry_criterion: The guest arrives.
+  exit_criterion: The stay is served.
+  outcome: A served stay.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Check Out and Settle
+  definition: Check out and settle the folio.
+  entry_criterion: The stay ends.
+  exit_criterion: The folio is settled.
+  outcome: A settled folio.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-financial-resource-management-cd3c7c
+metrics:
+- name: Occupancy rate
+  definition: Occupied room-nights as a share of available.
+evidence:
+  sources:
+  - SRC-015
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-087) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp

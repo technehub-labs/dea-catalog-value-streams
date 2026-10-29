@@ -1,0 +1,102 @@
+id: value-streams:value-stream-solar-enrollment-to-generation-8hhbuq
+type: ValueStream
+name: Solar Enrollment to Generation
+definition: The distributed-energy stream from enrollment application through site assessment and installation
+  to exporting generation.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An enrolled customer site generating and exporting energy.
+entry_criterion: A customer applies for generation enrollment.
+exit_criterion: The site generates and exports to the grid.
+scope:
+  includes:
+  - Application and eligibility
+  - Site assessment and approval
+  - Installation and inspection
+  - Export activation
+  excludes:
+  - Standard connections (Apply to Connect)
+  - Generation settlement
+value_stages:
+- name: Enroll
+  definition: Enroll the applicant and check eligibility.
+  entry_criterion: An application is received.
+  exit_criterion: Eligibility is confirmed.
+  outcome: An eligible applicant.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Assess Site
+  definition: Assess the site for generation suitability.
+  entry_criterion: Eligibility is confirmed.
+  exit_criterion: The site is approved.
+  outcome: An approved site.
+  capability_refs:
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-eo-design-6j5mxp
+  customer_visible: true
+- name: Install and Inspect
+  definition: Install and inspect the generation equipment.
+  entry_criterion: The site is approved.
+  exit_criterion: The installation passes inspection.
+  outcome: An inspected installation.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+- name: Activate Export
+  definition: Activate export and generation settlement.
+  entry_criterion: The installation passes.
+  exit_criterion: The site exports energy.
+  outcome: An exporting site.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-resource-management-cd3c7c
+metrics:
+- name: Enrollment-to-generation cycle time
+  definition: Elapsed days from application to first export.
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-048) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-2jnz85

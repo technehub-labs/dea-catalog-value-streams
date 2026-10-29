@@ -1,0 +1,114 @@
+id: value-streams:value-stream-commit-to-deploy-65cr4z
+type: ValueStream
+name: Commit to Deploy
+definition: The software delivery stream from code commit through build, test, and release to production
+  deployment.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A deployed change in production serving users.
+entry_criterion: A change is committed.
+exit_criterion: The change is deployed to production.
+scope:
+  includes:
+  - Build and test
+  - Release staging
+  - Production deployment
+  - Verification
+  excludes:
+  - Incident response (Incident to Restore)
+  - Feature development (Concept to Launch)
+value_stages:
+- name: Build and Test
+  definition: Build the change and run the test suites.
+  entry_criterion: A change is committed.
+  exit_criterion: The change passes tests.
+  outcome: A tested change.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Stage Release
+  definition: Stage the release.
+  entry_criterion: The change passes tests.
+  exit_criterion: The release is staged.
+  outcome: A staged release.
+  capability_refs:
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-eo-design-6j5mxp
+  customer_visible: false
+- name: Deploy
+  definition: Deploy to production.
+  entry_criterion: The release is staged.
+  exit_criterion: The change is live in production.
+  outcome: A deployed change.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: true
+- name: Verify
+  definition: Verify the deployment in production.
+  entry_criterion: The change is deployed.
+  exit_criterion: Deployment is verified.
+  outcome: A verified deployment.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-enterprise-performance-management-5fxren
+upstream_refs:
+- slug: value-stream-concept-to-launch
+  note: Approved features flow into the delivery pipeline.
+downstream_refs:
+- slug: value-stream-incident-to-restore
+  note: Defective deployments can trigger incidents.
+metrics:
+- name: Lead time for changes
+  definition: Elapsed time from commit to production.
+  metric_ref: dea:metric-lead-time-for-changes
+  applies_to_stage: Deploy
+- name: Release frequency
+  definition: Production releases per period.
+  metric_ref: dea:metric-release-frequency
+  applies_to_stage: Deploy
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-105) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-xud3hs

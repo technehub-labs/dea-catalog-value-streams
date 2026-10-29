@@ -1,0 +1,93 @@
+id: value-streams:value-stream-trial-to-readout-ztkya5
+type: ValueStream
+name: Trial to Readout
+definition: The clinical-development stream from trial start through conduct and monitoring to database
+  lock and readout.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - life-sciences
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A locked trial database and analyzed readout.
+entry_criterion: An approved trial starts enrollment.
+exit_criterion: The database locks and the readout completes.
+scope:
+  includes:
+  - Trial conduct
+  - Monitoring and data management
+  - Database lock and analysis
+  excludes:
+  - Recruitment (Clinical Trial Recruitment)
+  - Regulatory submission
+value_stages:
+- name: Conduct Trial
+  definition: Conduct the trial per protocol.
+  entry_criterion: The trial starts.
+  exit_criterion: The trial completes visits.
+  outcome: Completed conduct.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+- name: Monitor and Manage Data
+  definition: Monitor sites and manage trial data.
+  entry_criterion: Visits are underway.
+  exit_criterion: The data is clean and query-free.
+  outcome: Clean trial data.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Lock and Read Out
+  definition: Lock the database and complete the readout.
+  entry_criterion: Data is clean.
+  exit_criterion: The readout is complete.
+  outcome: A completed readout.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-ycba3k
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+upstream_refs:
+- slug: value-stream-clinical-trial-recruitment
+  note: Recruitment feeds trial conduct.
+metrics:
+- name: Trial database lock cycle time
+  definition: Elapsed time from last visit to lock.
+evidence:
+  sources:
+  - SRC-018
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-098) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-2jnz85
+- processes:process-ge-operate-zwaes5
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-ycba3k

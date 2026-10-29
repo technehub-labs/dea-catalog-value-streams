@@ -1,0 +1,111 @@
+id: value-streams:value-stream-assortment-to-shelf-ex2sqq
+type: ValueStream
+name: Assortment to Shelf
+definition: The merchandising stream from assortment planning through supplier engagement to in-stock
+  shelf availability.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Planned assortment in stock and on shelf.
+entry_criterion: An assortment planning cycle opens.
+exit_criterion: The assortment is in stock at planned levels.
+scope:
+  includes:
+  - Assortment and range planning
+  - Supplier negotiation and buying
+  - Allocation and replenishment
+  - In-stock maintenance
+  excludes:
+  - Store operations
+  - Promotions (Marketing)
+value_stages:
+- name: Plan Assortment
+  definition: Plan the assortment and range.
+  entry_criterion: A planning cycle opens.
+  exit_criterion: The assortment plan is approved.
+  outcome: An approved plan.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pv-operate-cau4gv
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: Buy
+  definition: Negotiate with suppliers and place buys.
+  entry_criterion: The plan is approved.
+  exit_criterion: Buys are placed.
+  outcome: Placed buys.
+  capability_refs:
+  - capabilities:capability-sourcing-and-procurement-esucp4
+  - capabilities:capability-supplier-management-d6fuj4
+  process_refs:
+  - processes:process-eo-operate-vzcxx7
+  customer_visible: false
+- name: Allocate and Replenish
+  definition: Allocate stock and drive replenishment.
+  entry_criterion: Buys are placed.
+  exit_criterion: Stores are allocated and replenished.
+  outcome: Replenished stores.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  - processes:process-eo-operate-zh9m57
+  customer_visible: false
+- name: Maintain In-Stock
+  definition: Maintain in-stock availability on shelf.
+  entry_criterion: Stores are replenished.
+  exit_criterion: The assortment is in stock at plan.
+  outcome: In-stock assortment.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-sourcing-and-procurement-esucp4
+- capabilities:capability-supplier-management-d6fuj4
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-enterprise-performance-management-5fxren
+upstream_refs:
+- slug: value-stream-plan-to-forecast
+  note: The ratified demand plan drives assortment planning.
+metrics:
+- name: On-shelf availability
+  definition: Share of planned assortment in stock on shelf.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-058) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pv-operate-cau4gv
+- processes:process-fa-conceive-4uqqvg
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-2jnz85

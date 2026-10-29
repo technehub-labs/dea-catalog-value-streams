@@ -1,0 +1,104 @@
+id: value-streams:value-stream-grid-maintenance-to-release-d23hxq
+type: ValueStream
+name: Grid Maintenance to Release
+definition: The asset stream from maintenance planning through execution to released-back-to-service equipment.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Maintained equipment released safely back to service.
+entry_criterion: A maintenance window is planned.
+exit_criterion: The equipment is released back to service.
+scope:
+  includes:
+  - Maintenance planning
+  - Safe isolation
+  - Work execution
+  - Testing and release
+  excludes:
+  - Outage repair (Outage to Restore)
+  - Asset lifecycle (Acquire to Retire)
+value_stages:
+- name: Plan Window
+  definition: Plan the maintenance window.
+  entry_criterion: A window is planned.
+  exit_criterion: The window is scheduled.
+  outcome: A scheduled window.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-workforce-planning-b43rhm
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  customer_visible: false
+- name: Isolate Safely
+  definition: Safely isolate the equipment.
+  entry_criterion: The window is scheduled.
+  exit_criterion: The equipment is isolated.
+  outcome: Isolated equipment.
+  capability_refs:
+  - capabilities:capability-security-management-wmzc7c
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+- name: Execute Work
+  definition: Execute the maintenance work.
+  entry_criterion: The equipment is isolated.
+  exit_criterion: The work is complete.
+  outcome: Completed work.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: false
+- name: Test and Release
+  definition: Test and release to service.
+  entry_criterion: The work is complete.
+  exit_criterion: The equipment is back in service.
+  outcome: Released equipment.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-planning-b43rhm
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-technology-management-maus5n
+upstream_refs:
+- slug: value-stream-acquire-to-retire
+  note: Grid assets live in the asset lifecycle.
+metrics:
+- name: Maintenance window adherence
+  definition: Share of windows completed on schedule.
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-047) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-build-2pkz5n
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-j9cjzz
+- processes:process-eo-operate-44jsrp

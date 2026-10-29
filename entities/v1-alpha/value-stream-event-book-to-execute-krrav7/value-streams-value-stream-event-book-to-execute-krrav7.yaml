@@ -1,0 +1,104 @@
+id: value-streams:value-stream-event-book-to-execute-krrav7
+type: ValueStream
+name: Event Book to Execute
+definition: The events stream from event booking through planning to executed event and breakdown.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - hospitality-travel
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An executed event with settled account.
+entry_criterion: An event is booked.
+exit_criterion: The event is executed and the account settled.
+scope:
+  includes:
+  - Booking and contracting
+  - Event planning
+  - Execution
+  - Settlement and breakdown
+  excludes:
+  - Lodging (Book to Stay)
+  - Catering supply chain
+value_stages:
+- name: Book Event
+  definition: Book and contract the event.
+  entry_criterion: An event is booked.
+  exit_criterion: The event is contracted.
+  outcome: A contracted event.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Plan Event
+  definition: Plan the event delivery.
+  entry_criterion: The event is contracted.
+  exit_criterion: The event plan is approved.
+  outcome: An approved plan.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-eo-design-6j5mxp
+  customer_visible: false
+- name: Execute Event
+  definition: Execute the event.
+  entry_criterion: The event date arrives.
+  exit_criterion: The event is executed.
+  outcome: An executed event.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-workforce-management-9e8d8s
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Settle and Break Down
+  definition: Settle the account and break down.
+  entry_criterion: The event completes.
+  exit_criterion: The account is settled.
+  outcome: A settled event.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  - processes:process-eo-retire-rpg6d4
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-workforce-management-9e8d8s
+- capabilities:capability-financial-resource-management-cd3c7c
+metrics:
+- name: Event execution satisfaction
+  definition: Post-event satisfaction score.
+evidence:
+  sources:
+  - SRC-015
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-088) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-build-mctdgc
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp
+- processes:process-eo-retire-rpg6d4

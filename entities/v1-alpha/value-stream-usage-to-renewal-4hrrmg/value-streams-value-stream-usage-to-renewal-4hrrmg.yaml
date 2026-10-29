@@ -1,0 +1,94 @@
+id: value-streams:value-stream-usage-to-renewal-4hrrmg
+type: ValueStream
+name: Usage to Renewal
+definition: The SaaS retention stream from usage monitoring through health scoring to the renewal decision.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A data-driven renewal decision settled with the customer.
+entry_criterion: A subscription period begins.
+exit_criterion: The renewal is settled (renewed, expanded, or churned).
+scope:
+  includes:
+  - Usage and health monitoring
+  - Intervention
+  - Renewal decision and settlement
+  excludes:
+  - Sales upsell
+  - Billing operations
+value_stages:
+- name: Monitor Usage
+  definition: Monitor usage and product health.
+  entry_criterion: The period begins.
+  exit_criterion: Health is tracked.
+  outcome: Tracked health.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+- name: Intervene
+  definition: Intervene on health risks.
+  entry_criterion: Health risks emerge.
+  exit_criterion: Interventions are delivered.
+  outcome: Delivered interventions.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pr-improve-t6uvan
+  customer_visible: true
+- name: Settle Renewal
+  definition: Settle the renewal decision.
+  entry_criterion: The period ends.
+  exit_criterion: The renewal is settled.
+  outcome: A settled renewal.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-pr-improve-t6uvan
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-financial-resource-management-cd3c7c
+upstream_refs:
+- slug: value-stream-contract-to-renewal
+  note: The SaaS specialization of relationship renewal.
+metrics:
+- name: Net revenue retention
+  definition: Retained and expanded subscription value.
+  metric_ref: dea:metric-net-revenue-retention
+  applies_to_stage: Settle Renewal
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-108) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-operate-ucxpz4
+- processes:process-pr-improve-t6uvan
+- processes:process-fa-operate-sdppmp

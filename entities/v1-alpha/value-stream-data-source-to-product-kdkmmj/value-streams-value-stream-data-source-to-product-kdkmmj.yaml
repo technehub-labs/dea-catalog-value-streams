@@ -1,0 +1,101 @@
+id: value-streams:value-stream-data-source-to-product-kdkmmj
+type: ValueStream
+name: Data Source to Product
+definition: The data-product stream from source onboarding through pipeline build to a consumed, SLA-backed
+  data product.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A consumed, SLA-backed data product.
+entry_criterion: A source or use case is approved.
+exit_criterion: The data product is live and consumed.
+scope:
+  includes:
+  - Source onboarding
+  - Pipeline build
+  - Product publication
+  - Consumption support
+  excludes:
+  - Model development (Model to Deployment)
+  - Enterprise reporting (Record to Report)
+value_stages:
+- name: Onboard Source
+  definition: Onboard the data source.
+  entry_criterion: A source is approved.
+  exit_criterion: The source is onboarded.
+  outcome: An onboarded source.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  customer_visible: false
+- name: Build Pipeline
+  definition: Build the data pipeline.
+  entry_criterion: The source is onboarded.
+  exit_criterion: The pipeline is built.
+  outcome: A built pipeline.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Publish Product
+  definition: Publish the data product with SLA.
+  entry_criterion: The pipeline is built.
+  exit_criterion: The product is published.
+  outcome: A published product.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-pv-operate-cau4gv
+  customer_visible: false
+- name: Support Consumption
+  definition: Support consumer onboarding and usage.
+  entry_criterion: The product is published.
+  exit_criterion: The product is consumed.
+  outcome: A consumed product.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+metrics:
+- name: Data product freshness SLA
+  definition: Share of refreshes meeting the freshness SLA.
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-110) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-xud3hs
+- processes:process-pv-operate-cau4gv
+- processes:process-eo-operate-2jnz85

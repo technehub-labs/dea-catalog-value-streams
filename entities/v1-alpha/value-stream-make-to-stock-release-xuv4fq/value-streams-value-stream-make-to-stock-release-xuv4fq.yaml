@@ -1,0 +1,94 @@
+id: value-streams:value-stream-make-to-stock-release-xuv4fq
+type: ValueStream
+name: Make to Stock Release
+definition: The production stream from stock-replenishment signal through production and release to finished-stock
+  availability.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - manufacturing
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Finished stock available to promise.
+entry_criterion: A replenishment signal is raised.
+exit_criterion: Finished stock is received and available.
+scope:
+  includes:
+  - Production order release
+  - Production execution
+  - Quality release to stock
+  excludes:
+  - Demand planning (Plan to Forecast)
+  - Distribution (Ship to Consignee)
+value_stages:
+- name: Release Order
+  definition: Release the production order.
+  entry_criterion: A replenishment signal is raised.
+  exit_criterion: The order is released.
+  outcome: A released order.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Produce
+  definition: Execute production.
+  entry_criterion: The order is released.
+  exit_criterion: Production is complete.
+  outcome: Completed production.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Release to Stock
+  definition: Quality-release and receive into finished stock.
+  entry_criterion: Production is complete.
+  exit_criterion: Stock is available.
+  outcome: Available stock.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-risk-management-h9uxdw
+upstream_refs:
+- slug: value-stream-plan-to-deliver
+  note: The stream refines the generic production chain for stock replenishment.
+metrics:
+- name: First pass yield
+  definition: Share of output passing quality first time.
+  metric_ref: dea:metric-first-pass-yield
+  applies_to_stage: Release to Stock
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-051) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-build-2pkz5n
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zwzmbd

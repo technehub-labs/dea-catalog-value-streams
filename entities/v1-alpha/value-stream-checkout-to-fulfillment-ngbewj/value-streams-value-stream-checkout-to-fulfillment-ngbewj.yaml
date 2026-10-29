@@ -1,0 +1,106 @@
+id: value-streams:value-stream-checkout-to-fulfillment-ngbewj
+type: ValueStream
+name: Checkout to Fulfillment
+definition: The omnichannel fulfilment stream from completed checkout through pick, pack, and dispatch
+  to customer delivery.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A delivered order with proof of delivery.
+entry_criterion: A customer completes checkout.
+exit_criterion: The order is delivered with proof.
+scope:
+  includes:
+  - Order validation and payment authorization
+  - Pick and pack
+  - Dispatch and last-mile delivery
+  - Proof of delivery
+  excludes:
+  - Customer service (Issue to Resolve)
+  - Returns (Return to Credit)
+value_stages:
+- name: Validate and Authorize
+  definition: Validate the order and authorize payment.
+  entry_criterion: Checkout completes.
+  exit_criterion: The order is valid and authorized.
+  outcome: An authorized order.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Pick and Pack
+  definition: Pick and pack the order.
+  entry_criterion: The order is authorized.
+  exit_criterion: The order is packed.
+  outcome: A packed order.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+- name: Deliver
+  definition: Dispatch and deliver the order.
+  entry_criterion: The order is packed.
+  exit_criterion: The order is delivered.
+  outcome: A delivered order.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  customer_visible: true
+- name: Confirm Proof
+  definition: Confirm delivery with proof.
+  entry_criterion: The order is delivered.
+  exit_criterion: Proof of delivery is recorded.
+  outcome: Recorded proof.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+upstream_refs:
+- slug: value-stream-order-to-cash
+  note: The retail specialization of the fulfilment-to-payment chain.
+downstream_refs:
+- slug: value-stream-return-to-credit
+  note: Delivered orders can flow to returns.
+metrics:
+- name: On-time delivery rate
+  definition: Share of orders delivered within the promised window.
+  metric_ref: dea:metric-on-time-delivery-rate
+  applies_to_stage: Deliver
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-059) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-zh9m57

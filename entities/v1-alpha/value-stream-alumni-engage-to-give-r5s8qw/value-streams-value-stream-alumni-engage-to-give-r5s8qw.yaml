@@ -1,0 +1,87 @@
+id: value-streams:value-stream-alumni-engage-to-give-r5s8qw
+type: ValueStream
+name: Alumni Engage to Give
+definition: The advancement stream from alumni engagement through cultivation to received contribution.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - education
+  organization_types:
+  - nonprofit-organization
+  - public-agency
+  specificity: industry-specific
+outcome: A received, acknowledged alumni contribution.
+entry_criterion: An alumnus is engaged.
+exit_criterion: The contribution is received and acknowledged.
+scope:
+  includes:
+  - Engagement
+  - Cultivation and solicitation
+  - Receipt and acknowledgement
+  excludes:
+  - Degree delivery
+  - Corporate partnerships
+value_stages:
+- name: Engage
+  definition: Engage the alumnus.
+  entry_criterion: An alumnus is identified.
+  exit_criterion: The alumnus is engaged.
+  outcome: An engaged alumnus.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-improve-t6uvan
+  customer_visible: true
+- name: Cultivate and Solicit
+  definition: Cultivate and solicit the gift.
+  entry_criterion: The alumnus is engaged.
+  exit_criterion: A pledge is made.
+  outcome: A pledged gift.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-partner-management-cp3vdb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Receive and Acknowledge
+  definition: Receive and acknowledge the contribution.
+  entry_criterion: A pledge is made.
+  exit_criterion: The gift is received and acknowledged.
+  outcome: A received gift.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-financial-stewardship-c7xtfk
+metrics:
+- name: Alumni participation rate
+  definition: Share of alumni contributing per year.
+evidence:
+  sources:
+  - SRC-015
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-085) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (education); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-improve-t6uvan
+- processes:process-pr-operate-bbe384
+- processes:process-fa-operate-sdppmp
