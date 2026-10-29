@@ -1,50 +1,78 @@
+---
+documentation_generated_from: value-streams-value-stream-order-to-activation-uxqth5.yaml
+id: value-streams:value-stream-order-to-activation-uxqth5
+name: Order to Activation
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- telecommunications
+specificity: industry-specific
+entry_criterion: A customer order for service is accepted.
+exit_criterion: The service is activated and confirmed to the customer.
+outcome: An activated service for the customer.
+stages:
+- Capture Order
+- Design Service
+- Provision
+- Activate
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-2jnz85
+- processes:process-pr-operate-bbe384
+metrics:
+- Provisioning cycle time
+upstream:
+- value-stream-order-to-cash
+downstream:
+- value-stream-usage-to-bill
+evidence_sources:
+- SRC-010
+---
+
 # Order to Activation
 
-Admitted Value Stream record (`value-streams:value-stream-order-to-activation-uxqth5`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-order-to-activation-uxqth5` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | telecommunications · industry-specific |
-| Record | [`value-streams-value-stream-order-to-activation-uxqth5.yaml`](./value-streams-value-stream-order-to-activation-uxqth5.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-order-to-activation-uxqth5` · **operational** · telecommunications · industry-specific
 
 > The end-to-end telecom fulfilment stream from customer order through service design, provisioning, and activation.
 
-## 3. Value proposition and served party
-
 **Outcome:** An activated service for the customer.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-order-to-activation-uxqth5.yaml`](./value-streams-value-stream-order-to-activation-uxqth5.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer order for service is accepted.
+## Stage flow
 
-**Exit criterion:** The service is activated and confirmed to the customer.
+```mermaid
+flowchart LR
+  S1["1. Capture Order"]
+  S2["2. Design Service"]
+  S3["3. Provision"]
+  S4["4. Activate"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Order capture and validation
-- Service design and feasibility
-- Provisioning and configuration
-- Activation and confirmation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Capture Order** | An order is accepted. | The order is validated. | 2 | 1 | yes |
+| 2 | **Design Service** | The order is validated. | The service design is approved. | 2 | 1 | no |
+| 3 | **Provision** | The design is approved. | The service is provisioned. | 2 | 1 | no |
+| 4 | **Activate** | The service is provisioned. | The service is activated and confirmed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Billing (Usage to Bill)
-- Fault handling (Trouble to Restore)
-
-## 5. Value stages
-
-Order to Activation decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Capture Order
+### 1. Capture Order
 
 Capture and validate the service order.
 
@@ -54,10 +82,10 @@ Capture and validate the service order.
 | Exit criterion | The order is validated. |
 | Outcome | A validated order. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Design Service
+### 2. Design Service
 
 Design the service and check feasibility.
 
@@ -67,10 +95,10 @@ Design the service and check feasibility.
 | Exit criterion | The service design is approved. |
 | Outcome | An approved design. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-design-6j5mxp` |
 
-### Stage 3: Provision
+### 3. Provision
 
 Provision network resources and configure the service.
 
@@ -80,10 +108,10 @@ Provision network resources and configure the service.
 | Exit criterion | The service is provisioned. |
 | Outcome | A provisioned service. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-build-j9z3q4` |
 
-### Stage 4: Activate
+### 4. Activate
 
 Activate and confirm the service.
 
@@ -93,12 +121,30 @@ Activate and confirm the service.
 | Exit criterion | The service is activated and confirmed. |
 | Outcome | An activated service. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer order for service is accepted.
+
+**Exit:** The service is activated and confirmed to the customer.
+
+**In scope**
+
+- Order capture and validation
+- Service design and feasibility
+- Provisioning and configuration
+- Activation and confirmation
+
+**Out of scope** (owned by the named neighbour)
+
+- Billing (Usage to Bill)
+- Fault handling (Trouble to Restore)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
@@ -106,34 +152,38 @@ Activate and confirm the service.
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-technology-enablement-y6nkws`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-design-6j5mxp`
 - `processes:process-eo-build-j9z3q4`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-order-to-cash` — Activation is the telecom specialization of order fulfilment; charging follows.
+- [order to cash](../value-stream-order-to-cash-sc8gbu/README.md) — Activation is the telecom specialization of order fulfilment; charging follows.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-usage-to-bill` — Activated services start metered usage.
+- [usage to bill](../value-stream-usage-to-bill-tyf4zn/README.md) — Activated services start metered usage.
 
-## 8. Measurement
+## Measurement
 
 - **Provisioning cycle time** (stage: Activate) — Elapsed time from order to activation. → [`dea:metric-provisioning-cycle-time-telecom`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-010 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-010 | industry-reference-model | Telecommunications industry reference models (eTOM category-level structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-036) from the CR-VS-11 industry evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -142,4 +192,4 @@ Activate and confirm the service.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

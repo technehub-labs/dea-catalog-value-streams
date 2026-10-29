@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml
+id: value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v
+name: Reinsurance Placement to Recovery
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- insurance
+specificity: industry-specific
+entry_criterion: A reinsurance need is identified.
+exit_criterion: Recoveries are collected for ceded losses.
+outcome: Ceded risk with recoveries collected.
+stages:
+- Place Cover
+- Settle Premium
+- Report Losses
+- Collect Recovery
+capabilities:
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-fa-operate-sdppmp
+- processes:process-fa-operate-wkqaqp
+- processes:process-ge-build-mctdgc
+- processes:process-pr-operate-bbe384
+metrics:
+- Recovery collection cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-009
+---
+
 # Reinsurance Placement to Recovery
 
-Admitted Value Stream record (`value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | insurance · industry-specific |
-| Record | [`value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml`](./value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v` · **operational** · insurance · industry-specific
 
 > The reinsurance stream from placement negotiation through premium settlement to loss recovery.
 
-## 3. Value proposition and served party
-
 **Outcome:** Ceded risk with recoveries collected.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml`](./value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A reinsurance need is identified.
+## Stage flow
 
-**Exit criterion:** Recoveries are collected for ceded losses.
+```mermaid
+flowchart LR
+  S1["1. Place Cover"]
+  S2["2. Settle Premium"]
+  S3["3. Report Losses"]
+  S4["4. Collect Recovery"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Placement negotiation
-- Contract execution and premium settlement
-- Loss reporting
-- Recovery collection
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Place Cover** | A need is identified. | The cover is placed. | 2 | 1 | no |
+| 2 | **Settle Premium** | The cover is placed. | The contract is executed and premium settled. | 2 | 2 | no |
+| 3 | **Report Losses** | A covered loss occurs. | The loss is reported. | 1 | 1 | no |
+| 4 | **Collect Recovery** | The loss is reported. | The recovery is collected. | 1 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Direct underwriting (Quote to Bind)
-- Direct claims (Loss to Claim Settlement)
-
-## 5. Value stages
-
-Reinsurance Placement to Recovery decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Place Cover
+### 1. Place Cover
 
 Negotiate and place the reinsurance cover.
 
@@ -54,10 +80,10 @@ Negotiate and place the reinsurance cover.
 | Exit criterion | The cover is placed. |
 | Outcome | Placed cover. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-partner-management-cp3vdb`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-partner-management-cp3vdb` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 2: Settle Premium
+### 2. Settle Premium
 
 Execute the contract and settle premium.
 
@@ -67,10 +93,10 @@ Execute the contract and settle premium.
 | Exit criterion | The contract is executed and premium settled. |
 | Outcome | An executed treaty. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-financial-stewardship-c7xtfk` |
-| Realizing processes | `processes:process-ge-build-mctdgc`, `processes:process-fa-operate-wkqaqp` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-financial-stewardship-c7xtfk` |
+| Realizing processes | `processes:process-ge-build-mctdgc` · `processes:process-fa-operate-wkqaqp` |
 
-### Stage 3: Report Losses
+### 3. Report Losses
 
 Report ceded losses to the reinsurer.
 
@@ -83,7 +109,7 @@ Report ceded losses to the reinsurer.
 | Enabling capabilities | `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 4: Collect Recovery
+### 4. Collect Recovery
 
 Collect the reinsurance recovery.
 
@@ -96,9 +122,27 @@ Collect the reinsurance recovery.
 | Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A reinsurance need is identified.
+
+**Exit:** Recoveries are collected for ceded losses.
+
+**In scope**
+
+- Placement negotiation
+- Contract execution and premium settlement
+- Loss reporting
+- Recovery collection
+
+**Out of scope** (owned by the named neighbour)
+
+- Direct underwriting (Quote to Bind)
+- Direct claims (Loss to Claim Settlement)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-partner-management-cp3vdb`
 - `capabilities:capability-risk-management-h9uxdw`
@@ -106,30 +150,34 @@ Collect the reinsurance recovery.
 - `capabilities:capability-financial-stewardship-c7xtfk`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-build-mctdgc`
 - `processes:process-fa-operate-wkqaqp`
 - `processes:process-pr-operate-bbe384`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Recovery collection cycle time** (stream-level) — Elapsed time from loss report to collected recovery.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-009 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-009 | industry-reference-model | Insurance industry reference models (policy and claims lifecycles, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-034) from the CR-VS-11 industry evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Collect the reinsurance recovery.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

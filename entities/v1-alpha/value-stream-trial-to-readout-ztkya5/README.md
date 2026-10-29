@@ -1,49 +1,72 @@
+---
+documentation_generated_from: value-streams-value-stream-trial-to-readout-ztkya5.yaml
+id: value-streams:value-stream-trial-to-readout-ztkya5
+name: Trial to Readout
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- life-sciences
+specificity: industry-specific
+entry_criterion: An approved trial starts enrollment.
+exit_criterion: The database locks and the readout completes.
+outcome: A locked trial database and analyzed readout.
+stages:
+- Conduct Trial
+- Monitor and Manage Data
+- Lock and Read Out
+capabilities:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-ycba3k
+- processes:process-ge-operate-zwaes5
+metrics:
+- Trial database lock cycle time
+upstream:
+- value-stream-clinical-trial-recruitment
+downstream: []
+evidence_sources:
+- SRC-018
+---
+
 # Trial to Readout
 
-Admitted Value Stream record (`value-streams:value-stream-trial-to-readout-ztkya5`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-trial-to-readout-ztkya5` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | life-sciences · industry-specific |
-| Record | [`value-streams-value-stream-trial-to-readout-ztkya5.yaml`](./value-streams-value-stream-trial-to-readout-ztkya5.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-trial-to-readout-ztkya5` · **operational** · life-sciences · industry-specific
 
 > The clinical-development stream from trial start through conduct and monitoring to database lock and readout.
 
-## 3. Value proposition and served party
-
 **Outcome:** A locked trial database and analyzed readout.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-trial-to-readout-ztkya5.yaml`](./value-streams-value-stream-trial-to-readout-ztkya5.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An approved trial starts enrollment.
+## Stage flow
 
-**Exit criterion:** The database locks and the readout completes.
+```mermaid
+flowchart LR
+  S1["1. Conduct Trial"]
+  S2["2. Monitor and Manage Data"]
+  S3["3. Lock and Read Out"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Trial conduct
-- Monitoring and data management
-- Database lock and analysis
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Conduct Trial** | The trial starts. | The trial completes visits. | 2 | 1 | no |
+| 2 | **Monitor and Manage Data** | Visits are underway. | The data is clean and query-free. | 2 | 2 | no |
+| 3 | **Lock and Read Out** | Data is clean. | The readout is complete. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Recruitment (Clinical Trial Recruitment)
-- Regulatory submission
-
-## 5. Value stages
-
-Trial to Readout decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Conduct Trial
+### 1. Conduct Trial
 
 Conduct the trial per protocol.
 
@@ -53,10 +76,10 @@ Conduct the trial per protocol.
 | Exit criterion | The trial completes visits. |
 | Outcome | Completed conduct. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 2: Monitor and Manage Data
+### 2. Monitor and Manage Data
 
 Monitor sites and manage trial data.
 
@@ -66,10 +89,10 @@ Monitor sites and manage trial data.
 | Exit criterion | The data is clean and query-free. |
 | Outcome | Clean trial data. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-risk-management-h9uxdw` |
-| Realizing processes | `processes:process-ge-operate-zwaes5`, `processes:process-eo-operate-44jsrp` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-risk-management-h9uxdw` |
+| Realizing processes | `processes:process-ge-operate-zwaes5` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Lock and Read Out
+### 3. Lock and Read Out
 
 Lock the database and complete the readout.
 
@@ -79,44 +102,65 @@ Lock the database and complete the readout.
 | Exit criterion | The readout is complete. |
 | Outcome | A completed readout. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-ycba3k` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An approved trial starts enrollment.
+
+**Exit:** The database locks and the readout completes.
+
+**In scope**
+
+- Trial conduct
+- Monitoring and data management
+- Database lock and analysis
+
+**Out of scope** (owned by the named neighbour)
+
+- Recruitment (Clinical Trial Recruitment)
+- Regulatory submission
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-insight-management-ms4n9d`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-ge-operate-zwaes5`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-fa-operate-ycba3k`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-clinical-trial-recruitment` — Recruitment feeds trial conduct.
+- [clinical trial recruitment](../value-stream-clinical-trial-recruitment-zqvzg9/README.md) — Recruitment feeds trial conduct.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Trial database lock cycle time** (stream-level) — Elapsed time from last visit to lock.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-018 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-018 | industry-reference-model | Life-sciences reference chains (public GxP/ICH category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-098) from the CR-VS-11 industry evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -125,4 +169,4 @@ Lock the database and complete the readout.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

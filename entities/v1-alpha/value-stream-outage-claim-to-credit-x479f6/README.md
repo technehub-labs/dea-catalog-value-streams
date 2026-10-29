@@ -1,49 +1,70 @@
+---
+documentation_generated_from: value-streams-value-stream-outage-claim-to-credit-x479f6.yaml
+id: value-streams:value-stream-outage-claim-to-credit-x479f6
+name: Outage Claim to Credit
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- utilities-energy
+specificity: industry-specific
+entry_criterion: A customer claims outage compensation.
+exit_criterion: The qualifying credit is issued to the bill.
+outcome: Regulation-compliant compensation credits issued for qualifying outages.
+stages:
+- Validate Claim
+- Calculate Credit
+- Issue Credit
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-regulation-management-gya4d8
+processes:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384
+metrics:
+- Compensation claim cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-011
+---
+
 # Outage Claim to Credit
 
-Admitted Value Stream record (`value-streams:value-stream-outage-claim-to-credit-x479f6`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-outage-claim-to-credit-x479f6` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | utilities-energy · industry-specific |
-| Record | [`value-streams-value-stream-outage-claim-to-credit-x479f6.yaml`](./value-streams-value-stream-outage-claim-to-credit-x479f6.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-outage-claim-to-credit-x479f6` · **governance** · utilities-energy · industry-specific
 
 > The regulatory compensation stream from a customer's outage-compensation claim through validation to issued credit.
 
-## 3. Value proposition and served party
-
 **Outcome:** Regulation-compliant compensation credits issued for qualifying outages.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-outage-claim-to-credit-x479f6.yaml`](./value-streams-value-stream-outage-claim-to-credit-x479f6.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer claims outage compensation.
+## Stage flow
 
-**Exit criterion:** The qualifying credit is issued to the bill.
+```mermaid
+flowchart LR
+  S1["1. Validate Claim"]
+  S2["2. Calculate Credit"]
+  S3["3. Issue Credit"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Claim validation against outage records
-- Credit calculation
-- Issuance to the bill
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Validate Claim** | A claim is received. | The claim is validated. | 2 | 1 | yes |
+| 2 | **Calculate Credit** | The claim is validated. | The credit is calculated. | 2 | 1 | no |
+| 3 | **Issue Credit** | The credit is calculated. | The credit is issued. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Supply restoration (Outage to Restore)
-- General billing inquiries (Meter to Bill)
-
-## 5. Value stages
-
-Outage Claim to Credit decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Validate Claim
+### 1. Validate Claim
 
 Validate the claim against outage records.
 
@@ -53,10 +74,10 @@ Validate the claim against outage records.
 | Exit criterion | The claim is validated. |
 | Outcome | A validated claim. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Calculate Credit
+### 2. Calculate Credit
 
 Calculate the compensation credit.
 
@@ -66,10 +87,10 @@ Calculate the compensation credit.
 | Exit criterion | The credit is calculated. |
 | Outcome | A calculated credit. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-regulation-management-gya4d8` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-regulation-management-gya4d8` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 3: Issue Credit
+### 3. Issue Credit
 
 Issue the credit to the customer's bill.
 
@@ -79,41 +100,62 @@ Issue the credit to the customer's bill.
 | Exit criterion | The credit is issued. |
 | Outcome | An issued credit. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer claims outage compensation.
+
+**Exit:** The qualifying credit is issued to the bill.
+
+**In scope**
+
+- Claim validation against outage records
+- Credit calculation
+- Issuance to the bill
+
+**Out of scope** (owned by the named neighbour)
+
+- Supply restoration (Outage to Restore)
+- General billing inquiries (Meter to Bill)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-regulation-management-gya4d8`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Compensation claim cycle time** (stream-level) — Elapsed days from claim to issued credit.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-011 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-011 | industry-reference-model | Utilities industry reference models (metering and retail-energy chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-046) from the CR-VS-11 industry evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -122,4 +164,4 @@ Issue the credit to the customer's bill.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

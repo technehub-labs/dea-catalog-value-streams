@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml
+id: value-streams:value-stream-promotion-plan-to-execution-j73nkj
+name: Promotion Plan to Execution
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- retail-commerce
+specificity: industry-specific
+entry_criterion: A promotion is designed and approved.
+exit_criterion: The promotion is executed and its lift measured.
+outcome: An executed promotion with measured performance.
+stages:
+- Design Promotion
+- Set Up
+- Execute
+- Measure Lift
+capabilities:
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-pr-build-nygvw7
+- processes:process-pr-design-j6fakx
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Promotion lift
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-013
+---
+
 # Promotion Plan to Execution
 
-Admitted Value Stream record (`value-streams:value-stream-promotion-plan-to-execution-j73nkj`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-promotion-plan-to-execution-j73nkj` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | retail-commerce · industry-specific |
-| Record | [`value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml`](./value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-promotion-plan-to-execution-j73nkj` · **operational** · retail-commerce · industry-specific
 
 > The promotions stream from promotion design through setup to executed promotion with measured lift.
 
-## 3. Value proposition and served party
-
 **Outcome:** An executed promotion with measured performance.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml`](./value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A promotion is designed and approved.
+## Stage flow
 
-**Exit criterion:** The promotion is executed and its lift measured.
+```mermaid
+flowchart LR
+  S1["1. Design Promotion"]
+  S2["2. Set Up"]
+  S3["3. Execute"]
+  S4["4. Measure Lift"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Promotion design
-- Setup and pricing
-- Execution
-- Measurement
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Design Promotion** | A promotion is approved for design. | The promotion is designed. | 1 | 1 | no |
+| 2 | **Set Up** | The promotion is designed. | Setup is complete. | 2 | 1 | no |
+| 3 | **Execute** | Setup is complete. | The promotion runs to completion. | 2 | 1 | yes |
+| 4 | **Measure Lift** | The promotion completes. | Performance is measured. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Everyday pricing
-- Loyalty program management
-
-## 5. Value stages
-
-Promotion Plan to Execution decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Design Promotion
+### 1. Design Promotion
 
 Design the promotion mechanics.
 
@@ -57,7 +82,7 @@ Design the promotion mechanics.
 | Enabling capabilities | `capabilities:capability-marketing-xmc539` |
 | Realizing processes | `processes:process-pr-design-j6fakx` |
 
-### Stage 2: Set Up
+### 2. Set Up
 
 Set up pricing, media, and stock for the promotion.
 
@@ -67,10 +92,10 @@ Set up pricing, media, and stock for the promotion.
 | Exit criterion | Setup is complete. |
 | Outcome | A staged promotion. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-build-nygvw7` |
 
-### Stage 3: Execute
+### 3. Execute
 
 Run the promotion in market.
 
@@ -80,10 +105,10 @@ Run the promotion in market.
 | Exit criterion | The promotion runs to completion. |
 | Outcome | An executed promotion. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 4: Measure Lift
+### 4. Measure Lift
 
 Measure the promotion's lift and effectiveness.
 
@@ -93,42 +118,64 @@ Measure the promotion's lift and effectiveness.
 | Exit criterion | Performance is measured. |
 | Outcome | Measured performance. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-sd-operate-ucxpz4` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A promotion is designed and approved.
+
+**Exit:** The promotion is executed and its lift measured.
+
+**In scope**
+
+- Promotion design
+- Setup and pricing
+- Execution
+- Measurement
+
+**Out of scope** (owned by the named neighbour)
+
+- Everyday pricing
+- Loyalty program management
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-insight-management-ms4n9d`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-design-j6fakx`
 - `processes:process-pr-build-nygvw7`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-sd-operate-ucxpz4`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Promotion lift** (stream-level) — Incremental sales attributable to the promotion.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-013 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-013 | industry-reference-model | Retail / consumer-commerce chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-061) from the CR-VS-11 industry evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -137,4 +184,4 @@ Measure the promotion's lift and effectiveness.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

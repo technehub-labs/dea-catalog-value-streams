@@ -1,50 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-trouble-to-restore-gtrgd8.yaml
+id: value-streams:value-stream-trouble-to-restore-gtrgd8
+name: Trouble to Restore
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- telecommunications
+specificity: industry-specific
+entry_criterion: A fault is reported or detected.
+exit_criterion: Service is restored and confirmed.
+outcome: Restored service confirmed to the customer.
+stages:
+- Localize Fault
+- Diagnose and Dispatch
+- Repair
+- Confirm Restoration
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-workforce-management-9e8d8s
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-4njp7b
+- processes:process-eo-operate-j9cjzz
+- processes:process-pr-operate-bbe384
+metrics:
+- Mean time to restore service
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-010
+---
+
 # Trouble to Restore
 
-Admitted Value Stream record (`value-streams:value-stream-trouble-to-restore-gtrgd8`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-trouble-to-restore-gtrgd8` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | telecommunications · industry-specific |
-| Record | [`value-streams-value-stream-trouble-to-restore-gtrgd8.yaml`](./value-streams-value-stream-trouble-to-restore-gtrgd8.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-trouble-to-restore-gtrgd8` · **operational** · telecommunications · industry-specific
 
 > The telecom assurance stream from fault report through diagnosis and repair to restored service.
 
-## 3. Value proposition and served party
-
 **Outcome:** Restored service confirmed to the customer.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-trouble-to-restore-gtrgd8.yaml`](./value-streams-value-stream-trouble-to-restore-gtrgd8.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A fault is reported or detected.
+## Stage flow
 
-**Exit criterion:** Service is restored and confirmed.
+```mermaid
+flowchart LR
+  S1["1. Localize Fault"]
+  S2["2. Diagnose and Dispatch"]
+  S3["3. Repair"]
+  S4["4. Confirm Restoration"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Fault localization
-- Diagnosis and dispatch
-- Repair
-- Restoration confirmation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Localize Fault** | A fault is reported. | The fault is localized. | 2 | 1 | yes |
+| 2 | **Diagnose and Dispatch** | The fault is localized. | Repair is dispatched. | 2 | 1 | no |
+| 3 | **Repair** | Repair is dispatched. | The repair is complete. | 2 | 1 | no |
+| 4 | **Confirm Restoration** | The repair is complete. | Service is restored and confirmed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Planned maintenance
-- Customer complaint handling (Issue to Resolve)
-
-## 5. Value stages
-
-Trouble to Restore decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Localize Fault
+### 1. Localize Fault
 
 Localize the reported or detected fault.
 
@@ -54,10 +81,10 @@ Localize the reported or detected fault.
 | Exit criterion | The fault is localized. |
 | Outcome | A localized fault. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-4njp7b` |
 
-### Stage 2: Diagnose and Dispatch
+### 2. Diagnose and Dispatch
 
 Diagnose root cause and dispatch repair.
 
@@ -67,10 +94,10 @@ Diagnose root cause and dispatch repair.
 | Exit criterion | Repair is dispatched. |
 | Outcome | A dispatched repair. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-management-9e8d8s` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-management-9e8d8s` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Repair
+### 3. Repair
 
 Execute the repair.
 
@@ -80,10 +107,10 @@ Execute the repair.
 | Exit criterion | The repair is complete. |
 | Outcome | A completed repair. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-j9cjzz` |
 
-### Stage 4: Confirm Restoration
+### 4. Confirm Restoration
 
 Confirm service restoration with the customer.
 
@@ -93,12 +120,30 @@ Confirm service restoration with the customer.
 | Exit criterion | Service is restored and confirmed. |
 | Outcome | Restored service. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A fault is reported or detected.
+
+**Exit:** Service is restored and confirmed.
+
+**In scope**
+
+- Fault localization
+- Diagnosis and dispatch
+- Repair
+- Restoration confirmation
+
+**Out of scope** (owned by the named neighbour)
+
+- Planned maintenance
+- Customer complaint handling (Issue to Resolve)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-information-management-6vjgdh`
@@ -107,30 +152,34 @@ Confirm service restoration with the customer.
 - `capabilities:capability-technology-enablement-y6nkws`
 - `capabilities:capability-customer-management-f3n8wb`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-4njp7b`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-j9cjzz`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Mean time to restore service** (stage: Confirm Restoration) — Mean elapsed time from fault to restoration. → [`dea:metric-mean-time-to-restore-service`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-010 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-010 | industry-reference-model | Telecommunications industry reference models (eTOM category-level structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-037) from the CR-VS-11 industry evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -139,4 +188,4 @@ Confirm service restoration with the customer.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

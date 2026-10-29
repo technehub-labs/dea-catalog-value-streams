@@ -1,49 +1,69 @@
+---
+documentation_generated_from: value-streams-value-stream-field-install-to-verify-tmyca3.yaml
+id: value-streams:value-stream-field-install-to-verify-tmyca3
+name: Field Install to Verify
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+industries:
+- telecommunications
+specificity: industry-specific
+entry_criterion: An install work order is issued.
+exit_criterion: The installation is verified complete.
+outcome: A verified completed field installation.
+stages:
+- Dispatch
+- Install at Site
+- Verify and Close
+capabilities:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-planning-b43rhm
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-j9cjzz
+metrics:
+- Field install first-time completion rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-010
+---
+
 # Field Install to Verify
 
-Admitted Value Stream record (`value-streams:value-stream-field-install-to-verify-tmyca3`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-field-install-to-verify-tmyca3` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | support |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | telecommunications · industry-specific |
-| Record | [`value-streams-value-stream-field-install-to-verify-tmyca3.yaml`](./value-streams-value-stream-field-install-to-verify-tmyca3.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-field-install-to-verify-tmyca3` · **support** · telecommunications · industry-specific
 
 > The field-operations stream from install work order through site work to verified completion.
 
-## 3. Value proposition and served party
-
 **Outcome:** A verified completed field installation.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-field-install-to-verify-tmyca3.yaml`](./value-streams-value-stream-field-install-to-verify-tmyca3.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An install work order is issued.
+## Stage flow
 
-**Exit criterion:** The installation is verified complete.
+```mermaid
+flowchart LR
+  S1["1. Dispatch"]
+  S2["2. Install at Site"]
+  S3["3. Verify and Close"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Work order dispatch
-- Site installation
-- Verification and closeout
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Dispatch** | A work order is issued. | The crew is dispatched. | 2 | 1 | no |
+| 2 | **Install at Site** | The crew is dispatched. | The installation is complete. | 1 | 1 | yes |
+| 3 | **Verify and Close** | The installation is complete. | Completion is verified and closed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Provisioning (Order to Activation)
-- Field force scheduling
-
-## 5. Value stages
-
-Field Install to Verify decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Dispatch
+### 1. Dispatch
 
 Dispatch the field work order.
 
@@ -53,10 +73,10 @@ Dispatch the field work order.
 | Exit criterion | The crew is dispatched. |
 | Outcome | A dispatched order. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-planning-b43rhm` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-planning-b43rhm` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 2: Install at Site
+### 2. Install at Site
 
 Execute the site installation.
 
@@ -69,7 +89,7 @@ Execute the site installation.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-j9cjzz` |
 
-### Stage 3: Verify and Close
+### 3. Verify and Close
 
 Verify the installation and close the order.
 
@@ -79,40 +99,61 @@ Verify the installation and close the order.
 | Exit criterion | Completion is verified and closed. |
 | Outcome | A verified installation. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An install work order is issued.
+
+**Exit:** The installation is verified complete.
+
+**In scope**
+
+- Work order dispatch
+- Site installation
+- Verification and closeout
+
+**Out of scope** (owned by the named neighbour)
+
+- Provisioning (Order to Activation)
+- Field force scheduling
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-workforce-planning-b43rhm`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-j9cjzz`
 - `processes:process-eo-operate-44jsrp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Field install first-time completion rate** (stream-level) — Share of installs completed on first visit.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-010 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-010 | industry-reference-model | Telecommunications industry reference models (eTOM category-level structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-042) from the CR-VS-11 industry evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -121,4 +162,4 @@ Verify the installation and close the order.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

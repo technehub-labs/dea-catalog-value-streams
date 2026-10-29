@@ -1,49 +1,72 @@
+---
+documentation_generated_from: value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml
+id: value-streams:value-stream-marketplace-seller-to-first-sale-avn64e
+name: Marketplace Seller to First Sale
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- retail-commerce
+specificity: industry-specific
+entry_criterion: A seller applies to the marketplace.
+exit_criterion: The seller's first sale completes.
+outcome: A transacting marketplace seller.
+stages:
+- Verify Seller
+- Set Up Listings
+- Complete First Sale
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-ge-operate-tpenm6
+- processes:process-pr-operate-bbe384
+- processes:process-pv-operate-cau4gv
+metrics:
+- Seller activation rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-013
+---
+
 # Marketplace Seller to First Sale
 
-Admitted Value Stream record (`value-streams:value-stream-marketplace-seller-to-first-sale-avn64e`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-marketplace-seller-to-first-sale-avn64e` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | retail-commerce · industry-specific |
-| Record | [`value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml`](./value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-marketplace-seller-to-first-sale-avn64e` · **operational** · retail-commerce · industry-specific
 
 > The marketplace stream from seller application through verification and listing to first completed sale.
 
-## 3. Value proposition and served party
-
 **Outcome:** A transacting marketplace seller.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml`](./value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A seller applies to the marketplace.
+## Stage flow
 
-**Exit criterion:** The seller's first sale completes.
+```mermaid
+flowchart LR
+  S1["1. Verify Seller"]
+  S2["2. Set Up Listings"]
+  S3["3. Complete First Sale"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Seller verification
-- Listing setup
-- First transaction
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Verify Seller** | A seller applies. | The seller is verified. | 2 | 1 | yes |
+| 2 | **Set Up Listings** | The seller is verified. | Listings are live. | 2 | 1 | yes |
+| 3 | **Complete First Sale** | Listings are live. | The first sale completes. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Own-inventory retail (Checkout to Fulfillment)
-- Payment processing
-
-## 5. Value stages
-
-Marketplace Seller to First Sale decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Verify Seller
+### 1. Verify Seller
 
 Verify the seller's identity and qualifications.
 
@@ -53,10 +76,10 @@ Verify the seller's identity and qualifications.
 | Exit criterion | The seller is verified. |
 | Outcome | A verified seller. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-partner-management-cp3vdb` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-partner-management-cp3vdb` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 2: Set Up Listings
+### 2. Set Up Listings
 
 Set up catalog listings.
 
@@ -66,10 +89,10 @@ Set up catalog listings.
 | Exit criterion | Listings are live. |
 | Outcome | Live listings. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-pv-operate-cau4gv` |
 
-### Stage 3: Complete First Sale
+### 3. Complete First Sale
 
 Support the seller to a completed first sale.
 
@@ -79,12 +102,29 @@ Support the seller to a completed first sale.
 | Exit criterion | The first sale completes. |
 | Outcome | A transacting seller. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A seller applies to the marketplace.
+
+**Exit:** The seller's first sale completes.
+
+**In scope**
+
+- Seller verification
+- Listing setup
+- First transaction
+
+**Out of scope** (owned by the named neighbour)
+
+- Own-inventory retail (Checkout to Fulfillment)
+- Payment processing
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-partner-management-cp3vdb`
@@ -93,29 +133,33 @@ Support the seller to a completed first sale.
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-customer-management-f3n8wb`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-pv-operate-cau4gv`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Seller activation rate** (stream-level) — Share of approved sellers reaching first sale.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-013 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-013 | industry-reference-model | Retail / consumer-commerce chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-064) from the CR-VS-11 industry evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -124,4 +168,4 @@ Support the seller to a completed first sale.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

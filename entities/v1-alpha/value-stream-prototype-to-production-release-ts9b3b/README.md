@@ -1,49 +1,73 @@
+---
+documentation_generated_from: value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml
+id: value-streams:value-stream-prototype-to-production-release-ts9b3b
+name: Prototype to Production Release
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: development
+industries:
+- manufacturing
+specificity: industry-specific
+entry_criterion: A prototype is approved.
+exit_criterion: Production is released with a validated process.
+outcome: A production-released product with validated process.
+stages:
+- Design Process
+- Pilot and Validate
+- Release Production
+capabilities:
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-xud3hs
+metrics:
+- Time to production release
+upstream:
+- value-stream-concept-to-launch
+downstream:
+- value-stream-make-to-stock-release
+evidence_sources:
+- SRC-016
+---
+
 # Prototype to Production Release
 
-Admitted Value Stream record (`value-streams:value-stream-prototype-to-production-release-ts9b3b`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-prototype-to-production-release-ts9b3b` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | development |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | manufacturing · industry-specific |
-| Record | [`value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml`](./value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-prototype-to-production-release-ts9b3b` · **development** · manufacturing · industry-specific
 
 > The industrialization stream from approved prototype through process design to production release.
 
-## 3. Value proposition and served party
-
 **Outcome:** A production-released product with validated process.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml`](./value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A prototype is approved.
+## Stage flow
 
-**Exit criterion:** Production is released with a validated process.
+```mermaid
+flowchart LR
+  S1["1. Design Process"]
+  S2["2. Pilot and Validate"]
+  S3["3. Release Production"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Process design
-- Pilot run and validation
-- Production release
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Design Process** | A prototype is approved. | The process is designed. | 2 | 1 | no |
+| 2 | **Pilot and Validate** | The process is designed. | The process is validated. | 2 | 2 | no |
+| 3 | **Release Production** | The process is validated. | Production is released. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Product development (Concept to Launch)
-- Volume production (Make to Stock Release)
-
-## 5. Value stages
-
-Prototype to Production Release decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Design Process
+### 1. Design Process
 
 Design the manufacturing process.
 
@@ -53,10 +77,10 @@ Design the manufacturing process.
 | Exit criterion | The process is designed. |
 | Outcome | A designed process. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-eo-design-6j5mxp` |
 
-### Stage 2: Pilot and Validate
+### 2. Pilot and Validate
 
 Run the pilot and validate the process.
 
@@ -66,10 +90,10 @@ Run the pilot and validate the process.
 | Exit criterion | The process is validated. |
 | Outcome | A validated process. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-risk-management-h9uxdw` |
-| Realizing processes | `processes:process-eo-operate-xud3hs`, `processes:process-eo-operate-44jsrp` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-risk-management-h9uxdw` |
+| Realizing processes | `processes:process-eo-operate-xud3hs` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Release Production
+### 3. Release Production
 
 Release to production.
 
@@ -79,46 +103,67 @@ Release to production.
 | Exit criterion | Production is released. |
 | Outcome | A released production. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-build-j9z3q4` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A prototype is approved.
+
+**Exit:** Production is released with a validated process.
+
+**In scope**
+
+- Process design
+- Pilot run and validation
+- Production release
+
+**Out of scope** (owned by the named neighbour)
+
+- Product development (Concept to Launch)
+- Volume production (Make to Stock Release)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-offering-management-6egkc8`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-risk-management-h9uxdw`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-design-6j5mxp`
 - `processes:process-eo-operate-xud3hs`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-build-j9z3q4`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-concept-to-launch` — Product development approves the prototype.
+- [concept to launch](../value-stream-concept-to-launch-nhvatv/README.md) — Product development approves the prototype.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-make-to-stock-release` — Released production runs through standard production.
+- [make to stock release](../value-stream-make-to-stock-release-xuv4fq/README.md) — Released production runs through standard production.
 
-## 8. Measurement
+## Measurement
 
 - **Time to production release** (stream-level) — Elapsed time from prototype approval to release.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-054) from the CR-VS-11 industry evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -127,4 +172,4 @@ Release to production.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

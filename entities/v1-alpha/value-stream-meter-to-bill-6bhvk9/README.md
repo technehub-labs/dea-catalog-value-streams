@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-meter-to-bill-6bhvk9.yaml
+id: value-streams:value-stream-meter-to-bill-6bhvk9
+name: Meter to Bill
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- utilities-energy
+specificity: industry-specific
+entry_criterion: Consumption occurs at a metered point.
+exit_criterion: The period bill is produced and accepted.
+outcome: An accurate, explained bill for consumed energy.
+stages:
+- Collect Meter Data
+- Validate and Estimate
+- Rate and Bill
+- Resolve Inquiries
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-fa-operate-4xn4d6
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384
+metrics:
+- Estimated-bill rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-011
+---
+
 # Meter to Bill
 
-Admitted Value Stream record (`value-streams:value-stream-meter-to-bill-6bhvk9`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-meter-to-bill-6bhvk9` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | utilities-energy · industry-specific |
-| Record | [`value-streams-value-stream-meter-to-bill-6bhvk9.yaml`](./value-streams-value-stream-meter-to-bill-6bhvk9.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-meter-to-bill-6bhvk9` · **operational** · utilities-energy · industry-specific
 
 > The end-to-end utility revenue stream from consumption measurement through meter data collection and validation to an accurate bill.
 
-## 3. Value proposition and served party
-
 **Outcome:** An accurate, explained bill for consumed energy.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-meter-to-bill-6bhvk9.yaml`](./value-streams-value-stream-meter-to-bill-6bhvk9.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** Consumption occurs at a metered point.
+## Stage flow
 
-**Exit criterion:** The period bill is produced and accepted.
+```mermaid
+flowchart LR
+  S1["1. Collect Meter Data"]
+  S2["2. Validate and Estimate"]
+  S3["3. Rate and Bill"]
+  S4["4. Resolve Inquiries"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Meter data collection
-- Validation and estimation
-- Rating and bill production
-- Bill inquiry resolution
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Collect Meter Data** | Consumption occurs. | Meter data is collected. | 2 | 1 | no |
+| 2 | **Validate and Estimate** | Data is collected. | Validated consumption exists. | 2 | 1 | no |
+| 3 | **Rate and Bill** | Consumption is validated. | The bill is issued. | 2 | 1 | yes |
+| 4 | **Resolve Inquiries** | The bill is issued. | Inquiries are resolved. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Connection services (Apply to Connect)
-- Credit and collections
-
-## 5. Value stages
-
-Meter to Bill decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Collect Meter Data
+### 1. Collect Meter Data
 
 Collect consumption data from the meter.
 
@@ -54,10 +80,10 @@ Collect consumption data from the meter.
 | Exit criterion | Meter data is collected. |
 | Outcome | Collected meter data. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-technology-management-maus5n` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-technology-management-maus5n` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 2: Validate and Estimate
+### 2. Validate and Estimate
 
 Validate the data and estimate gaps.
 
@@ -67,10 +93,10 @@ Validate the data and estimate gaps.
 | Exit criterion | Validated consumption exists. |
 | Outcome | Validated consumption. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-fa-operate-4xn4d6` |
 
-### Stage 3: Rate and Bill
+### 3. Rate and Bill
 
 Rate consumption and produce the bill.
 
@@ -80,10 +106,10 @@ Rate consumption and produce the bill.
 | Exit criterion | The bill is issued. |
 | Outcome | An issued bill. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-### Stage 4: Resolve Inquiries
+### 4. Resolve Inquiries
 
 Resolve bill inquiries.
 
@@ -96,9 +122,27 @@ Resolve bill inquiries.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** Consumption occurs at a metered point.
+
+**Exit:** The period bill is produced and accepted.
+
+**In scope**
+
+- Meter data collection
+- Validation and estimation
+- Rating and bill production
+- Bill inquiry resolution
+
+**Out of scope** (owned by the named neighbour)
+
+- Connection services (Apply to Connect)
+- Credit and collections
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-technology-management-maus5n`
@@ -106,30 +150,34 @@ Resolve bill inquiries.
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-customer-management-f3n8wb`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-4xn4d6`
 - `processes:process-fa-operate-sdppmp`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Estimated-bill rate** (stream-level) — Share of bills based on estimated rather than actual reads.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-011 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-011 | industry-reference-model | Utilities industry reference models (metering and retail-energy chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-043) from the CR-VS-11 industry evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Resolve bill inquiries.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

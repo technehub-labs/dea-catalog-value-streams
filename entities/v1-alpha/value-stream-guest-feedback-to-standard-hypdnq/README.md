@@ -1,50 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml
+id: value-streams:value-stream-guest-feedback-to-standard-hypdnq
+name: Guest Feedback to Standard
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- hospitality-travel
+specificity: industry-specific
+entry_criterion: Guest feedback is captured.
+exit_criterion: The standard improvement is implemented and verified.
+outcome: An improved, verified service standard.
+stages:
+- Capture Feedback
+- Analyze and Prioritize
+- Update Standard
+- Verify
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-ge-design-kpsj5b
+- processes:process-ge-operate-zwaes5
+- processes:process-pr-operate-bbe384
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Guest satisfaction score
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Guest Feedback to Standard
 
-Admitted Value Stream record (`value-streams:value-stream-guest-feedback-to-standard-hypdnq`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-guest-feedback-to-standard-hypdnq` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | hospitality-travel · industry-specific |
-| Record | [`value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml`](./value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-guest-feedback-to-standard-hypdnq` · **governance** · hospitality-travel · industry-specific
 
 > The hospitality-experience stream from feedback capture through analysis to an implemented service standard.
 
-## 3. Value proposition and served party
-
 **Outcome:** An improved, verified service standard.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml`](./value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** Guest feedback is captured.
+## Stage flow
 
-**Exit criterion:** The standard improvement is implemented and verified.
+```mermaid
+flowchart LR
+  S1["1. Capture Feedback"]
+  S2["2. Analyze and Prioritize"]
+  S3["3. Update Standard"]
+  S4["4. Verify"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Feedback capture
-- Analysis and prioritization
-- Standard update
-- Verification
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Capture Feedback** | Feedback is captured. | Feedback is consolidated. | 2 | 1 | yes |
+| 2 | **Analyze and Prioritize** | Feedback is consolidated. | Priorities are set. | 2 | 1 | no |
+| 3 | **Update Standard** | Priorities are set. | The standard is updated. | 2 | 1 | no |
+| 4 | **Verify** | The standard is updated. | Implementation is verified. | 1 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Individual service recovery (Issue to Resolve)
-- Brand standards governance
-
-## 5. Value stages
-
-Guest Feedback to Standard decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Capture Feedback
+### 1. Capture Feedback
 
 Capture guest feedback.
 
@@ -54,10 +81,10 @@ Capture guest feedback.
 | Exit criterion | Feedback is consolidated. |
 | Outcome | Consolidated feedback. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Analyze and Prioritize
+### 2. Analyze and Prioritize
 
 Analyze and prioritize.
 
@@ -67,10 +94,10 @@ Analyze and prioritize.
 | Exit criterion | Priorities are set. |
 | Outcome | Set priorities. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-sd-operate-ucxpz4` |
 
-### Stage 3: Update Standard
+### 3. Update Standard
 
 Update the service standard.
 
@@ -80,10 +107,10 @@ Update the service standard.
 | Exit criterion | The standard is updated. |
 | Outcome | An updated standard. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-ge-design-kpsj5b` |
 
-### Stage 4: Verify
+### 4. Verify
 
 Verify implementation.
 
@@ -96,9 +123,27 @@ Verify implementation.
 | Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** Guest feedback is captured.
+
+**Exit:** The standard improvement is implemented and verified.
+
+**In scope**
+
+- Feedback capture
+- Analysis and prioritization
+- Standard update
+- Verification
+
+**Out of scope** (owned by the named neighbour)
+
+- Individual service recovery (Issue to Resolve)
+- Brand standards governance
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
@@ -107,30 +152,34 @@ Verify implementation.
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-sd-operate-ucxpz4`
 - `processes:process-ge-design-kpsj5b`
 - `processes:process-ge-operate-zwaes5`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Guest satisfaction score** (stage: Verify) — Mean guest satisfaction per period. → [`dea:metric-customer-satisfaction-score`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-091) from the CR-VS-11 industry evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -139,4 +188,4 @@ Verify implementation.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

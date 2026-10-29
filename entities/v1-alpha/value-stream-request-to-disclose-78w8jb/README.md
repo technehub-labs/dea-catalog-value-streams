@@ -1,49 +1,68 @@
+---
+documentation_generated_from: value-streams-value-stream-request-to-disclose-78w8jb.yaml
+id: value-streams:value-stream-request-to-disclose-78w8jb
+name: Request to Disclose
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- public-sector
+specificity: industry-specific
+entry_criterion: A records/information request is received.
+exit_criterion: The disclosure is made within deadline.
+outcome: A lawful disclosure to the requester within the statutory deadline.
+stages:
+- Register Request
+- Search and Review
+- Disclose
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+processes:
+- processes:process-ge-operate-zwaes5
+- processes:process-pr-operate-bbe384
+metrics:
+- Statutory deadline compliance
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-014
+---
+
 # Request to Disclose
 
-Admitted Value Stream record (`value-streams:value-stream-request-to-disclose-78w8jb`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-request-to-disclose-78w8jb` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | public-sector · industry-specific |
-| Record | [`value-streams-value-stream-request-to-disclose-78w8jb.yaml`](./value-streams-value-stream-request-to-disclose-78w8jb.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-request-to-disclose-78w8jb` · **governance** · public-sector · industry-specific
 
 > The information-request stream from records request through review and redaction to disclosure.
 
-## 3. Value proposition and served party
-
 **Outcome:** A lawful disclosure to the requester within the statutory deadline.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-request-to-disclose-78w8jb.yaml`](./value-streams-value-stream-request-to-disclose-78w8jb.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A records/information request is received.
+## Stage flow
 
-**Exit criterion:** The disclosure is made within deadline.
+```mermaid
+flowchart LR
+  S1["1. Register Request"]
+  S2["2. Search and Review"]
+  S3["3. Disclose"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Request registration
-- Records search and review
-- Redaction and disclosure
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Register Request** | A request is received. | The request is registered. | 2 | 1 | yes |
+| 2 | **Search and Review** | The request is registered. | The review is complete. | 2 | 1 | no |
+| 3 | **Disclose** | The review is complete. | The disclosure is made. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Case handling (Intake to Resolution)
-- Archives governance
-
-## 5. Value stages
-
-Request to Disclose decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Register Request
+### 1. Register Request
 
 Register the request and clarify scope.
 
@@ -53,10 +72,10 @@ Register the request and clarify scope.
 | Exit criterion | The request is registered. |
 | Outcome | A registered request. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Search and Review
+### 2. Search and Review
 
 Search records and review for exemptions.
 
@@ -66,10 +85,10 @@ Search records and review for exemptions.
 | Exit criterion | The review is complete. |
 | Outcome | A completed review. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 3: Disclose
+### 3. Disclose
 
 Redact as required and disclose.
 
@@ -79,39 +98,60 @@ Redact as required and disclose.
 | Exit criterion | The disclosure is made. |
 | Outcome | A made disclosure. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A records/information request is received.
+
+**Exit:** The disclosure is made within deadline.
+
+**In scope**
+
+- Request registration
+- Records search and review
+- Redaction and disclosure
+
+**Out of scope** (owned by the named neighbour)
+
+- Case handling (Intake to Resolution)
+- Archives governance
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-legal-matter-management-zzbd2u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-ge-operate-zwaes5`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Statutory deadline compliance** (stream-level) — Share of disclosures made within deadline.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-014 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-014 | industry-reference-model | Public-sector service chains (permits, grants, benefits; public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-075) from the CR-VS-11 industry evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -120,4 +160,4 @@ Redact as required and disclose.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -41,6 +41,25 @@ Each record file's id is content-addressed: changing the file's contents
 (without renaming the file) changes its hash. This is what makes the catalog
 content-addressed rather than directory-addressed.
 
+## Folder shape (CR-VS-13)
+
+Each subtree is both human- and machine-readable:
+
+```
+value-stream-<slug>-<hash6>/
+├── value-streams-value-stream-<slug>-<hash6>.yaml   ← authoritative record
+├── README.md                                        ← generated: YAML front matter,
+│                                                      mermaid stage flow, full rendering
+└── research/
+    ├── README.md        ← folder contract (CR-CATALOG-STRUCT-01 §5)
+    └── evidence.md      ← per-entity evidence notes from the register
+```
+
+The README's front matter is machine-extractable metadata (id, stages,
+capability/process/metric ids, links). Regenerate everything with
+`scripts/generate_entity_docs.py`; never hand-edit — the generator
+overwrites.
+
 ## Status
 
 11 admitted value streams (v1.1.0, CR-VS-07 enriched shape): each record
@@ -54,6 +73,7 @@ org-wide catalog repository standard (CR-CATALOG-STRUCT-01) and the pattern
 established in `dea-catalog-business-capabilities`.
 
 Each subtree's README.md renders the full record (comprehensive
-documentation per CR-VS-07): identity, definition, value proposition,
-boundary, value stages, capability/process traceability, cross-stream
-links, measurement, evidence, and the provenance ladder.
+documentation per CR-VS-07/13): front-mattered metadata, mermaid stage
+flow, identity, definition, value proposition, boundary, value stages,
+capability/process traceability, cross-stream links, measurement,
+evidence (with per-entity research notes), and the provenance ladder.

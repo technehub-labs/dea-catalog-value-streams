@@ -1,49 +1,74 @@
+---
+documentation_generated_from: value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml
+id: value-streams:value-stream-discovery-to-candidate-8d6b4u
+name: Discovery to Candidate
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: development
+industries:
+- life-sciences
+specificity: industry-specific
+entry_criterion: A target is identified.
+exit_criterion: A candidate is nominated for development.
+outcome: A nominated development candidate.
+stages:
+- Validate Target
+- Screen
+- Nominate Candidate
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-idea-management-86dckf
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-pv-conceive-kps544
+- processes:process-pv-design-8v4k89
+metrics:
+- Discovery project attrition
+upstream:
+- value-stream-concept-to-launch
+downstream: []
+evidence_sources:
+- SRC-018
+---
+
 # Discovery to Candidate
 
-Admitted Value Stream record (`value-streams:value-stream-discovery-to-candidate-8d6b4u`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-discovery-to-candidate-8d6b4u` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | development |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | life-sciences · industry-specific |
-| Record | [`value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml`](./value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-discovery-to-candidate-8d6b4u` · **development** · life-sciences · industry-specific
 
 > The research stream from target identification through screening to a nominated development candidate.
 
-## 3. Value proposition and served party
-
 **Outcome:** A nominated development candidate.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml`](./value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A target is identified.
+## Stage flow
 
-**Exit criterion:** A candidate is nominated for development.
+```mermaid
+flowchart LR
+  S1["1. Validate Target"]
+  S2["2. Screen"]
+  S3["3. Nominate Candidate"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Target identification and validation
-- Screening
-- Candidate nomination
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Validate Target** | A target is identified. | The target is validated. | 2 | 1 | no |
+| 2 | **Screen** | The target is validated. | Screening is complete. | 2 | 2 | no |
+| 3 | **Nominate Candidate** | Screening is complete. | The candidate is nominated. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Clinical development (Trial to Readout)
-- Research platform governance
-
-## 5. Value stages
-
-Discovery to Candidate decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Validate Target
+### 1. Validate Target
 
 Validate the identified target.
 
@@ -53,10 +78,10 @@ Validate the identified target.
 | Exit criterion | The target is validated. |
 | Outcome | A validated target. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-idea-management-86dckf` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-idea-management-86dckf` |
 | Realizing processes | `processes:process-pv-conceive-kps544` |
 
-### Stage 2: Screen
+### 2. Screen
 
 Screen for active candidates.
 
@@ -66,10 +91,10 @@ Screen for active candidates.
 | Exit criterion | Screening is complete. |
 | Outcome | Screened candidates. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
-| Realizing processes | `processes:process-eo-operate-2jnz85`, `processes:process-eo-operate-44jsrp` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
+| Realizing processes | `processes:process-eo-operate-2jnz85` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Nominate Candidate
+### 3. Nominate Candidate
 
 Nominate the development candidate.
 
@@ -79,12 +104,29 @@ Nominate the development candidate.
 | Exit criterion | The candidate is nominated. |
 | Outcome | A nominated candidate. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-pv-design-8v4k89` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A target is identified.
+
+**Exit:** A candidate is nominated for development.
+
+**In scope**
+
+- Target identification and validation
+- Screening
+- Candidate nomination
+
+**Out of scope** (owned by the named neighbour)
+
+- Clinical development (Trial to Readout)
+- Research platform governance
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-insight-management-ms4n9d`
 - `capabilities:capability-idea-management-86dckf`
@@ -93,32 +135,36 @@ Nominate the development candidate.
 - `capabilities:capability-offering-management-6egkc8`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pv-conceive-kps544`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-pv-design-8v4k89`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-concept-to-launch` — The life-sciences specialization of development intake.
+- [concept to launch](../value-stream-concept-to-launch-nhvatv/README.md) — The life-sciences specialization of development intake.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Discovery project attrition** (stream-level) — Share of targets reaching candidate nomination.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-018 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-018 | industry-reference-model | Life-sciences reference chains (public GxP/ICH category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-101) from the CR-VS-11 industry evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -127,4 +173,4 @@ Nominate the development candidate.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

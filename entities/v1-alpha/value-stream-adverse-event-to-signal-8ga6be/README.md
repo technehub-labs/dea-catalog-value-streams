@@ -1,49 +1,72 @@
+---
+documentation_generated_from: value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml
+id: value-streams:value-stream-adverse-event-to-signal-8ga6be
+name: Adverse Event to Signal
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- life-sciences
+specificity: industry-specific
+entry_criterion: An adverse event is reported.
+exit_criterion: The case is processed and the signal decision recorded.
+outcome: A documented signal assessment and reporting decision for every validated case.
+stages:
+- Intake Case
+- Process Case
+- Detect and Report Signal
+capabilities:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-fa-operate-8vqvkk
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-operate-zwaes5
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Case processing compliance rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-018
+---
+
 # Adverse Event to Signal
 
-Admitted Value Stream record (`value-streams:value-stream-adverse-event-to-signal-8ga6be`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-adverse-event-to-signal-8ga6be` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | life-sciences · industry-specific |
-| Record | [`value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml`](./value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-adverse-event-to-signal-8ga6be` · **governance** · life-sciences · industry-specific
 
 > The pharmacovigilance stream from adverse-event intake through case processing to signal detection and reporting decision.
 
-## 3. Value proposition and served party
-
 **Outcome:** A documented signal assessment and reporting decision for every validated case.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml`](./value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An adverse event is reported.
+## Stage flow
 
-**Exit criterion:** The case is processed and the signal decision recorded.
+```mermaid
+flowchart LR
+  S1["1. Intake Case"]
+  S2["2. Process Case"]
+  S3["3. Detect and Report Signal"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Case intake and validation
-- Case processing and assessment
-- Signal detection and reporting
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Intake Case** | An event is reported. | The case is validated. | 2 | 1 | yes |
+| 2 | **Process Case** | The case is validated. | The case assessment is complete. | 2 | 1 | no |
+| 3 | **Detect and Report Signal** | Assessment data accumulates. | The signal decision is recorded. | 2 | 2 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Clinical trials safety
-- Regulatory filings
-
-## 5. Value stages
-
-Adverse Event to Signal decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Intake Case
+### 1. Intake Case
 
 Intake and validate the adverse-event case.
 
@@ -53,10 +76,10 @@ Intake and validate the adverse-event case.
 | Exit criterion | The case is validated. |
 | Outcome | A validated case. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 2: Process Case
+### 2. Process Case
 
 Process and assess the case.
 
@@ -66,10 +89,10 @@ Process and assess the case.
 | Exit criterion | The case assessment is complete. |
 | Outcome | A completed assessment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 3: Detect and Report Signal
+### 3. Detect and Report Signal
 
 Run signal detection and decide reporting.
 
@@ -79,12 +102,29 @@ Run signal detection and decide reporting.
 | Exit criterion | The signal decision is recorded. |
 | Outcome | A recorded decision. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-regulation-management-gya4d8` |
-| Realizing processes | `processes:process-sd-operate-ucxpz4`, `processes:process-fa-operate-8vqvkk` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-regulation-management-gya4d8` |
+| Realizing processes | `processes:process-sd-operate-ucxpz4` · `processes:process-fa-operate-8vqvkk` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An adverse event is reported.
+
+**Exit:** The case is processed and the signal decision recorded.
+
+**In scope**
+
+- Case intake and validation
+- Case processing and assessment
+- Signal detection and reporting
+
+**Out of scope** (owned by the named neighbour)
+
+- Clinical trials safety
+- Regulatory filings
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-risk-management-h9uxdw`
@@ -92,30 +132,34 @@ Run signal detection and decide reporting.
 - `capabilities:capability-insight-management-ms4n9d`
 - `capabilities:capability-regulation-management-gya4d8`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-ge-operate-zwaes5`
 - `processes:process-sd-operate-ucxpz4`
 - `processes:process-fa-operate-8vqvkk`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Case processing compliance rate** (stream-level) — Share of cases processed within regulatory timelines.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-018 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-018 | industry-reference-model | Life-sciences reference chains (public GxP/ICH category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-100) from the CR-VS-11 industry evidence register extension. Industry-specific chain (life-sciences); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -124,4 +168,4 @@ Run signal detection and decide reporting.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

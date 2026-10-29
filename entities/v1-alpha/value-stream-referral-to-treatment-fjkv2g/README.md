@@ -1,50 +1,74 @@
+---
+documentation_generated_from: value-streams-value-stream-referral-to-treatment-fjkv2g.yaml
+id: value-streams:value-stream-referral-to-treatment-fjkv2g
+name: Referral to Treatment
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- healthcare
+specificity: industry-specific
+entry_criterion: A specialist referral is made.
+exit_criterion: The referred treatment is completed.
+outcome: A referred patient receives and completes specialist treatment.
+stages:
+- Triage Referral
+- Book and Prepare
+- Deliver Treatment
+- Complete and Follow Up
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-pr-operate-bbe384
+metrics:
+- Referral-to-treatment wait time
+upstream: []
+downstream:
+- value-stream-discharge-to-bill
+evidence_sources:
+- SRC-007
+---
+
 # Referral to Treatment
 
-Admitted Value Stream record (`value-streams:value-stream-referral-to-treatment-fjkv2g`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-referral-to-treatment-fjkv2g` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | healthcare · industry-specific |
-| Record | [`value-streams-value-stream-referral-to-treatment-fjkv2g.yaml`](./value-streams-value-stream-referral-to-treatment-fjkv2g.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-referral-to-treatment-fjkv2g` · **operational** · healthcare · industry-specific
 
 > The end-to-end stream from specialist referral through triage, booking, and clinical treatment completion.
 
-## 3. Value proposition and served party
-
 **Outcome:** A referred patient receives and completes specialist treatment.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-referral-to-treatment-fjkv2g.yaml`](./value-streams-value-stream-referral-to-treatment-fjkv2g.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A specialist referral is made.
+## Stage flow
 
-**Exit criterion:** The referred treatment is completed.
+```mermaid
+flowchart LR
+  S1["1. Triage Referral"]
+  S2["2. Book and Prepare"]
+  S3["3. Deliver Treatment"]
+  S4["4. Complete and Follow Up"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Referral triage and prioritization
-- Booking and preparation
-- Treatment delivery
-- Outcome and follow-up
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Triage Referral** | A specialist referral is made. | The referral is triaged and prioritized. | 2 | 1 | yes |
+| 2 | **Book and Prepare** | A referral is prioritized. | The treatment is booked and the patient is prepared. | 2 | 1 | yes |
+| 3 | **Deliver Treatment** | The patient is prepared. | The treatment is delivered. | 1 | 2 | yes |
+| 4 | **Complete and Follow Up** | Treatment is delivered. | The outcome is recorded and follow-up arranged. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Emergency care pathways
-- Inpatient admission (Admission to Discharge)
-
-## 5. Value stages
-
-Referral to Treatment decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Triage Referral
+### 1. Triage Referral
 
 Receive and prioritize the referral.
 
@@ -54,10 +78,10 @@ Receive and prioritize the referral.
 | Exit criterion | The referral is triaged and prioritized. |
 | Outcome | A prioritized referral. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Book and Prepare
+### 2. Book and Prepare
 
 Book the treatment and prepare the patient.
 
@@ -67,10 +91,10 @@ Book the treatment and prepare the patient.
 | Exit criterion | The treatment is booked and the patient is prepared. |
 | Outcome | A booked, prepared treatment slot. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Deliver Treatment
+### 3. Deliver Treatment
 
 Deliver the clinical treatment.
 
@@ -81,9 +105,9 @@ Deliver the clinical treatment.
 | Outcome | Completed specialist treatment. |
 | Customer visible | True |
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-operate-2jnz85`, `processes:process-eo-operate-44jsrp` |
+| Realizing processes | `processes:process-eo-operate-2jnz85` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 4: Complete and Follow Up
+### 4. Complete and Follow Up
 
 Confirm treatment outcome and arrange follow-up.
 
@@ -93,42 +117,64 @@ Confirm treatment outcome and arrange follow-up.
 | Exit criterion | The outcome is recorded and follow-up arranged. |
 | Outcome | A closed referral with follow-up. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A specialist referral is made.
+
+**Exit:** The referred treatment is completed.
+
+**In scope**
+
+- Referral triage and prioritization
+- Booking and preparation
+- Treatment delivery
+- Outcome and follow-up
+
+**Out of scope** (owned by the named neighbour)
+
+- Emergency care pathways
+- Inpatient admission (Admission to Discharge)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-44jsrp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-discharge-to-bill` — Delivered treatment flows to billing.
+- [discharge to bill](../value-stream-discharge-to-bill-3k7wbb/README.md) — Delivered treatment flows to billing.
 
-## 8. Measurement
+## Measurement
 
 - **Referral-to-treatment wait time** (stream-level) — Elapsed days from referral to treatment.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-007 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-007 | industry-reference-model | Healthcare industry reference models (patient-access and revenue-cycle chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-018) from the CR-VS-11 industry evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -137,4 +183,4 @@ Confirm treatment outcome and arrange follow-up.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

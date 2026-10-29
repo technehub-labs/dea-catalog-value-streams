@@ -1,51 +1,82 @@
+---
+documentation_generated_from: value-streams-value-stream-record-to-report-zw9z2r.yaml
+id: value-streams:value-stream-record-to-report-zw9z2r
+name: Record to Report
+type: ValueStream
+version: 1.3.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- cross-industry
+specificity: generic
+entry_criterion: An accounting period opens or a transaction is recorded.
+exit_criterion: Financial results are reported and attested.
+outcome: Attested financial visibility for stakeholders.
+stages:
+- Record Transactions
+- Close Period
+- Report
+- Disclose
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+processes:
+- processes:process-fa-operate-4xn4d6
+- processes:process-fa-operate-8vqvkk
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-ycba3k
+metrics:
+- Close cycle time
+- Restatement rate
+upstream:
+- value-stream-plan-to-forecast
+- value-stream-order-to-cash
+- value-stream-procure-to-pay
+downstream: []
+evidence_sources:
+- SRC-002
+- SRC-003
+- SRC-006
+---
+
 # Record to Report
 
-Admitted Value Stream record (`value-streams:value-stream-record-to-report-zw9z2r`, v1.3.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-record-to-report-zw9z2r` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.3.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | cross-industry · generic |
-| Record | [`value-streams-value-stream-record-to-report-zw9z2r.yaml`](./value-streams-value-stream-record-to-report-zw9z2r.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-record-to-report-zw9z2r` · **governance** · cross-industry · generic
 
 > The end-to-end stream from recording of transactions through period close and attested financial reporting.
 
-## 3. Value proposition and served party
-
 **Outcome:** Attested financial visibility for stakeholders.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-record-to-report-zw9z2r.yaml`](./value-streams-value-stream-record-to-report-zw9z2r.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An accounting period opens or a transaction is recorded.
+## Stage flow
 
-**Exit criterion:** Financial results are reported and attested.
+```mermaid
+flowchart LR
+  S1["1. Record Transactions"]
+  S2["2. Close Period"]
+  S3["3. Report"]
+  S4["4. Disclose"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Transaction recording
-- Period close
-- Attested financial reporting
-- Disclosure and stakeholder visibility
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Record Transactions** | An accounting period opens or a transaction occurs. | Transactions are recorded in the ledger. | 2 | 1 | no |
+| 2 | **Close Period** | The period's transactions are recorded. | The period is closed. | 1 | 1 | no |
+| 3 | **Report** | A period is closed. | Financial results are reported and attested. | 2 | 1 | no |
+| 4 | **Disclose** | Results are attested. | Stakeholders have attested visibility. | 2 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Forward-looking commitments (Plan to Forecast)
-- Payment settlement flows (Order to Cash / Procure to Pay)
-- Tax strategy design (Regulation Management capability)
-
-## 5. Value stages
-
-Record to Report decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Record Transactions
+### 1. Record Transactions
 
 Record enterprise transactions in the ledger.
 
@@ -55,10 +86,10 @@ Record enterprise transactions in the ledger.
 | Exit criterion | Transactions are recorded in the ledger. |
 | Outcome | A complete transactional record. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-g9zpnq` |
 
-### Stage 2: Close Period
+### 2. Close Period
 
 Perform period close and reconciliation.
 
@@ -71,7 +102,7 @@ Perform period close and reconciliation.
 | Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` |
 | Realizing processes | `processes:process-fa-operate-4xn4d6` |
 
-### Stage 3: Report
+### 3. Report
 
 Compile and attest financial results.
 
@@ -81,10 +112,10 @@ Compile and attest financial results.
 | Exit criterion | Financial results are reported and attested. |
 | Outcome | Attested financial results. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-fa-operate-ycba3k` |
 
-### Stage 4: Disclose
+### 4. Disclose
 
 Publish results to stakeholders.
 
@@ -94,12 +125,31 @@ Publish results to stakeholders.
 | Exit criterion | Stakeholders have attested visibility. |
 | Outcome | Attested financial visibility for stakeholders. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk`, `capabilities:capability-enterprise-governance-uas48u` |
-| Realizing processes | `processes:process-fa-operate-8vqvkk`, `processes:process-fa-operate-ycba3k` |
+| Enabling capabilities | `capabilities:capability-financial-stewardship-c7xtfk` · `capabilities:capability-enterprise-governance-uas48u` |
+| Realizing processes | `processes:process-fa-operate-8vqvkk` · `processes:process-fa-operate-ycba3k` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An accounting period opens or a transaction is recorded.
+
+**Exit:** Financial results are reported and attested.
+
+**In scope**
+
+- Transaction recording
+- Period close
+- Attested financial reporting
+- Disclosure and stakeholder visibility
+
+**Out of scope** (owned by the named neighbour)
+
+- Forward-looking commitments (Plan to Forecast)
+- Payment settlement flows (Order to Cash / Procure to Pay)
+- Tax strategy design (Regulation Management capability)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-financial-stewardship-c7xtfk`
 - `capabilities:capability-financial-resource-management-cd3c7c`
@@ -107,35 +157,41 @@ Publish results to stakeholders.
 - `capabilities:capability-enterprise-performance-management-5fxren`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-fa-operate-g9zpnq`
 - `processes:process-fa-operate-4xn4d6`
 - `processes:process-fa-operate-ycba3k`
 - `processes:process-fa-operate-8vqvkk`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-plan-to-forecast` — Ratified plans are the commitments attested against.
-- `value-streams:value-value-stream-order-to-cash` — Recognized payments are recorded as transactions.
-- `value-streams:value-value-stream-procure-to-pay` — Supplier settlements are recorded as transactions.
+- [plan to forecast](../value-stream-plan-to-forecast-89vb4q/README.md) — Ratified plans are the commitments attested against.
+- [order to cash](../value-stream-order-to-cash-sc8gbu/README.md) — Recognized payments are recorded as transactions.
+- [procure to pay](../value-stream-procure-to-pay-utma5c/README.md) — Supplier settlements are recorded as transactions.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Close cycle time** (stage: Close Period) — Elapsed days from period end to attested close. → [`dea:metric-financial-close-cycle-time`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Restatement rate** (stage: Report) — Count of restatements per reporting year; zero is the target. → [`dea:metric-financial-restatement-count`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-002, SRC-003, SRC-006 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-002 | cross-industry-process | APQC Process Classification Framework (cross-industry, process-to-value-stream groupings) |
+| SRC-003 | standards-body | OMG Business Architecture Core Metamodel (BACM) — ValueStream element |
+| SRC-006 | commercial-process-models | Hammer & Hurdle-style enterprise process-chain literature (public summaries) |
 
 **Rationale:** Admitted from candidate VSC-009 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2 extension; distinctness closed per CR-VS-02). Finance reporting chain; served party is enterprise governance stakeholders (SRC-003). Boundary vs. Plan to Forecast: backward-looking attestation vs. forward-looking commitment (CR-VS-02 RES-002).
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -148,4 +204,4 @@ Publish results to stakeholders.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

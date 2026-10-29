@@ -1,50 +1,81 @@
+---
+documentation_generated_from: value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml
+id: value-streams:value-stream-assortment-to-shelf-ex2sqq
+name: Assortment to Shelf
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- retail-commerce
+specificity: industry-specific
+entry_criterion: An assortment planning cycle opens.
+exit_criterion: The assortment is in stock at planned levels.
+outcome: Planned assortment in stock and on shelf.
+stages:
+- Plan Assortment
+- Buy
+- Allocate and Replenish
+- Maintain In-Stock
+capabilities:
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-sourcing-and-procurement-esucp4
+- capabilities:capability-supplier-management-d6fuj4
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-zwzmbd
+- processes:process-fa-conceive-4uqqvg
+- processes:process-pv-operate-cau4gv
+metrics:
+- On-shelf availability
+upstream:
+- value-stream-plan-to-forecast
+downstream: []
+evidence_sources:
+- SRC-013
+---
+
 # Assortment to Shelf
 
-Admitted Value Stream record (`value-streams:value-stream-assortment-to-shelf-ex2sqq`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-assortment-to-shelf-ex2sqq` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | retail-commerce · industry-specific |
-| Record | [`value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml`](./value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-assortment-to-shelf-ex2sqq` · **operational** · retail-commerce · industry-specific
 
 > The merchandising stream from assortment planning through supplier engagement to in-stock shelf availability.
 
-## 3. Value proposition and served party
-
 **Outcome:** Planned assortment in stock and on shelf.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml`](./value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An assortment planning cycle opens.
+## Stage flow
 
-**Exit criterion:** The assortment is in stock at planned levels.
+```mermaid
+flowchart LR
+  S1["1. Plan Assortment"]
+  S2["2. Buy"]
+  S3["3. Allocate and Replenish"]
+  S4["4. Maintain In-Stock"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Assortment and range planning
-- Supplier negotiation and buying
-- Allocation and replenishment
-- In-stock maintenance
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Plan Assortment** | A planning cycle opens. | The assortment plan is approved. | 2 | 2 | no |
+| 2 | **Buy** | The plan is approved. | Buys are placed. | 2 | 1 | no |
+| 3 | **Allocate and Replenish** | Buys are placed. | Stores are allocated and replenished. | 2 | 2 | no |
+| 4 | **Maintain In-Stock** | Stores are replenished. | The assortment is in stock at plan. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Store operations
-- Promotions (Marketing)
-
-## 5. Value stages
-
-Assortment to Shelf decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Plan Assortment
+### 1. Plan Assortment
 
 Plan the assortment and range.
 
@@ -54,10 +85,10 @@ Plan the assortment and range.
 | Exit criterion | The assortment plan is approved. |
 | Outcome | An approved plan. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-marketing-xmc539` |
-| Realizing processes | `processes:process-pv-operate-cau4gv`, `processes:process-fa-conceive-4uqqvg` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-marketing-xmc539` |
+| Realizing processes | `processes:process-pv-operate-cau4gv` · `processes:process-fa-conceive-4uqqvg` |
 
-### Stage 2: Buy
+### 2. Buy
 
 Negotiate with suppliers and place buys.
 
@@ -67,10 +98,10 @@ Negotiate with suppliers and place buys.
 | Exit criterion | Buys are placed. |
 | Outcome | Placed buys. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-sourcing-and-procurement-esucp4`, `capabilities:capability-supplier-management-d6fuj4` |
+| Enabling capabilities | `capabilities:capability-sourcing-and-procurement-esucp4` · `capabilities:capability-supplier-management-d6fuj4` |
 | Realizing processes | `processes:process-eo-operate-vzcxx7` |
 
-### Stage 3: Allocate and Replenish
+### 3. Allocate and Replenish
 
 Allocate stock and drive replenishment.
 
@@ -80,10 +111,10 @@ Allocate stock and drive replenishment.
 | Exit criterion | Stores are allocated and replenished. |
 | Outcome | Replenished stores. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
-| Realizing processes | `processes:process-eo-operate-zwzmbd`, `processes:process-eo-operate-zh9m57` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
+| Realizing processes | `processes:process-eo-operate-zwzmbd` · `processes:process-eo-operate-zh9m57` |
 
-### Stage 4: Maintain In-Stock
+### 4. Maintain In-Stock
 
 Maintain in-stock availability on shelf.
 
@@ -93,12 +124,30 @@ Maintain in-stock availability on shelf.
 | Exit criterion | The assortment is in stock at plan. |
 | Outcome | In-stock assortment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An assortment planning cycle opens.
+
+**Exit:** The assortment is in stock at planned levels.
+
+**In scope**
+
+- Assortment and range planning
+- Supplier negotiation and buying
+- Allocation and replenishment
+- In-stock maintenance
+
+**Out of scope** (owned by the named neighbour)
+
+- Store operations
+- Promotions (Marketing)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-offering-management-6egkc8`
 - `capabilities:capability-marketing-xmc539`
@@ -108,7 +157,7 @@ Maintain in-stock availability on shelf.
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pv-operate-cau4gv`
 - `processes:process-fa-conceive-4uqqvg`
@@ -117,25 +166,29 @@ Maintain in-stock availability on shelf.
 - `processes:process-eo-operate-zh9m57`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-plan-to-forecast` — The ratified demand plan drives assortment planning.
+- [plan to forecast](../value-stream-plan-to-forecast-89vb4q/README.md) — The ratified demand plan drives assortment planning.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **On-shelf availability** (stream-level) — Share of planned assortment in stock on shelf.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-013 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-013 | industry-reference-model | Retail / consumer-commerce chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-058) from the CR-VS-11 industry evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -144,4 +197,4 @@ Maintain in-stock availability on shelf.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

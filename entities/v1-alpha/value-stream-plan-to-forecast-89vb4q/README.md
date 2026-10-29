@@ -1,51 +1,82 @@
+---
+documentation_generated_from: value-streams-value-stream-plan-to-forecast-89vb4q.yaml
+id: value-streams:value-stream-plan-to-forecast-89vb4q
+name: Plan to Forecast
+type: ValueStream
+version: 1.3.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- cross-industry
+specificity: generic
+entry_criterion: A planning cycle opens.
+exit_criterion: A committed forecast or budget is ratified.
+outcome: A ratified plan guiding enterprise resource allocation.
+stages:
+- Open Planning Cycle
+- Form Plan
+- Negotiate Commitment
+- Ratify Forecast
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-strategic-planning-k3rz7a
+processes:
+- processes:process-fa-conceive-4uqqvg
+- processes:process-sd-build-2pkz5n
+- processes:process-sd-design-vdwkmh
+- processes:process-sd-operate-53y4j4
+- processes:process-sd-operate-u6xgu5
+metrics:
+- Forecast accuracy
+- Planning cycle length
+upstream: []
+downstream:
+- value-stream-plan-to-deliver
+- value-stream-record-to-report
+evidence_sources:
+- SRC-002
+- SRC-003
+- SRC-006
+---
+
 # Plan to Forecast
 
-Admitted Value Stream record (`value-streams:value-stream-plan-to-forecast-89vb4q`, v1.3.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-plan-to-forecast-89vb4q` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.3.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | cross-industry · generic |
-| Record | [`value-streams-value-stream-plan-to-forecast-89vb4q.yaml`](./value-streams-value-stream-plan-to-forecast-89vb4q.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-plan-to-forecast-89vb4q` · **governance** · cross-industry · generic
 
 > The end-to-end stream from opening of a planning cycle through ratification of a committed forecast or budget.
 
-## 3. Value proposition and served party
-
 **Outcome:** A ratified plan guiding enterprise resource allocation.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-plan-to-forecast-89vb4q.yaml`](./value-streams-value-stream-plan-to-forecast-89vb4q.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A planning cycle opens.
+## Stage flow
 
-**Exit criterion:** A committed forecast or budget is ratified.
+```mermaid
+flowchart LR
+  S1["1. Open Planning Cycle"]
+  S2["2. Form Plan"]
+  S3["3. Negotiate Commitment"]
+  S4["4. Ratify Forecast"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Planning-cycle opening
-- Target and plan formation
-- Commitment negotiation
-- Forecast or budget ratification
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Open Planning Cycle** | A planning cycle opens. | The cycle is framed and resourced. | 2 | 1 | no |
+| 2 | **Form Plan** | The cycle is framed. | A complete draft plan exists. | 2 | 2 | no |
+| 3 | **Negotiate Commitment** | A draft plan exists. | Commitments are agreed across the enterprise. | 2 | 1 | no |
+| 4 | **Ratify Forecast** | Commitments are agreed. | A committed forecast or budget is ratified. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Backward-looking attestation (Record to Report)
-- Delivery execution (Plan to Deliver)
-- Strategic direction setting itself (Strategy Formulation capability, upstream)
-
-## 5. Value stages
-
-Plan to Forecast decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Open Planning Cycle
+### 1. Open Planning Cycle
 
 Open the planning cycle and frame its scope.
 
@@ -55,10 +86,10 @@ Open the planning cycle and frame its scope.
 | Exit criterion | The cycle is framed and resourced. |
 | Outcome | An open, framed planning cycle. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-sd-operate-53y4j4` |
 
-### Stage 2: Form Plan
+### 2. Form Plan
 
 Develop objectives, targets, and the draft plan.
 
@@ -68,10 +99,10 @@ Develop objectives, targets, and the draft plan.
 | Exit criterion | A complete draft plan exists. |
 | Outcome | A complete draft plan. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a`, `capabilities:capability-enterprise-performance-management-5fxren` |
-| Realizing processes | `processes:process-sd-design-vdwkmh`, `processes:process-fa-conceive-4uqqvg` |
+| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a` · `capabilities:capability-enterprise-performance-management-5fxren` |
+| Realizing processes | `processes:process-sd-design-vdwkmh` · `processes:process-fa-conceive-4uqqvg` |
 
-### Stage 3: Negotiate Commitment
+### 3. Negotiate Commitment
 
 Negotiate resource allocation and commitments.
 
@@ -81,10 +112,10 @@ Negotiate resource allocation and commitments.
 | Exit criterion | Commitments are agreed across the enterprise. |
 | Outcome | Agreed commitments. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-sd-operate-u6xgu5` |
 
-### Stage 4: Ratify Forecast
+### 4. Ratify Forecast
 
 Ratify the committed forecast or budget.
 
@@ -94,12 +125,31 @@ Ratify the committed forecast or budget.
 | Exit criterion | A committed forecast or budget is ratified. |
 | Outcome | A ratified plan guiding allocation. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-enterprise-performance-management-5fxren` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-sd-build-2pkz5n` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A planning cycle opens.
+
+**Exit:** A committed forecast or budget is ratified.
+
+**In scope**
+
+- Planning-cycle opening
+- Target and plan formation
+- Commitment negotiation
+- Forecast or budget ratification
+
+**Out of scope** (owned by the named neighbour)
+
+- Backward-looking attestation (Record to Report)
+- Delivery execution (Plan to Deliver)
+- Strategic direction setting itself (Strategy Formulation capability, upstream)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-strategic-planning-k3rz7a`
 - `capabilities:capability-financial-stewardship-c7xtfk`
@@ -107,7 +157,7 @@ Ratify the committed forecast or budget.
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-sd-operate-53y4j4`
 - `processes:process-sd-design-vdwkmh`
@@ -115,27 +165,33 @@ Ratify the committed forecast or budget.
 - `processes:process-sd-operate-u6xgu5`
 - `processes:process-sd-build-2pkz5n`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-plan-to-deliver` — The ratified plan drives demand and delivery planning.
-- `value-streams:value-value-stream-record-to-report` — Plan commitments are later attested against in reporting.
+- [plan to deliver](../value-stream-plan-to-deliver-smmwpx/README.md) — The ratified plan drives demand and delivery planning.
+- [record to report](../value-stream-record-to-report-zw9z2r/README.md) — Plan commitments are later attested against in reporting.
 
-## 8. Measurement
+## Measurement
 
 - **Forecast accuracy** (stage: Ratify Forecast) — Deviation of committed forecast from actuals in the period. → [`dea:metric-cash-forecast-accuracy`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Planning cycle length** (stage: Ratify Forecast) — Elapsed time from cycle open to ratification.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-002, SRC-003, SRC-006 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-002 | cross-industry-process | APQC Process Classification Framework (cross-industry, process-to-value-stream groupings) |
+| SRC-003 | standards-body | OMG Business Architecture Core Metamodel (BACM) — ValueStream element |
+| SRC-006 | commercial-process-models | Hammer & Hurdle-style enterprise process-chain literature (public summaries) |
 
 **Rationale:** Admitted from candidate VSC-008 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2 extension; distinctness closed per CR-VS-02). Enterprise-internal planning chain; served party is the enterprise itself as governance stakeholder (SRC-003 stakeholder-value observation). Boundary vs. Record to Report: forward-looking commitment vs. backward-looking attestation (CR-VS-02 RES-002).
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -148,4 +204,4 @@ Ratify the committed forecast or budget.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

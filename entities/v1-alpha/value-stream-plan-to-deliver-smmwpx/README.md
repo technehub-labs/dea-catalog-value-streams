@@ -1,51 +1,78 @@
+---
+documentation_generated_from: value-streams-value-stream-plan-to-deliver-smmwpx.yaml
+id: value-streams:value-stream-plan-to-deliver-smmwpx
+name: Plan to Deliver
+type: ValueStream
+version: 1.3.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- cross-industry
+specificity: generic
+entry_criterion: Demand is forecast or an order backlog is planned.
+exit_criterion: Product or service is delivered per the plan.
+outcome: Delivered supply against planned demand.
+stages:
+- Plan Demand
+- Schedule Production
+- Produce
+- Deliver
+capabilities:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-strategic-planning-k3rz7a
+processes:
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-zwzmbd
+- processes:process-fa-build-92v24c
+- processes:process-sd-build-2pkz5n
+metrics:
+- Plan adherence
+- Production schedule attainment
+upstream:
+- value-stream-plan-to-forecast
+downstream:
+- value-stream-order-to-cash
+evidence_sources:
+- SRC-002
+---
+
 # Plan to Deliver
 
-Admitted Value Stream record (`value-streams:value-stream-plan-to-deliver-smmwpx`, v1.3.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-plan-to-deliver-smmwpx` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.3.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | cross-industry · generic |
-| Record | [`value-streams-value-stream-plan-to-deliver-smmwpx.yaml`](./value-streams-value-stream-plan-to-deliver-smmwpx.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-plan-to-deliver-smmwpx` · **operational** · cross-industry · generic
 
 > The end-to-end stream from demand planning through production and delivery of products or services.
 
-## 3. Value proposition and served party
-
 **Outcome:** Delivered supply against planned demand.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-plan-to-deliver-smmwpx.yaml`](./value-streams-value-stream-plan-to-deliver-smmwpx.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** Demand is forecast or an order backlog is planned.
+## Stage flow
 
-**Exit criterion:** Product or service is delivered per the plan.
+```mermaid
+flowchart LR
+  S1["1. Plan Demand"]
+  S2["2. Schedule Production"]
+  S3["3. Produce"]
+  S4["4. Deliver"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Demand planning and backlog planning
-- Production scheduling
-- Production execution
-- Delivery per plan
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Plan Demand** | Demand is forecast or an order backlog exists. | A committed delivery plan exists. | 2 | 2 | no |
+| 2 | **Schedule Production** | A committed delivery plan exists. | A production schedule is released. | 1 | 1 | no |
+| 3 | **Produce** | A released schedule exists. | Products or services are produced per plan. | 1 | 2 | no |
+| 4 | **Deliver** | Produced supply exists. | Product or service is delivered per the plan. | 1 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Payment recognition (Order to Cash exits at payment)
-- Forecast ratification (Plan to Forecast exits at a ratified forecast)
-- Supplier settlement (Procure to Pay)
-
-## 5. Value stages
-
-Plan to Deliver decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Plan Demand
+### 1. Plan Demand
 
 Forecast demand or plan the order backlog.
 
@@ -55,10 +82,10 @@ Forecast demand or plan the order backlog.
 | Exit criterion | A committed delivery plan exists. |
 | Outcome | A committed delivery plan. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-sd-build-2pkz5n`, `processes:process-fa-build-92v24c` |
+| Enabling capabilities | `capabilities:capability-strategic-planning-k3rz7a` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-sd-build-2pkz5n` · `processes:process-fa-build-92v24c` |
 
-### Stage 2: Schedule Production
+### 2. Schedule Production
 
 Translate the plan into a production schedule.
 
@@ -71,7 +98,7 @@ Translate the plan into a production schedule.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-xud3hs` |
 
-### Stage 3: Produce
+### 3. Produce
 
 Execute production against the schedule.
 
@@ -82,9 +109,9 @@ Execute production against the schedule.
 | Outcome | Produced supply. |
 | Customer visible | False |
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-operate-xud3hs`, `processes:process-eo-operate-44jsrp` |
+| Realizing processes | `processes:process-eo-operate-xud3hs` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 4: Deliver
+### 4. Deliver
 
 Deliver the product or service per the plan.
 
@@ -95,16 +122,35 @@ Deliver the product or service per the plan.
 | Outcome | Delivered supply against planned demand. |
 | Customer visible | True |
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-operate-zh9m57`, `processes:process-eo-operate-zwzmbd` |
+| Realizing processes | `processes:process-eo-operate-zh9m57` · `processes:process-eo-operate-zwzmbd` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** Demand is forecast or an order backlog is planned.
+
+**Exit:** Product or service is delivered per the plan.
+
+**In scope**
+
+- Demand planning and backlog planning
+- Production scheduling
+- Production execution
+- Delivery per plan
+
+**Out of scope** (owned by the named neighbour)
+
+- Payment recognition (Order to Cash exits at payment)
+- Forecast ratification (Plan to Forecast exits at a ratified forecast)
+- Supplier settlement (Procure to Pay)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-strategic-planning-k3rz7a`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-sd-build-2pkz5n`
 - `processes:process-fa-build-92v24c`
@@ -113,28 +159,32 @@ Deliver the product or service per the plan.
 - `processes:process-eo-operate-zh9m57`
 - `processes:process-eo-operate-zwzmbd`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-plan-to-forecast` — A ratified forecast or plan is the input to demand planning.
+- [plan to forecast](../value-stream-plan-to-forecast-89vb4q/README.md) — A ratified forecast or plan is the input to demand planning.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-order-to-cash` — Delivered supply fulfills orders downstream.
+- [order to cash](../value-stream-order-to-cash-sc8gbu/README.md) — Delivered supply fulfills orders downstream.
 
-## 8. Measurement
+## Measurement
 
 - **Plan adherence** (stage: Deliver) — Share of deliveries made per plan (volume and date). → [`dea:metric-on-time-delivery-rate`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Production schedule attainment** (stage: Produce) — Share of scheduled production completed in period.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-002 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-002 | cross-industry-process | APQC Process Classification Framework (cross-industry, process-to-value-stream groupings) |
 
 **Rationale:** Admitted from candidate VSC-005 under CR-VS-04 (evidence raised E2 -> E3 via register v0.2 extension; distinctness closed per CR-VS-02). Production chain (APQC plan-produce-deliver structure, SRC-002). Boundary vs. Order to Cash: fulfillment is shared vocabulary; this stream exits at delivery per plan, Order to Cash at payment recognition (CR-VS-02 boundary statement). Boundary vs. Plan to Forecast: the exit condition is the discriminator (delivery vs. ratified forecast).
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -147,4 +197,4 @@ Deliver the product or service per the plan.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-outage-to-restore-ff6xme.yaml
+id: value-streams:value-stream-outage-to-restore-ff6xme
+name: Outage to Restore
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- utilities-energy
+specificity: industry-specific
+entry_criterion: An outage is detected or reported.
+exit_criterion: Supply is restored and customers are informed.
+outcome: Restored supply with informed customers.
+stages:
+- Detect and Localize
+- Dispatch Crew
+- Repair and Switch
+- Confirm and Communicate
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-workforce-planning-b43rhm
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-4njp7b
+- processes:process-eo-operate-j9cjzz
+- processes:process-pr-operate-bbe384
+metrics:
+- Outage restoration time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-011
+---
+
 # Outage to Restore
 
-Admitted Value Stream record (`value-streams:value-stream-outage-to-restore-ff6xme`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-outage-to-restore-ff6xme` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | utilities-energy · industry-specific |
-| Record | [`value-streams-value-stream-outage-to-restore-ff6xme.yaml`](./value-streams-value-stream-outage-to-restore-ff6xme.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-outage-to-restore-ff6xme` · **operational** · utilities-energy · industry-specific
 
 > The grid-operations stream from outage detection through crew dispatch and repair to restored supply and customer communication.
 
-## 3. Value proposition and served party
-
 **Outcome:** Restored supply with informed customers.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-outage-to-restore-ff6xme.yaml`](./value-streams-value-stream-outage-to-restore-ff6xme.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An outage is detected or reported.
+## Stage flow
 
-**Exit criterion:** Supply is restored and customers are informed.
+```mermaid
+flowchart LR
+  S1["1. Detect and Localize"]
+  S2["2. Dispatch Crew"]
+  S3["3. Repair and Switch"]
+  S4["4. Confirm and Communicate"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Outage detection and localization
-- Crew dispatch
-- Repair and switching
-- Restoration confirmation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Detect and Localize** | An outage occurs. | The outage is localized. | 2 | 1 | yes |
+| 2 | **Dispatch Crew** | The outage is localized. | The crew is dispatched. | 2 | 1 | no |
+| 3 | **Repair and Switch** | The crew is dispatched. | Supply is restored. | 2 | 1 | no |
+| 4 | **Confirm and Communicate** | Supply is restored. | Customers are informed. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Planned maintenance
-- Field installations
-
-## 5. Value stages
-
-Outage to Restore decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Detect and Localize
+### 1. Detect and Localize
 
 Detect and localize the outage.
 
@@ -54,10 +81,10 @@ Detect and localize the outage.
 | Exit criterion | The outage is localized. |
 | Outcome | A localized outage. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-4njp7b` |
 
-### Stage 2: Dispatch Crew
+### 2. Dispatch Crew
 
 Dispatch the repair crew.
 
@@ -67,10 +94,10 @@ Dispatch the repair crew.
 | Exit criterion | The crew is dispatched. |
 | Outcome | A dispatched crew. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-planning-b43rhm` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-planning-b43rhm` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Repair and Switch
+### 3. Repair and Switch
 
 Execute repair and switching restoration.
 
@@ -80,10 +107,10 @@ Execute repair and switching restoration.
 | Exit criterion | Supply is restored. |
 | Outcome | Restored supply. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-technology-enablement-y6nkws` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-technology-enablement-y6nkws` |
 | Realizing processes | `processes:process-eo-operate-j9cjzz` |
 
-### Stage 4: Confirm and Communicate
+### 4. Confirm and Communicate
 
 Confirm restoration and communicate to customers.
 
@@ -93,12 +120,30 @@ Confirm restoration and communicate to customers.
 | Exit criterion | Customers are informed. |
 | Outcome | Informed customers. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An outage is detected or reported.
+
+**Exit:** Supply is restored and customers are informed.
+
+**In scope**
+
+- Outage detection and localization
+- Crew dispatch
+- Repair and switching
+- Restoration confirmation
+
+**Out of scope** (owned by the named neighbour)
+
+- Planned maintenance
+- Field installations
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-information-management-6vjgdh`
@@ -107,30 +152,34 @@ Confirm restoration and communicate to customers.
 - `capabilities:capability-technology-enablement-y6nkws`
 - `capabilities:capability-customer-management-f3n8wb`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-4njp7b`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-j9cjzz`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Outage restoration time** (stage: Confirm and Communicate) — Elapsed time from detection to restoration. → [`dea:metric-mean-time-to-restore-service`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-011 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-011 | industry-reference-model | Utilities industry reference models (metering and retail-energy chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-045) from the CR-VS-11 industry evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -139,4 +188,4 @@ Confirm restoration and communicate to customers.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

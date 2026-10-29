@@ -1,51 +1,80 @@
+---
+documentation_generated_from: value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml
+id: value-streams:value-stream-blood-donation-to-transfusion-m4h36n
+name: Blood Donation to Transfusion
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- healthcare
+specificity: industry-specific
+entry_criterion: A donor presents or is recruited.
+exit_criterion: The transfusion is completed and documented.
+outcome: Safe blood components transfused to the patient who needs them.
+stages:
+- Recruit and Screen Donor
+- Collect
+- Test and Process
+- Store and Issue
+- Transfuse
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zwzmbd
+- processes:process-pr-build-nygvw7
+metrics:
+- Blood component wastage rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-007
+---
+
 # Blood Donation to Transfusion
 
-Admitted Value Stream record (`value-streams:value-stream-blood-donation-to-transfusion-m4h36n`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-blood-donation-to-transfusion-m4h36n` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | healthcare · industry-specific |
-| Record | [`value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml`](./value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-blood-donation-to-transfusion-m4h36n` · **operational** · healthcare · industry-specific
 
 > The end-to-end blood stream from donor recruitment through collection, testing, processing, and transfusion to the recipient.
 
-## 3. Value proposition and served party
-
 **Outcome:** Safe blood components transfused to the patient who needs them.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml`](./value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A donor presents or is recruited.
+## Stage flow
 
-**Exit criterion:** The transfusion is completed and documented.
+```mermaid
+flowchart LR
+  S1["1. Recruit and Screen Donor"]
+  S2["2. Collect"]
+  S3["3. Test and Process"]
+  S4["4. Store and Issue"]
+  S5["5. Transfuse"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  S4 --> S5
+  TRIGGER(("⏺ Entry")) --> S1
+  S5 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Donor recruitment and screening
-- Collection
-- Testing and processing
-- Storage and issue
-- Transfusion
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Recruit and Screen Donor** | A donor presents or is recruited. | The donor is screened and eligible. | 2 | 1 | yes |
+| 2 | **Collect** | A donor is eligible. | The donation is collected. | 1 | 1 | yes |
+| 3 | **Test and Process** | A donation is collected. | Components are tested, processed, and released. | 3 | 1 | no |
+| 4 | **Store and Issue** | Components are released. | Components are issued to the clinical order. | 2 | 1 | no |
+| 5 | **Transfuse** | Components are issued. | The transfusion is completed and documented. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- General laboratory operations
-- Research biobanking
-
-## 5. Value stages
-
-Blood Donation to Transfusion decomposes into 5 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Recruit and Screen Donor
+### 1. Recruit and Screen Donor
 
 Recruit the donor and complete donation screening.
 
@@ -55,10 +84,10 @@ Recruit the donor and complete donation screening.
 | Exit criterion | The donor is screened and eligible. |
 | Outcome | An eligible, screened donor. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-build-nygvw7` |
 
-### Stage 2: Collect
+### 2. Collect
 
 Collect the donation.
 
@@ -71,7 +100,7 @@ Collect the donation.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 3: Test and Process
+### 3. Test and Process
 
 Test and process the donation into components.
 
@@ -81,10 +110,10 @@ Test and process the donation into components.
 | Exit criterion | Components are tested, processed, and released. |
 | Outcome | Released safe components. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 4: Store and Issue
+### 4. Store and Issue
 
 Store components and issue to order.
 
@@ -94,10 +123,10 @@ Store components and issue to order.
 | Exit criterion | Components are issued to the clinical order. |
 | Outcome | Issued components. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-zwzmbd` |
 
-### Stage 5: Transfuse
+### 5. Transfuse
 
 Transfuse to the recipient and document.
 
@@ -107,12 +136,31 @@ Transfuse to the recipient and document.
 | Exit criterion | The transfusion is completed and documented. |
 | Outcome | A transfused, monitored patient. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A donor presents or is recruited.
+
+**Exit:** The transfusion is completed and documented.
+
+**In scope**
+
+- Donor recruitment and screening
+- Collection
+- Testing and processing
+- Storage and issue
+- Transfusion
+
+**Out of scope** (owned by the named neighbour)
+
+- General laboratory operations
+- Research biobanking
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-customer-management-f3n8wb`
@@ -120,30 +168,34 @@ Transfuse to the recipient and document.
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-risk-management-h9uxdw`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-build-nygvw7`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-operate-zwzmbd`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Blood component wastage rate** (stream-level) — Expired or discarded units as a share of collected volume.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-007 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-007 | industry-reference-model | Healthcare industry reference models (patient-access and revenue-cycle chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-020) from the CR-VS-11 industry evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -152,4 +204,4 @@ Transfuse to the recipient and document.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,49 +1,70 @@
+---
+documentation_generated_from: value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml
+id: value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb
+name: Fleet Maintain to Dispatch
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+industries:
+- logistics-transportation
+specificity: industry-specific
+entry_criterion: A vehicle completes maintenance.
+exit_criterion: The vehicle is dispatched on a revenue movement.
+outcome: A roadworthy, dispatchable vehicle.
+stages:
+- Certify Roadworthy
+- Plan Dispatch
+- Dispatch
+capabilities:
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zh9m57
+- processes:process-sd-build-2pkz5n
+metrics:
+- Fleet utilization
+upstream:
+- value-stream-acquire-to-retire
+downstream: []
+evidence_sources:
+- SRC-016
+---
+
 # Fleet Maintain to Dispatch
 
-Admitted Value Stream record (`value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | support |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | logistics-transportation · industry-specific |
-| Record | [`value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml`](./value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb` · **support** · logistics-transportation · industry-specific
 
 > The fleet stream from maintenance completion through roadworthiness to dispatchable vehicle status.
 
-## 3. Value proposition and served party
-
 **Outcome:** A roadworthy, dispatchable vehicle.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml`](./value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A vehicle completes maintenance.
+## Stage flow
 
-**Exit criterion:** The vehicle is dispatched on a revenue movement.
+```mermaid
+flowchart LR
+  S1["1. Certify Roadworthy"]
+  S2["2. Plan Dispatch"]
+  S3["3. Dispatch"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Roadworthiness certification
-- Dispatch planning
-- Dispatch
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Certify Roadworthy** | Maintenance completes. | The vehicle is certified. | 2 | 1 | no |
+| 2 | **Plan Dispatch** | The vehicle is certified. | The movement is planned. | 2 | 1 | no |
+| 3 | **Dispatch** | The movement is planned. | The vehicle is dispatched. | 1 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Linehaul operations (Ship to Consignee)
-- Fleet acquisition (Acquire to Retire)
-
-## 5. Value stages
-
-Fleet Maintain to Dispatch decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Certify Roadworthy
+### 1. Certify Roadworthy
 
 Certify the vehicle roadworthy.
 
@@ -53,10 +74,10 @@ Certify the vehicle roadworthy.
 | Exit criterion | The vehicle is certified. |
 | Outcome | A certified vehicle. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 2: Plan Dispatch
+### 2. Plan Dispatch
 
 Plan the vehicle's next movement.
 
@@ -66,10 +87,10 @@ Plan the vehicle's next movement.
 | Exit criterion | The movement is planned. |
 | Outcome | A planned movement. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-sd-build-2pkz5n` |
 
-### Stage 3: Dispatch
+### 3. Dispatch
 
 Dispatch the vehicle.
 
@@ -82,39 +103,60 @@ Dispatch the vehicle.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-zh9m57` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A vehicle completes maintenance.
+
+**Exit:** The vehicle is dispatched on a revenue movement.
+
+**In scope**
+
+- Roadworthiness certification
+- Dispatch planning
+- Dispatch
+
+**Out of scope** (owned by the named neighbour)
+
+- Linehaul operations (Ship to Consignee)
+- Fleet acquisition (Acquire to Retire)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-sd-build-2pkz5n`
 - `processes:process-eo-operate-zh9m57`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-acquire-to-retire` — Vehicles live in the asset lifecycle.
+- [acquire to retire](../value-stream-acquire-to-retire-g5x89g/README.md) — Vehicles live in the asset lifecycle.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Fleet utilization** (stream-level) — Share of available vehicle time on revenue movements.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-069) from the CR-VS-11 industry evidence register extension. Industry-specific chain (logistics-transportation); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -123,4 +165,4 @@ Dispatch the vehicle.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-patient-access-to-admission-szj9jm.yaml
+id: value-streams:value-stream-patient-access-to-admission-szj9jm
+name: Patient Access to Admission
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- healthcare
+specificity: industry-specific
+entry_criterion: A referral is received or a patient requests care.
+exit_criterion: The patient is admitted or scheduled with registration and coverage verified.
+outcome: A patient is registered, verified, and admitted or scheduled for a care episode.
+stages:
+- Intake and Triage
+- Register Patient
+- Verify Coverage
+- Schedule or Admit
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384
+metrics:
+- Door-to-provider time
+upstream: []
+downstream:
+- value-stream-admission-to-discharge
+evidence_sources:
+- SRC-007
+---
+
 # Patient Access to Admission
 
-Admitted Value Stream record (`value-streams:value-stream-patient-access-to-admission-szj9jm`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-patient-access-to-admission-szj9jm` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | healthcare · industry-specific |
-| Record | [`value-streams-value-stream-patient-access-to-admission-szj9jm.yaml`](./value-streams-value-stream-patient-access-to-admission-szj9jm.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-patient-access-to-admission-szj9jm` · **operational** · healthcare · industry-specific
 
 > The end-to-end patient access stream from referral or self-scheduling through registration to an admitted or scheduled care episode.
 
-## 3. Value proposition and served party
-
 **Outcome:** A patient is registered, verified, and admitted or scheduled for a care episode.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-patient-access-to-admission-szj9jm.yaml`](./value-streams-value-stream-patient-access-to-admission-szj9jm.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A referral is received or a patient requests care.
+## Stage flow
 
-**Exit criterion:** The patient is admitted or scheduled with registration and coverage verified.
+```mermaid
+flowchart LR
+  S1["1. Intake and Triage"]
+  S2["2. Register Patient"]
+  S3["3. Verify Coverage"]
+  S4["4. Schedule or Admit"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Referral or self-scheduling intake
-- Registration and identity verification
-- Coverage verification and pre-authorization
-- Admission or appointment scheduling
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Intake and Triage** | A referral is received or a patient requests care. | The request is triaged and routed. | 2 | 1 | yes |
+| 2 | **Register Patient** | A triaged access request exists. | The patient record is complete and verified. | 2 | 1 | yes |
+| 3 | **Verify Coverage** | A verified patient record exists. | Coverage is verified and authorization obtained. | 2 | 1 | yes |
+| 4 | **Schedule or Admit** | Coverage is confirmed. | The patient is admitted or scheduled. | 1 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Emergency stabilization protocols
-- Inpatient care delivery (Admission to Discharge)
-
-## 5. Value stages
-
-Patient Access to Admission decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Intake and Triage
+### 1. Intake and Triage
 
 Capture the referral or request and triage urgency.
 
@@ -54,10 +79,10 @@ Capture the referral or request and triage urgency.
 | Exit criterion | The request is triaged and routed. |
 | Outcome | A triaged, routed access request. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Register Patient
+### 2. Register Patient
 
 Register the patient and verify identity and demographics.
 
@@ -67,10 +92,10 @@ Register the patient and verify identity and demographics.
 | Exit criterion | The patient record is complete and verified. |
 | Outcome | A verified patient record. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 3: Verify Coverage
+### 3. Verify Coverage
 
 Verify insurance coverage and obtain pre-authorization where required.
 
@@ -80,10 +105,10 @@ Verify insurance coverage and obtain pre-authorization where required.
 | Exit criterion | Coverage is verified and authorization obtained. |
 | Outcome | Confirmed coverage for the episode. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-financial-resource-management-cd3c7c` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-### Stage 4: Schedule or Admit
+### 4. Schedule or Admit
 
 Schedule the care episode or admit the patient.
 
@@ -96,40 +121,62 @@ Schedule the care episode or admit the patient.
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A referral is received or a patient requests care.
+
+**Exit:** The patient is admitted or scheduled with registration and coverage verified.
+
+**In scope**
+
+- Referral or self-scheduling intake
+- Registration and identity verification
+- Coverage verification and pre-authorization
+- Admission or appointment scheduling
+
+**Out of scope** (owned by the named neighbour)
+
+- Emergency stabilization protocols
+- Inpatient care delivery (Admission to Discharge)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 - `capabilities:capability-operations-management-pm3w8k`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-fa-operate-sdppmp`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-admission-to-discharge` — Admission starts the care episode.
+- [admission to discharge](../value-stream-admission-to-discharge-xeuu5u/README.md) — Admission starts the care episode.
 
-## 8. Measurement
+## Measurement
 
 - **Door-to-provider time** (stage: Intake and Triage) — Elapsed time from patient arrival to first provider contact. → [`dea:metric-door-to-provider-time`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-007 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-007 | industry-reference-model | Healthcare industry reference models (patient-access and revenue-cycle chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-015) from the CR-VS-11 industry evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +185,4 @@ Schedule the care episode or admit the patient.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

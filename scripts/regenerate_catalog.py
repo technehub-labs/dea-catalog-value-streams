@@ -289,9 +289,17 @@ def infer_state(subtree: Path, canonical: dict[str, Any] | None) -> tuple[str, s
     that should be recorded in the entities[] entry (None if no canonical file).
     """
     entity_id = entity_id_from_subtree(subtree)
-    canonical_file = subtree / f"{entity_id}.yaml"
+    # Post-migration layout (IDM-005): the canonical filename is the id with
+    # colons normalized to hyphens. The legacy `f"{entity_id}.yaml"` probe never
+    # matched because ids contain ':' (same bug the actors catalog fixed in
+    # CR-ACT-07; it silently degraded canonical records to state: candidate,
+    # then to research once research/ subtrees appeared).
+    id_norm = entity_id.replace(":", "-").lower()
+    canonical_file = subtree / f"{id_norm}.yaml"
+    if not canonical_file.exists():
+        canonical_file = subtree / f"{entity_id}.yaml"  # legacy flat layout
     canonical_path = (
-        f"entities/v1-alpha/{entity_id}/{entity_id}.yaml"
+        f"entities/v1-alpha/{subtree.name}/{canonical_file.name}"
         if canonical_file.exists()
         else None
     )

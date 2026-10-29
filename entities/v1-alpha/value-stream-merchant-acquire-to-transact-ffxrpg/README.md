@@ -1,49 +1,72 @@
+---
+documentation_generated_from: value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml
+id: value-streams:value-stream-merchant-acquire-to-transact-ffxrpg
+name: Merchant Acquire to Transact
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- financial-services
+specificity: industry-specific
+entry_criterion: A merchant applies for acceptance.
+exit_criterion: The merchant's first transaction is settled.
+outcome: An acquiring relationship live with the merchant's first settled transaction.
+stages:
+- Underwrite Merchant
+- Provision Acceptance
+- Activate and Transact
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-technology-enablement-y6nkws
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-g9zpnq
+- processes:process-ge-operate-tpenm6
+metrics:
+- Merchant onboarding cycle time
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-008
+---
+
 # Merchant Acquire to Transact
 
-Admitted Value Stream record (`value-streams:value-stream-merchant-acquire-to-transact-ffxrpg`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-merchant-acquire-to-transact-ffxrpg` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | financial-services · industry-specific |
-| Record | [`value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml`](./value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-merchant-acquire-to-transact-ffxrpg` · **operational** · financial-services · industry-specific
 
 > The end-to-end merchant-acquiring stream from merchant application through underwriting, terminal provisioning, and first transaction.
 
-## 3. Value proposition and served party
-
 **Outcome:** An acquiring relationship live with the merchant's first settled transaction.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml`](./value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A merchant applies for acceptance.
+## Stage flow
 
-**Exit criterion:** The merchant's first transaction is settled.
+```mermaid
+flowchart LR
+  S1["1. Underwrite Merchant"]
+  S2["2. Provision Acceptance"]
+  S3["3. Activate and Transact"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Merchant application and underwriting
-- Terminal or integration provisioning
-- Activation and first transaction
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Underwrite Merchant** | A merchant applies. | The merchant is underwritten and approved. | 2 | 1 | yes |
+| 2 | **Provision Acceptance** | The merchant is approved. | Acceptance is provisioned. | 2 | 1 | yes |
+| 3 | **Activate and Transact** | Acceptance is provisioned. | The first transaction is settled. | 2 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Card issuance (Card Issue to Activate)
-- Merchant chargeback handling (Return to Credit pattern)
-
-## 5. Value stages
-
-Merchant Acquire to Transact decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Underwrite Merchant
+### 1. Underwrite Merchant
 
 Underwrite the merchant application.
 
@@ -53,10 +76,10 @@ Underwrite the merchant application.
 | Exit criterion | The merchant is underwritten and approved. |
 | Outcome | An approved merchant. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-ge-operate-tpenm6` |
 
-### Stage 2: Provision Acceptance
+### 2. Provision Acceptance
 
 Provision terminals or API integration.
 
@@ -66,10 +89,10 @@ Provision terminals or API integration.
 | Exit criterion | Acceptance is provisioned. |
 | Outcome | Provisioned acceptance. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-build-j9z3q4` |
 
-### Stage 3: Activate and Transact
+### 3. Activate and Transact
 
 Activate the merchant and process the first transaction.
 
@@ -79,12 +102,29 @@ Activate the merchant and process the first transaction.
 | Exit criterion | The first transaction is settled. |
 | Outcome | A live merchant relationship. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-financial-stewardship-c7xtfk` |
-| Realizing processes | `processes:process-eo-operate-2jnz85`, `processes:process-fa-operate-g9zpnq` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-financial-stewardship-c7xtfk` |
+| Realizing processes | `processes:process-eo-operate-2jnz85` · `processes:process-fa-operate-g9zpnq` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A merchant applies for acceptance.
+
+**Exit:** The merchant's first transaction is settled.
+
+**In scope**
+
+- Merchant application and underwriting
+- Terminal or integration provisioning
+- Activation and first transaction
+
+**Out of scope** (owned by the named neighbour)
+
+- Card issuance (Card Issue to Activate)
+- Merchant chargeback handling (Return to Credit pattern)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-customer-management-f3n8wb`
@@ -92,30 +132,34 @@ Activate the merchant and process the first transaction.
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-financial-stewardship-c7xtfk`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-operate-tpenm6`
 - `processes:process-eo-build-j9z3q4`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-fa-operate-g9zpnq`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Merchant onboarding cycle time** (stream-level) — Elapsed days from application to first settled transaction.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-008 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-008 | industry-reference-model | Banking industry reference models (lending and payments chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-027) from the CR-VS-11 industry evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -124,4 +168,4 @@ Activate the merchant and process the first transaction.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

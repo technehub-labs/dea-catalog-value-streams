@@ -1,49 +1,78 @@
+---
+documentation_generated_from: value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml
+id: value-streams:value-stream-course-design-to-delivery-pvwqv5
+name: Course Design to Delivery
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: development
+industries:
+- education
+specificity: industry-specific
+entry_criterion: A course design cycle opens.
+exit_criterion: The course is delivered and evaluated.
+outcome: A delivered, evaluated course offering.
+stages:
+- Design Course
+- Approve
+- Deliver
+- Evaluate
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-management-9e8d8s
+processes:
+- processes:process-eo-operate-2jnz85
+- processes:process-ge-design-kpsj5b
+- processes:process-pv-design-8v4k89
+- processes:process-sd-operate-ucxpz4
+metrics:
+- Course evaluation score
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Course Design to Delivery
 
-Admitted Value Stream record (`value-streams:value-stream-course-design-to-delivery-pvwqv5`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-course-design-to-delivery-pvwqv5` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | development |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | education · industry-specific |
-| Record | [`value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml`](./value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-course-design-to-delivery-pvwqv5` · **development** · education · industry-specific
 
 > The academic stream from course design through approval to delivered and evaluated course.
 
-## 3. Value proposition and served party
-
 **Outcome:** A delivered, evaluated course offering.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml`](./value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A course design cycle opens.
+## Stage flow
 
-**Exit criterion:** The course is delivered and evaluated.
+```mermaid
+flowchart LR
+  S1["1. Design Course"]
+  S2["2. Approve"]
+  S3["3. Deliver"]
+  S4["4. Evaluate"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Design and approval
-- Delivery
-- Evaluation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Design Course** | A cycle opens. | The course is designed. | 2 | 1 | no |
+| 2 | **Approve** | The course is designed. | The course is approved. | 2 | 1 | no |
+| 3 | **Deliver** | The course is approved. | The course is delivered. | 2 | 1 | yes |
+| 4 | **Evaluate** | The course is delivered. | The evaluation is complete. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Curriculum governance
-- Faculty development
-
-## 5. Value stages
-
-Course Design to Delivery decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Design Course
+### 1. Design Course
 
 Design the course and outcomes.
 
@@ -53,10 +82,10 @@ Design the course and outcomes.
 | Exit criterion | The course is designed. |
 | Outcome | A designed course. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-offering-management-6egkc8`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-offering-management-6egkc8` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pv-design-8v4k89` |
 
-### Stage 2: Approve
+### 2. Approve
 
 Approve the course for delivery.
 
@@ -66,10 +95,10 @@ Approve the course for delivery.
 | Exit criterion | The course is approved. |
 | Outcome | An approved course. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-enterprise-governance-uas48u` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-ge-design-kpsj5b` |
 
-### Stage 3: Deliver
+### 3. Deliver
 
 Deliver the course.
 
@@ -79,10 +108,10 @@ Deliver the course.
 | Exit criterion | The course is delivered. |
 | Outcome | A delivered course. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-workforce-management-9e8d8s` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-workforce-management-9e8d8s` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-### Stage 4: Evaluate
+### 4. Evaluate
 
 Evaluate and improve the course.
 
@@ -92,12 +121,29 @@ Evaluate and improve the course.
 | Exit criterion | The evaluation is complete. |
 | Outcome | A completed evaluation. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-insight-management-ms4n9d` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-sd-operate-ucxpz4` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A course design cycle opens.
+
+**Exit:** The course is delivered and evaluated.
+
+**In scope**
+
+- Design and approval
+- Delivery
+- Evaluation
+
+**Out of scope** (owned by the named neighbour)
+
+- Curriculum governance
+- Faculty development
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-offering-management-6egkc8`
 - `capabilities:capability-information-management-6vjgdh`
@@ -107,30 +153,34 @@ Evaluate and improve the course.
 - `capabilities:capability-insight-management-ms4n9d`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pv-design-8v4k89`
 - `processes:process-ge-design-kpsj5b`
 - `processes:process-eo-operate-2jnz85`
 - `processes:process-sd-operate-ucxpz4`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Course evaluation score** (stream-level) — Mean student evaluation score per offering.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-082) from the CR-VS-11 industry evidence register extension. Industry-specific chain (education); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -139,4 +189,4 @@ Evaluate and improve the course.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

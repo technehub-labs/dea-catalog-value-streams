@@ -1,50 +1,79 @@
+---
+documentation_generated_from: value-streams-value-stream-commit-to-deploy-65cr4z.yaml
+id: value-streams:value-stream-commit-to-deploy-65cr4z
+name: Commit to Deploy
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- technology
+specificity: industry-specific
+entry_criterion: A change is committed.
+exit_criterion: The change is deployed to production.
+outcome: A deployed change in production serving users.
+stages:
+- Build and Test
+- Stage Release
+- Deploy
+- Verify
+capabilities:
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-xud3hs
+metrics:
+- Lead time for changes
+- Release frequency
+upstream:
+- value-stream-concept-to-launch
+downstream:
+- value-stream-incident-to-restore
+evidence_sources:
+- SRC-019
+---
+
 # Commit to Deploy
 
-Admitted Value Stream record (`value-streams:value-stream-commit-to-deploy-65cr4z`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-commit-to-deploy-65cr4z` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | technology · industry-specific |
-| Record | [`value-streams-value-stream-commit-to-deploy-65cr4z.yaml`](./value-streams-value-stream-commit-to-deploy-65cr4z.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-commit-to-deploy-65cr4z` · **operational** · technology · industry-specific
 
 > The software delivery stream from code commit through build, test, and release to production deployment.
 
-## 3. Value proposition and served party
-
 **Outcome:** A deployed change in production serving users.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-commit-to-deploy-65cr4z.yaml`](./value-streams-value-stream-commit-to-deploy-65cr4z.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A change is committed.
+## Stage flow
 
-**Exit criterion:** The change is deployed to production.
+```mermaid
+flowchart LR
+  S1["1. Build and Test"]
+  S2["2. Stage Release"]
+  S3["3. Deploy"]
+  S4["4. Verify"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Build and test
-- Release staging
-- Production deployment
-- Verification
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Build and Test** | A change is committed. | The change passes tests. | 2 | 2 | no |
+| 2 | **Stage Release** | The change passes tests. | The release is staged. | 1 | 1 | no |
+| 3 | **Deploy** | The release is staged. | The change is live in production. | 2 | 1 | yes |
+| 4 | **Verify** | The change is deployed. | Deployment is verified. | 2 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Incident response (Incident to Restore)
-- Feature development (Concept to Launch)
-
-## 5. Value stages
-
-Commit to Deploy decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Build and Test
+### 1. Build and Test
 
 Build the change and run the test suites.
 
@@ -54,10 +83,10 @@ Build the change and run the test suites.
 | Exit criterion | The change passes tests. |
 | Outcome | A tested change. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-build-j9z3q4`, `processes:process-eo-operate-44jsrp` |
+| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-eo-build-j9z3q4` · `processes:process-eo-operate-44jsrp` |
 
-### Stage 2: Stage Release
+### 2. Stage Release
 
 Stage the release.
 
@@ -70,7 +99,7 @@ Stage the release.
 | Enabling capabilities | `capabilities:capability-technology-management-maus5n` |
 | Realizing processes | `processes:process-eo-design-6j5mxp` |
 
-### Stage 3: Deploy
+### 3. Deploy
 
 Deploy to production.
 
@@ -80,10 +109,10 @@ Deploy to production.
 | Exit criterion | The change is live in production. |
 | Outcome | A deployed change. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-technology-enablement-y6nkws` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-xud3hs` |
 
-### Stage 4: Verify
+### 4. Verify
 
 Verify the deployment in production.
 
@@ -93,12 +122,30 @@ Verify the deployment in production.
 | Exit criterion | Deployment is verified. |
 | Outcome | A verified deployment. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-enterprise-performance-management-5fxren` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-enterprise-performance-management-5fxren` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A change is committed.
+
+**Exit:** The change is deployed to production.
+
+**In scope**
+
+- Build and test
+- Release staging
+- Production deployment
+- Verification
+
+**Out of scope** (owned by the named neighbour)
+
+- Incident response (Incident to Restore)
+- Feature development (Concept to Launch)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-technology-enablement-y6nkws`
 - `capabilities:capability-operations-management-pm3w8k`
@@ -106,35 +153,39 @@ Verify the deployment in production.
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-enterprise-performance-management-5fxren`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-build-j9z3q4`
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-design-6j5mxp`
 - `processes:process-eo-operate-xud3hs`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-concept-to-launch` — Approved features flow into the delivery pipeline.
+- [concept to launch](../value-stream-concept-to-launch-nhvatv/README.md) — Approved features flow into the delivery pipeline.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-incident-to-restore` — Defective deployments can trigger incidents.
+- [incident to restore](../value-stream-incident-to-restore-7u3yyz/README.md) — Defective deployments can trigger incidents.
 
-## 8. Measurement
+## Measurement
 
 - **Lead time for changes** (stage: Deploy) — Elapsed time from commit to production. → [`dea:metric-lead-time-for-changes`](https://github.com/technehub-labs/dea-catalog-metrics)
 - **Release frequency** (stage: Deploy) — Production releases per period. → [`dea:metric-release-frequency`](https://github.com/technehub-labs/dea-catalog-metrics)
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-019 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-019 | industry-reference-model | Technology / SaaS product chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-105) from the CR-VS-11 industry evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -143,4 +194,4 @@ Verify the deployment in production.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

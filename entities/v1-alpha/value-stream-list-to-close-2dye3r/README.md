@@ -1,50 +1,76 @@
+---
+documentation_generated_from: value-streams-value-stream-list-to-close-2dye3r.yaml
+id: value-streams:value-stream-list-to-close-2dye3r
+name: List to Close
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- construction-real-estate
+specificity: industry-specific
+entry_criterion: A listing agreement is signed.
+exit_criterion: The sale closes with settled proceeds.
+outcome: A closed property sale with settled proceeds.
+stages:
+- Prepare Listing
+- Market and Show
+- Negotiate Offer
+- Close and Settle
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-marketing-xmc539
+processes:
+- processes:process-fa-operate-sdppmp
+- processes:process-ge-build-mctdgc
+- processes:process-pr-build-nygvw7
+- processes:process-pr-operate-bbe384
+metrics:
+- Days on market
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-017
+---
+
 # List to Close
 
-Admitted Value Stream record (`value-streams:value-stream-list-to-close-2dye3r`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-list-to-close-2dye3r` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | construction-real-estate · industry-specific |
-| Record | [`value-streams-value-stream-list-to-close-2dye3r.yaml`](./value-streams-value-stream-list-to-close-2dye3r.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-list-to-close-2dye3r` · **operational** · construction-real-estate · industry-specific
 
 > The real-estate transaction stream from listing agreement through marketing and negotiation to closed sale.
 
-## 3. Value proposition and served party
-
 **Outcome:** A closed property sale with settled proceeds.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-list-to-close-2dye3r.yaml`](./value-streams-value-stream-list-to-close-2dye3r.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A listing agreement is signed.
+## Stage flow
 
-**Exit criterion:** The sale closes with settled proceeds.
+```mermaid
+flowchart LR
+  S1["1. Prepare Listing"]
+  S2["2. Market and Show"]
+  S3["3. Negotiate Offer"]
+  S4["4. Close and Settle"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Listing preparation
-- Marketing and viewings
-- Offer negotiation
-- Closing and settlement
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Prepare Listing** | A listing is signed. | The listing is live. | 2 | 1 | yes |
+| 2 | **Market and Show** | The listing is live. | Offers are received. | 2 | 1 | yes |
+| 3 | **Negotiate Offer** | Offers are received. | An offer is accepted. | 2 | 1 | yes |
+| 4 | **Close and Settle** | An offer is accepted. | The sale closes with settled proceeds. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Property management (Lease Sign to Renewal)
-- Financing (lending streams)
-
-## 5. Value stages
-
-List to Close decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Prepare Listing
+### 1. Prepare Listing
 
 Prepare and launch the listing.
 
@@ -54,10 +80,10 @@ Prepare and launch the listing.
 | Exit criterion | The listing is live. |
 | Outcome | A live listing. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-build-nygvw7` |
 
-### Stage 2: Market and Show
+### 2. Market and Show
 
 Market the property and conduct viewings.
 
@@ -67,10 +93,10 @@ Market the property and conduct viewings.
 | Exit criterion | Offers are received. |
 | Outcome | Received offers. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-marketing-xmc539`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-marketing-xmc539` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 3: Negotiate Offer
+### 3. Negotiate Offer
 
 Negotiate and accept the offer.
 
@@ -80,10 +106,10 @@ Negotiate and accept the offer.
 | Exit criterion | An offer is accepted. |
 | Outcome | An accepted offer. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 4: Close and Settle
+### 4. Close and Settle
 
 Close the sale and settle proceeds.
 
@@ -93,12 +119,30 @@ Close the sale and settle proceeds.
 | Exit criterion | The sale closes with settled proceeds. |
 | Outcome | A closed sale. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-legal-matter-management-zzbd2u` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-fa-operate-sdppmp` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A listing agreement is signed.
+
+**Exit:** The sale closes with settled proceeds.
+
+**In scope**
+
+- Listing preparation
+- Marketing and viewings
+- Offer negotiation
+- Closing and settlement
+
+**Out of scope** (owned by the named neighbour)
+
+- Property management (Lease Sign to Renewal)
+- Financing (lending streams)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-information-management-6vjgdh`
@@ -106,30 +150,34 @@ Close the sale and settle proceeds.
 - `capabilities:capability-legal-matter-management-zzbd2u`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-build-nygvw7`
 - `processes:process-pr-operate-bbe384`
 - `processes:process-ge-build-mctdgc`
 - `processes:process-fa-operate-sdppmp`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Days on market** (stream-level) — Elapsed days from listing to accepted offer.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-017 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-017 | industry-reference-model | Construction and real-estate chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-094) from the CR-VS-11 industry evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -138,4 +186,4 @@ Close the sale and settle proceeds.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

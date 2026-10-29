@@ -1,50 +1,80 @@
+---
+documentation_generated_from: value-streams-value-stream-engineer-to-order-htpc6d.yaml
+id: value-streams:value-stream-engineer-to-order-htpc6d
+name: Engineer to Order
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- manufacturing
+specificity: industry-specific
+entry_criterion: A customer order with engineering specification is received.
+exit_criterion: The engineered product is delivered and accepted.
+outcome: A delivered product engineered to the customer's specification.
+stages:
+- Agree Specification
+- Engineer Design
+- Procure and Build
+- Test and Deliver
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-sourcing-and-procurement-esucp4
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-zh9m57
+- processes:process-ge-build-mctdgc
+- processes:process-pv-design-8v4k89
+metrics:
+- Engineering change orders per project
+upstream: []
+downstream:
+- value-stream-plan-to-deliver
+evidence_sources:
+- SRC-016
+---
+
 # Engineer to Order
 
-Admitted Value Stream record (`value-streams:value-stream-engineer-to-order-htpc6d`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-engineer-to-order-htpc6d` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | manufacturing · industry-specific |
-| Record | [`value-streams-value-stream-engineer-to-order-htpc6d.yaml`](./value-streams-value-stream-engineer-to-order-htpc6d.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-engineer-to-order-htpc6d` · **operational** · manufacturing · industry-specific
 
 > The make-to-order stream from customer specification through engineering design, build, and delivery.
 
-## 3. Value proposition and served party
-
 **Outcome:** A delivered product engineered to the customer's specification.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-engineer-to-order-htpc6d.yaml`](./value-streams-value-stream-engineer-to-order-htpc6d.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A customer order with engineering specification is received.
+## Stage flow
 
-**Exit criterion:** The engineered product is delivered and accepted.
+```mermaid
+flowchart LR
+  S1["1. Agree Specification"]
+  S2["2. Engineer Design"]
+  S3["3. Procure and Build"]
+  S4["4. Test and Deliver"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Specification and contract
-- Engineering design
-- Procurement and build
-- Testing and delivery
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Agree Specification** | A specified order is received. | The specification is agreed. | 2 | 1 | yes |
+| 2 | **Engineer Design** | The specification is agreed. | The design is released. | 2 | 1 | no |
+| 3 | **Procure and Build** | The design is released. | The product is built. | 2 | 2 | no |
+| 4 | **Test and Deliver** | The product is built. | The product is delivered and accepted. | 2 | 2 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Standard production (Plan to Deliver)
-- R&D (Concept to Launch)
-
-## 5. Value stages
-
-Engineer to Order decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Agree Specification
+### 1. Agree Specification
 
 Agree the technical specification and contract.
 
@@ -54,10 +84,10 @@ Agree the technical specification and contract.
 | Exit criterion | The specification is agreed. |
 | Outcome | An agreed specification. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-legal-matter-management-zzbd2u` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-legal-matter-management-zzbd2u` |
 | Realizing processes | `processes:process-ge-build-mctdgc` |
 
-### Stage 2: Engineer Design
+### 2. Engineer Design
 
 Engineer the product design.
 
@@ -67,10 +97,10 @@ Engineer the product design.
 | Exit criterion | The design is released. |
 | Outcome | A released design. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-offering-management-6egkc8` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-offering-management-6egkc8` |
 | Realizing processes | `processes:process-pv-design-8v4k89` |
 
-### Stage 3: Procure and Build
+### 3. Procure and Build
 
 Procure materials and build the product.
 
@@ -80,10 +110,10 @@ Procure materials and build the product.
 | Exit criterion | The product is built. |
 | Outcome | A built product. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-sourcing-and-procurement-esucp4`, `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-operate-vzcxx7`, `processes:process-eo-operate-xud3hs` |
+| Enabling capabilities | `capabilities:capability-sourcing-and-procurement-esucp4` · `capabilities:capability-operations-management-pm3w8k` |
+| Realizing processes | `processes:process-eo-operate-vzcxx7` · `processes:process-eo-operate-xud3hs` |
 
-### Stage 4: Test and Deliver
+### 4. Test and Deliver
 
 Test and deliver for customer acceptance.
 
@@ -93,12 +123,30 @@ Test and deliver for customer acceptance.
 | Exit criterion | The product is delivered and accepted. |
 | Outcome | An accepted delivery. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
-| Realizing processes | `processes:process-eo-operate-44jsrp`, `processes:process-eo-operate-zh9m57` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
+| Realizing processes | `processes:process-eo-operate-44jsrp` · `processes:process-eo-operate-zh9m57` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A customer order with engineering specification is received.
+
+**Exit:** The engineered product is delivered and accepted.
+
+**In scope**
+
+- Specification and contract
+- Engineering design
+- Procurement and build
+- Testing and delivery
+
+**Out of scope** (owned by the named neighbour)
+
+- Standard production (Plan to Deliver)
+- R&D (Concept to Launch)
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-legal-matter-management-zzbd2u`
@@ -107,7 +155,7 @@ Test and deliver for customer acceptance.
 - `capabilities:capability-sourcing-and-procurement-esucp4`
 - `capabilities:capability-operations-management-pm3w8k`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-ge-build-mctdgc`
 - `processes:process-pv-design-8v4k89`
@@ -116,25 +164,29 @@ Test and deliver for customer acceptance.
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-eo-operate-zh9m57`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-plan-to-deliver` — Standardized variants flow through standard production.
+- [plan to deliver](../value-stream-plan-to-deliver-smmwpx/README.md) — Standardized variants flow through standard production.
 
-## 8. Measurement
+## Measurement
 
 - **Engineering change orders per project** (stream-level) — Design stability indicator.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-050) from the CR-VS-11 industry evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -143,4 +195,4 @@ Test and deliver for customer acceptance.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

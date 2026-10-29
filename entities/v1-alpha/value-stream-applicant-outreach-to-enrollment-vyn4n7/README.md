@@ -1,49 +1,69 @@
+---
+documentation_generated_from: value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml
+id: value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7
+name: Applicant Outreach to Enrollment
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- education
+specificity: industry-specific
+entry_criterion: An outreach campaign is launched.
+exit_criterion: The intake enrollment target is met.
+outcome: An enrolled student cohort for the intake.
+stages:
+- Recruit
+- Support Application
+- Enroll
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-marketing-xmc539
+processes:
+- processes:process-pr-build-nygvw7
+- processes:process-pr-operate-bbe384
+metrics:
+- Outreach-to-enrollment conversion
+upstream:
+- value-stream-admit-to-graduate
+downstream: []
+evidence_sources:
+- SRC-015
+---
+
 # Applicant Outreach to Enrollment
 
-Admitted Value Stream record (`value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | education · industry-specific |
-| Record | [`value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml`](./value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7` · **operational** · education · industry-specific
 
 > The recruitment stream from prospective-student outreach through application to enrolled student.
 
-## 3. Value proposition and served party
-
 **Outcome:** An enrolled student cohort for the intake.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml`](./value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An outreach campaign is launched.
+## Stage flow
 
-**Exit criterion:** The intake enrollment target is met.
+```mermaid
+flowchart LR
+  S1["1. Recruit"]
+  S2["2. Support Application"]
+  S3["3. Enroll"]
+  S1 --> S2
+  S2 --> S3
+  TRIGGER(("⏺ Entry")) --> S1
+  S3 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Outreach and recruitment
-- Application support
-- Enrollment
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Recruit** | A campaign is launched. | Applications are received. | 1 | 1 | yes |
+| 2 | **Support Application** | Applications are received. | Applications are completed. | 1 | 1 | yes |
+| 3 | **Enroll** | Admissions are made. | The cohort is enrolled. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Admission decisions (Admit to Graduate)
-- Alumni engagement
-
-## 5. Value stages
-
-Applicant Outreach to Enrollment decomposes into 3 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Recruit
+### 1. Recruit
 
 Run outreach to prospective students.
 
@@ -56,7 +76,7 @@ Run outreach to prospective students.
 | Enabling capabilities | `capabilities:capability-marketing-xmc539` |
 | Realizing processes | `processes:process-pr-build-nygvw7` |
 
-### Stage 2: Support Application
+### 2. Support Application
 
 Support applicants through application.
 
@@ -69,7 +89,7 @@ Support applicants through application.
 | Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 3: Enroll
+### 3. Enroll
 
 Enroll admitted students.
 
@@ -79,41 +99,62 @@ Enroll admitted students.
 | Exit criterion | The cohort is enrolled. |
 | Outcome | An enrolled cohort. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-information-management-6vjgdh` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An outreach campaign is launched.
+
+**Exit:** The intake enrollment target is met.
+
+**In scope**
+
+- Outreach and recruitment
+- Application support
+- Enrollment
+
+**Out of scope** (owned by the named neighbour)
+
+- Admission decisions (Admit to Graduate)
+- Alumni engagement
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-marketing-xmc539`
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-information-management-6vjgdh`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-build-nygvw7`
 - `processes:process-pr-operate-bbe384`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams** (their exit feeds this stream's entry):
+**Upstream** (their exit feeds this stream's entry):
 
-- `value-streams:value-value-stream-admit-to-graduate` — Enrolled students enter the student lifecycle.
+- [admit to graduate](../value-stream-admit-to-graduate-v9jcg3/README.md) — Enrolled students enter the student lifecycle.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Outreach-to-enrollment conversion** (stream-level) — Enrolled students per outreach contact.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-015 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-015 | industry-reference-model | Education and hospitality service chains (public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-084) from the CR-VS-11 industry evidence register extension. Industry-specific chain (education); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -122,4 +163,4 @@ Enroll admitted students.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

@@ -1,50 +1,77 @@
+---
+documentation_generated_from: value-streams-value-stream-apply-to-connect-y64n29.yaml
+id: value-streams:value-stream-apply-to-connect-y64n29
+name: Apply to Connect
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+industries:
+- utilities-energy
+specificity: industry-specific
+entry_criterion: A connection application is received.
+exit_criterion: The connection is energized.
+outcome: An energized connection for the applicant.
+stages:
+- Assess Application
+- Design and Quote
+- Execute Works
+- Energize
+capabilities:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-management-maus5n
+processes:
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-xud3hs
+- processes:process-pr-operate-bbe384
+metrics:
+- Connection cycle time
+upstream: []
+downstream:
+- value-stream-meter-to-bill
+evidence_sources:
+- SRC-011
+---
+
 # Apply to Connect
 
-Admitted Value Stream record (`value-streams:value-stream-apply-to-connect-y64n29`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-apply-to-connect-y64n29` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | operational |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | utilities-energy · industry-specific |
-| Record | [`value-streams-value-stream-apply-to-connect-y64n29.yaml`](./value-streams-value-stream-apply-to-connect-y64n29.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-apply-to-connect-y64n29` · **operational** · utilities-energy · industry-specific
 
 > The connection stream from connection application through design, works, and energization.
 
-## 3. Value proposition and served party
-
 **Outcome:** An energized connection for the applicant.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-apply-to-connect-y64n29.yaml`](./value-streams-value-stream-apply-to-connect-y64n29.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** A connection application is received.
+## Stage flow
 
-**Exit criterion:** The connection is energized.
+```mermaid
+flowchart LR
+  S1["1. Assess Application"]
+  S2["2. Design and Quote"]
+  S3["3. Execute Works"]
+  S4["4. Energize"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Application and feasibility
-- Design and quotation
-- Works execution
-- Energization
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Assess Application** | An application is received. | Feasibility is confirmed. | 2 | 1 | yes |
+| 2 | **Design and Quote** | Feasibility is confirmed. | The quote is accepted. | 2 | 1 | yes |
+| 3 | **Execute Works** | The quote is accepted. | The works are complete. | 1 | 2 | yes |
+| 4 | **Energize** | The works are complete. | The connection is energized. | 2 | 1 | yes |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Metering (Meter to Bill)
-- Network capacity planning
-
-## 5. Value stages
-
-Apply to Connect decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Assess Application
+### 1. Assess Application
 
 Assess the application and connection feasibility.
 
@@ -54,10 +81,10 @@ Assess the application and connection feasibility.
 | Exit criterion | Feasibility is confirmed. |
 | Outcome | A feasible application. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-customer-management-f3n8wb` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-pr-operate-bbe384` |
 
-### Stage 2: Design and Quote
+### 2. Design and Quote
 
 Design the connection and quote.
 
@@ -67,10 +94,10 @@ Design the connection and quote.
 | Exit criterion | The quote is accepted. |
 | Outcome | An accepted quote. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-technology-management-maus5n`, `capabilities:capability-financial-resource-management-cd3c7c` |
+| Enabling capabilities | `capabilities:capability-technology-management-maus5n` · `capabilities:capability-financial-resource-management-cd3c7c` |
 | Realizing processes | `processes:process-eo-design-6j5mxp` |
 
-### Stage 3: Execute Works
+### 3. Execute Works
 
 Execute the connection works.
 
@@ -81,9 +108,9 @@ Execute the connection works.
 | Outcome | Completed works. |
 | Customer visible | True |
 | Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` |
-| Realizing processes | `processes:process-eo-build-j9z3q4`, `processes:process-eo-operate-xud3hs` |
+| Realizing processes | `processes:process-eo-build-j9z3q4` · `processes:process-eo-operate-xud3hs` |
 
-### Stage 4: Energize
+### 4. Energize
 
 Energize the connection and activate the account.
 
@@ -93,19 +120,37 @@ Energize the connection and activate the account.
 | Exit criterion | The connection is energized. |
 | Outcome | An energized connection. |
 | Customer visible | True |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-customer-management-f3n8wb` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-customer-management-f3n8wb` |
 | Realizing processes | `processes:process-eo-operate-2jnz85` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** A connection application is received.
+
+**Exit:** The connection is energized.
+
+**In scope**
+
+- Application and feasibility
+- Design and quotation
+- Works execution
+- Energization
+
+**Out of scope** (owned by the named neighbour)
+
+- Metering (Meter to Bill)
+- Network capacity planning
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-customer-management-f3n8wb`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-technology-management-maus5n`
 - `capabilities:capability-financial-resource-management-cd3c7c`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-pr-operate-bbe384`
 - `processes:process-eo-design-6j5mxp`
@@ -113,25 +158,29 @@ Energize the connection and activate the account.
 - `processes:process-eo-operate-xud3hs`
 - `processes:process-eo-operate-2jnz85`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams** (this stream's exit feeds their entry):
+**Downstream** (this stream's exit feeds their entry):
 
-- `value-streams:value-value-stream-meter-to-bill` — Energized connections begin metered consumption.
+- [meter to bill](../value-stream-meter-to-bill-6bhvk9/README.md) — Energized connections begin metered consumption.
 
-## 8. Measurement
+## Measurement
 
 - **Connection cycle time** (stream-level) — Elapsed days from application to energization.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-011 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-011 | industry-reference-model | Utilities industry reference models (metering and retail-energy chains, public structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-044) from the CR-VS-11 industry evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -140,4 +189,4 @@ Energize the connection and activate the account.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*

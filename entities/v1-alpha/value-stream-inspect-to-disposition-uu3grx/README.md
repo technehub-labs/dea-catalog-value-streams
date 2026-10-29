@@ -1,50 +1,75 @@
+---
+documentation_generated_from: value-streams-value-stream-inspect-to-disposition-uu3grx.yaml
+id: value-streams:value-stream-inspect-to-disposition-uu3grx
+name: Inspect to Disposition
+type: ValueStream
+version: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+industries:
+- manufacturing
+- logistics-transportation
+specificity: industry-specific
+entry_criterion: An inspection is triggered (incoming, in-process, or final).
+exit_criterion: The lot is dispositioned.
+outcome: A documented disposition for every inspected lot.
+stages:
+- Inspect
+- Evaluate
+- Disposition
+- Document
+capabilities:
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+processes:
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-4xn4d6
+- processes:process-ge-operate-zwaes5
+metrics:
+- Lot rejection rate
+upstream: []
+downstream: []
+evidence_sources:
+- SRC-016
+---
+
 # Inspect to Disposition
 
-Admitted Value Stream record (`value-streams:value-stream-inspect-to-disposition-uu3grx`, v1.0.0, active).
-
-## 1. Identity
-
-| Field | Value |
-|---|---|
-| Canonical ID | `value-streams:value-stream-inspect-to-disposition-uu3grx` |
-| Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
-| Category | governance |
-| Version / status | 1.0.0 · active |
-| Metamodel pin | 1.0.0 |
-| Applicability | manufacturing, logistics-transportation · industry-specific |
-| Record | [`value-streams-value-stream-inspect-to-disposition-uu3grx.yaml`](./value-streams-value-stream-inspect-to-disposition-uu3grx.yaml) — authoritative |
-
-## 2. Definition
+`value-streams:value-stream-inspect-to-disposition-uu3grx` · **governance** · manufacturing, logistics-transportation · industry-specific
 
 > The quality stream from inspection trigger through evaluation to disposition of the material.
 
-## 3. Value proposition and served party
-
 **Outcome:** A documented disposition for every inspected lot.
 
-## 4. Stream boundary
+**Machine-readable:** this page is generated from — and must stay in sync with — the authoritative record [`value-streams-value-stream-inspect-to-disposition-uu3grx.yaml`](./value-streams-value-stream-inspect-to-disposition-uu3grx.yaml). The front matter above is YAML-extractable metadata.
 
-**Entry criterion:** An inspection is triggered (incoming, in-process, or final).
+## Stage flow
 
-**Exit criterion:** The lot is dispositioned.
+```mermaid
+flowchart LR
+  S1["1. Inspect"]
+  S2["2. Evaluate"]
+  S3["3. Disposition"]
+  S4["4. Document"]
+  S1 --> S2
+  S2 --> S3
+  S3 --> S4
+  TRIGGER(("⏺ Entry")) --> S1
+  S4 --> EXIT1((("✔ Exit"))
+```
 
-**In scope** (from the record's `scope.includes`):
+## Value stages
 
-- Sampling and inspection
-- Evaluation against specification
-- Disposition decision
-- Documentation
+| # | Stage | Entry criterion | Exit criterion | Enabling capabilities (count) | Realizing processes (count) | Visible |
+|---|---|---|---|---|---|---|
+| 1 | **Inspect** | An inspection is triggered. | The inspection is complete. | 2 | 1 | no |
+| 2 | **Evaluate** | The inspection is complete. | The evaluation is complete. | 2 | 1 | no |
+| 3 | **Disposition** | The evaluation is complete. | The disposition is decided. | 2 | 1 | no |
+| 4 | **Document** | The disposition is decided. | Documentation is complete. | 1 | 1 | no |
 
-**Out of scope** (each concern owned by the named neighbour):
-
-- Supplier quality (Procure to Pay receipt leg)
-- Warranty claims
-
-## 5. Value stages
-
-Inspect to Disposition decomposes into 4 ordered value stages (array order is flow order; the first stage implements the entry criterion, the last the exit criterion):
-
-### Stage 1: Inspect
+### 1. Inspect
 
 Sample and inspect the lot.
 
@@ -54,10 +79,10 @@ Sample and inspect the lot.
 | Exit criterion | The inspection is complete. |
 | Outcome | Inspection results. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw`, `capabilities:capability-operations-management-pm3w8k` |
+| Enabling capabilities | `capabilities:capability-risk-management-h9uxdw` · `capabilities:capability-operations-management-pm3w8k` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 2: Evaluate
+### 2. Evaluate
 
 Evaluate results against specification.
 
@@ -67,10 +92,10 @@ Evaluate results against specification.
 | Exit criterion | The evaluation is complete. |
 | Outcome | An evaluation. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-information-management-6vjgdh`, `capabilities:capability-risk-management-h9uxdw` |
+| Enabling capabilities | `capabilities:capability-information-management-6vjgdh` · `capabilities:capability-risk-management-h9uxdw` |
 | Realizing processes | `processes:process-eo-operate-44jsrp` |
 
-### Stage 3: Disposition
+### 3. Disposition
 
 Decide the lot disposition.
 
@@ -80,10 +105,10 @@ Decide the lot disposition.
 | Exit criterion | The disposition is decided. |
 | Outcome | A disposition. |
 | Customer visible | False |
-| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k`, `capabilities:capability-enterprise-governance-uas48u` |
+| Enabling capabilities | `capabilities:capability-operations-management-pm3w8k` · `capabilities:capability-enterprise-governance-uas48u` |
 | Realizing processes | `processes:process-ge-operate-zwaes5` |
 
-### Stage 4: Document
+### 4. Document
 
 Document and communicate the disposition.
 
@@ -96,38 +121,60 @@ Document and communicate the disposition.
 | Enabling capabilities | `capabilities:capability-information-management-6vjgdh` |
 | Realizing processes | `processes:process-fa-operate-4xn4d6` |
 
-## 6. Capability and process traceability
+## Scope boundary
 
-**Capabilities aggregated by the stream** (`aggregated_capability_refs`, resolving against [dea-catalog-business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
+**Entry:** An inspection is triggered (incoming, in-process, or final).
+
+**Exit:** The lot is dispositioned.
+
+**In scope**
+
+- Sampling and inspection
+- Evaluation against specification
+- Disposition decision
+- Documentation
+
+**Out of scope** (owned by the named neighbour)
+
+- Supplier quality (Procure to Pay receipt leg)
+- Warranty claims
+
+## Traceability
+
+**Capabilities** (`aggregated_capability_refs`, resolving in [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities)):
 
 - `capabilities:capability-risk-management-h9uxdw`
 - `capabilities:capability-operations-management-pm3w8k`
 - `capabilities:capability-information-management-6vjgdh`
 - `capabilities:capability-enterprise-governance-uas48u`
 
-**Processes realizing the stream** (`process_refs`, resolving against [dea-catalog-business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
+**Processes** (`process_refs`, resolving in [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes)):
 
 - `processes:process-eo-operate-44jsrp`
 - `processes:process-ge-operate-zwaes5`
 - `processes:process-fa-operate-4xn4d6`
 
-## 7. Cross-stream links
+## Cross-stream links
 
-**Upstream streams:** none recorded.
+**Upstream:** none recorded.
 
-**Downstream streams:** none recorded.
+**Downstream:** none recorded.
 
-## 8. Measurement
+## Measurement
 
 - **Lot rejection rate** (stream-level) — Share of inspected lots rejected.
 
-## 9. Evidence and admission
+## Evidence
 
-**Evidence sources:** SRC-016 (see [`catalog-research/evidence-register.yaml`](../../catalog-research/evidence-register.yaml)).
+| Source | Class | Reference |
+|---|---|---|
+| SRC-016 | industry-reference-model | Manufacturing and logistics reference models (SCOR-style category structure) |
 
 **Rationale:** Admitted under CR-VS-12 (population tranche; candidate VSC-052) from the CR-VS-11 industry evidence register extension. Industry-specific chain (manufacturing, logistics-transportation); distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs per the referential-integrity gate.
 
-## 10. Provenance ladder
+See [research/evidence.md](./research/evidence.md) for the source-backed notes.
+
+## Provenance ladder
 
 | Stage | Date | Actor |
 |---|---|---|
@@ -136,4 +183,4 @@ Document and communicate the disposition.
 
 ---
 
-The record file is the canonical artifact; this README satisfies the per-entity-directory README requirement (org-wide id system IDM-007) and renders record content per the CR-VS-07 comprehensive-documentation standard. Do not edit this README by hand when the record changes — regenerate it.
+*Generated by [`scripts/generate_entity_docs.py`](../../../scripts/generate_entity_docs.py) (CR-VS-13) from the authoritative record. Do not edit by hand; regenerate.*
