@@ -1,0 +1,107 @@
+id: value-streams:value-stream-discharge-to-bill-3k7wbb
+type: ValueStream
+name: Discharge to Bill
+definition: The end-to-end healthcare revenue-cycle back end from discharge through charge capture, coding,
+  and final billing to collected payment.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A clean, collected final bill for the care episode.
+entry_criterion: A patient is discharged.
+exit_criterion: The final bill is produced, adjudicated, and collected.
+scope:
+  includes:
+  - Charge capture
+  - Coding and clinical documentation improvement
+  - Claim production and adjudication
+  - Final billing and collections
+  excludes:
+  - Pre-episode coverage verification (Patient Access to Admission)
+  - General financial reporting (Record to Report)
+value_stages:
+- name: Capture Charges
+  definition: Capture all billable charges for the episode.
+  entry_criterion: The patient is discharged.
+  exit_criterion: Charges are captured and reconciled.
+  outcome: A complete charge record.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Code and Document
+  definition: Code the episode with complete clinical documentation.
+  entry_criterion: Charges are captured.
+  exit_criterion: Codes are finalized.
+  outcome: Finalized, defensible codes.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Produce Claim
+  definition: Produce and submit the claim.
+  entry_criterion: Codes are finalized.
+  exit_criterion: The claim is submitted and adjudicated.
+  outcome: An adjudicated claim.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: false
+- name: Bill and Collect
+  definition: Produce the final patient bill and collect.
+  entry_criterion: The claim is adjudicated.
+  exit_criterion: The final bill is collected.
+  outcome: A clean, collected final bill.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-financial-stewardship-c7xtfk
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-stewardship-c7xtfk
+upstream_refs:
+- slug: value-stream-admission-to-discharge
+  note: Discharge starts this stream.
+downstream_refs:
+- slug: value-stream-record-to-report
+  note: Collected revenue is recorded and reported.
+metrics:
+- name: Clinical documentation completion time
+  definition: Elapsed time from discharge to complete documentation.
+  metric_ref: dea:metric-clinical-documentation-completion-time
+  applies_to_stage: Code and Document
+evidence:
+  sources:
+  - SRC-007
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-017) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-g9zpnq
+- processes:process-eo-operate-44jsrp
+- processes:process-fa-operate-sdppmp

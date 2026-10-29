@@ -1,0 +1,89 @@
+id: value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb
+type: ValueStream
+name: Fleet Maintain to Dispatch
+definition: The fleet stream from maintenance completion through roadworthiness to dispatchable vehicle
+  status.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - logistics-transportation
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A roadworthy, dispatchable vehicle.
+entry_criterion: A vehicle completes maintenance.
+exit_criterion: The vehicle is dispatched on a revenue movement.
+scope:
+  includes:
+  - Roadworthiness certification
+  - Dispatch planning
+  - Dispatch
+  excludes:
+  - Linehaul operations (Ship to Consignee)
+  - Fleet acquisition (Acquire to Retire)
+value_stages:
+- name: Certify Roadworthy
+  definition: Certify the vehicle roadworthy.
+  entry_criterion: Maintenance completes.
+  exit_criterion: The vehicle is certified.
+  outcome: A certified vehicle.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Plan Dispatch
+  definition: Plan the vehicle's next movement.
+  entry_criterion: The vehicle is certified.
+  exit_criterion: The movement is planned.
+  outcome: A planned movement.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  customer_visible: false
+- name: Dispatch
+  definition: Dispatch the vehicle.
+  entry_criterion: The movement is planned.
+  exit_criterion: The vehicle is dispatched.
+  outcome: A dispatched vehicle.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-enterprise-performance-management-5fxren
+upstream_refs:
+- slug: value-stream-acquire-to-retire
+  note: Vehicles live in the asset lifecycle.
+metrics:
+- name: Fleet utilization
+  definition: Share of available vehicle time on revenue movements.
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-069) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (logistics-transportation); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-44jsrp
+- processes:process-sd-build-2pkz5n
+- processes:process-eo-operate-zh9m57

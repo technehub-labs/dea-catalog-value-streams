@@ -1,4 +1,4 @@
-register_version: 0.3.0
+register_version: 0.4.0
 cr: 'CR-VS-01 (candidate universe seed; evidence-register v0.1) + CR-VS-04 (second-tranche evidence: SRC-002
   APQC category observations extended; SRC-003 stakeholder-value observation added) + CR-VS-05 (third-tranche
   evidence: SRC-006 chain-inventory observation added)'
@@ -17,6 +17,7 @@ source_classes:
 - standards-body
 - professional-body
 - commercial-process-models
+- industry-reference-model
 sources:
 - id: SRC-001
   name: Business Architecture Guild / BIZBOK Guide (value stream concept)
@@ -138,3 +139,168 @@ sources:
       and asset-lifecycle chains are first-order too (CR-VS-05 third tranche)
   evidence_note: Convergence evidence for the candidate universe; not a substitute for per-candidate source
     citations at admission
+- id: SRC-007
+  name: Healthcare industry reference models (patient-access and revenue-cycle chains, public structure)
+  class: industry-reference-model
+  reference: HIMSS / healthcare revenue-cycle public guidance; category-level chain structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public practitioner and industry-body material; category-level structure)
+  observations:
+  - observation: 'Healthcare carries canonical chains absent from the cross-industry corpus: patient
+      access (referral/scheduling through admission), admission-to-discharge (care delivery episode),
+      discharge through final billing (revenue cycle back end), and referral-to-treatment'
+    supports:
+    - CR-VS-12 healthcare candidates (patient-access, admission-to-discharge, discharge-to-bill,
+      referral-to-treatment)
+    implication: Industry chains are first-class catalog records under the CR-VS-11 applicability dimension
+  evidence_note: Category-level structure only; no vendor- or membership-gated text reproduced
+- id: SRC-008
+  name: Banking industry reference models (lending and payments chains, public structure)
+  class: industry-reference-model
+  reference: BIAN service landscape public material; SWIFT public process material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public industry-body material; category-level structure)
+  observations:
+  - observation: 'Banking carries canonical chains: loan origination (application through booking),
+      account opening / onboarding (application through KYC-cleared activation), payment execution
+      (initiation through settlement and reconciliation), and deposit-to-maturity'
+    supports:
+    - CR-VS-12 banking candidates (application-to-book, onboard-to-activate, initiate-to-settle,
+      deposit-to-maturity)
+  evidence_note: Category-level structure only
+- id: SRC-009
+  name: Insurance industry reference models (policy and claims lifecycles, public structure)
+  class: industry-reference-model
+  reference: ACORD / insurance practitioner public material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public industry-body material; category-level structure)
+  observations:
+  - observation: 'Insurance carries canonical chains: quote-to-bind (submission through bound policy),
+      first-notice-of-loss to claim settlement, and policy administration through endorsement/renewal'
+    supports:
+    - CR-VS-12 insurance candidates (quote-to-bind, loss-to-claim-settlement, policy-to-endorsement)
+  evidence_note: Category-level structure only
+- id: SRC-010
+  name: Telecommunications industry reference models (eTOM category-level structure)
+  class: industry-reference-model
+  reference: TM Forum eTOM public overview material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public overview pages; category-level structure)
+  observations:
+  - observation: 'Telecom carries canonical chains: order-to-activation (customer order through service
+      activation), trouble-to-restore (fault report through service restoration), and
+      provisioning-to-billing-alignment'
+    supports:
+    - CR-VS-12 telecom candidates (order-to-activation, trouble-to-restore, usage-to-bill)
+  evidence_note: Category-level structure only; eTOM names not reproduced verbatim
+- id: SRC-011
+  name: Utilities industry reference models (metering and retail-energy chains, public structure)
+  class: industry-reference-model
+  reference: Utility industry public guidance; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Utilities carry canonical chains: meter-to-bill (consumption through accurate billing),
+      connection request through energization, and outage notification through restoration'
+    supports:
+    - CR-VS-12 utility candidates (meter-to-bill, apply-to-connect, outage-to-restore)
+  evidence_note: Category-level structure only
+- id: SRC-012
+  name: Financial-crime and regulatory operations chains (public structure)
+  class: industry-reference-model
+  reference: Public regulatory-practice material (financial-crime prevention, AML practice)
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Regulated financial institutions carry canonical chains for suspicious-activity handling
+      (detection through reporting decision) and customer due-diligence remediation'
+    supports:
+    - CR-VS-12 candidates (alert-to-report, remediation chains)
+  evidence_note: Category-level structure only
+- id: SRC-013
+  name: Retail / consumer-commerce chains (public structure)
+  class: industry-reference-model
+  reference: GS1 / retail practitioner public material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Retail carries canonical chains: assortment-to-shelf (planning through in-stock),
+      checkout-to-fulfillment (omnichannel), and markdown/settlement through supplier reconciliation'
+    supports:
+    - CR-VS-12 retail candidates (assortment-to-shelf, checkout-to-fulfillment, supplier-reconciliation)
+  evidence_note: Category-level structure only
+- id: SRC-014
+  name: Public-sector service chains (permits, grants, benefits; public structure)
+  class: industry-reference-model
+  reference: Public-administration practitioner material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Public bodies carry canonical chains: application-through-decision (permits, grants,
+      benefits, licenses), case intake through resolution, and records request through disclosure'
+    supports:
+    - CR-VS-12 public-sector candidates (apply-to-decide, intake-to-resolution, request-to-disclose)
+  evidence_note: Category-level structure only
+- id: SRC-015
+  name: Education and hospitality service chains (public structure)
+  class: industry-reference-model
+  reference: Education / hospitality practitioner material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Education carries apply-through-graduation chains; hospitality carries
+      reservation-through-stay and event booking-through-execution chains; travel adds
+      disruption handling'
+    supports:
+    - CR-VS-12 education and hospitality candidates
+  evidence_note: Category-level structure only
+- id: SRC-016
+  name: Manufacturing and logistics reference models (SCOR-style category structure)
+  class: industry-reference-model
+  reference: ASCM SCOR public overview material; customs-practice material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public overview; category-level structure)
+  observations:
+  - observation: 'Manufacturing carries engineer-to-order and make-to-stock chains; logistics carries
+      shipper-to-consignee freight chains including customs clearance; quality carries
+      inspection through disposition'
+    supports:
+    - CR-VS-12 manufacturing, logistics, and quality candidates
+  evidence_note: Category-level structure only; SCOR names not reproduced verbatim
+- id: SRC-017
+  name: Construction and real-estate chains (public structure)
+  class: industry-reference-model
+  reference: Construction industry public practice material; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Construction carries tender-to-award and build-to-handover chains; real estate carries
+      listing-through-closing and lease lifecycle chains'
+    supports:
+    - CR-VS-12 construction and real-estate candidates
+  evidence_note: Category-level structure only
+- id: SRC-018
+  name: Life-sciences reference chains (public GxP/ICH category structure)
+  class: industry-reference-model
+  reference: ICH / GxP public guidance; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Life sciences carries discovery-through-submission chains, clinical-trial conduct
+      chains, batch record through release (GMP), and adverse-event through signal/report chains
+      (pharmacovigilance)'
+    supports:
+    - CR-VS-12 life-sciences candidates
+  evidence_note: Category-level structure only
+- id: SRC-019
+  name: Technology / SaaS product chains (public structure)
+  class: industry-reference-model
+  reference: SAFe / DORA public material; technology product practice; category-level structure
+  retrieved: 2026-10-28
+  retrieval: indirect (public material; category-level structure)
+  observations:
+  - observation: 'Technology carries commit-to-deploy (DORA), incident-to-restoration, usage-to-renewal
+      (SaaS), and model-development-to-deployment (AI/ML) chains'
+    supports:
+    - CR-VS-12 technology candidates
+  evidence_note: Category-level structure only

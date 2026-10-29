@@ -1,0 +1,86 @@
+id: value-streams:value-stream-equipment-calibration-to-certified-qp33gf
+type: ValueStream
+name: Equipment Calibration to Certified
+definition: The metrology stream from calibration due through calibration execution to certified status.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - manufacturing
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Calibration-certified equipment available for use.
+entry_criterion: A calibration due date is reached.
+exit_criterion: The equipment is certified for use.
+scope:
+  includes:
+  - Calibration execution
+  - Certification
+  - Release to use
+  excludes:
+  - Maintenance
+  - Equipment procurement
+value_stages:
+- name: Calibrate
+  definition: Execute the calibration.
+  entry_criterion: Calibration falls due.
+  exit_criterion: Calibration is complete.
+  outcome: Calibration results.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: false
+- name: Certify
+  definition: Certify against the standard.
+  entry_criterion: Calibration is complete.
+  exit_criterion: The equipment is certified.
+  outcome: A certified instrument.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Release to Use
+  definition: Release the equipment for use.
+  entry_criterion: The equipment is certified.
+  exit_criterion: The equipment is in use.
+  outcome: Released equipment.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-regulation-management-gya4d8
+metrics:
+- name: Calibration on-time rate
+  definition: Share of calibrations completed before due date.
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-055) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-j9cjzz
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zwzmbd

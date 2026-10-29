@@ -1,0 +1,101 @@
+id: value-streams:value-stream-actuarial-data-to-price-t5vjcj
+type: ValueStream
+name: Actuarial Data to Price
+definition: The pricing-governance stream from experience-data compilation through actuarial analysis
+  to filed/adopted rates.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - insurance
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Filed or adopted, defensible rates.
+entry_criterion: A pricing review cycle opens.
+exit_criterion: Rates are filed or adopted.
+scope:
+  includes:
+  - Experience data compilation
+  - Actuarial analysis
+  - Rate proposal
+  - Filing and adoption
+  excludes:
+  - Claims data operations
+  - Regulatory reporting
+value_stages:
+- name: Compile Data
+  definition: Compile claims and exposure experience data.
+  entry_criterion: A pricing cycle opens.
+  exit_criterion: The dataset is compiled.
+  outcome: A compiled dataset.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-insight-management-ms4n9d
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+- name: Analyze
+  definition: Perform the actuarial analysis.
+  entry_criterion: The dataset is compiled.
+  exit_criterion: The analysis is complete.
+  outcome: A completed analysis.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: Propose Rates
+  definition: Propose the rate changes.
+  entry_criterion: The analysis is complete.
+  exit_criterion: The proposal is ready.
+  outcome: A rate proposal.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: File and Adopt
+  definition: File or adopt the rates.
+  entry_criterion: The proposal is ready.
+  exit_criterion: Rates are filed or adopted.
+  outcome: Adopted rates.
+  capability_refs:
+  - capabilities:capability-regulation-management-gya4d8
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-fa-operate-8vqvkk
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-legal-matter-management-zzbd2u
+metrics:
+- name: Rate-filing cycle time
+  definition: Elapsed time from cycle open to adoption.
+evidence:
+  sources:
+  - SRC-009
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-033) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-operate-ucxpz4
+- processes:process-fa-conceive-4uqqvg
+- processes:process-fa-operate-8vqvkk

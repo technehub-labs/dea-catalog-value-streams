@@ -1,0 +1,99 @@
+id: value-streams:value-stream-grant-award-to-closeout-pvhec7
+type: ValueStream
+name: Grant Award to Closeout
+definition: The grants stream from award through disbursement and monitoring to closeout.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - public-sector
+  organization_types:
+  - public-agency
+  specificity: industry-specific
+outcome: A closed-out grant with settled funds and reported outcomes.
+entry_criterion: A grant is awarded.
+exit_criterion: The grant is closed out with settled funds.
+scope:
+  includes:
+  - Award and agreement
+  - Disbursement
+  - Monitoring and reporting
+  - Closeout
+  excludes:
+  - Application assessment (Apply to Decide)
+  - Audit programs
+value_stages:
+- name: Award
+  definition: Award the grant and execute the agreement.
+  entry_criterion: A grant is awarded.
+  exit_criterion: The agreement is executed.
+  outcome: An executed agreement.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-partner-management-cp3vdb
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Disburse
+  definition: Disburse funds per schedule.
+  entry_criterion: The agreement is executed.
+  exit_criterion: Funds are disbursed.
+  outcome: Disbursed funds.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  process_refs:
+  - processes:process-fa-operate-wkqaqp
+  customer_visible: true
+- name: Monitor
+  definition: Monitor use of funds and milestone reporting.
+  entry_criterion: Funds are disbursed.
+  exit_criterion: Reporting is complete.
+  outcome: Complete reporting.
+  capability_refs:
+  - capabilities:capability-enterprise-performance-management-5fxren
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+- name: Close Out
+  definition: Close out the grant with settled funds.
+  entry_criterion: Reporting is complete.
+  exit_criterion: The grant is closed out.
+  outcome: A closed grant.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-fa-operate-4xn4d6
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Grant closeout timeliness
+  definition: Share of grants closed within the closeout window.
+evidence:
+  sources:
+  - SRC-014
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-076) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-build-mctdgc
+- processes:process-fa-operate-wkqaqp
+- processes:process-sd-operate-ucxpz4
+- processes:process-fa-operate-4xn4d6

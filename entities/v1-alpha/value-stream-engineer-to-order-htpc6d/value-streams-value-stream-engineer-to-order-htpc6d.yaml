@@ -1,0 +1,110 @@
+id: value-streams:value-stream-engineer-to-order-htpc6d
+type: ValueStream
+name: Engineer to Order
+definition: The make-to-order stream from customer specification through engineering design, build, and
+  delivery.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - manufacturing
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A delivered product engineered to the customer's specification.
+entry_criterion: A customer order with engineering specification is received.
+exit_criterion: The engineered product is delivered and accepted.
+scope:
+  includes:
+  - Specification and contract
+  - Engineering design
+  - Procurement and build
+  - Testing and delivery
+  excludes:
+  - Standard production (Plan to Deliver)
+  - R&D (Concept to Launch)
+value_stages:
+- name: Agree Specification
+  definition: Agree the technical specification and contract.
+  entry_criterion: A specified order is received.
+  exit_criterion: The specification is agreed.
+  outcome: An agreed specification.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Engineer Design
+  definition: Engineer the product design.
+  entry_criterion: The specification is agreed.
+  exit_criterion: The design is released.
+  outcome: A released design.
+  capability_refs:
+  - capabilities:capability-technology-management-maus5n
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-pv-design-8v4k89
+  customer_visible: false
+- name: Procure and Build
+  definition: Procure materials and build the product.
+  entry_criterion: The design is released.
+  exit_criterion: The product is built.
+  outcome: A built product.
+  capability_refs:
+  - capabilities:capability-sourcing-and-procurement-esucp4
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-vzcxx7
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Test and Deliver
+  definition: Test and deliver for customer acceptance.
+  entry_criterion: The product is built.
+  exit_criterion: The product is delivered and accepted.
+  outcome: An accepted delivery.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  - processes:process-eo-operate-zh9m57
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-sourcing-and-procurement-esucp4
+- capabilities:capability-operations-management-pm3w8k
+downstream_refs:
+- slug: value-stream-plan-to-deliver
+  note: Standardized variants flow through standard production.
+metrics:
+- name: Engineering change orders per project
+  definition: Design stability indicator.
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-050) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-build-mctdgc
+- processes:process-pv-design-8v4k89
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zh9m57

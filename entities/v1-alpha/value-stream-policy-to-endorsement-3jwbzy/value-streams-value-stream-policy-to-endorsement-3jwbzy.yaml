@@ -1,0 +1,100 @@
+id: value-streams:value-stream-policy-to-endorsement-3jwbzy
+type: ValueStream
+name: Policy to Endorsement
+definition: The policy-administration stream from an endorsement request through assessment to an issued
+  policy change.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - insurance
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An accurately issued endorsement on the in-force policy.
+entry_criterion: An endorsement request is received.
+exit_criterion: The endorsement is issued and billed.
+scope:
+  includes:
+  - Endorsement intake
+  - Assessment and pricing
+  - Issuance
+  - Billing adjustment
+  excludes:
+  - Renewal (Contract to Renewal)
+  - New business (Quote to Bind)
+value_stages:
+- name: Intake Request
+  definition: Receive and clarify the endorsement request.
+  entry_criterion: A request is received.
+  exit_criterion: The request is complete.
+  outcome: A complete request.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Assess and Price
+  definition: Assess the change and price the premium impact.
+  entry_criterion: The request is complete.
+  exit_criterion: The change is assessed and priced.
+  outcome: A priced change.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: false
+- name: Issue Endorsement
+  definition: Issue the endorsement to the policy.
+  entry_criterion: The change is priced.
+  exit_criterion: The endorsement is issued.
+  outcome: An issued endorsement.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Adjust Billing
+  definition: Adjust billing for the change.
+  entry_criterion: The endorsement is issued.
+  exit_criterion: Billing reflects the change.
+  outcome: Reconciled billing.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-information-management-6vjgdh
+metrics:
+- name: Endorsement issuance turnaround
+  definition: Elapsed time from request to issued endorsement.
+evidence:
+  sources:
+  - SRC-009
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-031) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-build-mctdgc
+- processes:process-fa-operate-sdppmp

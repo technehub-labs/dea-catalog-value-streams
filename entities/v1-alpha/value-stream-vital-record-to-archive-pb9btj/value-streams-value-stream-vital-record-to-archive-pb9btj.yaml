@@ -1,0 +1,87 @@
+id: value-streams:value-stream-vital-record-to-archive-pb9btj
+type: ValueStream
+name: Vital Record to Archive
+definition: The records stream from vital-event registration through certification to archived, retrievable
+  record.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - public-sector
+  organization_types:
+  - public-agency
+  specificity: industry-specific
+outcome: An archived, retrievable vital record with certified copies available.
+entry_criterion: A vital event is registered.
+exit_criterion: The record is archived and retrievable.
+scope:
+  includes:
+  - Event registration
+  - Certification
+  - Archiving
+  excludes:
+  - Disclosure requests (Request to Disclose)
+  - Digital archives governance
+value_stages:
+- name: Register Event
+  definition: Register the vital event.
+  entry_criterion: An event is reported.
+  exit_criterion: The event is registered.
+  outcome: A registered event.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Certify
+  definition: Issue certified copies.
+  entry_criterion: The event is registered.
+  exit_criterion: Copies are certified.
+  outcome: Certified copies.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-8vqvkk
+  customer_visible: true
+- name: Archive
+  definition: Archive the record for retrieval.
+  entry_criterion: The event is registered.
+  exit_criterion: The record is archived.
+  outcome: An archived record.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-operations-management-pm3w8k
+metrics:
+- name: Record retrieval time
+  definition: Elapsed time to retrieve an archived record on request.
+evidence:
+  sources:
+  - SRC-014
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-080) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (public-sector); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-fa-operate-8vqvkk
+- processes:process-eo-operate-zwzmbd

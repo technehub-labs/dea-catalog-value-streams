@@ -12,6 +12,12 @@ version: 1.0.0
 metamodel_pin: 1.0.0
 lifecycle_status: proposed
 value_stream_category: operational
+applicability:
+  industries:
+    - cross-industry
+  organization_types:
+    - for-profit-enterprise
+  specificity: generic
 outcome: A validated schema.
 customer_ref: actors:actor-fixture
 entry_criterion: A fixture trigger condition.

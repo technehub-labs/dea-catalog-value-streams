@@ -1,0 +1,105 @@
+id: value-streams:value-stream-outage-to-restore-ff6xme
+type: ValueStream
+name: Outage to Restore
+definition: The grid-operations stream from outage detection through crew dispatch and repair to restored
+  supply and customer communication.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Restored supply with informed customers.
+entry_criterion: An outage is detected or reported.
+exit_criterion: Supply is restored and customers are informed.
+scope:
+  includes:
+  - Outage detection and localization
+  - Crew dispatch
+  - Repair and switching
+  - Restoration confirmation
+  excludes:
+  - Planned maintenance
+  - Field installations
+value_stages:
+- name: Detect and Localize
+  definition: Detect and localize the outage.
+  entry_criterion: An outage occurs.
+  exit_criterion: The outage is localized.
+  outcome: A localized outage.
+  capability_refs:
+  - capabilities:capability-technology-management-maus5n
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-4njp7b
+  customer_visible: true
+- name: Dispatch Crew
+  definition: Dispatch the repair crew.
+  entry_criterion: The outage is localized.
+  exit_criterion: The crew is dispatched.
+  outcome: A dispatched crew.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-workforce-planning-b43rhm
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+- name: Repair and Switch
+  definition: Execute repair and switching restoration.
+  entry_criterion: The crew is dispatched.
+  exit_criterion: Supply is restored.
+  outcome: Restored supply.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: false
+- name: Confirm and Communicate
+  definition: Confirm restoration and communicate to customers.
+  entry_criterion: Supply is restored.
+  exit_criterion: Customers are informed.
+  outcome: Informed customers.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-planning-b43rhm
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-customer-management-f3n8wb
+metrics:
+- name: Outage restoration time
+  definition: Elapsed time from detection to restoration.
+  metric_ref: dea:metric-mean-time-to-restore-service
+  applies_to_stage: Confirm and Communicate
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-045) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-4njp7b
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-j9cjzz
+- processes:process-pr-operate-bbe384

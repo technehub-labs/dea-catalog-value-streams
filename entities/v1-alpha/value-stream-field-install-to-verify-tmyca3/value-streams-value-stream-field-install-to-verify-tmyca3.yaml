@@ -1,0 +1,85 @@
+id: value-streams:value-stream-field-install-to-verify-tmyca3
+type: ValueStream
+name: Field Install to Verify
+definition: The field-operations stream from install work order through site work to verified completion.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - telecommunications
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A verified completed field installation.
+entry_criterion: An install work order is issued.
+exit_criterion: The installation is verified complete.
+scope:
+  includes:
+  - Work order dispatch
+  - Site installation
+  - Verification and closeout
+  excludes:
+  - Provisioning (Order to Activation)
+  - Field force scheduling
+value_stages:
+- name: Dispatch
+  definition: Dispatch the field work order.
+  entry_criterion: A work order is issued.
+  exit_criterion: The crew is dispatched.
+  outcome: A dispatched order.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-workforce-planning-b43rhm
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+- name: Install at Site
+  definition: Execute the site installation.
+  entry_criterion: The crew is dispatched.
+  exit_criterion: The installation is complete.
+  outcome: A completed installation.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: true
+- name: Verify and Close
+  definition: Verify the installation and close the order.
+  entry_criterion: The installation is complete.
+  exit_criterion: Completion is verified and closed.
+  outcome: A verified installation.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-workforce-planning-b43rhm
+- capabilities:capability-information-management-6vjgdh
+metrics:
+- name: Field install first-time completion rate
+  definition: Share of installs completed on first visit.
+evidence:
+  sources:
+  - SRC-010
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-042) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-j9cjzz
+- processes:process-eo-operate-44jsrp

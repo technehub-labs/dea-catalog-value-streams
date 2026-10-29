@@ -14,6 +14,7 @@
     "outcome",
     "entry_criterion",
     "exit_criterion",
+    "applicability",
     "value_stages",
     "evidence",
     "provenance"
@@ -23,7 +24,9 @@
       "type": "string",
       "pattern": "^value-streams:value-stream-[a-z0-9-]+-[a-z2-9]{6}$",
       "description": "Content-addressed catalog id (org-wide id system, dea-metaframework/docs/id-system.md section 2.5): prefix value-streams, slug, and a 6-character content-derived hash.",
-      "examples": ["value-streams:value-stream-order-to-cash-a1b2c3"]
+      "examples": [
+        "value-streams:value-stream-order-to-cash-a1b2c3"
+      ]
     },
     "type": {
       "type": "string",
@@ -52,13 +55,82 @@
     },
     "lifecycle_status": {
       "type": "string",
-      "enum": ["proposed", "planned", "active", "deprecated", "retired"],
+      "enum": [
+        "proposed",
+        "planned",
+        "active",
+        "deprecated",
+        "retired"
+      ],
       "description": "Upstream lifecycle vocabulary (dea-metamodel metamodel/vocabularies/lifecycle.yaml)."
     },
     "value_stream_category": {
       "type": "string",
-      "enum": ["operational", "support", "governance", "development"],
+      "enum": [
+        "operational",
+        "support",
+        "governance",
+        "development"
+      ],
       "description": "Classification of the stream along the BIZBOK-style operational / support / governance / development axis (SRC-001). Operational streams deliver value to external parties; support streams serve internal parties; governance streams discharge oversight; development streams build future operational capability."
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "industries",
+        "specificity"
+      ],
+      "properties": {
+        "industries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "cross-industry",
+              "healthcare",
+              "financial-services",
+              "insurance",
+              "telecommunications",
+              "utilities-energy",
+              "manufacturing",
+              "retail-commerce",
+              "logistics-transportation",
+              "public-sector",
+              "education",
+              "hospitality-travel",
+              "construction-real-estate",
+              "life-sciences",
+              "technology"
+            ]
+          },
+          "description": "Industries the stream applies to, from the controlled vocabulary in classifications/industry-vocabulary.yaml (CR-VS-11)."
+        },
+        "organization_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "for-profit-enterprise",
+              "public-agency",
+              "nonprofit-organization",
+              "regulated-entity",
+              "internal-enterprise"
+            ]
+          },
+          "description": "Organization types the stream applies to, from the controlled vocabulary."
+        },
+        "specificity": {
+          "type": "string",
+          "enum": [
+            "generic",
+            "industry-specific"
+          ],
+          "description": "generic = enterprise-generic chain (cross-industry); industry-specific = the chain is canonical primarily within its industries. Same-name chains in non-overlapping applicability sets are distinct by construction (CR-VS-11 method note)."
+        }
+      },
+      "description": "Applicability dimension (CR-VS-11): which industries / organization types the stream is canonical for. Fixes the modeling gap where two streams differ only by industry context, and scopes the distinctness sweep by applicability class."
     },
     "outcome": {
       "type": "string",
@@ -83,17 +155,27 @@
     "scope": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["includes"],
+      "required": [
+        "includes"
+      ],
       "properties": {
         "includes": {
           "type": "array",
           "minItems": 1,
-          "items": {"type": "string", "minLength": 1, "maxLength": 500},
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
           "description": "In-scope activities and concerns of the stream."
         },
         "excludes": {
           "type": "array",
-          "items": {"type": "string", "minLength": 1, "maxLength": 500},
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
           "description": "Explicitly out-of-scope concerns, each naming the neighbour concept that owns them (boundary discipline per the CR-VS-02/CR-VS-05 sweeps)."
         }
       },
@@ -106,28 +188,71 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "definition", "entry_criterion", "exit_criterion", "outcome", "capability_refs"],
+        "required": [
+          "name",
+          "definition",
+          "entry_criterion",
+          "exit_criterion",
+          "outcome",
+          "capability_refs"
+        ],
         "properties": {
-          "name": {"type": "string", "minLength": 1, "maxLength": 200},
-          "definition": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "What happens in this stage and why it creates value."},
-          "entry_criterion": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "Condition that must hold for the stage to start (stage gate)."},
-          "exit_criterion": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "Condition that confirms the stage is complete."},
-          "outcome": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "The increment of value the stage delivers to the served party."},
-          "customer_visible": {"type": "boolean", "description": "Whether the stage is visible to the served party (true) or internal (false). Defaults to the stream-level served party when omitted."},
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "What happens in this stage and why it creates value."
+          },
+          "entry_criterion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "Condition that must hold for the stage to start (stage gate)."
+          },
+          "exit_criterion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "Condition that confirms the stage is complete."
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "The increment of value the stage delivers to the served party."
+          },
+          "customer_visible": {
+            "type": "boolean",
+            "description": "Whether the stage is visible to the served party (true) or internal (false). Defaults to the stream-level served party when omitted."
+          },
           "capability_refs": {
             "type": "array",
             "minItems": 1,
-            "items": {"type": "string", "pattern": "^capabilities:capability-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"},
+            "items": {
+              "type": "string",
+              "pattern": "^capabilities:capability-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"
+            },
             "description": "Business capabilities enabling the stage. Ids resolve against the dea-catalog-business-capabilities id space (referential-integrity-checked)."
           },
           "process_refs": {
             "type": "array",
-            "items": {"type": "string", "pattern": "^processes:(process|pc|group|activity|task)-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"},
+            "items": {
+              "type": "string",
+              "pattern": "^processes:(process|pc|group|activity|task)-[a-z0-9-]+-[abcdefghjkmnpqrstuvwxyz23456789]{6}$"
+            },
             "description": "Business processes realizing the stage. Ids resolve against the dea-catalog-business-processes id space (referential-integrity-checked)."
           },
           "actor_refs": {
             "type": "array",
-            "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"
+            },
             "description": "Actors participating in the stage (dea:flows-to partner role). Referential-integrity-checked against dea-catalog-actors when populated with an actors: id."
           }
         }
@@ -155,10 +280,19 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["slug"],
+        "required": [
+          "slug"
+        ],
         "properties": {
-          "slug": {"type": "string", "pattern": "^value-stream-[a-z0-9-]+$"},
-          "note": {"type": "string", "maxLength": 500, "description": "What crosses the boundary between the streams."}
+          "slug": {
+            "type": "string",
+            "pattern": "^value-stream-[a-z0-9-]+$"
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "What crosses the boundary between the streams."
+          }
         }
       }
     },
@@ -168,10 +302,19 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["slug"],
+        "required": [
+          "slug"
+        ],
         "properties": {
-          "slug": {"type": "string", "pattern": "^value-stream-[a-z0-9-]+$"},
-          "note": {"type": "string", "maxLength": 500, "description": "What crosses the boundary between the streams."}
+          "slug": {
+            "type": "string",
+            "pattern": "^value-stream-[a-z0-9-]+$"
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "What crosses the boundary between the streams."
+          }
         }
       }
     },
@@ -181,12 +324,32 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "definition"],
+        "required": [
+          "name",
+          "definition"
+        ],
         "properties": {
-          "name": {"type": "string", "minLength": 1, "maxLength": 200},
-          "definition": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "How the metric is computed and what good looks like."},
-          "applies_to_stage": {"type": "string", "maxLength": 200, "description": "Name of the value stage the metric measures; omit for stream-level metrics. Must match a value_stages[].name when present."},
-          "metric_ref": {"type": "string", "pattern": "^(metrics:[a-z0-9-]+(-[abcdefghjkmnpqrstuvwxyz23456789]{6})?|dea:metric-[a-z0-9-]+)$", "description": "Catalogued PerformanceMetric id (dea-catalog-metrics) when one exists. Admits the org-wide metrics: namespace form and the sibling catalog's legacy dea:metric-* id form (CR-VS-08 \u00a72.1); legacy refs are rewritten if the metrics catalog migrates to the org-wide id system."}
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "How the metric is computed and what good looks like."
+          },
+          "applies_to_stage": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Name of the value stage the metric measures; omit for stream-level metrics. Must match a value_stages[].name when present."
+          },
+          "metric_ref": {
+            "type": "string",
+            "pattern": "^(metrics:[a-z0-9-]+(-[abcdefghjkmnpqrstuvwxyz23456789]{6})?|dea:metric-[a-z0-9-]+)$",
+            "description": "Catalogued PerformanceMetric id (dea-catalog-metrics) when one exists. Admits the org-wide metrics: namespace form and the sibling catalog's legacy dea:metric-* id form (CR-VS-08 §2.1); legacy refs are rewritten if the metrics catalog migrates to the org-wide id system."
+          }
         }
       }
     },
@@ -195,22 +358,33 @@
       "description": "Identifiers in external systems. Never a substitute for the OpenDEA id (E004).",
       "items": {
         "type": "object",
-        "required": ["system", "identifier"],
+        "required": [
+          "system",
+          "identifier"
+        ],
         "properties": {
-          "system": {"type": "string"},
-          "identifier": {"type": "string"}
+          "system": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "string"
+          }
         }
       }
     },
     "evidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sources"],
+      "required": [
+        "sources"
+      ],
       "properties": {
         "sources": {
           "type": "array",
           "minItems": 1,
-          "items": {"type": "string"},
+          "items": {
+            "type": "string"
+          },
           "description": "References to the evidence register / research artifacts backing admission."
         },
         "rationale": {
@@ -222,7 +396,9 @@
     "provenance": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ladder_passage"],
+      "required": [
+        "ladder_passage"
+      ],
       "properties": {
         "ladder_passage": {
           "type": "array",
@@ -230,14 +406,29 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["stage", "date", "actor"],
+            "required": [
+              "stage",
+              "date",
+              "actor"
+            ],
             "properties": {
               "stage": {
                 "type": "string",
-                "enum": ["candidate", "admitted", "active", "deprecated", "retired"]
+                "enum": [
+                  "candidate",
+                  "admitted",
+                  "active",
+                  "deprecated",
+                  "retired"
+                ]
               },
-              "date": {"type": "string", "format": "date"},
-              "actor": {"type": "string"}
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "actor": {
+                "type": "string"
+              }
             }
           }
         }
@@ -248,11 +439,23 @@
       "description": "Typed relationship instances per dea-metamodel CR-002 (typed, directed, versioned, provenance-aware).",
       "items": {
         "type": "object",
-        "required": ["source_id", "target_id", "relationship_type"],
+        "required": [
+          "source_id",
+          "target_id",
+          "relationship_type"
+        ],
         "properties": {
-          "id": {"type": "string"},
-          "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
-          "target_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"},
+          "id": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"
+          },
+          "target_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*:[a-z0-9-]+$"
+          },
           "relationship_type": {
             "type": "string",
             "enum": [

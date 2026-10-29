@@ -1,0 +1,104 @@
+id: value-streams:value-stream-apply-to-connect-y64n29
+type: ValueStream
+name: Apply to Connect
+definition: The connection stream from connection application through design, works, and energization.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An energized connection for the applicant.
+entry_criterion: A connection application is received.
+exit_criterion: The connection is energized.
+scope:
+  includes:
+  - Application and feasibility
+  - Design and quotation
+  - Works execution
+  - Energization
+  excludes:
+  - Metering (Meter to Bill)
+  - Network capacity planning
+value_stages:
+- name: Assess Application
+  definition: Assess the application and connection feasibility.
+  entry_criterion: An application is received.
+  exit_criterion: Feasibility is confirmed.
+  outcome: A feasible application.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Design and Quote
+  definition: Design the connection and quote.
+  entry_criterion: Feasibility is confirmed.
+  exit_criterion: The quote is accepted.
+  outcome: An accepted quote.
+  capability_refs:
+  - capabilities:capability-technology-management-maus5n
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-eo-design-6j5mxp
+  customer_visible: true
+- name: Execute Works
+  definition: Execute the connection works.
+  entry_criterion: The quote is accepted.
+  exit_criterion: The works are complete.
+  outcome: Completed works.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-xud3hs
+  customer_visible: true
+- name: Energize
+  definition: Energize the connection and activate the account.
+  entry_criterion: The works are complete.
+  exit_criterion: The connection is energized.
+  outcome: An energized connection.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-financial-resource-management-cd3c7c
+downstream_refs:
+- slug: value-stream-meter-to-bill
+  note: Energized connections begin metered consumption.
+metrics:
+- name: Connection cycle time
+  definition: Elapsed days from application to energization.
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-044) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-design-6j5mxp
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-2jnz85

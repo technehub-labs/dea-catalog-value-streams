@@ -1,0 +1,89 @@
+id: value-streams:value-stream-surrender-to-payout-vf67kv
+type: ValueStream
+name: Surrender to Payout
+definition: The life-insurance surrender stream from surrender request through surrender-value computation
+  to payout and closure.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - insurance
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A correctly computed surrender paid and the contract closed.
+entry_criterion: A policyholder requests surrender.
+exit_criterion: The surrender value is paid and the contract closed.
+scope:
+  includes:
+  - Surrender request and validation
+  - Surrender-value computation
+  - Payout and closure
+  excludes:
+  - Maturity settlement
+  - Policy loans
+value_stages:
+- name: Validate Request
+  definition: Validate the surrender request and contract status.
+  entry_criterion: A request is received.
+  exit_criterion: The request is validated.
+  outcome: A validated request.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Compute Value
+  definition: Compute the surrender value.
+  entry_criterion: The request is validated.
+  exit_criterion: The value is computed and communicated.
+  outcome: A communicated surrender value.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: true
+- name: Pay and Close
+  definition: Pay the surrender and close the contract.
+  entry_criterion: The value is accepted.
+  exit_criterion: The payout is made and the contract closed.
+  outcome: A closed contract with paid surrender.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-financial-stewardship-c7xtfk
+metrics:
+- name: Surrender processing cycle time
+  definition: Elapsed days from request to payout.
+evidence:
+  sources:
+  - SRC-009
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-035) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp

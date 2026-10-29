@@ -1,6 +1,6 @@
 # Issue to Resolve
 
-Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmbay`, v1.2.0, active).
+Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmbay`, v1.3.0, active).
 
 ## 1. Identity
 
@@ -9,8 +9,9 @@ Admitted Value Stream record (`value-streams:value-stream-issue-to-resolve-crmba
 | Canonical ID | `value-streams:value-stream-issue-to-resolve-crmbay` |
 | Entity type | ValueStream (dea:ValueStream, layer L3, building block L3-value-delivery) |
 | Category | operational |
-| Version / status | 1.2.0 · active |
+| Version / status | 1.3.0 · active |
 | Metamodel pin | 1.0.0 |
+| Applicability | cross-industry · generic |
 | Record | [`value-streams-value-stream-issue-to-resolve-crmbay.yaml`](./value-streams-value-stream-issue-to-resolve-crmbay.yaml) — authoritative |
 
 ## 2. Definition
@@ -140,6 +141,7 @@ Confirm resolution with the customer and close the record.
 | admitted | 2026-10-27 | Emmanuel A. Otchere, admission CR-VS-03 |
 | active | 2026-10-27 | Emmanuel A. Otchere, CR-VS-07 enrichment (value stages, process links, scope, metrics) |
 | active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics) |
+| active | 2026-10-28 | Emmanuel A. Otchere, CR-VS-11 applicability backfill (cross-industry, generic) |
 
 ---
 

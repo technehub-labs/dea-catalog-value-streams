@@ -1,0 +1,104 @@
+# Controlled Industry / Organization-Type Vocabulary — Value Stream Applicability
+# CR-VS-11. Consumed by schemas/entity.schema.json (applicability.industries /
+# organization_types enums) and by the distinctness sweep method (CR-VS-12:
+# distinctness is scoped within an applicability class; same-name chains in
+# non-overlapping applicability sets are distinct by construction).
+version: 1.0.0
+status: active
+established_by: CR-VS-11
+
+industries:
+  - id: cross-industry
+    name: Cross-industry (enterprise-generic)
+    description: >-
+      Applicable to any enterprise regardless of industry; the enterprise-generic
+      chains (BIZBOK / APQC cross-industry PCF lineage, SRC-001/SRC-002).
+  - id: healthcare
+    name: Healthcare & care delivery
+    description: >-
+      Providers, diagnostic services, blood services, healthcare revenue cycle
+      (SRC-007: healthcare industry reference-model chains).
+  - id: financial-services
+    name: Banking & financial services
+    description: >-
+      Retail/commercial banking, lending, payments, capital markets, wealth
+      (SRC-008/SRC-012: BIAN / SWIFT public reference material).
+  - id: insurance
+    name: Insurance
+    description: >-
+      P&C, life, and reinsurance value chains (SRC-009: ACLO/ACORD-style
+      policy and claims lifecycle chains).
+  - id: telecommunications
+    name: Telecommunications
+    description: >-
+      Connectivity, subscription, and network operations chains
+      (SRC-010: TM Forum eTOM category-level structure).
+  - id: utilities-energy
+    name: Utilities & energy
+    description: >-
+      Metering, retail energy, grid operations, generation dispatch
+      (SRC-011: utility industry reference chains).
+  - id: manufacturing
+    name: Manufacturing & industrial
+    description: >-
+      Discrete and process manufacturing chains (SRC-016: ASCM/SCOR-style
+      plan-source-make-deliver chains at category level).
+  - id: retail-commerce
+    name: Retail & commerce
+    description: >-
+      Physical and digital retail, marketplaces, merchandising chains
+      (SRC-002 APQC retail categories; SRC-013 GS1-style retail chains).
+  - id: logistics-transportation
+    name: Logistics & transportation
+    description: >-
+      Freight, customs, warehousing, and fleet delivery chains
+      (SRC-016 SCOR / customs-practice observation).
+  - id: public-sector
+    name: Public sector & government
+    description: >-
+      Permits, grants, benefits, licensing, inspections, records
+      (SRC-003 stakeholder-value observation; SRC-014 public-sector
+      service chains).
+  - id: education
+    name: Education & academia
+    description: >-
+      Student lifecycle and academic operations chains
+      (SRC-015 education service-chain observation).
+  - id: hospitality-travel
+    name: Hospitality & travel
+    description: >-
+      Lodging, events, passenger travel and disruption handling
+      (SRC-015 hospitality/travel chains).
+  - id: construction-real-estate
+    name: Construction & real estate
+    description: >-
+      Tendering, project delivery, leasing, and property transaction chains
+      (SRC-017 construction industry practice).
+  - id: life-sciences
+    name: Life sciences & pharmaceuticals
+    description: >-
+      Discovery, clinical development, GMP production, pharmacovigilance
+      (SRC-018 ICH/GxP public structure).
+  - id: technology
+    name: Technology & SaaS
+    description: >-
+      Software products, subscriptions, developer platforms, AI/ML lifecycle
+      (SRC-005 SAFe/Lean guidance; SRC-019 technology product chains).
+
+organization_types:
+  - id: for-profit-enterprise
+    name: For-profit enterprise
+  - id: public-agency
+    name: Public agency / government body
+  - id: nonprofit-organization
+    name: Nonprofit organization
+  - id: regulated-entity
+    name: Regulated entity (finance, health, energy, telecom)
+  - id: internal-enterprise
+    name: Internal enterprise function (support/governance streams)
+
+# Method note (CR-VS-11 §3): the distinctness two-axis test (entry / exit /
+# served party) applies WITHIN an applicability class. Two candidates with
+# non-overlapping industry sets are distinct by construction and need no
+# pairwise sweep; candidates sharing an industry are swept as before.
+distinctness_scope: applicability_class

@@ -1,0 +1,90 @@
+id: value-streams:value-stream-customs-clearance-to-release-cfgc3b
+type: ValueStream
+name: Customs Clearance to Release
+definition: The customs stream from declaration filing through assessment and inspection to released cargo.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - logistics-transportation
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Customs-released cargo with duties settled.
+entry_criterion: A shipment requires customs clearance.
+exit_criterion: The cargo is released and duties settled.
+scope:
+  includes:
+  - Declaration filing
+  - Assessment and inspection
+  - Release and duty settlement
+  excludes:
+  - Freight movement (Ship to Consignee)
+  - Trade compliance governance
+value_stages:
+- name: File Declaration
+  definition: File the customs declaration.
+  entry_criterion: A shipment requires clearance.
+  exit_criterion: The declaration is filed.
+  outcome: A filed declaration.
+  capability_refs:
+  - capabilities:capability-regulation-management-gya4d8
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-8vqvkk
+  customer_visible: false
+- name: Assess and Inspect
+  definition: Assess and inspect if selected.
+  entry_criterion: The declaration is filed.
+  exit_criterion: Assessment completes.
+  outcome: A completed assessment.
+  capability_refs:
+  - capabilities:capability-regulation-management-gya4d8
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Release and Settle
+  definition: Release the cargo and settle duties.
+  entry_criterion: Assessment completes.
+  exit_criterion: The cargo is released.
+  outcome: Released cargo.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-operations-management-pm3w8k
+metrics:
+- name: Customs clearance cycle time
+  definition: Elapsed time from filing to release.
+  metric_ref: dea:metric-customs-clearance-cycle-time
+  applies_to_stage: Release and Settle
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-067) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (logistics-transportation); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-8vqvkk
+- processes:process-ge-operate-zwaes5
+- processes:process-fa-operate-g9zpnq
