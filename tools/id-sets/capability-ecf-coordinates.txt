@@ -1,0 +1,34 @@
+# Vendored coordinate map: capability id -> primary ECF (domain/stage).
+# Offline source for the ECF overlay (README matrix + classifications/ecf-overlay.yaml).
+# Derived from dea-catalog-business-capabilities records (ecf.primary).
+# Refresh when the sibling catalog admits new capabilities or changes primary coordinates.
+# Last refreshed: 2026-10-29
+capabilities:capability-asset-management-judtwr enablement-operations/operate
+capabilities:capability-change-management-hukdeq governance-existence/improve
+capabilities:capability-continuity-management-v3rn6u governance-existence/design
+capabilities:capability-customer-management-f3n8wb party-relationship/operate
+capabilities:capability-enterprise-governance-uas48u governance-existence/conceive
+capabilities:capability-enterprise-performance-management-5fxren strategy-direction/operate
+capabilities:capability-facility-management-tx73hb enablement-operations/operate
+capabilities:capability-financial-resource-management-cd3c7c finance-accounting/operate
+capabilities:capability-financial-stewardship-c7xtfk finance-accounting/conceive
+capabilities:capability-idea-management-86dckf product-value/conceive
+capabilities:capability-information-management-6vjgdh enablement-operations/operate
+capabilities:capability-insight-management-ms4n9d enablement-operations/operate
+capabilities:capability-legal-matter-management-zzbd2u governance-existence/conceive
+capabilities:capability-marketing-xmc539 party-relationship/conceive
+capabilities:capability-offering-management-6egkc8 product-value/conceive
+capabilities:capability-operations-management-pm3w8k enablement-operations/operate
+capabilities:capability-organizational-design-vanefq agency-organization/design
+capabilities:capability-partner-management-cp3vdb party-relationship/conceive
+capabilities:capability-regulation-management-gya4d8 governance-existence/activate
+capabilities:capability-risk-management-h9uxdw governance-existence/conceive
+capabilities:capability-security-management-wmzc7c governance-existence/design
+capabilities:capability-sourcing-and-procurement-esucp4 enablement-operations/operate
+capabilities:capability-strategic-planning-k3rz7a strategy-direction/conceive
+capabilities:capability-strategy-formulation-sf7q2x strategy-direction/conceive
+capabilities:capability-supplier-management-d6fuj4 party-relationship/operate
+capabilities:capability-technology-enablement-y6nkws enablement-operations/operate
+capabilities:capability-technology-management-maus5n strategy-direction/build
+capabilities:capability-workforce-management-9e8d8s agency-organization/build
+capabilities:capability-workforce-planning-b43rhm agency-organization/design

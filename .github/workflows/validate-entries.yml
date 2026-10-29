@@ -9,6 +9,11 @@ name: validate-entries
 # Convention: the empty-entities skip guard matches the catalog-wide
 # pattern (dea-catalog-business-capabilities/actors/processes/stakeholders).
 # The fixture step keeps the schema exercised while entities/ is empty.
+#
+# CR-VS-14 doc-sync gates: any record change must regenerate (a) the
+# per-entity README/research docs (generate_entity_docs.py --check) and
+# (b) the root README's derived statistics (check_readme_stats.py) in the
+# same PR, so docs can never silently drift from the catalog.
 
 on:
   push:
@@ -74,6 +79,18 @@ jobs:
         run: |
           pip install pyyaml
           python3 scripts/check_referential_integrity.py
+
+      - name: "Per-entity docs freshness (CR-VS-14) — READMEs + research must match the records"
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          pip install pyyaml
+          python3 scripts/generate_entity_docs.py --check
+
+      - name: "Root-README statistics freshness (CR-VS-14) — badges, industry table, ECF matrix"
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          pip install pyyaml
+          python3 scripts/check_readme_stats.py
 
       - name: Validate the schema fixture (schema stays exercised while entities/ is empty)
         run: |

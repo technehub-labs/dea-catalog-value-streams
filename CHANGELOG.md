@@ -5,6 +5,24 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Phase 9 — documentation-sync CI gates (CR-VS-14)
+
+- Per-entity docs freshness gate: `generate_entity_docs.py --check`
+  regenerates all 111 README/research sets in memory and fails CI on any
+  drift — record changes must ship their regenerated docs in the same PR.
+- Root-README statistics gate: `check_readme_stats.py` recomputes badges,
+  glance table, industry table, and the full 7x7 ECF matrix from the
+  records; fails on any mismatch.
+- Vendored authoritative ECF coordinate map
+  (`tools/id-sets/capability-ecf-coordinates.txt`, 29 entries from the
+  sibling catalog's `ecf.primary`): corrects four coordinates the PR #17
+  matrix had inferred from non-primary data — the authoritative matrix
+  differs materially (enablement-operations/operate: 186 streams, not
+  104). README matrix regenerated from the authoritative map.
+- Both gates wired into `validate-entries.yml` (same skip guard;
+  workflow header documents the sync contract).
+
+
 ### Phase 8 — per-stream folder enrichment (CR-VS-13)
 
 - All 111 value stream folders now carry three artifacts: the

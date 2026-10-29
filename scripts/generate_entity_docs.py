@@ -19,10 +19,13 @@ folder. All content derives from the record + the catalog-wide evidence
 register; nothing is hand-authored per stream.
 
 Usage:
-  python3 scripts/generate_entity_docs.py [--dry-run] [--only <slug>]
+  python3 scripts/generate_entity_docs.py [--check] [--dry-run] [--only <slug>]
 
-Run after any record change; CI does not gate this file yet (the
-regeneration is deterministic from records).
+`--check` (CI mode): regenerate in memory and exit 1 if any committed
+README.md / research/ file differs from what the records+register
+produce. This is the docs-freshness gate wired into validate-entries.yml
+(CR-VS-14): any record change must regenerate its entity docs in the
+same PR.
 """
 from __future__ import annotations
 
@@ -331,6 +334,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--only", help="Regenerate a single slug")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--check", action="store_true",
+                    help="Exit 1 if any committed entity doc differs from the generated output (CI freshness gate)")
     args = ap.parse_args(argv)
 
     register = load_evidence_register()
@@ -341,22 +346,40 @@ def main(argv: list[str] | None = None) -> int:
         print("no records found")
         return 1
 
+    drift = 0
     for f, rec in records:
         sub = f.parent
         readme = render(rec, register)
         rdir = sub / "research"
         emd = evidence_md(rec, register)
+        rreadme = RESEARCH_FOLDER_README.format(
+            name=rec["name"], vid=rec["id"],
+            file_name=rec["id"].replace(":", "-") + ".yaml")
         if args.dry_run:
             print(f"[dry-run] {sub.name}: README {len(readme)}B, research/evidence.md {len(emd)}B")
+            continue
+        if args.check:
+            for rel, want in (("README.md", readme),
+                              ("research/evidence.md", emd),
+                              ("research/README.md", rreadme)):
+                have_path = sub / rel
+                have = have_path.read_text(encoding="utf-8") if have_path.exists() else None
+                if have != want:
+                    print(f"  STALE {have_path.relative_to(REPO)}: differs from generated output")
+                    drift += 1
             continue
         (sub / "README.md").write_text(readme, encoding="utf-8")
         rdir.mkdir(exist_ok=True)
         (rdir / "evidence.md").write_text(emd, encoding="utf-8")
-        (rdir / "README.md").write_text(
-            RESEARCH_FOLDER_README.format(
-                name=rec["name"], vid=rec["id"],
-                file_name=rec["id"].replace(":", "-") + ".yaml"),
-            encoding="utf-8")
+        (rdir / "README.md").write_text(rreadme, encoding="utf-8")
+
+    if args.check:
+        if drift:
+            print(f"entity-docs freshness: FAILED ({drift} stale file(s)); "
+                  "run `python3 scripts/generate_entity_docs.py` and commit the result")
+            return 1
+        print(f"entity-docs freshness: OK ({len(records)} record docs current)")
+        return 0
     print(f"generated docs for {len(records)} record(s)")
     return 0
 

@@ -124,12 +124,12 @@ Each stream's stage capabilities carry ECF coordinates (7 Domains × 7 Stages, p
 | Domain \ Stage | conceive | design | build | activate | operate | improve | retire |
 |---|---|---:|---:|---:|---:|---:|---:|
 | **strategy-direction** | 3 | · | 16 | · | 20 | · | · |
-| **party-relationship** | 20 | · | · | · | **64** | · | · |
-| **product-value** | 15 | · | · | · | · | · | · |
+| **party-relationship** | 21 | · | · | · | 64 | · | · |
+| **product-value** | 17 | · | · | · | · | · | · |
 | **finance-accounting** | 21 | · | · | · | 31 | · | · |
 | **agency-organization** | · | 7 | 10 | · | · | · | · |
-| **enablement-operations** | · | · | · | · | **104** | · | · |
-| **governance-existence** | **67** | 9 | · | 14 | · | · | · |
+| **enablement-operations** | · | · | · | · | 186 | · | · |
+| **governance-existence** | 92 | 9 | · | 14 | · | · | · |
 
 *Each cell counts the streams whose stage capabilities have their primary ECF coordinate in that cell. Concentration in `enablement-operations/operate` and `party-relationship/operate` is expected: value streams are where enterprise work becomes externally visible value. The `governance-existence/conceive` cluster reflects the 25 governance streams (regulatory, quality, financial-crime, safety).*
 
