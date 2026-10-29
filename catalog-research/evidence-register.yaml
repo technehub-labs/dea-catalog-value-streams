@@ -9,7 +9,7 @@ compiled: '2026-10-27 (v0.1: register opened with the value-architecture source 
   2026-10-27 (v0.3 per CR-VS-05: SRC-006 extended with reverse-logistics, subscription-renewal, and asset-lifecycle
   chain observations; VSC-011/012/013 seeded at E3/high)"'
 compiled_by: Emmanuel A. Otchere
-status: active; candidate universe seeded; no admissions yet
+status: active; 111 admissions recorded (see admission-register.yaml)
 source_classes:
 - business-architecture
 - enterprise-architecture
