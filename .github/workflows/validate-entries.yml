@@ -80,13 +80,13 @@ jobs:
           pip install pyyaml
           python3 scripts/check_referential_integrity.py
 
-      - name: Per-entity docs freshness (CR-VS-14): READMEs + research must match the records
+      - name: "Per-entity docs freshness (CR-VS-14) — READMEs + research must match the records"
         if: steps.check.outputs.skip != 'true'
         run: |
           pip install pyyaml
           python3 scripts/generate_entity_docs.py --check
 
-      - name: Root-README statistics freshness (CR-VS-14): badges, industry table, ECF matrix
+      - name: "Root-README statistics freshness (CR-VS-14) — badges, industry table, ECF matrix"
         if: steps.check.outputs.skip != 'true'
         run: |
           pip install pyyaml
