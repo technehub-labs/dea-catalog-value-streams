@@ -1,0 +1,91 @@
+id: value-streams:value-stream-developer-onboard-to-first-commit-zeszzp
+type: ValueStream
+name: Developer Onboard to First Commit
+definition: The developer-experience stream from onboarding start through environment setup to a merged
+  first commit.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A productive new developer with a merged first contribution.
+entry_criterion: A developer joins.
+exit_criterion: The first contribution is merged.
+scope:
+  includes:
+  - Onboarding and access
+  - Environment setup
+  - First contribution
+  excludes:
+  - Hire to Retire (employment lifecycle)
+  - Platform provisioning
+value_stages:
+- name: Onboard and Grant Access
+  definition: Onboard the developer and grant access.
+  entry_criterion: A developer joins.
+  exit_criterion: Access is granted.
+  outcome: An equipped developer.
+  capability_refs:
+  - capabilities:capability-security-management-wmzc7c
+  - capabilities:capability-workforce-management-9e8d8s
+  process_refs:
+  - processes:process-ao-operate-87q5mk
+  customer_visible: false
+- name: Set Up Environment
+  definition: Set up the development environment.
+  entry_criterion: Access is granted.
+  exit_criterion: The environment is ready.
+  outcome: A ready environment.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  customer_visible: false
+- name: Merge First Contribution
+  definition: Support the first merged contribution.
+  entry_criterion: The environment is ready.
+  exit_criterion: The first commit is merged.
+  outcome: A productive developer.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-workforce-management-9e8d8s
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-operations-management-pm3w8k
+upstream_refs:
+- slug: value-stream-hire-to-retire
+  note: The employment lifecycle governs the joining itself.
+metrics:
+- name: Onboarding time to value
+  definition: Elapsed time from joining to first merged contribution.
+  metric_ref: dea:metric-onboarding-time-to-value
+  applies_to_stage: Merge First Contribution
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-113) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ao-operate-87q5mk
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-44jsrp

@@ -1,0 +1,88 @@
+id: value-streams:value-stream-number-port-to-activate-428e2j
+type: ValueStream
+name: Number Port to Activate
+definition: The porting stream from a porting request through validation and coordination to an activated
+  ported number.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - telecommunications
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A ported number active on the recipient network.
+entry_criterion: A customer requests to port a number.
+exit_criterion: The number is ported and activated.
+scope:
+  includes:
+  - Porting request and validation
+  - Donor coordination
+  - Cutover and activation
+  excludes:
+  - New-service provisioning (Order to Activation)
+  - Number allocation governance
+value_stages:
+- name: Validate Request
+  definition: Validate the porting request and eligibility.
+  entry_criterion: A port request is received.
+  exit_criterion: The request is validated.
+  outcome: A validated request.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Coordinate Cutover
+  definition: Coordinate the cutover window with the donor.
+  entry_criterion: The request is validated.
+  exit_criterion: The cutover is scheduled.
+  outcome: A scheduled cutover.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-partner-management-cp3vdb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: false
+- name: Cut Over and Activate
+  definition: Execute the cutover and activate the ported number.
+  entry_criterion: The cutover is scheduled.
+  exit_criterion: The number is active.
+  outcome: An active ported number.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-technology-enablement-y6nkws
+metrics:
+- name: Porting completion time
+  definition: Elapsed time from request to activation.
+evidence:
+  sources:
+  - SRC-010
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-041) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-2jnz85

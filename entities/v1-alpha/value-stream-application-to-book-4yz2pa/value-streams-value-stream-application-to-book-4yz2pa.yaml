@@ -1,0 +1,112 @@
+id: value-streams:value-stream-application-to-book-4yz2pa
+type: ValueStream
+name: Application to Book
+definition: The end-to-end lending stream from loan application through underwriting, approval decision,
+  and booking of the loan.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - financial-services
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An approved loan booked and available to the customer.
+entry_criterion: A loan application is submitted.
+exit_criterion: The loan is booked and available to the customer.
+scope:
+  includes:
+  - Application intake and completeness
+  - Credit assessment and underwriting
+  - Approval decision and disclosure
+  - Booking and funds availability
+  excludes:
+  - Deposit onboarding (Onboard to Activate)
+  - Collateral foreclosure
+value_stages:
+- name: Intake Application
+  definition: Receive and complete the loan application.
+  entry_criterion: An application is submitted.
+  exit_criterion: The application is complete and screened.
+  outcome: A complete, screened application.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Assess Credit
+  definition: Assess creditworthiness and structure the offer.
+  entry_criterion: The application is complete.
+  exit_criterion: The credit assessment is complete.
+  outcome: A completed credit assessment.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: false
+- name: Decide and Disclose
+  definition: Decide, price, and disclose terms to the customer.
+  entry_criterion: The assessment is complete.
+  exit_criterion: The decision is communicated and terms accepted.
+  outcome: An accepted loan offer.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-legal-matter-management-zzbd2u
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Book Loan
+  definition: Book the loan and make funds available.
+  entry_criterion: Terms are accepted.
+  exit_criterion: The loan is booked and funds available.
+  outcome: A booked, usable loan.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-information-management-6vjgdh
+downstream_refs:
+- slug: value-stream-initiate-to-settle
+  note: Loan drawdowns settle through payments.
+metrics:
+- name: Loan origination cycle time
+  definition: Elapsed time from application to booked loan.
+  metric_ref: dea:metric-loan-origination-cycle-time
+  applies_to_stage: Book Loan
+- name: Loan application approval rate
+  definition: Share of applications approved.
+  metric_ref: dea:metric-loan-application-approval-rate
+  applies_to_stage: Decide and Disclose
+evidence:
+  sources:
+  - SRC-008
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-021) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-ge-operate-tpenm6
+- processes:process-ge-build-mctdgc
+- processes:process-fa-operate-g9zpnq

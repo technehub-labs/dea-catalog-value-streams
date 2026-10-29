@@ -1,0 +1,96 @@
+id: value-streams:value-stream-feature-request-to-release-2fyemr
+type: ValueStream
+name: Feature Request to Release
+definition: The product stream from feature request through prioritization and build to released feature.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A released feature adopted by users.
+entry_criterion: A feature request is received.
+exit_criterion: The feature is released.
+scope:
+  includes:
+  - Intake and prioritization
+  - Specification and build
+  - Release and adoption
+  excludes:
+  - Roadmap planning (Plan to Forecast pattern)
+  - Delivery pipeline (Commit to Deploy)
+value_stages:
+- name: Intake and Prioritize
+  definition: Intake and prioritize the request.
+  entry_criterion: A request is received.
+  exit_criterion: The request is prioritized.
+  outcome: A prioritized request.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-idea-management-86dckf
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: true
+- name: Specify and Build
+  definition: Specify the feature and build it.
+  entry_criterion: The request is prioritized.
+  exit_criterion: The feature is built.
+  outcome: A built feature.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-pv-design-8v4k89
+  - processes:process-eo-build-j9z3q4
+  customer_visible: false
+- name: Release and Drive Adoption
+  definition: Release the feature and drive adoption.
+  entry_criterion: The feature is built.
+  exit_criterion: The feature is released and adopted.
+  outcome: An adopted feature.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  - processes:process-eo-operate-xud3hs
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-idea-management-86dckf
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
+upstream_refs:
+- slug: value-stream-commit-to-deploy
+  note: Built features deploy through the pipeline.
+metrics:
+- name: Feature adoption time
+  definition: Elapsed time from release to target adoption.
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-107) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-operate-ucxpz4
+- processes:process-pv-design-8v4k89
+- processes:process-eo-build-j9z3q4
+- processes:process-pr-build-nygvw7
+- processes:process-eo-operate-xud3hs

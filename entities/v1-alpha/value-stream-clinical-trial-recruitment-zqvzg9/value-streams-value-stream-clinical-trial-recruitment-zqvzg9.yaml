@@ -1,0 +1,108 @@
+id: value-streams:value-stream-clinical-trial-recruitment-zqvzg9
+type: ValueStream
+name: Clinical Trial Recruitment
+definition: The end-to-end stream from trial-site preparation through patient identification, consent,
+  and enrollment into a clinical trial.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - life-sciences
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A fully enrolled clinical trial cohort at the site.
+entry_criterion: A trial protocol is approved and the site is activated.
+exit_criterion: The site reaches its enrollment target.
+scope:
+  includes:
+  - Site activation
+  - Patient identification and screening
+  - Informed consent
+  - Enrollment and baseline
+  excludes:
+  - Trial conduct and data collection (Trial to Readout)
+  - Care delivery (Admission to Discharge)
+value_stages:
+- name: Activate Site
+  definition: Prepare and activate the trial site.
+  entry_criterion: The protocol is approved.
+  exit_criterion: The site is activated and ready.
+  outcome: An activated trial site.
+  capability_refs:
+  - capabilities:capability-partner-management-cp3vdb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  customer_visible: false
+- name: Identify and Screen
+  definition: Identify and screen candidate patients.
+  entry_criterion: The site is activated.
+  exit_criterion: Eligible candidates are identified.
+  outcome: A screened eligible cohort.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: false
+- name: Consent
+  definition: Obtain informed consent.
+  entry_criterion: Eligible candidates are identified.
+  exit_criterion: Consent is documented.
+  outcome: Informed, documented consent.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Enroll
+  definition: Enroll consented patients and complete baseline.
+  entry_criterion: Consent is documented.
+  exit_criterion: The enrollment target is met.
+  outcome: A fully enrolled cohort.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-partner-management-cp3vdb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-legal-matter-management-zzbd2u
+upstream_refs:
+- slug: value-stream-trial-to-readout
+  note: Enrollment completes the trial intake.
+metrics:
+- name: Clinical trial enrollment cycle time
+  definition: Elapsed days from site activation to enrollment target.
+  metric_ref: dea:metric-clinical-trial-enrollment-cycle-time
+  applies_to_stage: Enroll
+evidence:
+  sources:
+  - SRC-018
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-019) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (life-sciences, healthcare); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-build-j9z3q4
+- processes:process-pr-operate-bbe384
+- processes:process-ge-build-mctdgc
+- processes:process-eo-operate-2jnz85

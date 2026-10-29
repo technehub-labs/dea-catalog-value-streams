@@ -1,10 +1,10 @@
 catalog:
   abbreviation: VS
   counts:
-    candidates: 11
+    candidates: 111
     canonical: 0
-    entities: 11
-    open_change_requests: 10
+    entities: 111
+    open_change_requests: 12
     research_files: 0
     retired: 0
   cross_cutting:
@@ -20,124 +20,1224 @@ catalog:
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-acquire-to-retire-g5x89g
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/value-streams-value-stream-acquire-to-retire-g5x89g.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-actuarial-data-to-price-t5vjcj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-actuarial-data-to-price-t5vjcj/value-streams-value-stream-actuarial-data-to-price-t5vjcj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-admission-to-discharge-xeuu5u
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-admission-to-discharge-xeuu5u/value-streams-value-stream-admission-to-discharge-xeuu5u.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-admit-to-graduate-v9jcg3
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-admit-to-graduate-v9jcg3/value-streams-value-stream-admit-to-graduate-v9jcg3.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-adverse-event-to-signal-8ga6be
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-adverse-event-to-signal-8ga6be/value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-alert-to-report-a2qttg
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-alert-to-report-a2qttg/value-streams-value-stream-alert-to-report-a2qttg.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-alumni-engage-to-give-r5s8qw
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-alumni-engage-to-give-r5s8qw/value-streams-value-stream-alumni-engage-to-give-r5s8qw.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-applicant-outreach-to-enrollment-vyn4n7/value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-application-to-book-4yz2pa
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-application-to-book-4yz2pa/value-streams-value-stream-application-to-book-4yz2pa.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-apply-to-connect-y64n29
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-apply-to-connect-y64n29/value-streams-value-stream-apply-to-connect-y64n29.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-apply-to-decide-qr36mf
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-apply-to-decide-qr36mf/value-streams-value-stream-apply-to-decide-qr36mf.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-assortment-to-shelf-ex2sqq
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-assortment-to-shelf-ex2sqq/value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-batch-to-release-mzc7cf
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-batch-to-release-mzc7cf/value-streams-value-stream-batch-to-release-mzc7cf.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-blood-donation-to-transfusion-m4h36n
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-blood-donation-to-transfusion-m4h36n/value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-book-to-stay-hcrx2e
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-book-to-stay-hcrx2e/value-streams-value-stream-book-to-stay-hcrx2e.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-build-to-handover-9fyyzn
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-build-to-handover-9fyyzn/value-streams-value-stream-build-to-handover-9fyyzn.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-card-issue-to-activate-q2rutu
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-card-issue-to-activate-q2rutu/value-streams-value-stream-card-issue-to-activate-q2rutu.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-checkout-to-fulfillment-ngbewj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-checkout-to-fulfillment-ngbewj/value-streams-value-stream-checkout-to-fulfillment-ngbewj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-churn-risk-to-save-pdce5j
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-churn-risk-to-save-pdce5j/value-streams-value-stream-churn-risk-to-save-pdce5j.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-clinical-trial-recruitment-zqvzg9
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-clinical-trial-recruitment-zqvzg9/value-streams-value-stream-clinical-trial-recruitment-zqvzg9.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-cold-chain-to-verified-3srmk2
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-cold-chain-to-verified-3srmk2/value-streams-value-stream-cold-chain-to-verified-3srmk2.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-commit-to-deploy-65cr4z
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-commit-to-deploy-65cr4z/value-streams-value-stream-commit-to-deploy-65cr4z.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-concept-to-launch-nhvatv
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-concept-to-launch-nhvatv/value-streams-value-stream-concept-to-launch-nhvatv.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-contract-to-renewal-5x3r4x
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/value-streams-value-stream-contract-to-renewal-5x3r4x.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-course-design-to-delivery-pvwqv5
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-course-design-to-delivery-pvwqv5/value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-customer-remediation-to-current-krrxzb
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-customer-remediation-to-current-krrxzb/value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-customs-clearance-to-release-cfgc3b
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-customs-clearance-to-release-cfgc3b/value-streams-value-stream-customs-clearance-to-release-cfgc3b.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-dangerous-goods-accept-to-deliver-txbc4c
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-dangerous-goods-accept-to-deliver-txbc4c/value-streams-value-stream-dangerous-goods-accept-to-deliver-txbc4c.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-data-source-to-product-kdkmmj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-data-source-to-product-kdkmmj/value-streams-value-stream-data-source-to-product-kdkmmj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-defect-report-to-rectification-vce852
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-defect-report-to-rectification-vce852/value-streams-value-stream-defect-report-to-rectification-vce852.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-deposit-to-maturity-gsbm8e
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-deposit-to-maturity-gsbm8e/value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-developer-onboard-to-first-commit-zeszzp
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-developer-onboard-to-first-commit-zeszzp/value-streams-value-stream-developer-onboard-to-first-commit-zeszzp.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-discharge-to-bill-3k7wbb
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-discharge-to-bill-3k7wbb/value-streams-value-stream-discharge-to-bill-3k7wbb.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-discovery-to-candidate-8d6b4u
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-discovery-to-candidate-8d6b4u/value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-disruption-to-reaccommodation-tuuywj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-disruption-to-reaccommodation-tuuywj/value-streams-value-stream-disruption-to-reaccommodation-tuuywj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-drug-safety-label-to-update-nkcs8f
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-drug-safety-label-to-update-nkcs8f/value-streams-value-stream-drug-safety-label-to-update-nkcs8f.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-emergency-alert-to-response-jtz6qn
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-emergency-alert-to-response-jtz6qn/value-streams-value-stream-emergency-alert-to-response-jtz6qn.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-engineer-to-order-htpc6d
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-engineer-to-order-htpc6d/value-streams-value-stream-engineer-to-order-htpc6d.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-equipment-calibration-to-certified-qp33gf
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-equipment-calibration-to-certified-qp33gf/value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-event-book-to-execute-krrav7
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-event-book-to-execute-krrav7/value-streams-value-stream-event-book-to-execute-krrav7.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-exam-set-to-grade-cyfqd5
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-exam-set-to-grade-cyfqd5/value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-experiment-to-decision-pv8swh
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-experiment-to-decision-pv8swh/value-streams-value-stream-experiment-to-decision-pv8swh.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-feature-request-to-release-2fyemr
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-feature-request-to-release-2fyemr/value-streams-value-stream-feature-request-to-release-2fyemr.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-field-install-to-verify-tmyca3
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-field-install-to-verify-tmyca3/value-streams-value-stream-field-install-to-verify-tmyca3.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-fleet-maintain-to-dispatch-urh4zb/value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-grant-award-to-closeout-pvhec7
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-grant-award-to-closeout-pvhec7/value-streams-value-stream-grant-award-to-closeout-pvhec7.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-grid-maintenance-to-release-d23hxq
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-grid-maintenance-to-release-d23hxq/value-streams-value-stream-grid-maintenance-to-release-d23hxq.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-guest-feedback-to-standard-hypdnq
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-guest-feedback-to-standard-hypdnq/value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-hire-to-retire-n6szcc
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-hire-to-retire-n6szcc/value-streams-value-stream-hire-to-retire-n6szcc.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-housekeeping-turn-to-ready-utwefb
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-housekeeping-turn-to-ready-utwefb/value-streams-value-stream-housekeeping-turn-to-ready-utwefb.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-incident-to-restore-7u3yyz
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-incident-to-restore-7u3yyz/value-streams-value-stream-incident-to-restore-7u3yyz.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-initiate-to-settle-ken6np
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-initiate-to-settle-ken6np/value-streams-value-stream-initiate-to-settle-ken6np.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-inspect-to-disposition-uu3grx
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-inspect-to-disposition-uu3grx/value-streams-value-stream-inspect-to-disposition-uu3grx.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-inspection-to-certificate-tvqqu7
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-inspection-to-certificate-tvqqu7/value-streams-value-stream-inspection-to-certificate-tvqqu7.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-intake-to-resolution-3ydzzy
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-intake-to-resolution-3ydzzy/value-streams-value-stream-intake-to-resolution-3ydzzy.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-issue-to-resolve-crmbay
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-issue-to-resolve-crmbay/value-streams-value-stream-issue-to-resolve-crmbay.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-last-mile-route-to-proof-967k87
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-last-mile-route-to-proof-967k87/value-streams-value-stream-last-mile-route-to-proof-967k87.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-lease-sign-to-renewal-9mr2yp
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-lease-sign-to-renewal-9mr2yp/value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-list-to-close-2dye3r
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-list-to-close-2dye3r/value-streams-value-stream-list-to-close-2dye3r.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-loss-to-claim-settlement-bkjege
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-loss-to-claim-settlement-bkjege/value-streams-value-stream-loss-to-claim-settlement-bkjege.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-loyalty-enroll-to-reward-txebyw
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-loyalty-enroll-to-reward-txebyw/value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-make-to-stock-release-xuv4fq
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-make-to-stock-release-xuv4fq/value-streams-value-stream-make-to-stock-release-xuv4fq.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-marketplace-seller-to-first-sale-avn64e
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-marketplace-seller-to-first-sale-avn64e/value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-merchant-acquire-to-transact-ffxrpg
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-merchant-acquire-to-transact-ffxrpg/value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-meter-to-bill-6bhvk9
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-meter-to-bill-6bhvk9/value-streams-value-stream-meter-to-bill-6bhvk9.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-model-to-deployment-44fap5
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-model-to-deployment-44fap5/value-streams-value-stream-model-to-deployment-44fap5.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-network-build-to-service-u228b3
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-network-build-to-service-u228b3/value-streams-value-stream-network-build-to-service-u228b3.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-number-port-to-activate-428e2j
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-number-port-to-activate-428e2j/value-streams-value-stream-number-port-to-activate-428e2j.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-onboard-to-activate-ft6jk9
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-onboard-to-activate-ft6jk9/value-streams-value-stream-onboard-to-activate-ft6jk9.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-order-to-activation-uxqth5
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-order-to-activation-uxqth5/value-streams-value-stream-order-to-activation-uxqth5.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-order-to-cash-sc8gbu
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-order-to-cash-sc8gbu/value-streams-value-stream-order-to-cash-sc8gbu.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-outage-claim-to-credit-x479f6
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-outage-claim-to-credit-x479f6/value-streams-value-stream-outage-claim-to-credit-x479f6.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-outage-to-restore-ff6xme
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-outage-to-restore-ff6xme/value-streams-value-stream-outage-to-restore-ff6xme.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-patient-access-to-admission-szj9jm
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-patient-access-to-admission-szj9jm/value-streams-value-stream-patient-access-to-admission-szj9jm.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-deliver-smmwpx
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/value-streams-value-stream-plan-to-deliver-smmwpx.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-plan-to-forecast-89vb4q
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/value-streams-value-stream-plan-to-forecast-89vb4q.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-policy-draft-to-enactment-nhqx6e
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-policy-draft-to-enactment-nhqx6e/value-streams-value-stream-policy-draft-to-enactment-nhqx6e.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-policy-to-endorsement-3jwbzy
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-policy-to-endorsement-3jwbzy/value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-private-label-design-to-launch-mh6xqr
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-private-label-design-to-launch-mh6xqr/value-streams-value-stream-private-label-design-to-launch-mh6xqr.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-procure-to-pay-utma5c
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-procure-to-pay-utma5c/value-streams-value-stream-procure-to-pay-utma5c.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-promotion-plan-to-execution-j73nkj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-promotion-plan-to-execution-j73nkj/value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-prototype-to-production-release-ts9b3b
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-prototype-to-production-release-ts9b3b/value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-quote-to-bind-szgnjc
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-quote-to-bind-szgnjc/value-streams-value-stream-quote-to-bind-szgnjc.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-recall-to-remediation-kq3mwc
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-recall-to-remediation-kq3mwc/value-streams-value-stream-recall-to-remediation-kq3mwc.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-record-to-report-zw9z2r
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-record-to-report-zw9z2r/value-streams-value-stream-record-to-report-zw9z2r.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-referral-to-treatment-fjkv2g
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-referral-to-treatment-fjkv2g/value-streams-value-stream-referral-to-treatment-fjkv2g.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-regulatory-dossier-to-approval-mgbk2u
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-regulatory-dossier-to-approval-mgbk2u/value-streams-value-stream-regulatory-dossier-to-approval-mgbk2u.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-reinsurance-placement-to-recovery-6pkp7v/value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-renewal-risk-to-decision-rcjb6b
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-renewal-risk-to-decision-rcjb6b/value-streams-value-stream-renewal-risk-to-decision-rcjb6b.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-request-to-disclose-78w8jb
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-request-to-disclose-78w8jb/value-streams-value-stream-request-to-disclose-78w8jb.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-research-grant-to-publication-qwc4f8
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-research-grant-to-publication-qwc4f8/value-streams-value-stream-research-grant-to-publication-qwc4f8.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   - candidate_count: 0
     canonical_count: 1
     id: value-streams:value-stream-return-to-credit-qan2dn
-    last_modified: '2026-10-28'
+    last_modified: '2026-10-29'
     lifecycle_status: active
     path: entities/v1-alpha/value-stream-return-to-credit-qan2dn/value-streams-value-stream-return-to-credit-qan2dn.yaml
     research_count: 0
     retired_count: 0
     state: candidate
     type: ValueStream
-    version: 1.2.0
+    version: 1.3.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-safety-incident-to-closure-6v5uxt
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-safety-incident-to-closure-6v5uxt/value-streams-value-stream-safety-incident-to-closure-6v5uxt.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-sample-to-result-4wf8jc
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-sample-to-result-4wf8jc/value-streams-value-stream-sample-to-result-4wf8jc.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-security-alert-to-remediation-j6wn3b
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-security-alert-to-remediation-j6wn3b/value-streams-value-stream-security-alert-to-remediation-j6wn3b.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-ship-to-consignee-nrx42x
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-ship-to-consignee-nrx42x/value-streams-value-stream-ship-to-consignee-nrx42x.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-site-survey-to-permit-umhn4p
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-site-survey-to-permit-umhn4p/value-streams-value-stream-site-survey-to-permit-umhn4p.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-solar-enrollment-to-generation-8hhbuq
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-solar-enrollment-to-generation-8hhbuq/value-streams-value-stream-solar-enrollment-to-generation-8hhbuq.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-store-opening-to-trading-58wbw8
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-store-opening-to-trading-58wbw8/value-streams-value-stream-store-opening-to-trading-58wbw8.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-supplier-quality-to-approval-t3w9f6
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-supplier-quality-to-approval-t3w9f6/value-streams-value-stream-supplier-quality-to-approval-t3w9f6.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-supplier-reconciliation-y49qc3
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-supplier-reconciliation-y49qc3/value-streams-value-stream-supplier-reconciliation-y49qc3.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-surrender-to-payout-vf67kv
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-surrender-to-payout-vf67kv/value-streams-value-stream-surrender-to-payout-vf67kv.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-sustainability-data-to-disclosure-4mmwks
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-sustainability-data-to-disclosure-4mmwks/value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-tender-to-award-gjmy4d
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-tender-to-award-gjmy4d/value-streams-value-stream-tender-to-award-gjmy4d.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-trial-to-readout-ztkya5
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-trial-to-readout-ztkya5/value-streams-value-stream-trial-to-readout-ztkya5.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-trouble-to-restore-gtrgd8
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-trouble-to-restore-gtrgd8/value-streams-value-stream-trouble-to-restore-gtrgd8.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-usage-to-bill-tyf4zn
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-usage-to-bill-tyf4zn/value-streams-value-stream-usage-to-bill-tyf4zn.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-usage-to-renewal-4hrrmg
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-usage-to-renewal-4hrrmg/value-streams-value-stream-usage-to-renewal-4hrrmg.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-vital-record-to-archive-pb9btj
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-vital-record-to-archive-pb9btj/value-streams-value-stream-vital-record-to-archive-pb9btj.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-vulnerability-to-patch-23tu27
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-vulnerability-to-patch-23tu27/value-streams-value-stream-vulnerability-to-patch-23tu27.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
+  - candidate_count: 0
+    canonical_count: 1
+    id: value-streams:value-stream-warehouse-inbound-to-bin-b67zvk
+    last_modified: '2026-10-29'
+    lifecycle_status: active
+    path: entities/v1-alpha/value-stream-warehouse-inbound-to-bin-b67zvk/value-streams-value-stream-warehouse-inbound-to-bin-b67zvk.yaml
+    research_count: 0
+    retired_count: 0
+    state: candidate
+    type: ValueStream
+    version: 1.0.0
   id: dea:catalog-value-streams
   metamodel_version: 1.0.0
   name: Value Stream
@@ -147,35 +1247,335 @@ catalog:
   - entity_id: value-streams:value-stream-acquire-to-retire-g5x89g
     files: []
     path: entities/v1-alpha/value-stream-acquire-to-retire-g5x89g/research/
+  - entity_id: value-streams:value-stream-actuarial-data-to-price-t5vjcj
+    files: []
+    path: entities/v1-alpha/value-stream-actuarial-data-to-price-t5vjcj/research/
+  - entity_id: value-streams:value-stream-admission-to-discharge-xeuu5u
+    files: []
+    path: entities/v1-alpha/value-stream-admission-to-discharge-xeuu5u/research/
+  - entity_id: value-streams:value-stream-admit-to-graduate-v9jcg3
+    files: []
+    path: entities/v1-alpha/value-stream-admit-to-graduate-v9jcg3/research/
+  - entity_id: value-streams:value-stream-adverse-event-to-signal-8ga6be
+    files: []
+    path: entities/v1-alpha/value-stream-adverse-event-to-signal-8ga6be/research/
+  - entity_id: value-streams:value-stream-alert-to-report-a2qttg
+    files: []
+    path: entities/v1-alpha/value-stream-alert-to-report-a2qttg/research/
+  - entity_id: value-streams:value-stream-alumni-engage-to-give-r5s8qw
+    files: []
+    path: entities/v1-alpha/value-stream-alumni-engage-to-give-r5s8qw/research/
+  - entity_id: value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7
+    files: []
+    path: entities/v1-alpha/value-stream-applicant-outreach-to-enrollment-vyn4n7/research/
+  - entity_id: value-streams:value-stream-application-to-book-4yz2pa
+    files: []
+    path: entities/v1-alpha/value-stream-application-to-book-4yz2pa/research/
+  - entity_id: value-streams:value-stream-apply-to-connect-y64n29
+    files: []
+    path: entities/v1-alpha/value-stream-apply-to-connect-y64n29/research/
+  - entity_id: value-streams:value-stream-apply-to-decide-qr36mf
+    files: []
+    path: entities/v1-alpha/value-stream-apply-to-decide-qr36mf/research/
+  - entity_id: value-streams:value-stream-assortment-to-shelf-ex2sqq
+    files: []
+    path: entities/v1-alpha/value-stream-assortment-to-shelf-ex2sqq/research/
+  - entity_id: value-streams:value-stream-batch-to-release-mzc7cf
+    files: []
+    path: entities/v1-alpha/value-stream-batch-to-release-mzc7cf/research/
+  - entity_id: value-streams:value-stream-blood-donation-to-transfusion-m4h36n
+    files: []
+    path: entities/v1-alpha/value-stream-blood-donation-to-transfusion-m4h36n/research/
+  - entity_id: value-streams:value-stream-book-to-stay-hcrx2e
+    files: []
+    path: entities/v1-alpha/value-stream-book-to-stay-hcrx2e/research/
+  - entity_id: value-streams:value-stream-build-to-handover-9fyyzn
+    files: []
+    path: entities/v1-alpha/value-stream-build-to-handover-9fyyzn/research/
+  - entity_id: value-streams:value-stream-card-issue-to-activate-q2rutu
+    files: []
+    path: entities/v1-alpha/value-stream-card-issue-to-activate-q2rutu/research/
+  - entity_id: value-streams:value-stream-checkout-to-fulfillment-ngbewj
+    files: []
+    path: entities/v1-alpha/value-stream-checkout-to-fulfillment-ngbewj/research/
+  - entity_id: value-streams:value-stream-churn-risk-to-save-pdce5j
+    files: []
+    path: entities/v1-alpha/value-stream-churn-risk-to-save-pdce5j/research/
+  - entity_id: value-streams:value-stream-clinical-trial-recruitment-zqvzg9
+    files: []
+    path: entities/v1-alpha/value-stream-clinical-trial-recruitment-zqvzg9/research/
+  - entity_id: value-streams:value-stream-cold-chain-to-verified-3srmk2
+    files: []
+    path: entities/v1-alpha/value-stream-cold-chain-to-verified-3srmk2/research/
+  - entity_id: value-streams:value-stream-commit-to-deploy-65cr4z
+    files: []
+    path: entities/v1-alpha/value-stream-commit-to-deploy-65cr4z/research/
   - entity_id: value-streams:value-stream-concept-to-launch-nhvatv
     files: []
     path: entities/v1-alpha/value-stream-concept-to-launch-nhvatv/research/
   - entity_id: value-streams:value-stream-contract-to-renewal-5x3r4x
     files: []
     path: entities/v1-alpha/value-stream-contract-to-renewal-5x3r4x/research/
+  - entity_id: value-streams:value-stream-course-design-to-delivery-pvwqv5
+    files: []
+    path: entities/v1-alpha/value-stream-course-design-to-delivery-pvwqv5/research/
+  - entity_id: value-streams:value-stream-customer-remediation-to-current-krrxzb
+    files: []
+    path: entities/v1-alpha/value-stream-customer-remediation-to-current-krrxzb/research/
+  - entity_id: value-streams:value-stream-customs-clearance-to-release-cfgc3b
+    files: []
+    path: entities/v1-alpha/value-stream-customs-clearance-to-release-cfgc3b/research/
+  - entity_id: value-streams:value-stream-dangerous-goods-accept-to-deliver-txbc4c
+    files: []
+    path: entities/v1-alpha/value-stream-dangerous-goods-accept-to-deliver-txbc4c/research/
+  - entity_id: value-streams:value-stream-data-source-to-product-kdkmmj
+    files: []
+    path: entities/v1-alpha/value-stream-data-source-to-product-kdkmmj/research/
+  - entity_id: value-streams:value-stream-defect-report-to-rectification-vce852
+    files: []
+    path: entities/v1-alpha/value-stream-defect-report-to-rectification-vce852/research/
+  - entity_id: value-streams:value-stream-deposit-to-maturity-gsbm8e
+    files: []
+    path: entities/v1-alpha/value-stream-deposit-to-maturity-gsbm8e/research/
+  - entity_id: value-streams:value-stream-developer-onboard-to-first-commit-zeszzp
+    files: []
+    path: entities/v1-alpha/value-stream-developer-onboard-to-first-commit-zeszzp/research/
+  - entity_id: value-streams:value-stream-discharge-to-bill-3k7wbb
+    files: []
+    path: entities/v1-alpha/value-stream-discharge-to-bill-3k7wbb/research/
+  - entity_id: value-streams:value-stream-discovery-to-candidate-8d6b4u
+    files: []
+    path: entities/v1-alpha/value-stream-discovery-to-candidate-8d6b4u/research/
+  - entity_id: value-streams:value-stream-disruption-to-reaccommodation-tuuywj
+    files: []
+    path: entities/v1-alpha/value-stream-disruption-to-reaccommodation-tuuywj/research/
+  - entity_id: value-streams:value-stream-drug-safety-label-to-update-nkcs8f
+    files: []
+    path: entities/v1-alpha/value-stream-drug-safety-label-to-update-nkcs8f/research/
+  - entity_id: value-streams:value-stream-emergency-alert-to-response-jtz6qn
+    files: []
+    path: entities/v1-alpha/value-stream-emergency-alert-to-response-jtz6qn/research/
+  - entity_id: value-streams:value-stream-engineer-to-order-htpc6d
+    files: []
+    path: entities/v1-alpha/value-stream-engineer-to-order-htpc6d/research/
+  - entity_id: value-streams:value-stream-equipment-calibration-to-certified-qp33gf
+    files: []
+    path: entities/v1-alpha/value-stream-equipment-calibration-to-certified-qp33gf/research/
+  - entity_id: value-streams:value-stream-event-book-to-execute-krrav7
+    files: []
+    path: entities/v1-alpha/value-stream-event-book-to-execute-krrav7/research/
+  - entity_id: value-streams:value-stream-exam-set-to-grade-cyfqd5
+    files: []
+    path: entities/v1-alpha/value-stream-exam-set-to-grade-cyfqd5/research/
+  - entity_id: value-streams:value-stream-experiment-to-decision-pv8swh
+    files: []
+    path: entities/v1-alpha/value-stream-experiment-to-decision-pv8swh/research/
+  - entity_id: value-streams:value-stream-feature-request-to-release-2fyemr
+    files: []
+    path: entities/v1-alpha/value-stream-feature-request-to-release-2fyemr/research/
+  - entity_id: value-streams:value-stream-field-install-to-verify-tmyca3
+    files: []
+    path: entities/v1-alpha/value-stream-field-install-to-verify-tmyca3/research/
+  - entity_id: value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb
+    files: []
+    path: entities/v1-alpha/value-stream-fleet-maintain-to-dispatch-urh4zb/research/
+  - entity_id: value-streams:value-stream-grant-award-to-closeout-pvhec7
+    files: []
+    path: entities/v1-alpha/value-stream-grant-award-to-closeout-pvhec7/research/
+  - entity_id: value-streams:value-stream-grid-maintenance-to-release-d23hxq
+    files: []
+    path: entities/v1-alpha/value-stream-grid-maintenance-to-release-d23hxq/research/
+  - entity_id: value-streams:value-stream-guest-feedback-to-standard-hypdnq
+    files: []
+    path: entities/v1-alpha/value-stream-guest-feedback-to-standard-hypdnq/research/
   - entity_id: value-streams:value-stream-hire-to-retire-n6szcc
     files: []
     path: entities/v1-alpha/value-stream-hire-to-retire-n6szcc/research/
+  - entity_id: value-streams:value-stream-housekeeping-turn-to-ready-utwefb
+    files: []
+    path: entities/v1-alpha/value-stream-housekeeping-turn-to-ready-utwefb/research/
+  - entity_id: value-streams:value-stream-incident-to-restore-7u3yyz
+    files: []
+    path: entities/v1-alpha/value-stream-incident-to-restore-7u3yyz/research/
+  - entity_id: value-streams:value-stream-initiate-to-settle-ken6np
+    files: []
+    path: entities/v1-alpha/value-stream-initiate-to-settle-ken6np/research/
+  - entity_id: value-streams:value-stream-inspect-to-disposition-uu3grx
+    files: []
+    path: entities/v1-alpha/value-stream-inspect-to-disposition-uu3grx/research/
+  - entity_id: value-streams:value-stream-inspection-to-certificate-tvqqu7
+    files: []
+    path: entities/v1-alpha/value-stream-inspection-to-certificate-tvqqu7/research/
+  - entity_id: value-streams:value-stream-intake-to-resolution-3ydzzy
+    files: []
+    path: entities/v1-alpha/value-stream-intake-to-resolution-3ydzzy/research/
   - entity_id: value-streams:value-stream-issue-to-resolve-crmbay
     files: []
     path: entities/v1-alpha/value-stream-issue-to-resolve-crmbay/research/
+  - entity_id: value-streams:value-stream-last-mile-route-to-proof-967k87
+    files: []
+    path: entities/v1-alpha/value-stream-last-mile-route-to-proof-967k87/research/
+  - entity_id: value-streams:value-stream-lease-sign-to-renewal-9mr2yp
+    files: []
+    path: entities/v1-alpha/value-stream-lease-sign-to-renewal-9mr2yp/research/
+  - entity_id: value-streams:value-stream-list-to-close-2dye3r
+    files: []
+    path: entities/v1-alpha/value-stream-list-to-close-2dye3r/research/
+  - entity_id: value-streams:value-stream-loss-to-claim-settlement-bkjege
+    files: []
+    path: entities/v1-alpha/value-stream-loss-to-claim-settlement-bkjege/research/
+  - entity_id: value-streams:value-stream-loyalty-enroll-to-reward-txebyw
+    files: []
+    path: entities/v1-alpha/value-stream-loyalty-enroll-to-reward-txebyw/research/
+  - entity_id: value-streams:value-stream-make-to-stock-release-xuv4fq
+    files: []
+    path: entities/v1-alpha/value-stream-make-to-stock-release-xuv4fq/research/
+  - entity_id: value-streams:value-stream-marketplace-seller-to-first-sale-avn64e
+    files: []
+    path: entities/v1-alpha/value-stream-marketplace-seller-to-first-sale-avn64e/research/
+  - entity_id: value-streams:value-stream-merchant-acquire-to-transact-ffxrpg
+    files: []
+    path: entities/v1-alpha/value-stream-merchant-acquire-to-transact-ffxrpg/research/
+  - entity_id: value-streams:value-stream-meter-to-bill-6bhvk9
+    files: []
+    path: entities/v1-alpha/value-stream-meter-to-bill-6bhvk9/research/
+  - entity_id: value-streams:value-stream-model-to-deployment-44fap5
+    files: []
+    path: entities/v1-alpha/value-stream-model-to-deployment-44fap5/research/
+  - entity_id: value-streams:value-stream-network-build-to-service-u228b3
+    files: []
+    path: entities/v1-alpha/value-stream-network-build-to-service-u228b3/research/
+  - entity_id: value-streams:value-stream-number-port-to-activate-428e2j
+    files: []
+    path: entities/v1-alpha/value-stream-number-port-to-activate-428e2j/research/
+  - entity_id: value-streams:value-stream-onboard-to-activate-ft6jk9
+    files: []
+    path: entities/v1-alpha/value-stream-onboard-to-activate-ft6jk9/research/
+  - entity_id: value-streams:value-stream-order-to-activation-uxqth5
+    files: []
+    path: entities/v1-alpha/value-stream-order-to-activation-uxqth5/research/
   - entity_id: value-streams:value-stream-order-to-cash-sc8gbu
     files: []
     path: entities/v1-alpha/value-stream-order-to-cash-sc8gbu/research/
+  - entity_id: value-streams:value-stream-outage-claim-to-credit-x479f6
+    files: []
+    path: entities/v1-alpha/value-stream-outage-claim-to-credit-x479f6/research/
+  - entity_id: value-streams:value-stream-outage-to-restore-ff6xme
+    files: []
+    path: entities/v1-alpha/value-stream-outage-to-restore-ff6xme/research/
+  - entity_id: value-streams:value-stream-patient-access-to-admission-szj9jm
+    files: []
+    path: entities/v1-alpha/value-stream-patient-access-to-admission-szj9jm/research/
   - entity_id: value-streams:value-stream-plan-to-deliver-smmwpx
     files: []
     path: entities/v1-alpha/value-stream-plan-to-deliver-smmwpx/research/
   - entity_id: value-streams:value-stream-plan-to-forecast-89vb4q
     files: []
     path: entities/v1-alpha/value-stream-plan-to-forecast-89vb4q/research/
+  - entity_id: value-streams:value-stream-policy-draft-to-enactment-nhqx6e
+    files: []
+    path: entities/v1-alpha/value-stream-policy-draft-to-enactment-nhqx6e/research/
+  - entity_id: value-streams:value-stream-policy-to-endorsement-3jwbzy
+    files: []
+    path: entities/v1-alpha/value-stream-policy-to-endorsement-3jwbzy/research/
+  - entity_id: value-streams:value-stream-private-label-design-to-launch-mh6xqr
+    files: []
+    path: entities/v1-alpha/value-stream-private-label-design-to-launch-mh6xqr/research/
   - entity_id: value-streams:value-stream-procure-to-pay-utma5c
     files: []
     path: entities/v1-alpha/value-stream-procure-to-pay-utma5c/research/
+  - entity_id: value-streams:value-stream-promotion-plan-to-execution-j73nkj
+    files: []
+    path: entities/v1-alpha/value-stream-promotion-plan-to-execution-j73nkj/research/
+  - entity_id: value-streams:value-stream-prototype-to-production-release-ts9b3b
+    files: []
+    path: entities/v1-alpha/value-stream-prototype-to-production-release-ts9b3b/research/
+  - entity_id: value-streams:value-stream-quote-to-bind-szgnjc
+    files: []
+    path: entities/v1-alpha/value-stream-quote-to-bind-szgnjc/research/
+  - entity_id: value-streams:value-stream-recall-to-remediation-kq3mwc
+    files: []
+    path: entities/v1-alpha/value-stream-recall-to-remediation-kq3mwc/research/
   - entity_id: value-streams:value-stream-record-to-report-zw9z2r
     files: []
     path: entities/v1-alpha/value-stream-record-to-report-zw9z2r/research/
+  - entity_id: value-streams:value-stream-referral-to-treatment-fjkv2g
+    files: []
+    path: entities/v1-alpha/value-stream-referral-to-treatment-fjkv2g/research/
+  - entity_id: value-streams:value-stream-regulatory-dossier-to-approval-mgbk2u
+    files: []
+    path: entities/v1-alpha/value-stream-regulatory-dossier-to-approval-mgbk2u/research/
+  - entity_id: value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v
+    files: []
+    path: entities/v1-alpha/value-stream-reinsurance-placement-to-recovery-6pkp7v/research/
+  - entity_id: value-streams:value-stream-renewal-risk-to-decision-rcjb6b
+    files: []
+    path: entities/v1-alpha/value-stream-renewal-risk-to-decision-rcjb6b/research/
+  - entity_id: value-streams:value-stream-request-to-disclose-78w8jb
+    files: []
+    path: entities/v1-alpha/value-stream-request-to-disclose-78w8jb/research/
+  - entity_id: value-streams:value-stream-research-grant-to-publication-qwc4f8
+    files: []
+    path: entities/v1-alpha/value-stream-research-grant-to-publication-qwc4f8/research/
   - entity_id: value-streams:value-stream-return-to-credit-qan2dn
     files: []
     path: entities/v1-alpha/value-stream-return-to-credit-qan2dn/research/
+  - entity_id: value-streams:value-stream-safety-incident-to-closure-6v5uxt
+    files: []
+    path: entities/v1-alpha/value-stream-safety-incident-to-closure-6v5uxt/research/
+  - entity_id: value-streams:value-stream-sample-to-result-4wf8jc
+    files: []
+    path: entities/v1-alpha/value-stream-sample-to-result-4wf8jc/research/
+  - entity_id: value-streams:value-stream-security-alert-to-remediation-j6wn3b
+    files: []
+    path: entities/v1-alpha/value-stream-security-alert-to-remediation-j6wn3b/research/
+  - entity_id: value-streams:value-stream-ship-to-consignee-nrx42x
+    files: []
+    path: entities/v1-alpha/value-stream-ship-to-consignee-nrx42x/research/
+  - entity_id: value-streams:value-stream-site-survey-to-permit-umhn4p
+    files: []
+    path: entities/v1-alpha/value-stream-site-survey-to-permit-umhn4p/research/
+  - entity_id: value-streams:value-stream-solar-enrollment-to-generation-8hhbuq
+    files: []
+    path: entities/v1-alpha/value-stream-solar-enrollment-to-generation-8hhbuq/research/
+  - entity_id: value-streams:value-stream-store-opening-to-trading-58wbw8
+    files: []
+    path: entities/v1-alpha/value-stream-store-opening-to-trading-58wbw8/research/
+  - entity_id: value-streams:value-stream-supplier-quality-to-approval-t3w9f6
+    files: []
+    path: entities/v1-alpha/value-stream-supplier-quality-to-approval-t3w9f6/research/
+  - entity_id: value-streams:value-stream-supplier-reconciliation-y49qc3
+    files: []
+    path: entities/v1-alpha/value-stream-supplier-reconciliation-y49qc3/research/
+  - entity_id: value-streams:value-stream-surrender-to-payout-vf67kv
+    files: []
+    path: entities/v1-alpha/value-stream-surrender-to-payout-vf67kv/research/
+  - entity_id: value-streams:value-stream-sustainability-data-to-disclosure-4mmwks
+    files: []
+    path: entities/v1-alpha/value-stream-sustainability-data-to-disclosure-4mmwks/research/
+  - entity_id: value-streams:value-stream-tender-to-award-gjmy4d
+    files: []
+    path: entities/v1-alpha/value-stream-tender-to-award-gjmy4d/research/
+  - entity_id: value-streams:value-stream-trial-to-readout-ztkya5
+    files: []
+    path: entities/v1-alpha/value-stream-trial-to-readout-ztkya5/research/
+  - entity_id: value-streams:value-stream-trouble-to-restore-gtrgd8
+    files: []
+    path: entities/v1-alpha/value-stream-trouble-to-restore-gtrgd8/research/
+  - entity_id: value-streams:value-stream-usage-to-bill-tyf4zn
+    files: []
+    path: entities/v1-alpha/value-stream-usage-to-bill-tyf4zn/research/
+  - entity_id: value-streams:value-stream-usage-to-renewal-4hrrmg
+    files: []
+    path: entities/v1-alpha/value-stream-usage-to-renewal-4hrrmg/research/
+  - entity_id: value-streams:value-stream-vital-record-to-archive-pb9btj
+    files: []
+    path: entities/v1-alpha/value-stream-vital-record-to-archive-pb9btj/research/
+  - entity_id: value-streams:value-stream-vulnerability-to-patch-23tu27
+    files: []
+    path: entities/v1-alpha/value-stream-vulnerability-to-patch-23tu27/research/
+  - entity_id: value-streams:value-stream-warehouse-inbound-to-bin-b67zvk
+    files: []
+    path: entities/v1-alpha/value-stream-warehouse-inbound-to-bin-b67zvk/research/
   status: active
   version: 1.0.0

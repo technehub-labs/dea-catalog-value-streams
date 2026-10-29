@@ -1,0 +1,93 @@
+id: value-streams:value-stream-private-label-design-to-launch-mh6xqr
+type: ValueStream
+name: Private Label Design to Launch
+definition: The private-label stream from product brief through development to launched own-brand product.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: development
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A launched private-label product on shelf.
+entry_criterion: A private-label product brief is approved.
+exit_criterion: The product is launched and on shelf.
+scope:
+  includes:
+  - Product brief and supplier selection
+  - Development and compliance
+  - Launch
+  excludes:
+  - National-brand buying (Assortment to Shelf)
+  - Concept to Launch (generic product development)
+value_stages:
+- name: Brief and Select
+  definition: Approve the brief and select the supplier.
+  entry_criterion: A brief is approved.
+  exit_criterion: The supplier is selected.
+  outcome: A selected supplier.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-supplier-management-d6fuj4
+  process_refs:
+  - processes:process-eo-operate-vzcxx7
+  customer_visible: false
+- name: Develop and Comply
+  definition: Develop the product to compliance.
+  entry_criterion: The supplier is selected.
+  exit_criterion: The product is developed and compliant.
+  outcome: A compliant product.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-offering-management-6egkc8
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Launch
+  definition: Launch to shelf.
+  entry_criterion: The product is compliant.
+  exit_criterion: The product is on shelf.
+  outcome: A launched product.
+  capability_refs:
+  - capabilities:capability-offering-management-6egkc8
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pv-operate-cau4gv
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-offering-management-6egkc8
+- capabilities:capability-supplier-management-d6fuj4
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-marketing-xmc539
+upstream_refs:
+- slug: value-stream-concept-to-launch
+  note: The private-label specialization of product development.
+downstream_refs:
+- slug: value-stream-assortment-to-shelf
+  note: The launched product enters the assortment.
+metrics:
+- name: Brief-to-shelf time
+  definition: Elapsed weeks from brief to on-shelf availability.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-063) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-vzcxx7
+- processes:process-eo-operate-44jsrp
+- processes:process-pv-operate-cau4gv

@@ -1,0 +1,104 @@
+id: value-streams:value-stream-incident-to-restore-7u3yyz
+type: ValueStream
+name: Incident to Restore
+definition: The reliability stream from incident detection through response to restored service with post-incident
+  review.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - technology
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Restored service with a completed post-incident review.
+entry_criterion: An incident is detected or reported.
+exit_criterion: Service is restored and the review is complete.
+scope:
+  includes:
+  - Detection and triage
+  - Response and mitigation
+  - Restoration
+  - Post-incident review
+  excludes:
+  - Change deployment (Commit to Deploy)
+  - Problem management
+value_stages:
+- name: Detect and Triage
+  definition: Detect and triage the incident.
+  entry_criterion: An incident occurs.
+  exit_criterion: The incident is triaged.
+  outcome: A triaged incident.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-security-management-wmzc7c
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: true
+- name: Respond and Mitigate
+  definition: Respond and mitigate impact.
+  entry_criterion: The incident is triaged.
+  exit_criterion: Impact is mitigated.
+  outcome: Mitigated impact.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Restore
+  definition: Restore the service.
+  entry_criterion: Impact is mitigated.
+  exit_criterion: The service is restored.
+  outcome: Restored service.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  process_refs:
+  - processes:process-eo-operate-j9cjzz
+  customer_visible: true
+- name: Post-Incident Review
+  definition: Complete the post-incident review.
+  entry_criterion: The service is restored.
+  exit_criterion: The review is complete with actions.
+  outcome: A completed review.
+  capability_refs:
+  - capabilities:capability-enterprise-performance-management-5fxren
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-security-management-wmzc7c
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Mean time to restore service
+  definition: Mean elapsed time from detection to restoration.
+  metric_ref: dea:metric-mean-time-to-restore-service
+  applies_to_stage: Restore
+evidence:
+  sources:
+  - SRC-019
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-106) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (technology); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-operate-tpenm6
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-j9cjzz
+- processes:process-ge-operate-zwaes5

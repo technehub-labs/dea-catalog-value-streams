@@ -1,0 +1,84 @@
+id: value-streams:value-stream-defect-report-to-rectification-vce852
+type: ValueStream
+name: Defect Report to Rectification
+definition: The post-handover stream from defect report through inspection to rectified and accepted defect.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - construction-real-estate
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A rectified, accepted defect within the liability period.
+entry_criterion: A defect is reported in the liability period.
+exit_criterion: The rectification is accepted.
+scope:
+  includes:
+  - Defect inspection
+  - Rectification
+  - Re-inspection and acceptance
+  excludes:
+  - Build quality (Build to Handover)
+  - Warranty claims
+value_stages:
+- name: Inspect Defect
+  definition: Inspect the reported defect.
+  entry_criterion: A defect is reported.
+  exit_criterion: The inspection is complete.
+  outcome: An inspected defect.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+- name: Rectify
+  definition: Rectify the defect.
+  entry_criterion: The inspection is complete.
+  exit_criterion: Rectification is complete.
+  outcome: A rectified defect.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Re-inspect and Accept
+  definition: Re-inspect and obtain acceptance.
+  entry_criterion: Rectification is complete.
+  exit_criterion: The rectification is accepted.
+  outcome: An accepted rectification.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-customer-management-f3n8wb
+metrics:
+- name: Defect rectification cycle time
+  definition: Elapsed days from report to acceptance.
+evidence:
+  sources:
+  - SRC-017
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-096) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-2jnz85

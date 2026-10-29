@@ -1,9 +1,10 @@
-admission_register_version: 0.3.0
-cr: CR-VS-03 (first admission gate) + CR-VS-05 (third-tranche admissions)
+admission_register_version: 0.6.0
+cr: 'CR-VS-03/04/05 (cross-industry admission tranches) + CR-VS-12 (industry population tranche: 100 admissions)'
 compiled: '2026-10-27 (v0.1: VSC-001, VSC-002, VSC-003, VSC-006 admitted; 4 canonical records); 2026-10-27
   (v0.2 per CR-VS-04: VSC-004/005/008/009 admitted after evidence raised E2 -> E3; 8 canonical records);
   2026-10-27 (v0.3 per CR-VS-05: VSC-011/012/013 admitted (third tranche); VSC-014 merged into VSC-003
-  per RES-003 (alternate name); 11 canonical records)'
+  per RES-003 (alternate name); 11 canonical records); 2026-10-28 (v0.6 per CR-VS-12: 100 industry-specific
+  records admitted under the applicability-scoped distinctness method; register total 111 admissions)'
 compiled_by: Emmanuel A. Otchere
 status: active
 method: 'Admission gate: evidence >= E2, distinctness closed (CR-VS-02), content-addressed id (id-system
@@ -97,6 +98,1015 @@ admissions:
   distinctness: 'CR-VS-05 sweep: DISTINCT vs. all; boundaries vs. VSC-002/005/006 cited'
   date: '2026-10-27'
   cr: CR-VS-05
+- candidate: VSC-033
+  name: Actuarial Data to Price
+  id: value-streams:value-stream-actuarial-data-to-price-t5vjcj
+  path: entities/v1-alpha/value-stream-actuarial-data-to-price-t5vjcj/value-streams-value-stream-actuarial-data-to-price-t5vjcj.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-016
+  name: Admission to Discharge
+  id: value-streams:value-stream-admission-to-discharge-xeuu5u
+  path: entities/v1-alpha/value-stream-admission-to-discharge-xeuu5u/value-streams-value-stream-admission-to-discharge-xeuu5u.yaml
+  evidence: E2+ (SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - healthcare
+- candidate: VSC-081
+  name: Admit to Graduate
+  id: value-streams:value-stream-admit-to-graduate-v9jcg3
+  path: entities/v1-alpha/value-stream-admit-to-graduate-v9jcg3/value-streams-value-stream-admit-to-graduate-v9jcg3.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-100
+  name: Adverse Event to Signal
+  id: value-streams:value-stream-adverse-event-to-signal-8ga6be
+  path: entities/v1-alpha/value-stream-adverse-event-to-signal-8ga6be/value-streams-value-stream-adverse-event-to-signal-8ga6be.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-025
+  name: Alert to Report
+  id: value-streams:value-stream-alert-to-report-a2qttg
+  path: entities/v1-alpha/value-stream-alert-to-report-a2qttg/value-streams-value-stream-alert-to-report-a2qttg.yaml
+  evidence: E2+ (SRC-012)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-085
+  name: Alumni Engage to Give
+  id: value-streams:value-stream-alumni-engage-to-give-r5s8qw
+  path: entities/v1-alpha/value-stream-alumni-engage-to-give-r5s8qw/value-streams-value-stream-alumni-engage-to-give-r5s8qw.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-084
+  name: Applicant Outreach to Enrollment
+  id: value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7
+  path: entities/v1-alpha/value-stream-applicant-outreach-to-enrollment-vyn4n7/value-streams-value-stream-applicant-outreach-to-enrollment-vyn4n7.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-021
+  name: Application to Book
+  id: value-streams:value-stream-application-to-book-4yz2pa
+  path: entities/v1-alpha/value-stream-application-to-book-4yz2pa/value-streams-value-stream-application-to-book-4yz2pa.yaml
+  evidence: E2+ (SRC-008)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-044
+  name: Apply to Connect
+  id: value-streams:value-stream-apply-to-connect-y64n29
+  path: entities/v1-alpha/value-stream-apply-to-connect-y64n29/value-streams-value-stream-apply-to-connect-y64n29.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-073
+  name: Apply to Decide
+  id: value-streams:value-stream-apply-to-decide-qr36mf
+  path: entities/v1-alpha/value-stream-apply-to-decide-qr36mf/value-streams-value-stream-apply-to-decide-qr36mf.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-058
+  name: Assortment to Shelf
+  id: value-streams:value-stream-assortment-to-shelf-ex2sqq
+  path: entities/v1-alpha/value-stream-assortment-to-shelf-ex2sqq/value-streams-value-stream-assortment-to-shelf-ex2sqq.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-099
+  name: Batch to Release
+  id: value-streams:value-stream-batch-to-release-mzc7cf
+  path: entities/v1-alpha/value-stream-batch-to-release-mzc7cf/value-streams-value-stream-batch-to-release-mzc7cf.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-020
+  name: Blood Donation to Transfusion
+  id: value-streams:value-stream-blood-donation-to-transfusion-m4h36n
+  path: entities/v1-alpha/value-stream-blood-donation-to-transfusion-m4h36n/value-streams-value-stream-blood-donation-to-transfusion-m4h36n.yaml
+  evidence: E2+ (SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - healthcare
+- candidate: VSC-087
+  name: Book to Stay
+  id: value-streams:value-stream-book-to-stay-hcrx2e
+  path: entities/v1-alpha/value-stream-book-to-stay-hcrx2e/value-streams-value-stream-book-to-stay-hcrx2e.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - hospitality-travel
+- candidate: VSC-093
+  name: Build to Handover
+  id: value-streams:value-stream-build-to-handover-9fyyzn
+  path: entities/v1-alpha/value-stream-build-to-handover-9fyyzn/value-streams-value-stream-build-to-handover-9fyyzn.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-026
+  name: Card Issue to Activate
+  id: value-streams:value-stream-card-issue-to-activate-q2rutu
+  path: entities/v1-alpha/value-stream-card-issue-to-activate-q2rutu/value-streams-value-stream-card-issue-to-activate-q2rutu.yaml
+  evidence: E2+ (SRC-008)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-059
+  name: Checkout to Fulfillment
+  id: value-streams:value-stream-checkout-to-fulfillment-ngbewj
+  path: entities/v1-alpha/value-stream-checkout-to-fulfillment-ngbewj/value-streams-value-stream-checkout-to-fulfillment-ngbewj.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-040
+  name: Churn Risk to Save
+  id: value-streams:value-stream-churn-risk-to-save-pdce5j
+  path: entities/v1-alpha/value-stream-churn-risk-to-save-pdce5j/value-streams-value-stream-churn-risk-to-save-pdce5j.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-019
+  name: Clinical Trial Recruitment
+  id: value-streams:value-stream-clinical-trial-recruitment-zqvzg9
+  path: entities/v1-alpha/value-stream-clinical-trial-recruitment-zqvzg9/value-streams-value-stream-clinical-trial-recruitment-zqvzg9.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+  - healthcare
+- candidate: VSC-070
+  name: Cold Chain to Verified
+  id: value-streams:value-stream-cold-chain-to-verified-3srmk2
+  path: entities/v1-alpha/value-stream-cold-chain-to-verified-3srmk2/value-streams-value-stream-cold-chain-to-verified-3srmk2.yaml
+  evidence: E2+ (SRC-016, SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+  - retail-commerce
+- candidate: VSC-105
+  name: Commit to Deploy
+  id: value-streams:value-stream-commit-to-deploy-65cr4z
+  path: entities/v1-alpha/value-stream-commit-to-deploy-65cr4z/value-streams-value-stream-commit-to-deploy-65cr4z.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-082
+  name: Course Design to Delivery
+  id: value-streams:value-stream-course-design-to-delivery-pvwqv5
+  path: entities/v1-alpha/value-stream-course-design-to-delivery-pvwqv5/value-streams-value-stream-course-design-to-delivery-pvwqv5.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-028
+  name: Customer Remediation to Current
+  id: value-streams:value-stream-customer-remediation-to-current-krrxzb
+  path: entities/v1-alpha/value-stream-customer-remediation-to-current-krrxzb/value-streams-value-stream-customer-remediation-to-current-krrxzb.yaml
+  evidence: E2+ (SRC-012)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-067
+  name: Customs Clearance to Release
+  id: value-streams:value-stream-customs-clearance-to-release-cfgc3b
+  path: entities/v1-alpha/value-stream-customs-clearance-to-release-cfgc3b/value-streams-value-stream-customs-clearance-to-release-cfgc3b.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+- candidate: VSC-071
+  name: Dangerous Goods Accept to Deliver
+  id: value-streams:value-stream-dangerous-goods-accept-to-deliver-txbc4c
+  path: entities/v1-alpha/value-stream-dangerous-goods-accept-to-deliver-txbc4c/value-streams-value-stream-dangerous-goods-accept-to-deliver-txbc4c.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+- candidate: VSC-110
+  name: Data Source to Product
+  id: value-streams:value-stream-data-source-to-product-kdkmmj
+  path: entities/v1-alpha/value-stream-data-source-to-product-kdkmmj/value-streams-value-stream-data-source-to-product-kdkmmj.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-096
+  name: Defect Report to Rectification
+  id: value-streams:value-stream-defect-report-to-rectification-vce852
+  path: entities/v1-alpha/value-stream-defect-report-to-rectification-vce852/value-streams-value-stream-defect-report-to-rectification-vce852.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-024
+  name: Deposit to Maturity
+  id: value-streams:value-stream-deposit-to-maturity-gsbm8e
+  path: entities/v1-alpha/value-stream-deposit-to-maturity-gsbm8e/value-streams-value-stream-deposit-to-maturity-gsbm8e.yaml
+  evidence: E2+ (SRC-008)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-113
+  name: Developer Onboard to First Commit
+  id: value-streams:value-stream-developer-onboard-to-first-commit-zeszzp
+  path: entities/v1-alpha/value-stream-developer-onboard-to-first-commit-zeszzp/value-streams-value-stream-developer-onboard-to-first-commit-zeszzp.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-017
+  name: Discharge to Bill
+  id: value-streams:value-stream-discharge-to-bill-3k7wbb
+  path: entities/v1-alpha/value-stream-discharge-to-bill-3k7wbb/value-streams-value-stream-discharge-to-bill-3k7wbb.yaml
+  evidence: E2+ (SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - healthcare
+- candidate: VSC-101
+  name: Discovery to Candidate
+  id: value-streams:value-stream-discovery-to-candidate-8d6b4u
+  path: entities/v1-alpha/value-stream-discovery-to-candidate-8d6b4u/value-streams-value-stream-discovery-to-candidate-8d6b4u.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-089
+  name: Disruption to Reaccommodation
+  id: value-streams:value-stream-disruption-to-reaccommodation-tuuywj
+  path: entities/v1-alpha/value-stream-disruption-to-reaccommodation-tuuywj/value-streams-value-stream-disruption-to-reaccommodation-tuuywj.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - hospitality-travel
+- candidate: VSC-103
+  name: Drug Safety Label to Update
+  id: value-streams:value-stream-drug-safety-label-to-update-nkcs8f
+  path: entities/v1-alpha/value-stream-drug-safety-label-to-update-nkcs8f/value-streams-value-stream-drug-safety-label-to-update-nkcs8f.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-079
+  name: Emergency Alert to Response
+  id: value-streams:value-stream-emergency-alert-to-response-jtz6qn
+  path: entities/v1-alpha/value-stream-emergency-alert-to-response-jtz6qn/value-streams-value-stream-emergency-alert-to-response-jtz6qn.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-050
+  name: Engineer to Order
+  id: value-streams:value-stream-engineer-to-order-htpc6d
+  path: entities/v1-alpha/value-stream-engineer-to-order-htpc6d/value-streams-value-stream-engineer-to-order-htpc6d.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+- candidate: VSC-055
+  name: Equipment Calibration to Certified
+  id: value-streams:value-stream-equipment-calibration-to-certified-qp33gf
+  path: entities/v1-alpha/value-stream-equipment-calibration-to-certified-qp33gf/value-streams-value-stream-equipment-calibration-to-certified-qp33gf.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+- candidate: VSC-088
+  name: Event Book to Execute
+  id: value-streams:value-stream-event-book-to-execute-krrav7
+  path: entities/v1-alpha/value-stream-event-book-to-execute-krrav7/value-streams-value-stream-event-book-to-execute-krrav7.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - hospitality-travel
+- candidate: VSC-086
+  name: Exam Set to Grade
+  id: value-streams:value-stream-exam-set-to-grade-cyfqd5
+  path: entities/v1-alpha/value-stream-exam-set-to-grade-cyfqd5/value-streams-value-stream-exam-set-to-grade-cyfqd5.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-114
+  name: Experiment to Decision
+  id: value-streams:value-stream-experiment-to-decision-pv8swh
+  path: entities/v1-alpha/value-stream-experiment-to-decision-pv8swh/value-streams-value-stream-experiment-to-decision-pv8swh.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-107
+  name: Feature Request to Release
+  id: value-streams:value-stream-feature-request-to-release-2fyemr
+  path: entities/v1-alpha/value-stream-feature-request-to-release-2fyemr/value-streams-value-stream-feature-request-to-release-2fyemr.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-042
+  name: Field Install to Verify
+  id: value-streams:value-stream-field-install-to-verify-tmyca3
+  path: entities/v1-alpha/value-stream-field-install-to-verify-tmyca3/value-streams-value-stream-field-install-to-verify-tmyca3.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-069
+  name: Fleet Maintain to Dispatch
+  id: value-streams:value-stream-fleet-maintain-to-dispatch-urh4zb
+  path: entities/v1-alpha/value-stream-fleet-maintain-to-dispatch-urh4zb/value-streams-value-stream-fleet-maintain-to-dispatch-urh4zb.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+- candidate: VSC-076
+  name: Grant Award to Closeout
+  id: value-streams:value-stream-grant-award-to-closeout-pvhec7
+  path: entities/v1-alpha/value-stream-grant-award-to-closeout-pvhec7/value-streams-value-stream-grant-award-to-closeout-pvhec7.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-047
+  name: Grid Maintenance to Release
+  id: value-streams:value-stream-grid-maintenance-to-release-d23hxq
+  path: entities/v1-alpha/value-stream-grid-maintenance-to-release-d23hxq/value-streams-value-stream-grid-maintenance-to-release-d23hxq.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-091
+  name: Guest Feedback to Standard
+  id: value-streams:value-stream-guest-feedback-to-standard-hypdnq
+  path: entities/v1-alpha/value-stream-guest-feedback-to-standard-hypdnq/value-streams-value-stream-guest-feedback-to-standard-hypdnq.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - hospitality-travel
+- candidate: VSC-090
+  name: Housekeeping Turn to Ready
+  id: value-streams:value-stream-housekeeping-turn-to-ready-utwefb
+  path: entities/v1-alpha/value-stream-housekeeping-turn-to-ready-utwefb/value-streams-value-stream-housekeeping-turn-to-ready-utwefb.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - hospitality-travel
+- candidate: VSC-106
+  name: Incident to Restore
+  id: value-streams:value-stream-incident-to-restore-7u3yyz
+  path: entities/v1-alpha/value-stream-incident-to-restore-7u3yyz/value-streams-value-stream-incident-to-restore-7u3yyz.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-023
+  name: Initiate to Settle
+  id: value-streams:value-stream-initiate-to-settle-ken6np
+  path: entities/v1-alpha/value-stream-initiate-to-settle-ken6np/value-streams-value-stream-initiate-to-settle-ken6np.yaml
+  evidence: E2+ (SRC-008)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-052
+  name: Inspect to Disposition
+  id: value-streams:value-stream-inspect-to-disposition-uu3grx
+  path: entities/v1-alpha/value-stream-inspect-to-disposition-uu3grx/value-streams-value-stream-inspect-to-disposition-uu3grx.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+  - logistics-transportation
+- candidate: VSC-077
+  name: Inspection to Certificate
+  id: value-streams:value-stream-inspection-to-certificate-tvqqu7
+  path: entities/v1-alpha/value-stream-inspection-to-certificate-tvqqu7/value-streams-value-stream-inspection-to-certificate-tvqqu7.yaml
+  evidence: E2+ (SRC-014, SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+  - construction-real-estate
+- candidate: VSC-074
+  name: Intake to Resolution
+  id: value-streams:value-stream-intake-to-resolution-3ydzzy
+  path: entities/v1-alpha/value-stream-intake-to-resolution-3ydzzy/value-streams-value-stream-intake-to-resolution-3ydzzy.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-072
+  name: Last-Mile Route to Proof
+  id: value-streams:value-stream-last-mile-route-to-proof-967k87
+  path: entities/v1-alpha/value-stream-last-mile-route-to-proof-967k87/value-streams-value-stream-last-mile-route-to-proof-967k87.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+  - retail-commerce
+- candidate: VSC-095
+  name: Lease Sign to Renewal
+  id: value-streams:value-stream-lease-sign-to-renewal-9mr2yp
+  path: entities/v1-alpha/value-stream-lease-sign-to-renewal-9mr2yp/value-streams-value-stream-lease-sign-to-renewal-9mr2yp.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-094
+  name: List to Close
+  id: value-streams:value-stream-list-to-close-2dye3r
+  path: entities/v1-alpha/value-stream-list-to-close-2dye3r/value-streams-value-stream-list-to-close-2dye3r.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-030
+  name: Loss to Claim Settlement
+  id: value-streams:value-stream-loss-to-claim-settlement-bkjege
+  path: entities/v1-alpha/value-stream-loss-to-claim-settlement-bkjege/value-streams-value-stream-loss-to-claim-settlement-bkjege.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-062
+  name: Loyalty Enroll to Reward
+  id: value-streams:value-stream-loyalty-enroll-to-reward-txebyw
+  path: entities/v1-alpha/value-stream-loyalty-enroll-to-reward-txebyw/value-streams-value-stream-loyalty-enroll-to-reward-txebyw.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-051
+  name: Make to Stock Release
+  id: value-streams:value-stream-make-to-stock-release-xuv4fq
+  path: entities/v1-alpha/value-stream-make-to-stock-release-xuv4fq/value-streams-value-stream-make-to-stock-release-xuv4fq.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+- candidate: VSC-064
+  name: Marketplace Seller to First Sale
+  id: value-streams:value-stream-marketplace-seller-to-first-sale-avn64e
+  path: entities/v1-alpha/value-stream-marketplace-seller-to-first-sale-avn64e/value-streams-value-stream-marketplace-seller-to-first-sale-avn64e.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-027
+  name: Merchant Acquire to Transact
+  id: value-streams:value-stream-merchant-acquire-to-transact-ffxrpg
+  path: entities/v1-alpha/value-stream-merchant-acquire-to-transact-ffxrpg/value-streams-value-stream-merchant-acquire-to-transact-ffxrpg.yaml
+  evidence: E2+ (SRC-008)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-043
+  name: Meter to Bill
+  id: value-streams:value-stream-meter-to-bill-6bhvk9
+  path: entities/v1-alpha/value-stream-meter-to-bill-6bhvk9/value-streams-value-stream-meter-to-bill-6bhvk9.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-109
+  name: Model to Deployment
+  id: value-streams:value-stream-model-to-deployment-44fap5
+  path: entities/v1-alpha/value-stream-model-to-deployment-44fap5/value-streams-value-stream-model-to-deployment-44fap5.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-039
+  name: Network Build to Service
+  id: value-streams:value-stream-network-build-to-service-u228b3
+  path: entities/v1-alpha/value-stream-network-build-to-service-u228b3/value-streams-value-stream-network-build-to-service-u228b3.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-041
+  name: Number Port to Activate
+  id: value-streams:value-stream-number-port-to-activate-428e2j
+  path: entities/v1-alpha/value-stream-number-port-to-activate-428e2j/value-streams-value-stream-number-port-to-activate-428e2j.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-022
+  name: Onboard to Activate
+  id: value-streams:value-stream-onboard-to-activate-ft6jk9
+  path: entities/v1-alpha/value-stream-onboard-to-activate-ft6jk9/value-streams-value-stream-onboard-to-activate-ft6jk9.yaml
+  evidence: E2+ (SRC-008, SRC-012)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - financial-services
+- candidate: VSC-036
+  name: Order to Activation
+  id: value-streams:value-stream-order-to-activation-uxqth5
+  path: entities/v1-alpha/value-stream-order-to-activation-uxqth5/value-streams-value-stream-order-to-activation-uxqth5.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-046
+  name: Outage Claim to Credit
+  id: value-streams:value-stream-outage-claim-to-credit-x479f6
+  path: entities/v1-alpha/value-stream-outage-claim-to-credit-x479f6/value-streams-value-stream-outage-claim-to-credit-x479f6.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-045
+  name: Outage to Restore
+  id: value-streams:value-stream-outage-to-restore-ff6xme
+  path: entities/v1-alpha/value-stream-outage-to-restore-ff6xme/value-streams-value-stream-outage-to-restore-ff6xme.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-015
+  name: Patient Access to Admission
+  id: value-streams:value-stream-patient-access-to-admission-szj9jm
+  path: entities/v1-alpha/value-stream-patient-access-to-admission-szj9jm/value-streams-value-stream-patient-access-to-admission-szj9jm.yaml
+  evidence: E2+ (SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - healthcare
+- candidate: VSC-078
+  name: Policy Draft to Enactment
+  id: value-streams:value-stream-policy-draft-to-enactment-nhqx6e
+  path: entities/v1-alpha/value-stream-policy-draft-to-enactment-nhqx6e/value-streams-value-stream-policy-draft-to-enactment-nhqx6e.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-031
+  name: Policy to Endorsement
+  id: value-streams:value-stream-policy-to-endorsement-3jwbzy
+  path: entities/v1-alpha/value-stream-policy-to-endorsement-3jwbzy/value-streams-value-stream-policy-to-endorsement-3jwbzy.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-063
+  name: Private Label Design to Launch
+  id: value-streams:value-stream-private-label-design-to-launch-mh6xqr
+  path: entities/v1-alpha/value-stream-private-label-design-to-launch-mh6xqr/value-streams-value-stream-private-label-design-to-launch-mh6xqr.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-061
+  name: Promotion Plan to Execution
+  id: value-streams:value-stream-promotion-plan-to-execution-j73nkj
+  path: entities/v1-alpha/value-stream-promotion-plan-to-execution-j73nkj/value-streams-value-stream-promotion-plan-to-execution-j73nkj.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-054
+  name: Prototype to Production Release
+  id: value-streams:value-stream-prototype-to-production-release-ts9b3b
+  path: entities/v1-alpha/value-stream-prototype-to-production-release-ts9b3b/value-streams-value-stream-prototype-to-production-release-ts9b3b.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+- candidate: VSC-029
+  name: Quote to Bind
+  id: value-streams:value-stream-quote-to-bind-szgnjc
+  path: entities/v1-alpha/value-stream-quote-to-bind-szgnjc/value-streams-value-stream-quote-to-bind-szgnjc.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-056
+  name: Recall to Remediation
+  id: value-streams:value-stream-recall-to-remediation-kq3mwc
+  path: entities/v1-alpha/value-stream-recall-to-remediation-kq3mwc/value-streams-value-stream-recall-to-remediation-kq3mwc.yaml
+  evidence: E2+ (SRC-016, SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+  - retail-commerce
+- candidate: VSC-018
+  name: Referral to Treatment
+  id: value-streams:value-stream-referral-to-treatment-fjkv2g
+  path: entities/v1-alpha/value-stream-referral-to-treatment-fjkv2g/value-streams-value-stream-referral-to-treatment-fjkv2g.yaml
+  evidence: E2+ (SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - healthcare
+- candidate: VSC-102
+  name: Regulatory Dossier to Approval
+  id: value-streams:value-stream-regulatory-dossier-to-approval-mgbk2u
+  path: entities/v1-alpha/value-stream-regulatory-dossier-to-approval-mgbk2u/value-streams-value-stream-regulatory-dossier-to-approval-mgbk2u.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-034
+  name: Reinsurance Placement to Recovery
+  id: value-streams:value-stream-reinsurance-placement-to-recovery-6pkp7v
+  path: entities/v1-alpha/value-stream-reinsurance-placement-to-recovery-6pkp7v/value-streams-value-stream-reinsurance-placement-to-recovery-6pkp7v.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-032
+  name: Renewal Risk to Decision
+  id: value-streams:value-stream-renewal-risk-to-decision-rcjb6b
+  path: entities/v1-alpha/value-stream-renewal-risk-to-decision-rcjb6b/value-streams-value-stream-renewal-risk-to-decision-rcjb6b.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-075
+  name: Request to Disclose
+  id: value-streams:value-stream-request-to-disclose-78w8jb
+  path: entities/v1-alpha/value-stream-request-to-disclose-78w8jb/value-streams-value-stream-request-to-disclose-78w8jb.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-083
+  name: Research Grant to Publication
+  id: value-streams:value-stream-research-grant-to-publication-qwc4f8
+  path: entities/v1-alpha/value-stream-research-grant-to-publication-qwc4f8/value-streams-value-stream-research-grant-to-publication-qwc4f8.yaml
+  evidence: E2+ (SRC-015)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - education
+- candidate: VSC-049
+  name: Safety Incident to Closure
+  id: value-streams:value-stream-safety-incident-to-closure-6v5uxt
+  path: entities/v1-alpha/value-stream-safety-incident-to-closure-6v5uxt/value-streams-value-stream-safety-incident-to-closure-6v5uxt.yaml
+  evidence: E2+ (SRC-011, SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+  - manufacturing
+- candidate: VSC-104
+  name: Sample to Result
+  id: value-streams:value-stream-sample-to-result-4wf8jc
+  path: entities/v1-alpha/value-stream-sample-to-result-4wf8jc/value-streams-value-stream-sample-to-result-4wf8jc.yaml
+  evidence: E2+ (SRC-018, SRC-007)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+  - healthcare
+- candidate: VSC-111
+  name: Security Alert to Remediation
+  id: value-streams:value-stream-security-alert-to-remediation-j6wn3b
+  path: entities/v1-alpha/value-stream-security-alert-to-remediation-j6wn3b/value-streams-value-stream-security-alert-to-remediation-j6wn3b.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-066
+  name: Ship to Consignee
+  id: value-streams:value-stream-ship-to-consignee-nrx42x
+  path: entities/v1-alpha/value-stream-ship-to-consignee-nrx42x/value-streams-value-stream-ship-to-consignee-nrx42x.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
+- candidate: VSC-097
+  name: Site Survey to Permit
+  id: value-streams:value-stream-site-survey-to-permit-umhn4p
+  path: entities/v1-alpha/value-stream-site-survey-to-permit-umhn4p/value-streams-value-stream-site-survey-to-permit-umhn4p.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-048
+  name: Solar Enrollment to Generation
+  id: value-streams:value-stream-solar-enrollment-to-generation-8hhbuq
+  path: entities/v1-alpha/value-stream-solar-enrollment-to-generation-8hhbuq/value-streams-value-stream-solar-enrollment-to-generation-8hhbuq.yaml
+  evidence: E2+ (SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - utilities-energy
+- candidate: VSC-065
+  name: Store Opening to Trading
+  id: value-streams:value-stream-store-opening-to-trading-58wbw8
+  path: entities/v1-alpha/value-stream-store-opening-to-trading-58wbw8/value-streams-value-stream-store-opening-to-trading-58wbw8.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-053
+  name: Supplier Quality to Approval
+  id: value-streams:value-stream-supplier-quality-to-approval-t3w9f6
+  path: entities/v1-alpha/value-stream-supplier-quality-to-approval-t3w9f6/value-streams-value-stream-supplier-quality-to-approval-t3w9f6.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+- candidate: VSC-060
+  name: Supplier Reconciliation
+  id: value-streams:value-stream-supplier-reconciliation-y49qc3
+  path: entities/v1-alpha/value-stream-supplier-reconciliation-y49qc3/value-streams-value-stream-supplier-reconciliation-y49qc3.yaml
+  evidence: E2+ (SRC-013)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - retail-commerce
+- candidate: VSC-035
+  name: Surrender to Payout
+  id: value-streams:value-stream-surrender-to-payout-vf67kv
+  path: entities/v1-alpha/value-stream-surrender-to-payout-vf67kv/value-streams-value-stream-surrender-to-payout-vf67kv.yaml
+  evidence: E2+ (SRC-009)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - insurance
+- candidate: VSC-057
+  name: Sustainability Data to Disclosure
+  id: value-streams:value-stream-sustainability-data-to-disclosure-4mmwks
+  path: entities/v1-alpha/value-stream-sustainability-data-to-disclosure-4mmwks/value-streams-value-stream-sustainability-data-to-disclosure-4mmwks.yaml
+  evidence: E2+ (SRC-016, SRC-011)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - manufacturing
+  - utilities-energy
+- candidate: VSC-092
+  name: Tender to Award
+  id: value-streams:value-stream-tender-to-award-gjmy4d
+  path: entities/v1-alpha/value-stream-tender-to-award-gjmy4d/value-streams-value-stream-tender-to-award-gjmy4d.yaml
+  evidence: E2+ (SRC-017)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - construction-real-estate
+- candidate: VSC-098
+  name: Trial to Readout
+  id: value-streams:value-stream-trial-to-readout-ztkya5
+  path: entities/v1-alpha/value-stream-trial-to-readout-ztkya5/value-streams-value-stream-trial-to-readout-ztkya5.yaml
+  evidence: E2+ (SRC-018)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - life-sciences
+- candidate: VSC-037
+  name: Trouble to Restore
+  id: value-streams:value-stream-trouble-to-restore-gtrgd8
+  path: entities/v1-alpha/value-stream-trouble-to-restore-gtrgd8/value-streams-value-stream-trouble-to-restore-gtrgd8.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-038
+  name: Usage to Bill
+  id: value-streams:value-stream-usage-to-bill-tyf4zn
+  path: entities/v1-alpha/value-stream-usage-to-bill-tyf4zn/value-streams-value-stream-usage-to-bill-tyf4zn.yaml
+  evidence: E2+ (SRC-010)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - telecommunications
+- candidate: VSC-108
+  name: Usage to Renewal
+  id: value-streams:value-stream-usage-to-renewal-4hrrmg
+  path: entities/v1-alpha/value-stream-usage-to-renewal-4hrrmg/value-streams-value-stream-usage-to-renewal-4hrrmg.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-080
+  name: Vital Record to Archive
+  id: value-streams:value-stream-vital-record-to-archive-pb9btj
+  path: entities/v1-alpha/value-stream-vital-record-to-archive-pb9btj/value-streams-value-stream-vital-record-to-archive-pb9btj.yaml
+  evidence: E2+ (SRC-014)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - public-sector
+- candidate: VSC-112
+  name: Vulnerability to Patch
+  id: value-streams:value-stream-vulnerability-to-patch-23tu27
+  path: entities/v1-alpha/value-stream-vulnerability-to-patch-23tu27/value-streams-value-stream-vulnerability-to-patch-23tu27.yaml
+  evidence: E2+ (SRC-019)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - technology
+- candidate: VSC-068
+  name: Warehouse Inbound to Bin
+  id: value-streams:value-stream-warehouse-inbound-to-bin-b67zvk
+  path: entities/v1-alpha/value-stream-warehouse-inbound-to-bin-b67zvk/value-streams-value-stream-warehouse-inbound-to-bin-b67zvk.yaml
+  evidence: E2+ (SRC-016)
+  distinctness: CR-VS-12 applicability-scoped (CR-VS-11 method note); same-industry two-axis test passed
+  date: '2026-10-28'
+  cr: CR-VS-12
+  industries:
+  - logistics-transportation
 counts:
   admitted: 11
   merged:

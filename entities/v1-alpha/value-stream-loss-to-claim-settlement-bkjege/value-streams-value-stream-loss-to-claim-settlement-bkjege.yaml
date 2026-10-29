@@ -1,0 +1,113 @@
+id: value-streams:value-stream-loss-to-claim-settlement-bkjege
+type: ValueStream
+name: Loss to Claim Settlement
+definition: The end-to-end claims stream from first notice of loss through adjustment to claim settlement
+  and payment.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - insurance
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A fairly adjusted, settled, and paid claim.
+entry_criterion: A loss is notified.
+exit_criterion: The claim is settled and paid.
+scope:
+  includes:
+  - First notice of loss and coverage verification
+  - Adjustment and valuation
+  - Settlement agreement
+  - Payment and closure
+  excludes:
+  - Underwriting (Quote to Bind)
+  - Subrogation and recovery
+value_stages:
+- name: Register Loss
+  definition: Register the loss notice and verify coverage.
+  entry_criterion: A loss is notified.
+  exit_criterion: The claim is registered and covered.
+  outcome: A registered, covered claim.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Adjust
+  definition: Investigate and adjust the claim valuation.
+  entry_criterion: The claim is covered.
+  exit_criterion: The adjustment is complete.
+  outcome: A completed adjustment.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: true
+- name: Agree Settlement
+  definition: Agree the settlement with the claimant.
+  entry_criterion: The adjustment is complete.
+  exit_criterion: The settlement is agreed.
+  outcome: An agreed settlement.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Pay and Close
+  definition: Pay the settlement and close the claim.
+  entry_criterion: The settlement is agreed.
+  exit_criterion: The claim is paid and closed.
+  outcome: A settled, closed claim.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-financial-stewardship-c7xtfk
+- capabilities:capability-financial-resource-management-cd3c7c
+upstream_refs:
+- slug: value-stream-quote-to-bind
+  note: Coverage terms originate at underwriting.
+metrics:
+- name: Claims leakage rate
+  definition: Payment error and leakage as a share of claims cost.
+  metric_ref: dea:metric-claims-leakage-rate
+  applies_to_stage: Pay and Close
+- name: Claims frequency rate
+  definition: Claims per exposure unit.
+  metric_ref: dea:metric-claims-frequency-rate
+  applies_to_stage: Register Loss
+evidence:
+  sources:
+  - SRC-009
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-030) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (insurance); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-ge-operate-zwaes5
+- processes:process-ge-build-mctdgc
+- processes:process-fa-operate-sdppmp

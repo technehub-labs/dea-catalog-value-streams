@@ -1,0 +1,111 @@
+id: value-streams:value-stream-onboard-to-activate-ft6jk9
+type: ValueStream
+name: Onboard to Activate
+definition: The end-to-end customer-onboarding stream from account application through identity verification
+  (KYC) and due diligence to an activated account.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - financial-services
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A KYC-cleared, activated account for the customer.
+entry_criterion: An account application is received.
+exit_criterion: The account is activated after identity verification and due diligence.
+scope:
+  includes:
+  - Application capture
+  - Identity verification (KYC)
+  - Due-diligence clearing
+  - Activation and welcome
+  excludes:
+  - Product application (Application to Book)
+  - Ongoing relationship service (Contract to Renewal)
+value_stages:
+- name: Capture Application
+  definition: Capture the account application.
+  entry_criterion: An application is received.
+  exit_criterion: The application is captured and complete.
+  outcome: A complete application.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Verify Identity
+  definition: Verify identity per KYC requirements.
+  entry_criterion: The application is complete.
+  exit_criterion: Identity is verified.
+  outcome: A verified identity.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: true
+- name: Clear Due Diligence
+  definition: Complete due-diligence checks and risk classification.
+  entry_criterion: Identity is verified.
+  exit_criterion: Due diligence is cleared.
+  outcome: A due-diligence-cleared customer.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-regulation-management-gya4d8
+  process_refs:
+  - processes:process-ge-operate-tpenm6
+  customer_visible: false
+- name: Activate
+  definition: Open and activate the account and welcome the customer.
+  entry_criterion: Due diligence is cleared.
+  exit_criterion: The account is activated.
+  outcome: An activated account.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-regulation-management-gya4d8
+- capabilities:capability-financial-resource-management-cd3c7c
+upstream_refs:
+- slug: value-stream-application-to-book
+  note: Lending follows the same KYC-cleared onboarding.
+downstream_refs:
+- slug: value-stream-contract-to-renewal
+  note: The activated relationship is served through its term.
+metrics:
+- name: Know-your-customer onboarding time
+  definition: Elapsed time from application to activation.
+  metric_ref: dea:metric-know-your-customer-onboarding-time
+  applies_to_stage: Activate
+- name: Onboarding completion rate
+  definition: Share of started onboardings completed.
+  metric_ref: dea:metric-onboarding-completion-rate
+  applies_to_stage: Activate
+evidence:
+  sources:
+  - SRC-008
+  - SRC-012
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-022) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (financial-services); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-ge-operate-tpenm6

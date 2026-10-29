@@ -19,11 +19,11 @@ connects to, and the measures that tell you it is working.
 | Aspect | Value |
 |---|---|
 | Entity | `dea:ValueStream` (alias `VS`, layer L3, building block `L3-value-delivery`) |
-| Admitted streams | 11 (v1-alpha, record version 1.1.0) |
-| Categories | 7 operational · 2 support · 2 governance |
-| Value stages | 44 (4 per stream, each with entry/exit criteria and outcome) |
+| Admitted streams | 111 (v1-alpha): 11 cross-industry (v1.3.0) + 100 industry-specific (v1.0.0) |
+| Categories | 67 operational · 25 governance · 15 support · 4 development |
+| Value stages | 396 (each with entry/exit criteria and outcome) |
 | Cross-catalog links | capabilities → [business-capabilities](https://github.com/technehub-labs/dea-catalog-business-capabilities) · processes → [business-processes](https://github.com/technehub-labs/dea-catalog-business-processes) (referential-integrity-checked) |
-| Entry schema | [`schemas/entity.schema.json`](./schemas/entity.schema.json) — CR-MET-014 core + CR-VS-07 extensions |
+| Entry schema | [`schemas/entity.schema.json`](./schemas/entity.schema.json) — CR-MET-014 core + CR-VS-07/11 extensions (incl. `applicability`) |
 | Catalog index | [`CATALOG.yaml`](./CATALOG.yaml) — machine-generated (CR-CATALOG-STRUCT-06a) |
 | CI gates | pointer allocation · entry schema + referential integrity · catalog index conformance |
 
@@ -65,6 +65,29 @@ clone → sibling `CATALOG.yaml` index → vendored snapshot under
 gate is deterministic offline). Unresolved references fail CI.
 
 ## Catalogued value streams
+
+111 admitted streams across 15 applicability classes (the
+[`applicability`](./classifications/industry-vocabulary.yaml) dimension, CR-VS-11):
+
+| Industry | Streams | Examples |
+|---|---|---|
+| cross-industry | 11 | Order to Cash, Procure to Pay, Hire to Retire, Record to Report |
+| retail-commerce | 11 | Assortment to Shelf, Checkout to Fulfillment, Private Label Design to Launch |
+| manufacturing | 9 | Engineer to Order, Make to Stock Release, Recall to Remediation |
+| technology | 10 | Commit to Deploy, Incident to Restore, Model to Deployment |
+| healthcare | 7 | Patient Access to Admission, Admission to Discharge, Discharge to Bill |
+| financial-services | 8 | Application to Book, Onboard to Activate, Initiate to Settle |
+| insurance | 7 | Quote to Bind, Loss to Claim Settlement, Policy to Endorsement |
+| telecommunications | 7 | Order to Activation, Trouble to Restore, Usage to Bill |
+| utilities-energy | 8 | Meter to Bill, Apply to Connect, Outage to Restore |
+| logistics-transportation | 8 | Ship to Consignee, Customs Clearance to Release, Last-Mile Route to Proof |
+| public-sector | 8 | Apply to Decide, Grant Award to Closeout, Request to Disclose |
+| education | 6 | Admit to Graduate, Course Design to Delivery, Research Grant to Publication |
+| hospitality-travel | 5 | Book to Stay, Event Book to Execute, Disruption to Reaccommodation |
+| construction-real-estate | 7 | Tender to Award, Build to Handover, List to Close |
+| life-sciences | 8 | Trial to Readout, Batch to Release, Adverse Event to Signal |
+
+Cross-industry streams (the original 11):
 
 | Value stream | Category | Outcome | Stages | Record |
 |---|---|---|---|---|

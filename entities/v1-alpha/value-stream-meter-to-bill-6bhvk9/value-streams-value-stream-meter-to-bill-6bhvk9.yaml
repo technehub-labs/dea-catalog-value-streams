@@ -1,0 +1,101 @@
+id: value-streams:value-stream-meter-to-bill-6bhvk9
+type: ValueStream
+name: Meter to Bill
+definition: The end-to-end utility revenue stream from consumption measurement through meter data collection
+  and validation to an accurate bill.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An accurate, explained bill for consumed energy.
+entry_criterion: Consumption occurs at a metered point.
+exit_criterion: The period bill is produced and accepted.
+scope:
+  includes:
+  - Meter data collection
+  - Validation and estimation
+  - Rating and bill production
+  - Bill inquiry resolution
+  excludes:
+  - Connection services (Apply to Connect)
+  - Credit and collections
+value_stages:
+- name: Collect Meter Data
+  definition: Collect consumption data from the meter.
+  entry_criterion: Consumption occurs.
+  exit_criterion: Meter data is collected.
+  outcome: Collected meter data.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Validate and Estimate
+  definition: Validate the data and estimate gaps.
+  entry_criterion: Data is collected.
+  exit_criterion: Validated consumption exists.
+  outcome: Validated consumption.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-fa-operate-4xn4d6
+  customer_visible: false
+- name: Rate and Bill
+  definition: Rate consumption and produce the bill.
+  entry_criterion: Consumption is validated.
+  exit_criterion: The bill is issued.
+  outcome: An issued bill.
+  capability_refs:
+  - capabilities:capability-financial-resource-management-cd3c7c
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+- name: Resolve Inquiries
+  definition: Resolve bill inquiries.
+  entry_criterion: The bill is issued.
+  exit_criterion: Inquiries are resolved.
+  outcome: An accepted bill.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-resource-management-cd3c7c
+- capabilities:capability-customer-management-f3n8wb
+metrics:
+- name: Estimated-bill rate
+  definition: Share of bills based on estimated rather than actual reads.
+evidence:
+  sources:
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-043) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (utilities-energy); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-4xn4d6
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-operate-bbe384

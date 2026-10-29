@@ -1,0 +1,98 @@
+id: value-streams:value-stream-network-build-to-service-u228b3
+type: ValueStream
+name: Network Build to Service
+definition: The network-investment stream from capacity planning through build and integration to service-ready
+  status.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: support
+applicability:
+  industries:
+  - telecommunications
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Service-ready network capacity in production.
+entry_criterion: A capacity need is identified.
+exit_criterion: The new capacity is in production and service-ready.
+scope:
+  includes:
+  - Capacity planning
+  - Build and integration
+  - Acceptance and cutover
+  excludes:
+  - Customer provisioning (Order to Activation)
+  - Decommissioning
+value_stages:
+- name: Plan Capacity
+  definition: Plan network capacity against demand.
+  entry_criterion: A capacity need is identified.
+  exit_criterion: The build is planned.
+  outcome: A planned build.
+  capability_refs:
+  - capabilities:capability-strategic-planning-k3rz7a
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  - processes:process-fa-conceive-4uqqvg
+  customer_visible: false
+- name: Build and Integrate
+  definition: Build and integrate the network capacity.
+  entry_criterion: The build is planned.
+  exit_criterion: The build is complete and integrated.
+  outcome: Integrated capacity.
+  capability_refs:
+  - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-build-j9z3q4
+  - processes:process-eo-operate-xud3hs
+  customer_visible: false
+- name: Accept and Cut Over
+  definition: Accept and cut over to production.
+  entry_criterion: The build is integrated.
+  exit_criterion: The capacity is service-ready.
+  outcome: Service-ready capacity.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-technology-management-maus5n
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-strategic-planning-k3rz7a
+- capabilities:capability-technology-management-maus5n
+- capabilities:capability-technology-enablement-y6nkws
+- capabilities:capability-operations-management-pm3w8k
+upstream_refs:
+- slug: value-stream-plan-to-forecast
+  note: Capacity investment follows the ratified plan.
+downstream_refs:
+- slug: value-stream-order-to-activation
+  note: Service-ready capacity enables provisioning.
+metrics:
+- name: Build-to-service lead time
+  definition: Elapsed time from plan to service-ready.
+evidence:
+  sources:
+  - SRC-010
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-039) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (telecommunications); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-build-2pkz5n
+- processes:process-fa-conceive-4uqqvg
+- processes:process-eo-build-j9z3q4
+- processes:process-eo-operate-xud3hs
+- processes:process-eo-operate-44jsrp

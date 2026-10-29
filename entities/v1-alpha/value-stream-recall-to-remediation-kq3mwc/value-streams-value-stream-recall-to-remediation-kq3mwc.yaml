@@ -1,0 +1,106 @@
+id: value-streams:value-stream-recall-to-remediation-kq3mwc
+type: ValueStream
+name: Recall to Remediation
+definition: The product-recall stream from recall decision through affected-unit traceability to remediation
+  closure.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - manufacturing
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: All affected units remediated with the recall closed.
+entry_criterion: A recall decision is made.
+exit_criterion: The recall is closed with remediation complete.
+scope:
+  includes:
+  - Affected-unit identification
+  - Notification and retrieval
+  - Remediation
+  - Closure
+  excludes:
+  - Quality (Inspect to Disposition)
+  - Field service
+value_stages:
+- name: Identify Affected Units
+  definition: Trace affected units through the distribution chain.
+  entry_criterion: A recall is decided.
+  exit_criterion: Affected units are identified.
+  outcome: An affected-unit list.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+- name: Notify and Retrieve
+  definition: Notify and retrieve affected units.
+  entry_criterion: Units are identified.
+  exit_criterion: Units are retrieved.
+  outcome: Retrieved units.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: true
+- name: Remediate
+  definition: Remediate or replace the units.
+  entry_criterion: Units are retrieved.
+  exit_criterion: Remediation is complete.
+  outcome: Remediated units.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Close Recall
+  definition: Close the recall with verification.
+  entry_criterion: Remediation is complete.
+  exit_criterion: The recall is closed.
+  outcome: A closed recall.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-enterprise-performance-management-5fxren
+metrics:
+- name: Recall retrieval rate
+  definition: Share of affected units retrieved and remediated.
+evidence:
+  sources:
+  - SRC-016
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-056) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing, retail-commerce); distinct from
+    cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against
+    the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-operate-ucxpz4
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-zwzmbd
+- processes:process-eo-operate-2jnz85
+- processes:process-ge-operate-zwaes5

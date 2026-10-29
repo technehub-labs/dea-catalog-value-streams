@@ -1,0 +1,100 @@
+id: value-streams:value-stream-promotion-plan-to-execution-j73nkj
+type: ValueStream
+name: Promotion Plan to Execution
+definition: The promotions stream from promotion design through setup to executed promotion with measured
+  lift.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An executed promotion with measured performance.
+entry_criterion: A promotion is designed and approved.
+exit_criterion: The promotion is executed and its lift measured.
+scope:
+  includes:
+  - Promotion design
+  - Setup and pricing
+  - Execution
+  - Measurement
+  excludes:
+  - Everyday pricing
+  - Loyalty program management
+value_stages:
+- name: Design Promotion
+  definition: Design the promotion mechanics.
+  entry_criterion: A promotion is approved for design.
+  exit_criterion: The promotion is designed.
+  outcome: A designed promotion.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pr-design-j6fakx
+  customer_visible: false
+- name: Set Up
+  definition: Set up pricing, media, and stock for the promotion.
+  entry_criterion: The promotion is designed.
+  exit_criterion: Setup is complete.
+  outcome: A staged promotion.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  customer_visible: false
+- name: Execute
+  definition: Run the promotion in market.
+  entry_criterion: Setup is complete.
+  exit_criterion: The promotion runs to completion.
+  outcome: An executed promotion.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Measure Lift
+  definition: Measure the promotion's lift and effectiveness.
+  entry_criterion: The promotion completes.
+  exit_criterion: Performance is measured.
+  outcome: Measured performance.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-enterprise-performance-management-5fxren
+metrics:
+- name: Promotion lift
+  definition: Incremental sales attributable to the promotion.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-061) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-design-j6fakx
+- processes:process-pr-build-nygvw7
+- processes:process-eo-operate-2jnz85
+- processes:process-sd-operate-ucxpz4

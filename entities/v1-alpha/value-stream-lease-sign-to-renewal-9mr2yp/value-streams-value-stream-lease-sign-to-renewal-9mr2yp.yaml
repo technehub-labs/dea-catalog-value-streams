@@ -1,0 +1,89 @@
+id: value-streams:value-stream-lease-sign-to-renewal-9mr2yp
+type: ValueStream
+name: Lease Sign to Renewal
+definition: The property stream from lease execution through occupancy service to lease renewal or exit.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - construction-real-estate
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A settled renewal or exit at lease end.
+entry_criterion: A lease is executed.
+exit_criterion: The renewal or exit is settled.
+scope:
+  includes:
+  - Lease execution and onboarding
+  - Occupancy service and rent collection
+  - Renewal decision and settlement
+  excludes:
+  - Sales transactions (List to Close)
+  - Facilities management
+value_stages:
+- name: Execute Lease
+  definition: Execute the lease and onboard the tenant.
+  entry_criterion: A lease is executed.
+  exit_criterion: The tenant is onboarded.
+  outcome: An onboarded tenant.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-ge-build-mctdgc
+  customer_visible: true
+- name: Serve Occupancy
+  definition: Serve the tenancy and collect rent.
+  entry_criterion: The tenancy starts.
+  exit_criterion: The tenancy is served and rent collected.
+  outcome: A served tenancy.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+- name: Renew or Exit
+  definition: Settle the renewal or exit.
+  entry_criterion: The lease approaches end.
+  exit_criterion: The renewal or exit is settled.
+  outcome: A settled lease end.
+  capability_refs:
+  - capabilities:capability-legal-matter-management-zzbd2u
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-improve-t6uvan
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-legal-matter-management-zzbd2u
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-financial-resource-management-cd3c7c
+metrics:
+- name: Lease renewal rate
+  definition: Share of expiring leases renewed.
+evidence:
+  sources:
+  - SRC-017
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-095) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (construction-real-estate); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-ge-build-mctdgc
+- processes:process-eo-operate-2jnz85
+- processes:process-fa-operate-sdppmp
+- processes:process-pr-improve-t6uvan

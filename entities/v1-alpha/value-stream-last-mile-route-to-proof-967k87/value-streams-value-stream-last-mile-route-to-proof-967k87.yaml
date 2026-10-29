@@ -1,0 +1,88 @@
+id: value-streams:value-stream-last-mile-route-to-proof-967k87
+type: ValueStream
+name: Last-Mile Route to Proof
+definition: The last-mile stream from route planning through stop execution to complete proof-of-delivery
+  coverage.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - logistics-transportation
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: All stops served with captured proof.
+entry_criterion: A day's route is planned.
+exit_criterion: All stops are served with proof captured.
+scope:
+  includes:
+  - Route planning
+  - Stop execution
+  - Proof capture and exception handling
+  excludes:
+  - Linehaul (Ship to Consignee)
+  - Customer notification programs
+value_stages:
+- name: Plan Route
+  definition: Plan the day's route.
+  entry_criterion: A route is to be planned.
+  exit_criterion: The route is planned.
+  outcome: A planned route.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-sd-build-2pkz5n
+  customer_visible: false
+- name: Execute Stops
+  definition: Execute the delivery stops.
+  entry_criterion: The route is planned.
+  exit_criterion: The stops are served.
+  outcome: Served stops.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  customer_visible: true
+- name: Capture Proof
+  definition: Capture proof and handle exceptions.
+  entry_criterion: The stops are served.
+  exit_criterion: Proof is complete and exceptions handled.
+  outcome: Complete proof.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-customer-management-f3n8wb
+metrics:
+- name: Stop completion rate
+  definition: Share of planned stops served on the day.
+evidence:
+  sources:
+  - SRC-016
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-072) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (logistics-transportation, retail-commerce);
+    distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references
+    resolve against the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-sd-build-2pkz5n
+- processes:process-eo-operate-zh9m57
+- processes:process-pr-operate-bbe384

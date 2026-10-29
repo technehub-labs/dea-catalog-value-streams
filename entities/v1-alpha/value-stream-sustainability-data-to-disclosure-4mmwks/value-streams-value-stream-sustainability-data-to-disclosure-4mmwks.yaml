@@ -1,0 +1,90 @@
+id: value-streams:value-stream-sustainability-data-to-disclosure-4mmwks
+type: ValueStream
+name: Sustainability Data to Disclosure
+definition: The ESG stream from sustainability data capture through assurance to disclosure.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - manufacturing
+  - utilities-energy
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An assured sustainability disclosure.
+entry_criterion: A reporting cycle opens.
+exit_criterion: The disclosure is published with assurance.
+scope:
+  includes:
+  - Data capture and aggregation
+  - Assurance
+  - Disclosure
+  excludes:
+  - Financial reporting (Record to Report)
+  - Regulatory filings
+value_stages:
+- name: Capture Data
+  definition: Capture and aggregate sustainability data.
+  entry_criterion: A cycle opens.
+  exit_criterion: The dataset is complete.
+  outcome: A complete dataset.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-insight-management-ms4n9d
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Assure
+  definition: Assure the data and disclosures.
+  entry_criterion: The dataset is complete.
+  exit_criterion: Assurance is complete.
+  outcome: Assured data.
+  capability_refs:
+  - capabilities:capability-enterprise-governance-uas48u
+  - capabilities:capability-risk-management-h9uxdw
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+- name: Disclose
+  definition: Publish the disclosure.
+  entry_criterion: Assurance is complete.
+  exit_criterion: The disclosure is published.
+  outcome: A published disclosure.
+  capability_refs:
+  - capabilities:capability-financial-stewardship-c7xtfk
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-fa-operate-ycba3k
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-enterprise-governance-uas48u
+- capabilities:capability-risk-management-h9uxdw
+- capabilities:capability-financial-stewardship-c7xtfk
+metrics:
+- name: Disclosure data completeness
+  definition: Share of required data points with assured values.
+evidence:
+  sources:
+  - SRC-016
+  - SRC-011
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-057) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (manufacturing, utilities-energy); distinct from
+    cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references resolve against
+    the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-fa-operate-g9zpnq
+- processes:process-ge-operate-zwaes5
+- processes:process-fa-operate-ycba3k

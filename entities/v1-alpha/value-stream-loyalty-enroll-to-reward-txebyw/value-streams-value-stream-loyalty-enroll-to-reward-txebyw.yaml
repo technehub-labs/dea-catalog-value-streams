@@ -1,0 +1,87 @@
+id: value-streams:value-stream-loyalty-enroll-to-reward-txebyw
+type: ValueStream
+name: Loyalty Enroll to Reward
+definition: The loyalty stream from enrollment through earn accrual to redeemed reward.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An engaged loyalty member redeeming rewards.
+entry_criterion: A customer enrolls in the loyalty program.
+exit_criterion: The member redeems a reward.
+scope:
+  includes:
+  - Enrollment
+  - Earn accrual
+  - Reward redemption
+  excludes:
+  - Marketing campaigns (Promotion Plan to Execution)
+  - Payments
+value_stages:
+- name: Enroll Member
+  definition: Enroll the customer in the program.
+  entry_criterion: A customer enrolls.
+  exit_criterion: The member is active.
+  outcome: An active member.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  customer_visible: true
+- name: Accrue Earn
+  definition: Accrue earn on qualifying activity.
+  entry_criterion: The member is active.
+  exit_criterion: Earn accrues to the account.
+  outcome: Accrued earn.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-g9zpnq
+  customer_visible: false
+- name: Redeem Reward
+  definition: Redeem the accrued earn for rewards.
+  entry_criterion: Earn accrues.
+  exit_criterion: The reward is redeemed.
+  outcome: A redeemed reward.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-financial-resource-management-cd3c7c
+  process_refs:
+  - processes:process-fa-operate-sdppmp
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-financial-resource-management-cd3c7c
+metrics:
+- name: Member active rate
+  definition: Share of members with qualifying activity per period.
+evidence:
+  sources:
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-062) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (retail-commerce); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-build-nygvw7
+- processes:process-fa-operate-g9zpnq
+- processes:process-fa-operate-sdppmp

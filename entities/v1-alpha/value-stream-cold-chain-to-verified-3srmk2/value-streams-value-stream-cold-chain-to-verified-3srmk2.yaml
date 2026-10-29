@@ -1,0 +1,88 @@
+id: value-streams:value-stream-cold-chain-to-verified-3srmk2
+type: ValueStream
+name: Cold Chain to Verified
+definition: The temperature-controlled stream from sealed load through monitored transit to verified cold-chain
+  integrity.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - logistics-transportation
+  - retail-commerce
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Delivered goods with verified cold-chain integrity.
+entry_criterion: A temperature-controlled load is sealed.
+exit_criterion: Cold-chain integrity is verified at delivery.
+scope:
+  includes:
+  - Sealed monitored transit
+  - Excursion handling
+  - Verification at receipt
+  excludes:
+  - Ambient freight (Ship to Consignee)
+  - Quality disposition (Inspect to Disposition)
+value_stages:
+- name: Seal and Monitor
+  definition: Seal the load and monitor temperature in transit.
+  entry_criterion: A load is sealed.
+  exit_criterion: Transit completes with monitoring.
+  outcome: Monitored transit.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-zh9m57
+  customer_visible: false
+- name: Handle Excursions
+  definition: Handle temperature excursions per protocol.
+  entry_criterion: An excursion occurs.
+  exit_criterion: The excursion is handled and documented.
+  outcome: A handled excursion.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Verify at Receipt
+  definition: Verify cold-chain integrity at receipt.
+  entry_criterion: Transit completes.
+  exit_criterion: Integrity is verified.
+  outcome: Verified integrity.
+  capability_refs:
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-risk-management-h9uxdw
+metrics:
+- name: Cold-chain excursion rate
+  definition: Share of loads with a reportable excursion.
+evidence:
+  sources:
+  - SRC-016
+  - SRC-013
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-070) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (logistics-transportation, retail-commerce);
+    distinct from cross-industry streams by applicability (CR-VS-11 method note); cross-catalog references
+    resolve against the sibling catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-eo-operate-zh9m57
+- processes:process-eo-operate-44jsrp

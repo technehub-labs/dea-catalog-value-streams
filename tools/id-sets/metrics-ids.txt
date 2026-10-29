@@ -3,17 +3,38 @@
 # (~15 ids) rather than the full ~3.9k-record catalog; the gate fails closed,
 # so under-scoping surfaces as a CI failure, never a silent pass.
 # Last refreshed: 2026-10-28
-dea:metric-perfect-order-rate
-dea:metric-days-sales-outstanding
-dea:metric-first-time-match-rate
-dea:metric-invoice-processing-cycle-time
-dea:metric-first-contact-resolution
-dea:metric-on-time-delivery-rate
-dea:metric-time-to-hire
-dea:metric-voluntary-turnover-rate
+dea:metric-asset-utilization-rate
+dea:metric-average-length-of-stay
 dea:metric-cash-forecast-accuracy
+dea:metric-churn-rate-telecom
+dea:metric-claims-frequency-rate
+dea:metric-claims-leakage-rate
+dea:metric-clinical-documentation-completion-time
+dea:metric-clinical-trial-enrollment-cycle-time
+dea:metric-customer-satisfaction-score
+dea:metric-customs-clearance-cycle-time
+dea:metric-days-sales-outstanding
+dea:metric-door-to-provider-time
 dea:metric-financial-close-cycle-time
 dea:metric-financial-restatement-count
+dea:metric-first-contact-resolution
+dea:metric-first-pass-yield
+dea:metric-first-time-match-rate
+dea:metric-invoice-processing-cycle-time
+dea:metric-know-your-customer-onboarding-time
+dea:metric-lead-time-for-changes
+dea:metric-loan-application-approval-rate
+dea:metric-loan-origination-cycle-time
+dea:metric-mean-time-to-restore-service
 dea:metric-net-revenue-retention
+dea:metric-on-time-delivery-rate
+dea:metric-onboarding-completion-rate
+dea:metric-onboarding-time-to-value
+dea:metric-perfect-order-rate
+dea:metric-policy-issuance-turnaround
+dea:metric-provisioning-cycle-time-telecom
+dea:metric-readmission-rate-within-30-days
+dea:metric-release-frequency
 dea:metric-return-rate
-dea:metric-asset-utilization-rate
+dea:metric-time-to-hire
+dea:metric-voluntary-turnover-rate

@@ -1,0 +1,102 @@
+id: value-streams:value-stream-referral-to-treatment-fjkv2g
+type: ValueStream
+name: Referral to Treatment
+definition: The end-to-end stream from specialist referral through triage, booking, and clinical treatment
+  completion.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: A referred patient receives and completes specialist treatment.
+entry_criterion: A specialist referral is made.
+exit_criterion: The referred treatment is completed.
+scope:
+  includes:
+  - Referral triage and prioritization
+  - Booking and preparation
+  - Treatment delivery
+  - Outcome and follow-up
+  excludes:
+  - Emergency care pathways
+  - Inpatient admission (Admission to Discharge)
+value_stages:
+- name: Triage Referral
+  definition: Receive and prioritize the referral.
+  entry_criterion: A specialist referral is made.
+  exit_criterion: The referral is triaged and prioritized.
+  outcome: A prioritized referral.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Book and Prepare
+  definition: Book the treatment and prepare the patient.
+  entry_criterion: A referral is prioritized.
+  exit_criterion: The treatment is booked and the patient is prepared.
+  outcome: A booked, prepared treatment slot.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Deliver Treatment
+  definition: Deliver the clinical treatment.
+  entry_criterion: The patient is prepared.
+  exit_criterion: The treatment is delivered.
+  outcome: Completed specialist treatment.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  - processes:process-eo-operate-44jsrp
+  customer_visible: true
+- name: Complete and Follow Up
+  definition: Confirm treatment outcome and arrange follow-up.
+  entry_criterion: Treatment is delivered.
+  exit_criterion: The outcome is recorded and follow-up arranged.
+  outcome: A closed referral with follow-up.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+downstream_refs:
+- slug: value-stream-discharge-to-bill
+  note: Delivered treatment flows to billing.
+metrics:
+- name: Referral-to-treatment wait time
+  definition: Elapsed days from referral to treatment.
+evidence:
+  sources:
+  - SRC-007
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-018) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp

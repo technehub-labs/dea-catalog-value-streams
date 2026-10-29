@@ -3,7 +3,7 @@ type: ValueStream
 name: Procure to Pay
 definition: The end-to-end stream from identification of an external supply need through sourcing, ordering,
   receipt, and supplier payment.
-version: 1.2.0
+version: 1.3.0
 metamodel_pin: 1.0.0
 lifecycle_status: active
 outcome: The internal need is met and the supplier obligation is settled.
@@ -37,6 +37,9 @@ provenance:
   - stage: active
     date: '2026-10-28'
     actor: Emmanuel A. Otchere, CR-VS-08 metric backfill (metric_ref links to dea-catalog-metrics)
+  - stage: active
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, CR-VS-11 applicability backfill (cross-industry, generic)
 value_stream_category: operational
 scope:
   includes:
@@ -112,3 +115,10 @@ metrics:
   definition: Share of supplier invoices matched to PO and receipt without exception.
   applies_to_stage: Settle Supplier
   metric_ref: dea:metric-first-time-match-rate
+applicability:
+  industries:
+  - cross-industry
+  organization_types:
+  - for-profit-enterprise
+  - internal-enterprise
+  specificity: generic

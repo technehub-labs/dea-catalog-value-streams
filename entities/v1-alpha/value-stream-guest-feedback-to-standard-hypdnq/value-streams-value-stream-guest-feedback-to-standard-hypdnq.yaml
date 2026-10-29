@@ -1,0 +1,104 @@
+id: value-streams:value-stream-guest-feedback-to-standard-hypdnq
+type: ValueStream
+name: Guest Feedback to Standard
+definition: The hospitality-experience stream from feedback capture through analysis to an implemented
+  service standard.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: governance
+applicability:
+  industries:
+  - hospitality-travel
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: An improved, verified service standard.
+entry_criterion: Guest feedback is captured.
+exit_criterion: The standard improvement is implemented and verified.
+scope:
+  includes:
+  - Feedback capture
+  - Analysis and prioritization
+  - Standard update
+  - Verification
+  excludes:
+  - Individual service recovery (Issue to Resolve)
+  - Brand standards governance
+value_stages:
+- name: Capture Feedback
+  definition: Capture guest feedback.
+  entry_criterion: Feedback is captured.
+  exit_criterion: Feedback is consolidated.
+  outcome: Consolidated feedback.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Analyze and Prioritize
+  definition: Analyze and prioritize.
+  entry_criterion: Feedback is consolidated.
+  exit_criterion: Priorities are set.
+  outcome: Set priorities.
+  capability_refs:
+  - capabilities:capability-insight-management-ms4n9d
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-sd-operate-ucxpz4
+  customer_visible: false
+- name: Update Standard
+  definition: Update the service standard.
+  entry_criterion: Priorities are set.
+  exit_criterion: The standard is updated.
+  outcome: An updated standard.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-enterprise-governance-uas48u
+  process_refs:
+  - processes:process-ge-design-kpsj5b
+  customer_visible: false
+- name: Verify
+  definition: Verify implementation.
+  entry_criterion: The standard is updated.
+  exit_criterion: Implementation is verified.
+  outcome: A verified standard.
+  capability_refs:
+  - capabilities:capability-enterprise-performance-management-5fxren
+  process_refs:
+  - processes:process-ge-operate-zwaes5
+  customer_visible: false
+aggregated_capability_refs:
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-insight-management-ms4n9d
+- capabilities:capability-enterprise-performance-management-5fxren
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-enterprise-governance-uas48u
+metrics:
+- name: Guest satisfaction score
+  definition: Mean guest satisfaction per period.
+  metric_ref: dea:metric-customer-satisfaction-score
+  applies_to_stage: Verify
+evidence:
+  sources:
+  - SRC-015
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-091) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (hospitality-travel); distinct from cross-industry
+    streams by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling
+    catalogs per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-operate-bbe384
+- processes:process-sd-operate-ucxpz4
+- processes:process-ge-design-kpsj5b
+- processes:process-ge-operate-zwaes5

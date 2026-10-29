@@ -1,0 +1,86 @@
+id: value-streams:value-stream-applicant-outreach-to-enrollment-vyn4n7
+type: ValueStream
+name: Applicant Outreach to Enrollment
+definition: The recruitment stream from prospective-student outreach through application to enrolled student.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - education
+  organization_types:
+  - nonprofit-organization
+  - public-agency
+  specificity: industry-specific
+outcome: An enrolled student cohort for the intake.
+entry_criterion: An outreach campaign is launched.
+exit_criterion: The intake enrollment target is met.
+scope:
+  includes:
+  - Outreach and recruitment
+  - Application support
+  - Enrollment
+  excludes:
+  - Admission decisions (Admit to Graduate)
+  - Alumni engagement
+value_stages:
+- name: Recruit
+  definition: Run outreach to prospective students.
+  entry_criterion: A campaign is launched.
+  exit_criterion: Applications are received.
+  outcome: Received applications.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  customer_visible: true
+- name: Support Application
+  definition: Support applicants through application.
+  entry_criterion: Applications are received.
+  exit_criterion: Applications are completed.
+  outcome: Completed applications.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+- name: Enroll
+  definition: Enroll admitted students.
+  entry_criterion: Admissions are made.
+  exit_criterion: The cohort is enrolled.
+  outcome: An enrolled cohort.
+  capability_refs:
+  - capabilities:capability-customer-management-f3n8wb
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-pr-operate-bbe384
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-information-management-6vjgdh
+upstream_refs:
+- slug: value-stream-admit-to-graduate
+  note: Enrolled students enter the student lifecycle.
+metrics:
+- name: Outreach-to-enrollment conversion
+  definition: Enrolled students per outreach contact.
+evidence:
+  sources:
+  - SRC-015
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-084) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (education); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-build-nygvw7
+- processes:process-pr-operate-bbe384

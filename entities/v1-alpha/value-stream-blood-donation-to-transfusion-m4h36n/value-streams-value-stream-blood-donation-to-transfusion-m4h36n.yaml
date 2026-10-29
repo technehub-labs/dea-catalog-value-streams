@@ -1,0 +1,114 @@
+id: value-streams:value-stream-blood-donation-to-transfusion-m4h36n
+type: ValueStream
+name: Blood Donation to Transfusion
+definition: The end-to-end blood stream from donor recruitment through collection, testing, processing,
+  and transfusion to the recipient.
+version: 1.0.0
+metamodel_pin: 1.0.0
+lifecycle_status: active
+value_stream_category: operational
+applicability:
+  industries:
+  - healthcare
+  organization_types:
+  - regulated-entity
+  - for-profit-enterprise
+  specificity: industry-specific
+outcome: Safe blood components transfused to the patient who needs them.
+entry_criterion: A donor presents or is recruited.
+exit_criterion: The transfusion is completed and documented.
+scope:
+  includes:
+  - Donor recruitment and screening
+  - Collection
+  - Testing and processing
+  - Storage and issue
+  - Transfusion
+  excludes:
+  - General laboratory operations
+  - Research biobanking
+value_stages:
+- name: Recruit and Screen Donor
+  definition: Recruit the donor and complete donation screening.
+  entry_criterion: A donor presents or is recruited.
+  exit_criterion: The donor is screened and eligible.
+  outcome: An eligible, screened donor.
+  capability_refs:
+  - capabilities:capability-marketing-xmc539
+  - capabilities:capability-customer-management-f3n8wb
+  process_refs:
+  - processes:process-pr-build-nygvw7
+  customer_visible: true
+- name: Collect
+  definition: Collect the donation.
+  entry_criterion: A donor is eligible.
+  exit_criterion: The donation is collected.
+  outcome: A collected donation.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+- name: Test and Process
+  definition: Test and process the donation into components.
+  entry_criterion: A donation is collected.
+  exit_criterion: Components are tested, processed, and released.
+  outcome: Released safe components.
+  capability_refs:
+  - capabilities:capability-information-management-6vjgdh
+  - capabilities:capability-risk-management-h9uxdw
+  - capabilities:capability-operations-management-pm3w8k
+  process_refs:
+  - processes:process-eo-operate-44jsrp
+  customer_visible: false
+- name: Store and Issue
+  definition: Store components and issue to order.
+  entry_criterion: Components are released.
+  exit_criterion: Components are issued to the clinical order.
+  outcome: Issued components.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-zwzmbd
+  customer_visible: false
+- name: Transfuse
+  definition: Transfuse to the recipient and document.
+  entry_criterion: Components are issued.
+  exit_criterion: The transfusion is completed and documented.
+  outcome: A transfused, monitored patient.
+  capability_refs:
+  - capabilities:capability-operations-management-pm3w8k
+  - capabilities:capability-information-management-6vjgdh
+  process_refs:
+  - processes:process-eo-operate-2jnz85
+  customer_visible: true
+aggregated_capability_refs:
+- capabilities:capability-marketing-xmc539
+- capabilities:capability-customer-management-f3n8wb
+- capabilities:capability-operations-management-pm3w8k
+- capabilities:capability-information-management-6vjgdh
+- capabilities:capability-risk-management-h9uxdw
+metrics:
+- name: Blood component wastage rate
+  definition: Expired or discarded units as a share of collected volume.
+evidence:
+  sources:
+  - SRC-007
+  rationale: Admitted under CR-VS-12 (population tranche; candidate VSC-020) from the CR-VS-11 industry
+    evidence register extension. Industry-specific chain (healthcare); distinct from cross-industry streams
+    by applicability (CR-VS-11 method note); cross-catalog references resolve against the sibling catalogs
+    per the referential-integrity gate.
+provenance:
+  ladder_passage:
+  - stage: candidate
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, candidate universe v0.6 (CR-VS-12)
+  - stage: admitted
+    date: '2026-10-28'
+    actor: Emmanuel A. Otchere, admission CR-VS-12
+process_refs:
+- processes:process-pr-build-nygvw7
+- processes:process-eo-operate-2jnz85
+- processes:process-eo-operate-44jsrp
+- processes:process-eo-operate-zwzmbd
