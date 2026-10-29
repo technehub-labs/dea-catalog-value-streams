@@ -1,6 +1,6 @@
-# Value Stream Catalog
+# OpenDEA Value Stream Catalog (dea-catalog-value-streams)
 
-> An end-to-end collection of value-creating activities that deliver value to a consumer.
+> A multi-sector/multi-industry collection of value-creating activities that deliver value to a consumer.
 
 **Layer:** L3 · **Entity:** `VS` (`dea:ValueStream`) · **Building block:** `L3-value-delivery`
 
